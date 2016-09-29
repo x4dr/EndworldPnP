@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[showframe]{geometry}
+\usepackage{listings}
+\usepackage{layout}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{tabularx}
+\newcommand{\tick}{$\square$}
+
+\geometry{textwidth=\paperwidth, textheight=\paperheight, noheadfoot, nomarginpar}
+\setlength{\topskip}{13mm}
+\lstset{literate= {Ö}{{ \"O}}1 {Ä}{{ \"A}}1 {Ü}{{ \"U}}1
+{ß}{{ \ss}}2 {ü}{{ \"u}}1 {ä}{{ \"a}}1 {ö}{{ \"o}}1 {°}{{\(^\circ\)}}1}
+\begin{document}
+\begin{center}
+\huge
+ENDWORLD\\
+\LARGE
+Character Sheet \\[10mm]
+\end{center}
+
+\begin{tabular*}{\textwidth}{r @{\extracolsep{\fill}} crcrcc}
+Character Name &  & Category & & Mecha/Mount & &\\
+Player Name & & Charactertaint & & Concept  & &\\
+Campaign Name & & Life & & Experience & &\\
+\end{tabular*}
+\begin{center}\rule{20cm}{0.2mm}\\\Large Proficiencies \\\end{center}
+\normalsize
+
+\hspace{0.35cm}\begin{tabular*}{\textwidth}{|>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}|}
+\cline{1-3} \cline{5-7} & & & & & & \\
+         &\Large Tech  &      &  &      &\Large Social &       \\
+\normalsize Technology & Science & Engineering & \huge\tick \huge\tick  & Negotiation & Expression & Slyness \\
+\tick \tick&\tick \tick&\tick \tick&  &\tick \tick&\tick \tick&\tick \tick \\
+&&&&&&\\
+\cline{1-3} \cline{5-7}\\
+\cline{1-3} \cline{5-7}
+&&&&&&\\
+&\Large Combat & & &\ &\Large Mind &  \\
+Mellee & Ranged & Control & \huge\tick \huge\tick  & Perception & Resonance & Willpower \\
+\tick \tick&\tick \tick&\tick \tick&  &\tick \tick&\tick \tick&\tick \tick \\
+&&&&&&\\
+\cline{1-3} \cline{5-7}\\
+\cline{1-3} \cline{5-7}
+&&&&&&\\
+&\Large Physical & & & &\Large Practical &  \\
+\normalsize Athletics & Stealth & Endurance & \huge\tick \huge\tick & Knowledge & Profession & Survival \\
+\tick \tick&\tick \tick&\tick \tick&  &\tick \tick&\tick \tick&\tick \tick \\
+&&&&&&\\
+\cline{1-3} \cline{5-7}
+
+\end{tabular*}
+\begin{center}\rule{20cm}{0.2mm}\\\Large Inventory \\\end{center}
+\normalsize
+
+
+\hspace{1cm}\begin{tabularx}{7.315cm}{|r|c|}
+\hline
+\large Goods&\large Amount \\
+\hline
+Alacast &\\
+\hline
+Experimental Tech Scrap (ETS) &\\
+\hline
+High Tech Scrap (HTS) &\\
+\hline
+Medium Tech Scrap (MTS) &\\
+\hline
+Low Tech Scrap (LTS) &\\
+\hline
+Base Tech Scrap (BTS) &\\
+\hline
+Liquid Hydrogen &\\
+\hline
+LiquidCombustionFuel &\\
+\hline
+Coal &\\
+\hline
+High Energy Rations &\\
+\hline
+Normal Food  &\\
+\hline
+Drinking Water &\\
+\hline
+\end{tabularx}
+\begin{tabularx}{12cm}{rc}
+\\\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\\hline&\\
+\end{tabularx}
+
+\end{document}

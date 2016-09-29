@@ -1,0 +1,636 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{layout}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\newcommand{\headline}[1]{\begin{center}\Large #1 \normalsize \end{center}}
+\newcommand{\subhline}[1]{\begin{center}\large #1 \normalsize \end{center}}
+\geometry{textheight=25cm}
+\lstset{literate= {Ö}{{ \"O}}1 {Ä}{{ \"A}}1 {Ü}{{ \"U}}1Character
+{ß}{{ \ss}}2 {ü}{{ \"u}}1 {ä}{{ \"a}}1 {ö}{{ \"o}}1 {°}{{\(^\circ\)}}1}
+\begin{document}
+\begin{center}\huge
+Endworld PnP\\\large by Maric\\\normalsize \end{center}
+loosely/rp driven with 3d10 system by Maric\\
+This is a rough draft, version 0.1 Rulebook\\
+\headline{The EndWorld}
+
+[[someone has to still write flufftext... its gonna be meeeee]]\\
+
+- a few hundred years after WW III\\
+
+- Taint that slowly kills everyone breathing the air and degrades tech over time\\
+
+- snobby "pure" humans called Supervivo in plexiglass domes, protected by militia mechs\\
+
+- Wild Tribespeople who have "adapted" and live a short and kind of feral life since they cant use technology, cultivated monsterlike animals and ability to influence Taint in some\\
+
+- Alacast (puryfying raction with taint in catalysts), drinking Water (since taint affects water) and Scrap are valuable, no interregional Money, Credits are used in only one Dome and maybe can be transferred within one Region\\
+
+- Anomalies all over the place with less Taint, more gravity, singular heat point, singular cold point, radiation, decreased structural integrity and so on\\
+
+\headline{Rules}
+\subhline{Rolling and Checks}
+
+This System uses 3 ten sided dice. A Check is a roll of  one to three ten sided dice, interpreted
+in a certain way, with the result describing how successfull on a scale of 1-10 the attempted action was.
+1-4 are usually bad, 5 is usually neutral and above that are degrees of actual success.
+This may change depending on situation, judged by the Gamemaster. \\
+The number of dice rolled and the way they are interpeted varies with Advantage.
+Circumstances that are highly favourable for the action may give Advantage, while circumstances
+that are highly unfavourable may subtract from that Advantage (give Disadvantage).
+Minor factors are usually expressed in a change of the required result of the check. Under certain circumstances (like
+good roleplay or similar) the Gamemaster may grant reroll, which allows the player to choose one die of the Check after
+it has been rolled and reroll it. The new result counts instead of the old one. \\ \\
+How many dice are rolled for a Check and how they are interpreted can be found in the table:\\
+
+\begin{tabular}{c|c|l}
+Advantage & Dice & Interpretation \\
+-2& 3& take lowest\\
+\hline
+-1& 2& take lowest\\
+\hline
++0& 1&\\
+\hline
++1& 2& take highest\\
+\hline
++2& 3& take highest\\
+\end{tabular}\\
+
+\subhline{Proficiencies}
+
+Proficiencies represent the aspects of the gameworld that the character has an advantage in.
+Each point of proficiency is worth a one point advantage while doing a Check related to it.
+A character can have a maximum of two points per Proficiency for a maximum of two points of Advantage. Having no points in a Proficiency is called not having Proficiency, having one point is called having Proficiency and havint two points is called having Mastery,\\
+Proficiencies are grouped into Priorities. The Priorities a character can have are: Tech, Social, Combat, Mind, Physical and Practical.
+The related Proficiencies can be found in the table below.\\\\
+
+\begin{tabular}{l||cccccc}
+Priorities&Tech& Social& Combat& Mind& Physical & Practical\\\hline
+\\&Technology&Negotiate&Meele&Perception&Athletics&Knowledge\\
+Proficiencies&Science&Expression&Ranged&Resonance&Stealth&Profession\\
+&Engineering&Slyness&Control&Willpower&Endurance&Survival\\
+\end{tabular}\\
+
+\subhline{Trade}
+
+These entries in the table below are more or less equivalent. Rolling for price
+variance might be done if there is no in-world reason why certain things might be more or less expensive.
+If that is the case the prices vary by \(((-1)^{1d10}\cdot1d10\cdot5) \%\).
+Additionally everyone a character trades with has self interest and will keep \(10\cdot(10-\)[Negotiation-Check]\()\%\) of
+the tradevalue.\\ \\*
+Goods, at 100\% value each line is equivalent to one another and equivalent to 1 character creation point \\
+\begin{tabular}{r|l}
+Storage & Article\\\hline
+100g & Alacast\\\hline
+500g & Experimental Tech Scrap (ETS)\\\hline
+1kg & High Tech Scrap (HTS)\\\hline
+5kg & Medium Tech Scrap (MTS)\\\hline
+50kg & Low Tech Scrap (LTS)\\\hline
+500kg & Base Tech Scrap (BTS)\\\hline
+1000L/1t & drinking Water (500days of drinking)\\\hline
+500L/35kg & Liquid Hydrogen\\\hline
+1t & Coal\\\hline
+150L & LiquidCombustionFuel\\\hline
+200kg & High Energy Rations (0.4kg/(day\(\cdot\)person))\\\hline
+1t & Normal Food (1.5 kg / (day\(\cdot\)person))\\\hline
+1 & Medium Quality Blueprint\\\hline
+
+\end{tabular}\\
+If a player has a good idea maybe that.\\
+\\
+Example:\\
+Character A wants to get rid of 5 tonnes of Base Tech Scrap in favor of more easily transportable Alacast in a local Dome.
+Since the Gamemaster is lazy there are no storyelements influencing the prices, so they are rolled. First, the value of
+the BTS is determined to be (Roll: 6, 4) \(((-1)^{6}\cdot4\cdot5) \% = +20\%\). Then the value of Alacast is determined to be
+(Roll: 10, 3)\(((-1)^{10}\cdot3\cdot5) \% = +15\%\). The result is that Character As scrap is worth 105\(\cdot\)5 = 525 grams of Alacast.
+He negotiates (in which he has Proficiency) with a local merchant and manages to negotiate terms in which the merchant retains
+(Roll: 4, 9 \(\Rightarrow\) 9) \(10\cdot(10-9)\% = 10\%\) of the Traded value. He decides to trade and gets 472.5 grams of Alacast.\\
+
+\subhline{Combat}
+
+Life:\\
+Every entity has a Lifepool. A Lifepool describes how far away that entity is from its failure point.
+In the case of a Mech, Mount or Human, that would mean being unable to fight or act in an effective manner. Living
+entities start dying when their Life reaches 0. How fast something dies is decided by the Gamemaster who may consult a
+Willpower-Check.\\*
+If a character gets damaged, the Gamemaster may call for an Endurance Check (aided by armour) against the amount
+of inflicted damage. If it fails, a wound with a level of the difference between Check and damage is inflicted on
+that character.\\
+
+Rounds:\\
+Combat is done in rounds. Each round is usually about 3-5 seconds long. Every character present acts in turn (determined
+by circumstances or a Stealth, Perception, Willpower or other situational check) and can usually move and do an action
+(an attack or action that can be done in the remaining time).\\
+
+Combat against grunt groups/hordes:\\
+The mob rolls its performance depending on their Advantage/Disadvantage\\
+The fighting character decides (if he can, as appropriate by his gear/the situation) to fight offensively, defensively
+or passively and rolls the respective combat stat, then the differences between each of the rolled dice of the combat roll and the groups
+performance value is calculated.\\
+\begin{enumerate}[label= - ]
+
+\item  Offensive style: For each positive difference (character roll \(>\) group performance) the character makes as many group members
+unable to continue fighting as the difference is. The biggest negative difference (character roll \(<\) group roll) is applied to
+the characters Lifepool as damage.\\
+
+\item Defensive style: For each positive difference (character roll \(>\) group performance) the character makes one group member
+unable to continue fighting.  The difference between the best die and the group performance if negativee is applied to
+the characters Lifepool as damage.\\
+
+\item Passive style: Grants one reroll and one disadvantage for the attacker. Same as defensive, no damage is inflicted.\\
+\end{enumerate}
+
+Quick combat against single enemies:\\
+Each round both parties roll their combat roll(one die if disadvantaged and agressive). If both are in an aggressive
+style add it up and whoever has less total takes the difference in damage. If both are defensive, interpret the roll
+according to advantage, the difference is applied as damage to the Lifepool of the character whose Check came up less.
+If one character is fighting agressively and the other defensively, proceed as if both were defensive, but the defensive
+character looses ground each round. A character who fighting passively (as in dodging and running) will gain one
+reroll, never inflict damage and otherwise be treated like he is fighting defensively. \\
+
+Detailed combat:
+The attacking character makes their to hit check (meele or ranged in most cases). The defending character Checks for the
+same Proficiency with which they were attacked (for now, maybe not forever) If the attacker wins, they hit, on a draw the
+attack grazes. On a hit roll weapon damage. The dice are added together and applied as Combat damage. Attacking upwards
+in size (human sized weaponry against a Mech or Mount) halves that damage (rounded down), Attacking downwards in size
+(Mech sized weaponry against a human) doubles that damage.
+
+
+\subhline{Health and Taint}
+
+Healing:\\
+Humans have a base life regeneration of 1 per day, wounds heal depending on the wound type with a normal speed if treated.
+If a wound is left untreated it stops health regeneration and may get infected (daily Endurance Check against level of
+the wound) and start inflicting damage each day. An infected wound that is treated will count as an (untreated)normal
+wound for as long as it is treated and will not infect further. If treatment stops it counts as infected again. If it is
+permanently treated it then can count as a normal wound and if treated again will count as a treated wound. If there is
+any infected or untreated normal wound the passive life regeneration stops. \\
+Healing of wounds can be sped by with a daily Profession[Medical] Check:\\\\
+\begin{tabular}{cl}
+1, 2 & inflict a point of damage and infect the wound\\
+3, 4 & inflict one point of damage\\
+5, 6 & treat the wound for that day\\
+7, 8 & treat the wound for that day and heal one lifepoint\\
+9 & treat the wound for that day and heal two lifepoints\\
+0 & treat the wound permanently and heal two lifepoints\\
+\end{tabular}\\\\*
+This check can be done for non wounded characters to restore lifepoints. In that case a Check of 1 or 2 simply inflicts damage.\\
+
+
+
+Categories:\\
+Every Character has a Category ranging from A to C. So called CatA Humans are usually Supervivo, CatBs are outlaws or
+for some reason living outside and CatCs are Tribals.
+Every Entity that can be affected by Taint from buildings over technology to living things have Category ratings.
+The Taintresitances of Categories A, B and C are 1, 2 and 3 respectively.\\
+
+Taint: \\
+Taint is a term used to describe the amalgamation of technology destroying nanoweapons, radiation, pollution and general
+environmental hazard. Taint is airborne, waterborne, bloodborne and permeates pretty much everything in the
+environment. It is usually assigned a level describing its intensity. Only within the Domes of the Supervivo, inside a
+Mech or in a similarily purified environment the Taintlevel is 0. Levels 1-4 are rare areas of low Taint, like Mines,
+Airlocks, outdoor markets, outdoor settlements and so on. Levels 5-8 are the most common and usually uninhabited. Levels
+9 and higher are found in Oceans, Deserts, and somewhat secluded areas. There is no upper limit for Taintlevels. \\\\*
+If an entity is in an area with Taint, every hour Taintresistance is checked. If the Check fails, the entity takes
+one point of Taint damage (healing normally if applicable). If the check fails with a difference of 10 or more,
+additional damage might be taken.\\
+
+Taintdamage: Anytime the a character receives Taint damage check Taintresistance without external modifiers. If it fails against the
+Taint damage currently on the character, the character increases in Charactertaint.
+Charactertaint is applied as an internal bonus on the Taintresistance Check. \\
+
+Taintcheck:  Taintresistance with no bonuses from external sources or Charactertaint, but +2 for CatB and +4 for CatC
+ist tested against Charactertaint. If it fails, one point of Taint damage is inflicted. If it fails with a
+difference of 10 or more, additional damage is inflicted. On a draw no damage is applied, but for the next day or until
+Taint damage is taken Taintresistance is modified by -1.\\
+Every day a Taintcheck occurs for every character with Charactertaint(unless the bonuses add up to the Charactertaint or greater).
+Every started hour a character directly interacts with an entity, the Charactertaint of that character is
+applied as Taint damage, resisted by a Taintresistance Check.\\\\*
+A hermetical seal of a level of X lowers the level of the Taint behind it by X (they are usually from 6 upwards)
+Taint still penetrates weak hermetical seals since it is radiation and nanoparticles. Air has to be purified separately
+or enriched with oxygen. (One human consumes about 500-600 litres of oxygen per day.) The Domes of the Supervivo for
+example have a level 25 hermetical seal with purified and oxygenenriched air.\\\\*
+Examples of external roll bonuses \\\\
+\begin{tabular}{cl}
+1& An alacast infused rag or a shut wooden door (although oxygen may run out)\\
+2& a breathermask or a simple airlock (again, oxygen)\\
+3& a full gasmask  or an airtight airlock\\
+4& a gasmask with enhanced scrubbing (a little backpack) or air a basic air filtering facility\\
+5& a high tech air intake or scrubbing plant\\
+6+& some truly experimental stuff\\
+\end{tabular}\\(for roll bonuses shift the right side of the table down by the bonus)\\\\\\*
+Approximate survival durations(with 0 Charactertaint and without increases in Charactertaint):\\\\
+\begin{tabular}{c|c|c}
+Category A & Category B & Category C\\
+\begin{tabular}{c|l}
+Taint level&Duration\\
+0&indefinite\\
+1&tainting\\
+2&7 and a half days\\
+3&2 and a half days\\
+4&1 and a half days\\
+5&1 day and ~ 4 hours\\
+6&21 hours\\
+7&17 hours\\
+8&15 hours\\
+9&13 hours\\
+10&11 hours\\
+11+x&10 hours - x
+\end{tabular} &
+\begin{tabular}{c|l}
+Taint level &	Duration\\
+0&indefinite\\
+1&indefinite\\
+2&indefinite\\
+3&tainting\\
+4&13 days\\
+5&5 days\\
+6&3 days\\
+7&2 days\\
+8&1 day 9 hours\\
+9&1 day\\
+10&19 hours\\
+11+x&18 hours -x\\
+\end{tabular}&
+\begin{tabular}{c|l}
+Taint level&	Duration\\
+0&indefinite\\
+1&indefinite\\
+2&indefinite\\
+3&indefinite\\
+4&tainting\\
+5&1 month 1 week\\
+6&1 week 3 days\\
+7&4 and a half days\\
+8&2 and a half days\\
+9&1 and a half days\\
+10&29 hours\\
+11+x&28 hours -x\\
+\end{tabular}\\&&
+\end{tabular}\\\footnotesize(reference: X/(24\(\cdot\)(1-(Y))-1) where X is the base HP and  Y is the \% chance of rolling
+the Taint level or better; \\X HP divided by 24 hours in a day times lost health in a day minus 1 (normal healing))\\\\
+\normalsize
+
+\subhline{Tech}
+Electrolysis splits 1 L H2O into 622.22 L Oxygen und 1244.4 using 3.7037 kwh\\
+1pp=40watts
+
+Blueprints:\\
+Blueprints are required for most engineering tasks. To create a blueprint a character needs the appropriate materials
+(usually a computer of some sort) the time required is based on the complexity of the project. To find out if the
+blueprint is within the capabilities of the character check Science against the difficulty of the project. The bonus
+the blueprint provides is [Science Check]\(/2\)(rounded up)\(-3\). Even a blueprint with a negative bonus is usefull,
+since it enables the ability to build the item in question at all.\\
+A blueprint states the name of the Item, its category, its bonus on a Taintresistance check and the required materials.\\\\
+
+Engineering:\\
+Building something requires a blueprint, the required materials, a workshop or something similar. Check Engineering
+modified by the blueprint bonus and the conditions (having nothing but a makeshift wrench in the desert might be -5, having state of the art
+tools in an antigravpowere workshop might be +3). The result times 10 is the efficiency percentage at which the build
+functions.(for example damage per round, lifepoints, poweroutput and so on)\\\\
+
+
+\headline{Character Creation}
+
+First, get a general idea who your character is and what they do. Note your Character name, your name, the name of the
+ Campaign and your concept for the character on the Sheet. This will help you choose in the following steps.
+
+\subhline{Step 1 - Categories}
+
+Choose Category:\\\\
+If you have grown up without being in contact with Taint you are probably a Dome dwelling Category A Supervivo. \\
+\begin{tabular}{rl}
+Pro:&can use all Tech\\
+Contra:&very weak versus Taint\\
+\end{tabular}\\\\
+If you have a past of spending time outside in the less tainted areas, forcedly or of your own acchord you might be an
+outlaw, a bandit or just someone lucky enough to survive outside on their own.\\
+\begin{tabular}{rl}
+Pro:&can use Tech up to Midtech; limited access to Taintworks; HP +5\\
+Contra:&Not excelling at anything.\\
+\end{tabular}\\\\
+If you are a member of the great Tribes, enduring the Taint, hunting your food without reliance on frail Technology, you
+are a Category C "Tribal". You may also be born by a mother who spent most of her pregnancy in an area with 3 or more Taint.\\
+\begin{tabular}{rl}
+Pro:&Access to Taintworks; HP +10; strong versus Taint\\
+Contra:&can use only Basetech\\
+\end{tabular}\\\\
+
+Your Lifepoint maximum is 10 + your Category Bonus.\\
+
+Note your Category and Lifepoint maximum on your Sheet. You may choose your starting Taint from 0-5 at no cost and note 
+it aswell. (although you will start dying if it is too much, read up on Charactertaint in the chapter Taint)\\
+
+\subhline{Step 2 - Proficiencies}
+Put your Priorities (Tech, Social, Combat, Mind, Physical and Practical) in the order that you think they are most
+usefull to your character concept. Note the order of the Priorities with the digits 1 through 6 in the boxes on the charactersheet.\\
+In your primary priority you get 3 skillpoints, in your secondary priority you get 2 skillpoints and in your tertiary
+priority you get 1 skillpoint. Choose any 3 Priorities (you can choose a Priority twice or even thrice), you get another
+skillpoint in those Priorities.\\
+Within a Priority you can spend 1 skillpoint to gain a Proficiency and spend 2 more skillpoints to gain Mastery in
+something you have Proficiency in.\\
+
+Later you can buy one skillpoint in a Prioritiy for (9+ the number in the box next to it)XP\\
+
+
+\subhline{Step 3 - Endworldpoints}
+You get 50 Endworldpoints, you can spend these on:
+ 1 Mecha OR 1 Beast (see table below)\\
+ Goods (see table in chapter Trade)\\
+ Taintworks (see list below)\\
+ XP (1 XP for 1 point)\\
+
+---TAINTWORKS\\
+
+To be able to work Taint is to be able to controll the Nanoswarms that make up part of the Taint. A character wishing to
+employ a certain technique first has to let the Taint flood through them and make a connection. The Charactertaint living
+in their body has to be used to imprint their will onto the Taint around them. To do so puts the body in great peril.\\
+
+Immediately do a Taintcheck (see chapter Taint in Health and Taint). Then, Check Resonance +Charactertaint. If the
+result is higher than the complexity of the technique, it succeeds with a degree of success
+depending the amount by which the roll exceeded the complexity. If the result was not higher than the complexity,
+the difference is dealt to the character as damage(not Taint damage).\\
+Effects marked as passive have specific start and end conditions. \\
+Effects marked as sustained stay for as long as the character focusses on them. Each sustained effect is applied as a -1
+modifier to all subsequent rolls. Once a day a Willpower Check can be made, the result of which reduces the modifiers from sustained effects.\\
+
+
+List of Taintworks(incomplete):\\
+\begin{enumerate}[label= - ]
+\item Achieve Symbiosis: Complexity 18, required ambient Taint: 8\\
+Passive. Begins after meditating for at least an hour. As long as at least 1 Charactertaint remains inside the Character,
+they dont roll the daily Taintcheck anymore.\\
+
+\item Concentrate: Complexity 11, required ambient Taint: 1\\
+Sustained. After concentrating on a place in line of sight for one round, raise ambient Taint at target by [degree of success].
+Covers about a cubic meter.
+
+\item Infuse: complexity 12, does not require ambient Taint\\
+Restores [degree of success] LP to touched target. Raises Charactertaint of target characters by 1.
+Inflicts [degree of success]+1 Taint damage over 10 days to target constructs.
+
+\item Expunge: complexity 15, does not require ambient Taint\\
+Expunges up to [degree of success] Charactertaint, dealing twice the expunged amount as Taint damage.
+
+\item Gravitation: complexity 15, required ambient Taint: 6\\
+Sustained. After conentrating on a place in line of sight for three rounds, the local gravity at that place raises by
+[degree of success]G. covers about ten times ambient Taint above 5 square meters.
+
+\end{enumerate}
+
+
+---MECHA\\
+
+When choosing a system that has a higher Tech level than the mecha base the Endworld points are doubled for each step up.
+
+Mech Base\\
+\begin{tabularx}{17cm}{m{0.7cm}|m{1.4cm}|m{1cm}|m{1.4cm}|m{1.4cm}|l}
+	Tech	& Endworld Point Cost	& System Slots	& Base Cargo Capacity	& Base Health (Failurepoint) 	& 	Fuel (in combat, OOC takes 1/10)\\
+\hline B & 	5		& 	15	&	50 m3		& 	500		 	& Coal/Charcoal in 1 tonne/h\\
+	L	& 	6		& 	13	&	25 m3		& 	200			& Liquid Combustion Fuel in 50 L/hour\\
+	M	&	7		& 	11	&	12 m3		&	100			& Hydrogen (PEM Stacks)	in 62 L/hour \\
+	H	& 	8		&	9	&	 6 m3 		& 	 80			& Alacast in 100g/hour  (AC)\\
+	E	& 	9		& 	7	&	 3 m3		&	 50			& Something experimental (cold fusion? zero point energy?)\\
+\end{tabularx}\\\\\\
+
+System\\\\
+\begin{tabularx}{17cm}{m{0.7cm}|m{1.4cm}|m{14cm}}
+	Tech	& Endworld Point Cost	& Examples\\
+	B	&	1		&	Water Destillery, Rail based movement system, simple wheels, Manned gun, Ramshield, Floatation,
+	                    Extra Armorplating (50), Extra Cargo (10\% of base), steam engine (for rotation), passive cooling\\&&\\
+	L	&	2		&	Lowtech Detox-Detaint Equip(LDDE; +1), suspended wheels, tracks, bipedal, Dynamo (for electricity),
+	                    Autoturret, Jumpjets, Mech sized Sword, water cooling circle(-3/r), lowtech Heatsink (+20)\\&&\\
+	M	&	3		&	Shields (+20, +1d10/round), flexible/balanced bipedal, Boostjets, Deployable Solar Panel, Sensorarray,
+	                    MDDE (+2), Base AI system, Mech sized Weaponry (Advanced (Vibro/electro/Monofilament) Sword),
+	                    Rocketlauncher, Water venting system(-10/r;active), midtech Heatsink(+50)\\&&\\
+	H	&	4		&	BCI, Advanced AI, WeaponLaser, Sustained Flight,  Advanced Shields (+30, +2d10/round),
+						Nano Repair Cloud, Automedic, overdrive mode (when heat caps out), Hightech Heatsink (+150)\\&&\\
+	E	&	5		&	Quantum Lookahead Sensors, Blink Teleporter, Timerift Shields (Delays Damage 1d10 rounds), EnergySword
+\end{tabularx}\\\\[12mm]
+
+Systems:\\
+A Mech needs a movement system, a hermetical seal and a heat system and should probably have weapons and Supportsystems\\\\
+Movement Systems:\\
+\begin{tabular}{l|rrrl}
+Type & Fuel & Speed & heat/r  & Notes\\&Con-&&in\\& sumption&&combat\\
+Basetech\\ \hline
+railbased movement system & 50\% & 80 km/h &1 &  confined to rails\\
+simple wheels & 50\% & 30 km/h & 1& requires sufficiently flat terrain \\
+floatation system & 150\% & 15 km/h & 1& allows movement on water\\ \\
+Lowtech\\\hline
+suspended wheels & 50\% & 50 km/h & 1& requires more or less flat terrain\\
+tracks & 150\% & 50 km/h & 2& requires far less flat terrain\\
+bipedal & 100\% & 20 km/h & 2& requires nonvertical terrain\\\\
+jumpjets & 100000\% & 100 km/h &10& flying about 80m,\\&&&& consumes 0.8 times base consumption per \\&&&& round\\
+Midtech\\\hline
+flexible bipedal& 100\%& 30 km/h & 1& maneuvrable like a large human\\
+boostjets & 60000\% & 150 km/h &20& flying about 120m/r consumes 0.5 times\\&&&&  base consumption per round\\\\
+Hightech\\\hline
+sustained flight & 500\% & 500 km/h &5& requires starting and landing (3 turns \\&&&& each), Disadvantage 1 in combat, doubles
+                                                                                     \\&&&&environmental Taint before soaking\\
+\end{tabular}\\\\\\
+Hermetical Seals:\\\\
+\begin{tabular}{r|l}
+Tech & Seal Level \\\hline
+Base &  5\\
+Low &   7\\
+Mid &   10\\
+High &  20\\
+Experimental & 50\\
+\end{tabular}\\\\
+Heatsystems:\\
+\begin{tabular}{r|l}
+Type & Effect \\
+Basetech\\\hline
+passive heatsink &  heat capacity (10), \\&heat dissipation 1/round (passive)\\
+\\Lowtech\\\hline
+water cooling cirlce & heat capacity(10), \\&heat dissipation 3/round(passive, controllable)\\
+\\&\\large heatsink & heat capacity (20), \\&heat dissipation 1/round(passive)\\
+\\Midtech\\\hline
+optimized heatsink & heat capacity (50),\\& heat dissipation 2/round(passive)\\
+\\&\\water venting system & heat capacity (30), vent 10 water/round\\& to dissipate 10 heat/round (requires water)\\
+\\Hightech\\\hline
+fractal heatsink & heat capacity(100),\\& heat dissipation 3/round(passive)\\
+\\&\\OVERDRIVE & heat capacity(80), heat dissipation 1(passive, controllable while not in overdrive.)
+                \\& when at heatcap, gain [heat] Overdrivepoints, able to act(incl moving) \\&
+                at double speed while spending actionpoints instead of gaining heat. When \\&
+                 Overdrivepoints reach 0, Mech shuts down for 2d10(added) rounds\\
+\end{tabular}\\\\Furthermore
+
+Weaponsystems:\\
+\begin{tabularx}{10cm}{p{0.6cm}p{0.7cm}p{0.8cm}p{1cm}p{1cm}p{3cm}p{3cm}}\\\\
+&Type & Size/ & Range & Bonuses & Damage & Note\\
+&&      Heat
+\end{tabularx}\\
+\begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{3cm}}\\\hline
+Sword   & H & 0&3m & 0A & 2d10 & BT\\
+&1\\
+ChainSword   & H & 0 & 3m & 0A & 3d10  & LT\\
+            &  3\\
+LaserSword   & H & 0 & 3m & 1A & 3d10 & HT\\
+            &4 \\
+VibroSword   & H & 0&3m & 1A & 2d10 & MT\\
+            &3\\
+BroadSword   & H & 0&3m & 1D & 3d10 & BT\\
+            &2\\
+            \end{tabularx}\\
+\begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Handgun & H    &  1 &  30m          & 0A   & 2d10\\
+        &    1   & 31 &  50m        & 1D   & 1d10 & reload 1 after 17 shots\\
+        &       & 50 & 100m         & 2D   & 1d10/2\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Shotgun & H    &  1 &  5m           & 0A   & 3d10& +2 against groups(spread)\\
+        &    1   & 6 &  15m         & 1A   & 2d10 & reload 1r after 2 shots\\
+        &       & 16 & 30m          & 2A   & 1d10\\\
+        &       & 31 & 50m         & 0A   & 1d10/2\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Assault Rifle&H &  3 &  60m         & 1A   & 2d10 & +1 against groups(fast)\\
+        &   2    & 81 & 150m        & 0A   & 2d10 & reload 1r after 10 bursts\\
+        &       & 151 & 250m        & 0A   & 1d10\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Sniper Rifle&H  & 10 &  50m         & 1D   & 2d10 & can't move and shoot, -1 against groups(slow)\\
+        &   2    & 50 & 250m        & 0A   & 2d10 & reload 2r after 5 shots\\
+        &       & 250 & 1000m       & 1A   & 2d10 & Willpower Check \(\geq9\)crits for +1d10 damage\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Gauss Rifle&H   & 15  & 50          & 2D   & 2d10 & can't be shot if moving this or last round\\
+        &   3    & 51  & 150        & 1D   & 3d10 & reload 3r after 2 shots\\
+        &       & 151 & 300         & 0A   & 3d10 & Willpower Check \(\geq9\)crits for +1d10 damage\\
+        &       & 301 & 1500        & 1A   & 3d10 & -2 against groups(heavy,slow)\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Laser Pulser&H   & 1  & 30          & 1D   & 3d10 & +1 against groups(fast) \\
+        &   2   & 31  & 50         & 1A   & 2d10 & no reload\\
+        &       & 51 & 100          & 0A   & 1d10\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Laser Beam&H   & 5  & 50            & 2D   & 3d10 & -1 against groups(heavy)\\
+        &   3    & 51  & 100         & 0A   & 3d10 & no reload\\
+        &       & 101 & 200          & 1A   & 2d10\\
+
+\end{tabularx}\\
+\begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\
+Sword   & M & 0&3m & 0A & 2d10 & BT\\
+&1\\
+ChainSword   & M & 0&3m & 0A & 3d10  & LT\\
+            &  1\\
+LaserSword   & M & 0&3m & 1A & 3d10 &  HT\\
+            &4 \\
+VibroSword   & M & 0&3m & 1A & 2d10 & MT\\
+            &4\\
+BroadSword   & M & 0&3m & 1D & 3d10 & BT\\
+            &4\\\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Blaster & M     &  5 & 30m          & 1A   & 2d10\\
+        &   2    & 31 &  50m         & 0A   & 1d10 & reload instant with 500g MTS after 20 Blasts\\
+        &       & 50 & 100m         & 1D   & 1d10\\
+        &       & 101 & 200m         & 1D   & 1d10/2\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Blunderbuss & H    &  1 &  10m       & 0A   & 3d10& +2 against groups (spread)\\
+        &    1   & 11 &  25m         & 1A   & 3d10 & reload 1r with 10 kg BTS/rubble after 1 shots\\
+        &       & 26 & 50m          & 2A   & 2d10\\\
+        &       & 51 & 100m         & 0A   & 1d10\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Repeater Cannon & M &  5 & 80m      & 1A   & 2d10& +1 against groups (fast)\\
+        &   2    & 81 & 130m         & 0A   & 2d10 & reload 1r with 2 kg LTS after 15 bursts\\
+        &       & 131 & 200m        & 0A   & 1d10\\
+        &       & 201 & 500m        & 1D   & 1d10\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+AntiTank Rifle & M  & 10 & 80m       & 1D   & 2d10 & can't move and shoot, -1 against groups(slow)\\
+        &   4   & 81 & 500m         & 1A   & 3d10 & reload 2r with 500 g MTS and 1kg LTS after 5 shots\\
+        &       & 500 & 1800m       & 1A   & 2d10 & Willpower Check \(\geq9\)crits for +1d10 damage\\             \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.3cm}p{0.6cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Gauss Cannon  & M   & 15  & 100      & 2D   & 2d10 & can't be shot if moving this or last round\\
+        &   5    & 101  & 250         & 1D   & 3d10& reload 3r with 100g HTS and 2 kg BTS after 4 shots\\
+        &       & 251 & 1000         & 0A   & 3d10& Willpower Check \(\geq9\)crits for +1d10 damage\\
+        &       & 1001 & 2500        & 1A   & 3d10&  -2 against groups(heavy, slow)\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Laser Burster&M   & 1  & 50          & 1D   & 3d10 & +1 against groups(fast)\\
+        &   3    & 51  & 100         & 1A   & 2d10 & no reload\\
+        &       & 101 & 200          & 0A   & 1d10\\            \end{tabularx}\\ 
+ \begin{tabularx}{\textwidth}{p{2cm}p{0.4cm}p{0.5cm}@{ - }p{0.6cm}p{0.6cm}p{0.9cm}p{8cm}}\\\hline
+Laser Beam&M   & 5  & 50            & 2D   & 3d10 & +1 against groups(slow, cutting, spread)\\
+        &   6    & 51  & 200         & 1A   & 3d10 & no reload\\
+        &       & 201 & 500          & 0A   & 2d10\\
+
+
+\end{tabularx}\\\\
+
+Miscellaneous Systems:\\
+\begin{tabular}{rcl}
+Type & Heatcost & Description\\
+\\Basetech\\\hline
+Water Destillery & -& Uses passive heat and "burned off" electricity to convert 0.5 liters \\
+                 &  & of tainted water into drinkable water per hour\\
+                 &  & PowerReroute: If this is the only active system, the water/hour\\&& increases to 10 L/h.\\\\
+Manned Gun  & as weapon & A manual turret with a human sized gun \\&&(the gun gets +20\% Range and +20\% (rounded down) damage)\\\\
+Ramshield & -       & +20 LP, Can be used to ram into other objects
+                    \\&& for every full 10 km/h 1d10 damage is inflicted on target
+                    \\&& and 1d10/2 damage is inflicted on ramming character\\\\
+Extra & -       \\
+Armourplating &   &   inreases LP by 50\\\\
+Extra & - \\
+Cargo & & increases Cargo capacity by 10\% (of base Cargo capacity)\\\\
+Steam Engine & - & needed to use powered Lowtech Systems\\
+\end{tabular}\\\begin{tabular}{rcl} \\Lowtech\\\hline
+LDDE & 5/r & Lowtech Detox Detaint Equipment. \\&&PowerReroute: If this is the only active system,Every hour Converts \\&&
+             1 gram Alacast + 10 kg tainted food into \\&& [Survival Check +1](maximum 10)kg normal food\\\\
+Dynamo & - & needed to use powered Midtech Systems\\\\
+Autoturret & as weapon & See "Manned Gun", can be controlled from cockpit, \\&&can be automated with AI\\
+\end{tabular}\\\begin{tabular}{rcl} \\Midtech\\\hline
+Shields & 5 & can store up to 20 points of shielding.\\&& when used generates 1d10 of shielding
+            \\&&on Collapse generates 1d10 of Heat\\&&only active in combat mode. (full fuel consumption)\\\\
+Deployable & 1/r & provides up to 0.2 Base fuel consumption while active\\
+Solar Panel&& active for 4-10 hours per day\\
+ &  & deploying/undeploying takes 3 turns. \\&& If deployed when damaged (except shields), system needs repairs\\\\
+Sensorarray & 3/sweep & more information about surroundings\\
+ &          or & Radar, infrared, Taint, sound, camera zoom, ...\\
+ & 1/r passive & +2 to Perception Checks\\\\
+MDDE & 5/r & Midtech Detox Detaint Equipment... various uses. \\&&PowerReroute: If this is the only active system,Every hour Converts \\&&
+             5 gram Alacast + 50 kg tainted food into \\&& ([Survival Check +2](maximum 10))\(\cdot\)5kg normal food\\\\
+Base AI & - & a basic AI, capable of doing scripted tasks,\\
+System & & image recognition, manning an autoturret and \\&& general assistance-AI Jobs \\
+\end{tabular}\\\begin{tabular}{rcl}\\Hightech\\\hline
+BCI & - & Brain computer Interface. If you have the right implants,\\&&
+            you can directly interface(with a Resonance Check) and get \\&&
+            a bonus on every action you do while interfaced \\&& (1-2:-2; 3-4:-1; 5:0; 6-7:+1; 8-9:+2; 10:+3)\\\\
+Advanced AI & - & can do everythin a Base AI can,\\
+System & & but is more proficient  \\&& and is able to act with small amounts of independence \\\\
+Advanced & 8 & can store up to 30 points of shielding\\
+Shields && when used generates 2d10 of shielding
+            \\&&on Collapse generates 2d10 of Heat\\&&only active in combat mode (full fuel consumption)\\\\
+Nano Repair & 4/r & A cloud of Nanobots that can repair the Mech \\
+Cloud           && Use 100g HTS, declare what you want to repair,\\&&
+                   Make a Technology Check: \\&& 1-2: just consumes needed repair materials without repairing;\\&&
+                    3-4: nothing happens, System is still active for 1d10 rounds; \\&&
+                    5-6: consumes four times the needed repair materials, starts repairing\\&&
+                    7-8: consumes twice the needed repair materials, starts repairing \\&&
+                    9-10: consumesthe needed repair materials, starts repairing\\&&
+                    while repairing the cloud consumes 100g Repair Material /round and uses it \\&&
+                    to repair damage at that rate until the allocated \\&& materials are empty or the mech overheats\\\\
+Automedic & 2/r & An automated, portable medbay capable of most medical procedures,\\&&
+                    including detaint treatment and ressurection, given supplies\\&&
+                    rolls 1d10(or 2d10 if an advanced AI is present) +3 when automatic or
+                    \\&&provides +3 for a Profession[Medical] roll \\&&
+                    provides advantage for easier medical procedures \\&& when running in assistance mode\\&&
+                    Can emulate an MDDE\\
+\end{tabular}\\\begin{tabular}{rcl}\\Experimentaltech\\\hline
+Quantum &       &Provides the same basic functionality as the Sensor array (for the same cost)\\
+Lookahead& 10 & But is able to sensor sweep the future make predictions about the next \\
+Sensors&    &1d10 rounds.\\\\
+Blink  &  20    & Teleports 1d10d10(added) or less meters in a direction.\\
+Teleporter\\\\
+Timerift & 5/r & While active all incoming damage gets delayed for 1d10 rounds before it is applied.
+shields
+
+\end{tabular}\\\\
+
+
+
+
+a 10L-HydrogenFuelCell(HFC-10) Cylinder 20cm diameter, 38 cm height =11.94L(Midtech) provides 30,000pp at 3pp/s, used to power up basic systems (like hydrogen gas pumps for the PEM Stacks)\\
+HFC 100 have 300,000 at 5 pp/s\\
+HFC Powered mechs typically generate negative heat (they warm up to 80 c but liquid H2 is drawing heat while expanding) while in operation.\\
+
+\end{document}
