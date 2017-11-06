@@ -1,0 +1,738 @@
+ROUGH DRAFT BASICALLY ON THE LEVEL OF MINDSTORMING
+
+definitions:
+distance 1 ~= 100 m
+
+stats
+
+emissions 
+chemical coordinates and circle X around them for Y time, gradient and time determinable, non parallel
+Sound, travels 3 in 1 second, direction not determinable in certain environments
+
+EM: "instant" but need sensor needs to be of same frequency band. LOS applies for most, IR might stay around for a while, like chemical and UV might leave permanent burns. 
+
+IR  decreases 1 every 2 distance, less dampened,
+Visible decreases 1 every 1 distance
+UV  decreases 1 every 1 distance triggers visible light in some objects
+gammaradiation decreases 1 every 5 distance, not dampened by anything other than whole buildings or mountains, less sharp
+
+
+
+sensors:
+
+direction threshhold (for each direction information
+position threshhold
+
+example:
+
+cheap sensorpackage, size 1
+sound: 5, 100
+visible: 20, 50
+
+
+ultra microphones, size 2
+sound 1, 5
+
+ultra camera, size 2
+IR 	5, 10
+visible 1, 5
+UV	1, 1
+
+geiger, size 1
+gamma  10, 50
+
+sniffer, size 1
+chemical 20, 90
+
+
+energy/heat: 
+
+nuclear reactor, size X, Y: 
+output heat and gammaradiation per energy per second, can only be increased/decreased by 1+Y per 10 seconds. up to X
+
+capacitor, size X + (Y + Z)/2: 
+
+saves up to 100*X energy, chargemax: 5*Y, dischargemax: 5*Z
+
+
+coolant system, size X + Y :
+
+internal buffer of  100*X heat, can transfer 10*Y heat per second
+
+radiator, size X:
+
+internal buffer of 10*X heat, radiates half of own heat as IR every second
+
+coolant dump port, size 5
+
+internal buffer of 100 heat, can over 1 second  set self to 0, leaves 100 heat, dissipating by 1 every second and chemical 100, dissipating 1 every minute on current position, consumes 1 coolant charge from cargo.
+
+
+movement and tracking: 
+operative movement is in meters, tactical in 100 meters and strategical in 10 km
+
+tracking:
+tracking is given as distance below tracking 10 m/s is not possible any more
+
+m/s: movement is given in meters per second
+
+movement system, size x+y 
+accelleration costs Y*5 size points for the ability to change energy consumption by Y per second.
+strength energy per second for movementcap meter per second. 
+(1 energy / second => 1* movementcap/strength per second +1 heat/second)
+movement cap is (strength * 50 / total mech size) m/s
+
+
+weapons
+
+guns
+consumes ammo from cargo (belt), every shot is X/500 cargo of ammo
+
+Autocannon X + Y + Z:
+
+does X^(1/4) damage
+
+10/Y^(1/2) seconds between shots,
+ 
+Z^(1/4) = accuracy bonus (speed), 
+
+consumes sqrt(Y) energy and 1 ammo (chain) produces ((X+Y)^(1/2)+Z) heat per shot
+
+
+sniper x+y+z
+
+does x^(1/2) damage
+
+fire rate of Y^(1/4) shots every 10 seconds
+
+adds Z^(1/3) accuracy for every aimed turn. Z = range
+
+consumes X^(1/3)+Z energy
+
+
+laser x+y+Z
+
+does x^(1/2) damage
+takes Y energy per second, takes X energy to recharge.
+Z^(1/3) accuracy bonus, z = range
+
+
+
+
+shields size X + Y + Z:
+
+capacitor of size 10 * X
+sqrt(sqrt(Y)/100 *capacity) = max hp
+chargerate of 1+Z per second
+capacity / max hp = energy per hp (lost hp  loose an appropriate amount of energy)
+
+deflectors size X + Y:
+
+use X+Y energy per second
+maxlevel Y (charge 1/s)
+
+provides (X*level)^(1/2) points of deflection
+
+
+armor size X +Y:
+
+x^(1/2) HP
+y^(1/3) resistance (subtracts from incoming damage)
+
+
+hit roll = check hit + accuracybonus + targetsize + sensorbonus - enemy check dodge - deflection -range
+
+0 or less: no hit
+1 - 3: graze, armor applies resistance *3
+4 - 5: indirect hit, armor applies resistance *2
+6 - 8: hit, calculate damage normally
+9 -10: check for systemhit 
+11-15: check for systemhit, armor applies resistance/2 rounded up
+16-20: check for systemhit, armor applies resistance/2 rounded down
+21+ : ignore 1 point of target armor, subtract 5 successes
+
+systemhit:
+define subsystem to hit. difficulty (1- system size / mecha size)*10 
+check crit against difficulty. 
+on hit, calculate damage for mecha and system.
+on miss, calculate damage normally
+
+
+
+new proficiencies
+
+combat: hit dodge crit
+pilot: defense management computer
+
+
+
+example mech:
+reactor: 100, 20 = 120
+capacitor: 10, 10, 10 = 20
+cooling: 10, 10 = 20
+radiator : 20 = 20
+shield : 120 (6 HP, 24 second full reload, 4 s => 1 hp; at 24 energy/s)
+	cap =57 
+	efficiency = 49 
+	speed = 23
+
+autocannon:120
+	calibre= 16
+	speed = 100
+   	accuracy = 4
+	
+cargo:10
+movement: 120
+	accel: 20 ==> 4
+	strength: 100
+	movement cap = Strength*50:5000/mechsize:550 = 9 m/s
+
+
+sizeclass 6
+
+
+exampleattack:
+
+with autocannon 16 100 4
+
+2 damage, 1 shot per second 
+2 base accuracy 
+
+consumes 10 energy and 1/32 ammo cargo  per shot
+produces 15 heat per shot
+
+
+accuracybonus 	= 2
+target size   	= 6
+enemydodge 	= -1d10
+deflection 	= -0
+sensorbonus 	= 0
+range		= 500m = -5
+		=+3-1d10
+
+28%: no hit
+27%: graze, armor applies resistance *3
+17%: indirect hit, armor applies resistance *2
+18%: hit, calculate damage normally
+7%: check for systemhit 
+3%: check for systemhit, armor applies resistance/2 rounded up
+
+
+every second there is a 72% chance to deal 2 damage to shields. every 4 seconds shields regen by 1
+
+dps = 0.72*2 = 1.44 
+hps = 0.25*1 = 0.25
+
+effective dps = 1.19 against shields.
+
+
+
+
+
+Trees
+
+T-Tree
+C-Category
+S-Subcategory
+I-Itemcategory
+#- comment
+
+-T-mecha
+`-C- chassis
+  `-S- armour, see defense
+    `-#- hp
+  `-S- insulation
+    `-#- reduces IR signature by reducing passive cooling
+    `-#- needs suppressors 1(-1)
+    `-#- level*mechsize*10c
+  `-S- camo
+    `-#- reduces optic signature
+    `-#- level*mechsize * 0.5c, bounded at 3, specialized
+  `-S- seal
+    `-#- keeps the contamination out
+      `-#- level*level*mechsize* 0.5c
+  `-S- capacity/size
+    `-#- fits the other systems, influences difficulty to hit
+    `-#- exo 150-500 kg  
+      `#- size 1
+    `-#- tiny 2 t
+      `#- size 2
+    `-#- very light 10 t
+      `#- size 3
+    `-#- light 50 t
+      `#- size 4
+    `-#- medium 120 t
+      `#- size 5
+    `-#- heavy  500 t
+      `#- size 7
+    `-#- very heavy 1500 t
+      `#- size 9
+    `-#- beyond
+`-C- energy
+  `-I- capacitors
+    `-#- 1c/energy stored, 15% charge/discharge per second
+  `-I- core
+    `-#- experimental
+      `-#- most energy
+      `-#- individual gimmick 
+	`-#- ie consuming alacast 
+        `-#- ie only reaching full output when stationary/moving
+        `-#- ...
+  `-I- reactor
+    `-#- hightech
+      `-#- more energy
+      `-#- heat per energy
+      `-#- slowly adjusting
+    `-#- midtech
+      `-#- ok energy
+      `-#- heat per energy
+      `-#- fast adjusting
+  `-I- PEM
+    `-#-midtech
+      `- reliable energy output
+      `- high space requirements or low runtime
+      `- hindenmech
+      `- HFC slots (price 50c/slot)
+  `-I- motor/generator
+    `-#- lowtech
+      `-#- energy per cargo
+      `-#- heat per energy
+  `-I- boiler
+    `- basetech
+      `-#- energy per heat
+      `-#- heat per cargo
+`-C- heat
+  `-S- transport
+    `-#- caps maximum heat/second before things overheat
+  `-S- storage
+    `-#- passive cooling
+      `-#- base IR signature
+        `-#- avoidable through insulation
+  `-S- active cooling
+    `- radiators
+      `-#- raise IR signature
+    `- coolant dump
+      `-#- creates local IR beacon
+      `- vaporscreen
+  `-S- overheat
+    `-#- damages systems
+      `-#- some systems might perform above specifications
+    `-#- ammunition explodes
+    `-#- systems go offline
+      `-#- meltdown risk with some reactors
+`-C- movement
+  `-S- engine/transmission
+    `- speed
+      `-#- maximum movement speed
+    `- strength
+      `-#- carrying capacity, acceleration
+    `- db signature
+  `-S- mobility
+    `-#- from sloped gravel over climbing to swimming or diving
+  `-S- agility
+    `-#- dodging/maneuvering
+  `-S- boosters
+    `-I- flying
+    `-I- jumping
+    `-I- ...
+  `-S- gadgets
+    `-I- hookshot
+    `-I- ...
+`-C- offense
+  `- weapons
+    `-S- lasers
+      `-I- beam
+        `-#- high accuracy
+        `-#- high dps
+        `-#- high heat output
+        `-#- high energy cost 
+        `-#- damage drops off with air contamination
+      `-I- pulse
+        `-#- high accuracy
+        `-#- energy cost
+        `-#- point defense
+        `-#- damage drops off with air contamination
+    `-S- projectile
+      `-I- direct
+        `-#- damage drops off with range
+        `-#- easier to dodge at range
+        `-#- consumes cargo
+      `-I- indirect
+        `-#- high damage
+        `-#- needs calculations
+        `-#- easy to dodge
+        `-#- consumes cargo
+    `-S- missile
+      `-I- seeker
+        `-#- hard to dodge
+        `-#- requires lock
+        `-#- ignored by shields
+        `-#- ECM-able
+        `- defendable by flare/chaff
+      `-I- dumb
+        `-#- misseable
+        `-#- slow and dodgeable
+        `-#- cheaper
+        `-#- ignored by shields
+`-C- defense
+  `-S- armour
+    `-I- plating/main
+      `-#- high HP (15)
+      `-#- expensive (10+4*hardness)/t
+      `-#- 
+      `-#- hardness 
+        `-#- reduction of incoming damage pre application
+    `-I- appliqué
+      `-#- easy to customize/shed when damaged 
+      `-#- not as much HP per weight (10)
+      `-#- cheaper to repair 0.2/t
+    `-I- improvised
+      `-#- only needs scrap, tools and a mechanic (1/t)
+      `-#- worst HP per weight (5)
+    `-I- spaced
+      `-#- like plating 10/t
+      `-#- more hp     (20)
+      `-#- no hardness
+      `-#- increases size (mechsize for nonarmor calculations +1)
+    `-I- reactive
+      `-#- medium hp (10)
+      `-#- base hardness (3)
+      `-#- bonus hardness (12)
+      `-#- expensive 20/t
+      `-#- whenever bonus hardness comes into play, takes 1 damage
+  `-S- shields
+    `-#- chargerate
+      `-#- influences how much dps can be negated
+    `-#- energy per charge
+    `-#- dischargerate
+      `-#- high dischargerate makes it expensive to keep shields up
+    `-#- capacity
+      `-#- temporary hitpoints
+    `-#- hardness
+      `-#- reduction of incoming damage pre application
+      `-#-only through perks
+  `-S- deflectors
+    `-#- high running cost
+    `-#- deflect any fast moving objects away
+      `-#- making it harder to hit something
+  `-S- decoys
+    `-#- flare
+    `-#- chaff
+    `-#- vaporscreen
+      `-#- hot water blocking lasers and making IR detailless
+`-C- intelligence
+  `-S- sensors
+    `-I- Visible light
+    `-I- IR
+    `-I- Radio
+    `-I- Audio
+    `-I- Chemical
+  `-S- Active
+    `-I- Speakers
+    `-I- Radio
+    `-I- Infrared
+    `-I- Floodlights
+  `-S- Hardware
+     `-I- Processor
+       `-#- cores
+       `-#- strength
+     `-I- Memory
+       `-#- "virtual" storage capacity
+     `-I- Bus
+       `-#- limits the amount of active systems
+       `-#- time to switch out active systems
+       `-#- bandwidth
+     `-#- space requirements
+     `-#- power draw
+     `-#- heat generation
+  `-S- Software
+    `-I- Interpreter (usually specific)
+    `-I- lock on
+    `-I- targetting/fire control
+    `-I- ecm/eccm
+    `-I- autopilot
+    `-I- maps
+`-C- support
+  `-S- medical
+    `-I- detox/detaint, 
+    `-I- automed
+    `-I- traumasupressing nanites
+  `-S- life support
+    `-I- airtank
+    `-I- airfilter
+      `-#- has contalevel to which it provides air
+  `-S- engineering
+    `- repair modules
+      `-I- welding equipment
+        `-#- doubles as effective but unwieldy melee weapon
+      `-I- integrity restore nanites
+      `-I- system restore nanites
+      `-I- workshop
+    `- scavenging modules
+      `- processors
+         `-I- water
+         `-I- food
+         `-I- fuel
+      `-I- electrolyzer
+  `-S- combat
+    `- external heat management
+      `-I- cryogun
+      `-I- IR gun
+      `-I- coolantdocking
+    `- external energy management
+      `-I- energy docking
+      `-I- energy sap
+T-Tree
+C-Category
+G-Group
+A-Attribute
+S-Skill
+
+
+-T-character
+`- CAT (chose one)
+  `- A
+    `- low hp
+    `- barely any contamination resistance
+    `- no tech restrictions
+    `- social/educated skills more likely
+    `- DNI possible
+  `- B
+    `- medium hp
+    `- slightly contamination resistant
+    `- experimental and high tech tend to degrade fast
+    `- practical/combat skills more likely
+    `- able to pilot and survive outside
+  `- C
+    `- high HP
+    `- highly contamination resistant
+    `- anything above basetech, degrades fast
+    `- survival/physical skills more likely
+    `- controlling contamination possible
+`- Backgrounds (allocate set amount of points)
+  `- Age-Attributepoints
+  `- Skillpoints-Wealth
+
+`- Advantages (allocate set amount of points between here and spectrum)
+  `-C- Social
+    `-A- Negotiation
+      `- used for bartering
+      `- used for negotiating
+    `-A- Expression
+      `- used for leading
+      `- used for etiquette
+    `-A- Slyness
+      `- used for lying
+      `- used for manipulation
+  `-C- Physical
+    `-A- Fitness
+      `-#- used to soak and inflict damage with melee weapons
+      `-#- used for heavy activity
+    `-A- Dexterity
+      `-#- used to hit
+      `-#- used for delicate activity
+    `-A- Agility
+      `-#- used to dodge
+      `-#- used for moving around 
+  `-C- Mental
+    `-A- Perception
+      `-#- get information/discover details
+    `-A- Mind
+      `-#- Willpower and Intelligence
+    `-A- Resonance
+      `-#- interface with DNI or Contamination
+  `-C- Experience
+    `-G- Theory
+      `-#- every new knowledge takes attribute point
+      `-#- every area of knowledge eg botany or a non native language
+    `-G- Profession
+      `-#- usually profession bound skills 
+      `-#- every new profession takes attribute point
+      `-S- Technology
+        `-#- use technology (computers/artifacts/machines)
+      `-S- Science
+        `-#- know things/ make blueprints
+      `-S- Engineering 
+        `-#- repair/use blueprints to build
+      `-S- medic
+        `-#- tend to and heal wounds
+      `-S- politician
+        `-#- play political influence
+`-Spectrum (dont exclude each other but contamination requires taint inside you and taint destroys technology)
+  `- Mecha
+    `-C- weapons
+      `-G- laser
+        `-S- pulse
+        `-S- beam
+      `-G- projectile
+        `-S- direct
+        `-S- indirect
+      `-G- missiles
+        `-S- seeker
+        `-S- dumbfire
+    `-G- piloting
+      `-S- exo
+      `-S- tiny
+      `-S- very light
+      `-S- light
+      `-S- medium
+      `-S- heavy
+      `-S- very heavy
+      `-S- beyond
+    `-C- training
+      `-G- defense
+        `-S- decoys
+          `- gates use of decoys
+        `-S- shields
+          `- gates shield usage 
+          `- shield hardness through modulation
+        `-S- deflectors
+          `- gates use of deflectors
+
+      `-G- offense
+        `-S- explosives 
+          `- gates use of explosive ammo
+        `-S- sniping
+          `- gates turns that may be aimed for
+        `-S- ammo 
+          `- gates use of specialty ammunition
+
+      `-G- recon
+        `-S- scanners
+          `- gates use of scanning/science equipment
+        `-S- suppressors
+          `- gates use of signature suppressors
+        `-S- sabotage
+          `- used for system hits
+
+      `-G- utility
+        `-S- detox 
+          `- gates use of detox/deconta
+        `-S- scavenging
+          `- gates use of reprocessors
+        `-S- utility movement
+          `- gates use of utility movement systems
+
+
+---TAINTWORKS\\
+
+To be able to work Taint is to be able to controll the Nanoswarms that make up part of the Taint. A character wishing to
+employ a certain technique first has to let the Taint flood through them and make a connection. The Charactertaint living
+in their body has to be used to imprint their will onto the Taint around them. To do so puts the body in great peril.\\
+
+Immediately do a Taintcheck (see chapter Taint in Health and Taint). Then, Check Resonance +Charactertaint. If the
+result is higher than the complexity of the technique, it succeeds with a degree of success
+depending the amount by which the roll exceeded the complexity. If the result was not higher than the complexity,
+the difference is dealt to the character as damage(not Taint damage).\\
+Effects marked as passive have specific start and end conditions. \\
+Effects marked as sustained stay for as long as the character focusses on them. Each sustained effect is applied as a -1
+modifier to all subsequent rolls. Once a day a Willpower Check can be made, the result of which reduces the modifiers from sustained effects.\\
+
+
+List of Taintworks(incomplete):\\
+\begin{enumerate}[label= - ]
+\item Achieve Symbiosis: Complexity 18, required ambient Taint: 8\\
+Passive. Begins after meditating for at least an hour. As long as at least 1 Charactertaint remains inside the Character,
+they dont roll the daily Taintcheck anymore.\\
+
+\item Concentrate: Complexity 11, required ambient Taint: 1\\
+Sustained. After concentrating on a place in line of sight for one round, raise ambient Taint at target by [degree of success].
+Covers about a cubic meter.
+
+\item Infuse: complexity 12, does not require ambient Taint\\
+Restores [degree of success] LP to touched target. Raises Charactertaint of target characters by 1.
+Inflicts [degree of success]+1 Taint damage over 10 days to target constructs.
+
+\item Expunge: complexity 15, does not require ambient Taint\\
+Expunges up to [degree of success] Charactertaint, dealing twice the expunged amount as Taint damage.
+
+\item Gravitation: complexity 15, required ambient Taint: 6\\
+Sustained. After conentrating on a place in line of sight for three rounds, the local gravity at that place raises by
+[degree of success]G. covers about ten times ambient Taint above 5 square meters.
+
+\end{enumerate}
+
+
+      
+
+
+      
+  `- Contamination
+    `-G- Techniques
+      `-S- Infuse
+        `-S- magnitude
+      `-S- Expunge
+        `-S- magnitude
+      `-S- ...
+        `-S- magnitude
+      `-#- learned in world at -1/-1
+      `-#- ability/accuracy
+      `-#- magnitude
+    `-G- Passives
+      `-G- Resistances
+        `-S- sickness
+        `-S- cold
+        `-S- heat
+        `-S- trauma
+        `-S- contamination
+      `-S- Regeneration
+        `- healing rates from day to hours or minutes
+      `-S- Accumulation
+        `- ability to gather contamination above outside levels
+     `-G- Beasts
+       `-G- unity
+         `-#- categories see eminence
+         `-#- helps guide the beast
+       `-G- eminence
+         `-#- helps commune with beasts of that type 
+           `-#- beasts can multitype
+         `-S- of thunder
+         `-S- of the peaks
+         `-S- of the mountains
+         `-S- of the storm
+         `-S- of the plains 
+         `-S- of the forest
+         `-S- of the deep
+         `-S- of the core
+       `- ...
+
+
+
+
+
+
+
+
+\dirtree{%
+.1 Skills.
+    .2 Contamination.
+.3 Techniques.
+.4 Infuse.
+.4 Expunge.
+.4 ---.
+.3 Passives.
+.4 Resistances.
+.5 sickness.
+.5 cold.
+.5 heat.
+.5 trauma.
+.5 contamination.
+.4 Regeneration.
+.4 Accumulation.
+.3 Beasts.
+.4 Unity.
+.4 Eminence.
+.5 of Thunder.
+.5 of the Peaks.
+.5 of the Mountains.
+.5 of the Plains.
+.5 of the Forest.
+.5 of the Deep.
+.5 of the Sea.
+.5 of the River.
+.5 of the Core.
+}
+
+
+
+

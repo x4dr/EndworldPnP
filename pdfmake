@@ -4,3 +4,5 @@ yes x | pdflatex sheet.tex | grep "l\.[0-9]"
 echo "
 book:"
 yes x | pdflatex rulebook.tex | grep "l.[0-9]"
+
+
