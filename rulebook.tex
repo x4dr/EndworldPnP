@@ -303,9 +303,9 @@
     The Contaminationresitances of Categories A, B and C are 0, +2 and +4 respectively.\\\newline
     \begin{tabular}{c|ccc}
         Entity & Contamination Resistance Level & (internal) Resistance Bonus & Minimum Character Contamination\\
-        Cat A & 3 & 0 & 0\\
-        Cat B & 4 & 2 & 1\\
-        Cat C & 5 & 4 & 2\\
+        Cat A & 3 & 0 & -1\\
+        Cat B & 4 & 2 & 0\\
+        Cat C & 5 & 4 & 1\\
         Experimental Tech & 1 & -2 \\
         High Tech & 2 & -1 \\
         Mid Tech & 3 & 0\\
@@ -347,65 +347,101 @@
     \begin{tabular}{cl}
         1& An alacast infused rag or a shut wooden door (although oxygen may run out)\\
         2& a breathermask or a simple wooden door airlock (again, oxygen)\\
-        3& a full gasmask  or an airtight airlock\\
-        4& a gasmask with enhanced scrubbing (a little backpack) or a basic air filtering facility\\
-        5& a high tech air intake or scrubbing plant\\
-        6& a full mask with air from a compressed air tank\\
-        7& a full mask with air from a compressed air tank and fully sealed suit\\
+        3& a partial gasmask  or an airtight airlock\\
+        4& a heavy partial gasmask with Goggles or a basetech air filtering facility\\
+        5& a full gasmask\\
+        6& as above + sealed clothing or lowtech air filtering facility\\
+        7& as above + midtech scrubber (a little backpack)\\
+        8& as above + hightech air scrubber or midtech air filtering facility\\
+        9& as above + full mask with air from a compressed air tank\\
+       10+& specially sealed suit with airtank or hightech filtering facility\\
+
         8+& more sophisticated methods\\
-    \end{tabular}\\(for roll bonuses shift the right side of the table down by the bonus)\\\\\\*
-    Approximate survival durations(with minimum Charactercontamination):\\\\
-(IN REWORK)
+    \end{tabular}\\\\\\*
+    Average death durations, mortality rate and average ending character contamination
+    (with Fitness 3, 0,2,3 starting characon respectively and staying in same Contaminaion Level for one month):\\\\
     \begin{tabular}{c|c|c}
         Category A & Category B & Category C\\
-        \begin{tabular}{c|l}
-            Contamination level&Duration\\
-            0&indefinite\\
-            1&no healing 10\% of the time (IN REWORK)\\
-            2&7 and a half days\\
-            3&2 and a half days\\
-            4&1 and a half days\\
-            5&1 day and ~ 4 hours\\
-            6&21 hours\\
-            7&17 hours\\
-            8&15 hours\\
-            9&13 hours\\
-            10&11 hours\\
-            11+x&10 hours - x
-        \end{tabular} &
-        \begin{tabular}{c|l}
-            Contamination level &    Duration\\
-            0&indefinite\\
-            1&indefinite\\
-            2&indefinite\\
-            3&contaminating\\
-            4&13 days\\
-            5&5 days\\
-            6&3 days\\
-            7&2 days\\
-            8&1 day 9 hours\\
-            9&1 day\\
-            10&19 hours\\
-            11+x&18 hours -x\\
-        \end{tabular}&
-        \begin{tabular}{c|l}
-            Contamination level&    Duration\\
-            0&indefinite\\
-            1&indefinite\\
-            2&indefinite\\
-            3&indefinite\\
-            4&contaminating\\
-            5&1 month 1 week\\
-            6&1 week 3 days\\
-            7&4 and a half days\\
-            8&2 and a half days\\
-            9&1 and a half days\\
-            10&29 hours\\
-            11+x&28 hours -x\\
+        \begin{tabular}{c|rlll}
+            contamination & death & mortality & wounds& characon\\
+            1              &none   	&0.0        &0.153    &0.993    \\
+            2              &416.57 	&0.014      &0.58     &2.0      \\
+            3              &347.25 	&0.256      &1.774    &3.0      \\
+            4              &271.69 	&0.783      &3.36     &3.997    \\
+            5              &144.19 	&0.993      &4.567    &4.985    \\
+            6              & 77.18 	&1.0        &5.168    &5.969    \\
+            7              & 39.85 	&1.0        &4.946    &6.96     \\
+            8              & 25.20 	&1.0        &4.701    &7.644    \\
+            9              & 18.04 	&1.0        &4.488    &7.925    \\
+            10             & 14.29 	&1.0        &4.317    &7.99     \\
+            11             & 11.72 	&1.0        &4.164    &7.892    \\
+            12             &  9.78 	&1.0        &4.03     &7.699    \\
+            13             &  8.48 	&1.0        &3.922    &7.401    \\
+            14             &  7.36 	&1.0        &3.795    &6.978    \\
+            15             &  6.64 	&1.0        &3.684    &6.53     \\
+            16             &  6.01 	&1.0        &3.581    &5.998    \\
+            17             &  5.62 	&1.0        &3.521    &5.62     \\
+            18             &  5.20 	&1.0        &3.474    &5.204    \\
+            19             &  4.90 	&1.0        &3.404    &4.897    \\
+            20             &  4.55 	&1.0        &3.329    &4.554    \\
+            21             &  4.30 	&1.0        &3.211    &4.299    \\
+            22             &  4.11 	&1.0        &3.088    &4.111    \\
+            \end{tabulr}
+            \begin{tabular}{c|rlll}
+            contamination & death & mortality & wounds& characon\\
+            5              &none   	&0.0        &0.042    &2.773    \\
+            6              &none   	&0.0        &0.172    &3.811    \\
+            7              &370.29 	&0.007      &0.459    &4.794    \\
+            8              &321.54 	&0.166      &1.319    &5.763    \\
+            9              &282.17 	&0.597      &2.986    &6.69     \\
+            10             &183.97 	&0.917      &4.642    &7.528    \\
+            11             &106.14 	&0.994      &5.59     &8.395    \\
+            12             & 67.34 	&1.0        &6.089    &9.283    \\
+            13             & 47.37 	&1.0        &6.378    &10.311   \\
+            14             & 34.73 	&1.0        &6.315    &10.943   \\
+            15             & 25.40 	&1.0        &6.197    &11.281   \\
+            16             & 20.07 	&1.0        &6.057    &11.607   \\
+            17             & 15.76 	&1.0        &5.768    &11.693   \\
+            18             & 12.35 	&1.0        &5.349    &11.518   \\
+            19             & 10.29 	&1.0        &5.064    &11.161   \\
+            20             &  9.03 	&1.0        &4.868    &10.737   \\
+            21             &  8.07 	&1.0        &4.803    &10.052   \\
+            22             &  7.36 	&1.0        &4.78     &9.355    \\
+            23             &  6.56 	&1.0        &4.723    &8.562    \\
+            24             &  5.99 	&1.0        &4.593    &7.985    \\
+            25             &  5.56 	&1.0        &4.403    &7.557    \\
+            26             &  5.20 	&1.0        &4.161    &7.196    \\
+            27             &  5.01 	&1.0        &4.007    &7.009    \\
+            \end{tabular}
+            \begin{tabular}{c|rlll}
+            contamination & death & mortality & wounds& characon\\
+            8              &none   	&0.0        &0.011    &3.531    \\
+            9              &none   	&0.0        &0.051    &4.452    \\
+            10             &none   	&0.0        &0.139    &5.466    \\
+            11             &306.67 	&0.009      &0.344    &6.422    \\
+            12             &280.00 	&0.126      &1.074    &7.34     \\
+            13             &234.72 	&0.486      &2.902    &8.251    \\
+            14             &181.68 	&0.856      &4.967    &9.101    \\
+            15             &112.55 	&0.982      &6.288    &9.943    \\
+            16             & 69.65 	&1.0        &6.927    &10.855   \\
+            17             & 52.66 	&1.0        &7.358    &11.817   \\
+            18             & 46.94 	&1.0        &7.995    &12.778   \\
+            19             & 38.37 	&1.0        &8.08     &13.55    \\
+            20             & 27.63 	&1.0        &7.744    &13.972   \\
+            21             & 21.01 	&1.0        &7.415    &14.22    \\
+            22             & 16.30 	&1.0        &6.933    &14.227   \\
+            23             & 12.33 	&1.0        &6.333    &13.801   \\
+            24             & 10.33 	&1.0        &6.069    &13.099   \\
+            25             &  9.19 	&1.0        &6.088    &12.179   \\
+            26             &  8.22 	&1.0        &6.027    &11.223   \\
+            27             &  7.40 	&1.0        &5.846    &10.401   \\
+            28             &  6.80 	&1.0        &5.585    &9.801    \\
+            29             &  6.34 	&1.0        &5.283    &9.337    \\
+            30             &  6.04 	&1.0        &5.034    &9.04     \\
+            31             &  6.00 	&1.0        &5.0      &9.001    \\
+
         \end{tabular}\\&&
-    \end{tabular}\\\footnotesize(reference: X/(24\(\cdot\)(1-(Y))-1) where X is the base HP and  Y is the \% chance of rolling
-    the Contamination level or better; \\X HP divided by 24 hours in a day times lost health in a day minus 1 (normal healing))\\\\
-    \normalsize
+    \end{tabular}\\
 
     \subhline{Tech}
     Electrolysis splits 1 L H2O into 622.22 L Oxygen und 1244.4 using 3.7037 kwh\\
@@ -436,17 +472,17 @@
     Choose Category:\\\\
     If you have grown up without being in contact with Contamination you are probably a Dome dwelling Category A Supervivo. \\
     \begin{tabular}{c|l}
-        & low hp (3)\\
+        & low hp (4)\\
         & barely any contamination resistance\\
         Category A     & no tech restrictions\\
         & social/educated skills more likely\\
         & DNI possible\\\hline
-        & medium hp (6)\\
+        & medium hp (5)\\
         & slightly contamination resistant\\
         Category B    & experimental and high tech tend to degrade fast\\
         & practical/combat skills more likely\\
         & able to pilot and survive outside\\\hline
-        & high HP (9) \\
+        & high HP (6) \\
         & highly contamination resistant \\
         Category C & anything above basetech, degrades fast\\
         & survival/physical skills more likely\\
@@ -573,13 +609,13 @@
         &&&&& ...many legs
     \end{tabular}\\
     Seals:\\
-    \begin{tabular}{r|l}
-        Tech & Seal Level \\\hline
-        Base &  5\\
-        Low &   7\\
-        Mid &   10\\
-        High &  20\\
-        Experimental & 50\\
+    \begin{tabular}{l|r|r}
+        Tech & Seal Level & Cost(round up)\\\hline
+        Base &  6 &  0.05*Module\\
+        Low &   13&  0.15*Module\\
+        Mid &   21&  0.25*Module\\
+        High &  30&  0.35*Module\\
+        Experimental & 50&0.5*Module\\
     \end{tabular}\\
     Heatsystems:\\
     \begin{tabular}{r|lllll}
