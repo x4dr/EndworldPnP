@@ -569,39 +569,41 @@
     free space\newline
     \begin{tabular}{c|c|c|c}
         speed       &Level  &needed\%& speed\% \\\hline
-        lumbering   &1      &5\%     &10\%\\
-        slow        &2      &15\%    &33\%\\
+        lumbering   &1      &5\%     &33\%\\
+        slow        &2      &15\%    &75\%\\
         normal      &3      &25\%    &100\%\\
         fast        &4      &35\%    &150\%\\
         rapid       &5      &45\%    &200\%\\
     \end{tabular}\\
     Accelleration is the modified maximum speed divided by 5 per round unless otherwise stated
 
-    Movement Systems:\\
+    Chassis+Movement Systems:\\
     \begin{tabular}{l|lcccl}
         Type    &Modes &Energy &Heat &Speed &Extra\\
         \hline
         Basetech\\
-        railbased movement system & Rails &0.1/0.2&0/0&50/100& confined to rails\\
+        railbased movement system & Rails &0.01/0.02&0/0&50/100& confined to rails\\
         &&&&&Accelleration in 15 rounds\\
-        simple 4 wheels           & Roads &0.5/1 &0.1/0.2& 10/40 & requires sufficiently flat terrain \\
-        & Offroad&1/1.5&0.3/0.5& 5/10 & might topple\\
+        simple wheels           & Roads &0.1/0.3 &0.1/0.2& 10/40 & requires sufficiently flat terrain \\
+        & Offroad&0.5/1&0.3/0.5& 5/10 & might topple\\
         floatation system         & Water & 0/5  &  0/0  & 0/1   & allows movement on water\\
-        &       &     &       &       & Speed multiplier is applied twice\\
+        &       &     &       &       & Counts double For speed percentage\\
         \hline
         Lowtech\\
-        suspended wheels          & Roads &0.3/5 &0.2/0.3& 30/70 & requires sufficiently flat terrain \\
-        & Offroad&0.5/1.2&0.5/0.8& 10/30 & might topple\\
-        tracks                    & Offroad&0.8/2&0.5/1.2& 30/120 &\\
-        & Harsh Terrain&1.5/3&1/2& 10/50 &\\
-        bipedal                   & Ground &0.2/1&0.1/0.5& 3/30 & Full Dodge\\
+        suspended wheels          & Roads &0.05/0.5 &0.15/0.2& 30/70 & requires sufficiently flat terrain \\
+        & Offroad&0.2/.8&0.5/0.8& 10/30 & might topple\\
+        tracks                    & Offroad&0.5/1&0.5/1.2& 30/120 &Counts double For speed percentage\\
+        & Harsh Terrain&1/2&1/2& 10/50 &\\
+        bipedal                   & Ground &0.1/0.8&0.1/0.5& 3/30 & Full Dodge\\
         &&&&&Min Tracking: Speed\\
+        &&&&&2 Arms with rough Grippers\\
         jumpjets                  & Air &0/10&0/10&0/50& Counts triple for speed percentage\\
         \hline
         Midtech\\
         flexible bipedal          & Ground &0.3/1.2&0.1/0.5 & 5/35 & Maneuverable like a large Human\\
         &&&&&Full Dodge\\
         &&&&&MinTracking: Speed\\
+        &&&&&2 Arms with Robothands\\
         boostjets                 & Air &0/15 &0/20&0/150& acceleration in any direction\\
         &&&&&Counts Triple for speed percentage\\
         \hline Hightech\\
@@ -647,21 +649,21 @@
     \begin{tabular}{l|cccll}
         Type & Energy & Heat & Storage & Consumption & Special\\
         \hline Basetech \\
-        Burner & 0.01/0.5 & 0.1/5 & 20 H & 0.1/0.01 & Fuel:Coal\\
-        Steam Engine & 0.4/1.5 & -1/-2.5 & 5 Energy & Heat & 10\% Efficient with Heat under 50\%\\
+        Burner & -0.01/-0.5 & 0.1/5 & 20 H & 0.1/0.01 & Fuel:Coal\\
+        Steam Engine & 2/5 & -1/-2.5 & 5 Energy & Heat & 10\% Efficient with Heat under 50\%\\
         FlyWheel & 0/1 & 0/X & 10 E & 0.01 of stored & retrieves half, generates \\
         &&&&&Heat 2:1 while retreiving\\
-        Crank & 0/0.001&0/0&&Manual Labor\\
+        Crank & 0/0.001&0/0&&Manual Labor&Size 0.01\\
         \hline Lowtech \\
         Combustion Motor& 0.5/3 & 0.5/3& & 0.2/0.1 & Fuel:CombustionFuel\\
         \hline Midtech \\
-        PEM & 0.5/3.5 & 0.1/0.5 & & 0.5/0.2 & Fuel: HFC\\
+        PEM & 0.5/3.5 & 0.1/0.5 & & 0.05/0.02 & Fuel: HFC\\
         Solar Panel & 0/0.03 & 0/0 & 50 E & Sunlight & Contamination might lower yield\\
         &&&&&Deployment takes 1 Energy or\\
         &&&&&5 Minutes outside Labor\\
         &&&&&1 Heat per Energy Retrieved\\
         \hline Hightech \\
-        Reactor & 1.2/2 & 0.8/1.5 & 100 E & 0.01/0.01 & Fuel:Fuelrods\\
+        Reactor & 1.2/2 & 0.8/1.5 & 100 E & 0.001/0.001 & Fuel:Fuelrods\\
         &&&&&0.5 Heat per Energy Retrieved\\
         Capacitor & & X & 500 E & & 0.1 Heat per Energy Retrieved \\
     \end{tabular}
@@ -683,10 +685,10 @@
         \hline Lowtech\\
         Deflector & X & 1E/5E+3H & - & radius 2\(\cdot\)C m & 10s & instant \\
         \hline Midtech\\
-        Shield & 2 & 1/0.5 (2H) & 7H, dampen & 10+coverage\(\cdot\)8 & 15/R (round up) & 10 E \\
+        Shield & 2 & 1/0.5 (2H) & 7H, dampen & 10+coverage\(\cdot\)13 & 15/R (round up) & 10 E \\
         & & & disable\\
         \hline Hightech\\
-        Advanced Shield & 4 & 1/2(3H) & 15H, block,& 15+coverage\(\cdot\)6 & 8-R+ 10E & 5 \\
+        Advanced Shield & 4 & 1/2(3H) & 15H, block,& 15+coverage\(\cdot\)10 & 8-R+ 10E & 5 \\
         &&& disable\\
     \end{tabular}\newline\newline\newline
     Level: see 3d10 Table in the beginning of the Book\\
@@ -705,16 +707,16 @@
         Type & Level & HP & Coverage & Damage & Special\\
         \hline BaseTech&&&&&\\
         Extended Cargo & 1 & \makecell{\(\sqrt{M}\)\\ rounded down}& 14\(\cdot\)M & destroy 1 & \makecell[{{p{6cm}}}]{7 Cargo Spaces (Cargo is destroyed with the modules)}\\
-        Metal Plating & 3 & 5 & 5+10M & destroy F & \makecell[{{p{6cm}}}]{counts twice towards movement system percentage} \\
+        Metal Plating & 4 & 5 & 5+10M & destroy F & \makecell[{{p{6cm}}}]{counts twice towards movement system percentage} \\
         \hline Lowtech &&&&&\\
         Composite & 4 & \makecell[c]{\(2\cdot\sqrt{M}\)\\ rounded}& \(12\cdot M\) & destroy 1&\\
         \hline Midtech &&&&&\\
-        Active & 1/4 & 5 & 12+8\(\cdot\)M & short out 1 & \makecell[{{p{6cm}}}]{ draws 10 Energy when hit \\
+        Active & 1/4 & 5 & 12+10\(\cdot\)M & short out 1 & \makecell[{{p{6cm}}}]{ draws 10 Energy when hit \\
         1h Check[Electronics] \\(>=8 to fix; <=2 to destroy)}\\&\\
-        Speed & 2 & 3 & 10+5M & brick 50\% & \makecell[{{p{6cm}}}]{1E/50km/h; \\Vent 1H/ 50 km/h \\
+        Speed & 2 & 3 & 20+7M & brick 50\% & \makecell[{{p{6cm}}}]{1E/50km/h; \\Vent 1H/ 50 km/h \\
         (increase signature by vented Amount) \\30m 0.1MTS Check[Engineer]\\(>=9 to fix; <=5 to destroy)}\\
         \hline Hightech &&&&&\\
-        Advanced & 4 & X & 15+4\(\cdot\)M & \makecell[l]{shorts out \\ 1 Energy System}&\makecell[{{p{6cm}}}]{
+        Advanced & 4 & X & 15+6\(\cdot\)M & \makecell[l]{shorts out \\ 1 Energy System}&\makecell[{{p{6cm}}}]{
         1h Check[Electronics] \\(>=8 to fix; <=2 to destroy)}\\&\\
     \end{tabular}
     Weapons\newline
