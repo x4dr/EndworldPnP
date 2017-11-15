@@ -149,6 +149,41 @@
             of not pointing at the target. Usually Up in an angle. They require information about the targets position,
             but are free from line of sight restrictions the Projectile still has to have a valid way to travel to be used.
         \end{enumerate}
+        \paragraph{Missile} Weapons \newline are a weapons that travel to the target to inflict damage, the difference
+        to Projectile Weapons is that Missile Weapons are usually self propelled instead of being accelerated at their
+        startpoint. Missiles are comparatively heavy and expensive, but most of them ignore shields and/or deliver
+        special devices or bombs to the target.
+
+        \begin{enumerate}[label= -]
+            \item{Seeking} Missiles have some sort of sensors or a dataconnection, and will follow a Target, as long as the Lock
+            remains unbroken.
+            \item{Dumbfire} Missilies dont spend that much on electronics besides a flight stabilizer so they are
+            harder to shoot down, but evadeable.
+        \end{enumerate}
+
+        \paragraph{Melee} Weapons of mech sizes \newline are capable of inflicting utter destruction, but are usually
+        limited to close ranges, which makes them not very useful at long distances.
+        \begin{enumerate}[label= -]
+            \item{Sharp} Melee Weapons have slightly longer range or are faster and usually do good damage. Most of them
+            use the Movement System to get ready to attack again, so they may attack a lot of times on fast mechs.
+            They also are the most precise of the melee weapons.
+            \item{Blunt} Melee Weapons are usually slow, and easier to dodge, but their raw damage output is only
+            matched by Artillery.
+            \item{Unarmed} is not technically a category of weapon, but it represents being able to fight in melee
+            without any special weapon, which allows for mostly disabling maneuvers.
+        \end{enumerate}
+    \subsubsection{Piloting Practice}
+        \paragraph{Exo} is short for "Exoskeleton" and refers to Mechs that are barely larger than an extended Bodyarmor
+        or Mechs that are generally not much bigger than their Pilot.
+        \paragraph{Tiny} a versatile spot for Contraptions between Exo and Very Light, these include buggies, cars and
+        a lot of small, fast Vehicles.
+        \paragraph{Very Light} include things like APCs and small fast walkers.
+        \paragraph{Light} is about as big as a medium tank.
+        \peragraph{Medium} is about as big as a heavy tank/main battle tank.
+        \paragraph{Heavy} is equivalent to superheavy tanks.
+        \paragraph{Very Heavy} LANDKREUZER
+
+    \subsubsection{Aux}
         \paragraph{Biotech} is the Fusion of Biology and Technology \newline The ancient texts define Biotechnology as
         "any technological application that uses biological systems, living organisms, or derivatives thereof, to make
         or modify products or processes for specific use".
@@ -185,7 +220,7 @@
     .4 Projectile.
     .5 Direct.
     .5 Indirect.
-    .4 Missiles.
+    .4 Missile.
     .5 Seeking.
     .5 Dumbfire.
     .4 Melee.
@@ -599,8 +634,8 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     \begin{tabular}{r|l}
         Sizeclass &Mechclass \\
           0 &Human\\
-        1-4 &Exo\\
-        5-9 &Tiny\\
+        1-3 &Exo\\
+        4-5 &Tiny\\
         6-7 &Very Light\\
         8-9 &Light\\
         10-11 &Medium\\

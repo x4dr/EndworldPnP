@@ -27,7 +27,7 @@ def testrun(runs, env, res, fit, health, resmod, extres=0, startingcharataint=0,
         while len(wounds) < health and hours < duration:
             hours += 1
             avgwounds += len(wounds)
-            if avgwounds == 0 and hours > 25:  # if nothing occured in the first day
+            if avgwounds == 0 and hours > 50:  # if nothing occured in the first 2 days
                 hours = duration  # probably nothing will
                 continue  # skips instances where damage was healed the hour it was suffered... but yeah
             if not (hours < 48 or hours % 24 == 0):
@@ -84,53 +84,53 @@ def testrun(runs, env, res, fit, health, resmod, extres=0, startingcharataint=0,
         contatotal.append(conta)
         # print("run", i, "ended with", wounds, "wounds after", hours, "hours, having", avgwounds / hours,
         #      " wounds on average")
-    # if abs((avgwoundstotal - (((health / 2) - 1) * (i + 1)))) < 0.0001:
-    #    return True
-    if avgwoundstotal or 1:
-        print(("{0:<3}&{1:{form}} \t&{2:<5g}% &{3:>6.2g} " + ("&{4:>6.2g} " if fit else "") + "\\\\").format(
+    if abs((avgwoundstotal - (((health / 2) - 1) * (i + 1)))) < 0.0001:
+        return True
+    if avgwoundstotal:
+        print(("{0:<15}&{1:{form}} \t&{2:<10} &{3:<8} " + ("&{4:<8} " if fit else "") + "\\\\").format(
             env,
             "none" if len(tod) == 0 else (sum(tod) / len(tod)),
-            100 * mortality / (i + 1),
-            int(avgwoundstotal / (i + 1)),
+            mortality / (i + 1),
+            int(1000 * avgwoundstotal / (i + 1)) / 1000,
             sum(contatotal) / len(contatotal), form=6 if len(tod) == 0 else "6.2f"))
     return False
 
 
 CatA = {"Cat": "A", "HP": 8, "Resistance Category": 3, "Fitness": 3, "Internal Resistance": -1,
-        "Starting Contamination": 0, "External Resistance": 0}
+        "Starting Contamination": 0, "External Resistance": 10}
 CatB = {"Cat": "B", "HP": 10, "Resistance Category": 4, "Fitness": 3, "Internal Resistance": 0,
         "Starting Contamination": 2, "External Resistance": 0}
 CatC = {"Cat": "C", "HP": 12, "Resistance Category": 5, "Fitness": 3, "Internal Resistance": 1,
         "Starting Contamination": 3, "External Resistance": 0}
 
-ET = {"Cat": "ET", "HP": 10, "Resistance Category": 1, "Fitness": 0, "Internal Resistance": -1,
+ET = {"Cat": "ET", "HP": 10, "Resistance Category": 1, "Fitness": 0, "Internal Resistance": -2,
       "Starting Contamination": 0, "External Resistance": 0}
-HT = {"Cat": "HT", "HP": 10, "Resistance Category": 2, "Fitness": 0, "Internal Resistance": 0,
+HT = {"Cat": "HT", "HP": 10, "Resistance Category": 2, "Fitness": 0, "Internal Resistance": -1,
       "Starting Contamination": 0, "External Resistance": 0}
-MT = {"Cat": "MT", "HP": 10, "Resistance Category": 3, "Fitness": 0, "Internal Resistance": 1,
+MT = {"Cat": "MT", "HP": 10, "Resistance Category": 3, "Fitness": 0, "Internal Resistance": 0,
       "Starting Contamination": 0, "External Resistance": 0}
-LT = {"Cat": "LT", "HP": 10, "Resistance Category": 4, "Fitness": 0, "Internal Resistance": 2,
+LT = {"Cat": "LT", "HP": 10, "Resistance Category": 4, "Fitness": 0, "Internal Resistance": 1,
       "Starting Contamination": 0, "External Resistance": 0}
-BT = {"Cat": "BT", "HP": 10, "Resistance Category": 5, "Fitness": 0, "Internal Resistance": 3,
+BT = {"Cat": "BT", "HP": 10, "Resistance Category": 5, "Fitness": 0, "Internal Resistance": 2,
       "Starting Contamination": 0, "External Resistance": 0}
 
 for chara in [
-    # CatA, CatB, CatC
-    ET,
-    HT,
-    MT, LT, BT
+    CatA  # , CatB, CatC
+    # ET,
+    # HT,
+    # MT, LT, BT
 ]:
     if chara["Fitness"] == 0:
-        print("TechLevel:", chara["Cat"], " \\\\\nC & failure & failurerate & damage\\\\")
+        print("TechLevel:", chara["Cat"], " \\\\\ncontamination & failure & failurerate & damage\\\\")
     else:
-        print("Category:", chara["Cat"], " \\\\\nC & death & mortality & wounds & con\\\\")
-    for env in [0,2, 8]:#range(0, 8, 3):
-        if testrun(1000, env,
+        print("Category:", chara["Cat"], " \\\\\ncontamination & death & mortality & wounds& characon\\\\")
+    for env in range(-5, 100):
+        if testrun(100, env,
                    chara["Resistance Category"],
                    chara["Fitness"],
                    chara["HP"],
                    chara["Internal Resistance"],
                    chara["External Resistance"],
                    chara["Starting Contamination"],
-                   720):
-            break
+                   17280):
+            break;
