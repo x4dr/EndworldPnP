@@ -6,21 +6,19 @@
 \usepackage{makecell}
 \usepackage{dirtree}
 \usepackage[T1]{fontenc}
-\newcommand{\headline}[1]{\begin{center}\Large #1 \normalsize \end{center}}
-\newcommand{\subhline}[1]{\begin{center}\large #1 \normalsize \end{center}}
+\usepackage[hidelinks]{hyperref}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \geometry{textheight=25cm, hoffset=0cm, textwidth = 19cm}
+\title{Endworld PnP}
+\author{Maric}
+\date{}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 
 \begin{document}
-    \begin{center}\huge
-    Endworld PnP\\\large by Maric\\\normalsize \end{center}
-    loosely/rp driven with 3d10 system by Maric
-
-    This is a rough draft, version 0.2 Rulebook
-    \headline{The EndWorld}
-
-    [[someone has to still write flufftext... its gonna be meeeee]]
-
+    \maketitle
+    \tableofcontents
+    \section{The EndWorld}
 
     Years have gone by since the Great War. Many Years. Even though few remember how long it has been, the remnants
     of a time long gone still remind us that once, long ago, the world has been a nicer place. But, the world we know
@@ -55,22 +53,8 @@
     - Transcript of the only Conversation the oldest Document in the Great Library of Kodal - a severely damaged
     upload of the Brain of an ancient Scientist - will have.\newpage
 
-    [are these things represented?
-    - a few hundred years after WW III\par
-
-    - Contamination that slowly kills everyone breathing the air and degrades tech over time\par
-
-    - snobby "pure" humans called Supervivo in plexiglass domes, protected by militia mechs\par
-
-    - Wild Tribespeople who have "adapted" and live a short and kind of feral life since they cant use technology, cultivated monsterlike animals and ability to influence Contamination in some\par
-
-    - Alacast (puryfying raction with Contamination in catalysts), drinking Water (since Contamination affects water) and Scrap are valuable, no interregional Money, Credits are used in only one Dome and maybe can be transferred within one Region\par
-
-    - Anomalies all over the place with less Contamination, more gravity, singular heat point, singular cold point, radiation, decreased structural integrity and so on\par
-    ]
-    \newpage
-    \headline{Rules}
-    \subhline{Rolling and Checks}
+    \section{Rules}
+    \subsection{Rolling and Checks}
 
     This System uses 3 ten sided dice. A Check is a roll of one to three D10, interpreted
     in a certain way, with the result describing how successfull on a scale of 1-10 the attempted action was.
@@ -83,7 +67,7 @@
     good roleplay or similar) the Gamemaster may grant reroll, which allows the player to choose one die of the Check after
     it has been rolled and reroll it. The new result counts instead of the old one. \newline\newline
     How many dice are rolled for a Check and how they are interpreted can be found in the table:\par
-
+    \subsubsection{Dice}
     \begin{tabular}{c|c|c|l}
         Advantage & Level & Dice & Interpretation \\
         -2& 1& 3& take lowest\\
@@ -97,7 +81,6 @@
         +2& 5& 3& take highest\\
     \end{tabular}\\
     \vspace{2cm}\\
-    Optional Rule: Compounding\newline
     When two dice show the same result, they are "added" to go one further into the direction of the current roll.\\
     When three dice show the same result, they are "added" to go two instead.\\
     Examples: \par
@@ -105,8 +88,7 @@
     Advantage -2 Roll (9,9,9) => 7 \par
     Level 4 Roll (10,10) => 11 \par
 
-    \subhline{Skills and Abilities}
-    [rework in progress]
+    \subsection{Skills and Abilities}
     Abilities represent in what aspects of the gameworld a character excels and in which he doesnt.
 
     With the Exception of Knowledges and Professions every Ability starts at Level 1. \par
@@ -117,63 +99,125 @@
 
     \begin{tabular}{l||cccccc}
         Priorities       &Social       &Mental         &Physical      \\\hline\\
-        &Negotiation  &Perception     &Fitness        \\
+                        &Negotiation  &Perception     &Fitness        \\
         Abilities       &Expression   &Mind           &Dexterity      \\
-        &Slyness      &Resonance      &Agility        \\
+                        &Slyness      &Resonance      &Agility        \\
     \end{tabular}\newline
 
+    \subsubsection{Social Abilities} 
+        \begin{enumerate}[label= -]
+            \item {Negotiation}: employing discussion, bartering, negotiating and similar interactions.
+            \item {Expression}: Leadership, telling a story, reporting, and building rapport.
+            \item {Slyness}: lying, skullduggery, twisting the truth and intimidation.
+        \end{enumerate}
+    \subsubsection{Mental Abilities} 
+        \begin{enumerate}[label=-]
+            \item {Perception}: How well information is gathered from the world.
+            \item {Mind}: Memory, assessing situations, processing information.
+            \item {Resonance}: the marginal edge that goes beyond the normal and expected, this barely understood trait
+            describes the brains ability to ... connect.
+        \end{enumerate}
+    \subsubsection{Physical Abilities} 
+        \begin{enumerate}[label= -]
+            \item {Fitness}: General physical shape, Strength, Stamina, Healing.
+            \item {Dexterity}: Precise physical manipulations of all sorts.
+            \item {Agility}: Speed, Acrobatics, maneuverability.
+        \end{enumerate}
+    \subsubsection{Tech Abilities}
+        \begin{enumerate}[label= -]
+            \item {Usage}: How to handle and operate complicated (or unknown) technology.
+            \item {Analysis}: Gathering information about the workings and purposes of complicated or unknown technology
+            \item {Integration}: Wiring/interfacing technology together that might or might not have been build for
+            that purpose.
+        \end{enumerate}
+        \subsubsection{Weapons Expertise}
+        \paragraph{Laser}s or technically "Directed Energy Weapons" \newline are a group of weapons which typically
+    do not use Ammunition, but raw Energy to inflict their damage. Their comparably low damage is made up for by being
+    as accurate as a light beam. Plus the high amounts of particles in the air make for pretty lights.
+        \begin{enumerate}[label= -]
+            \item {Pulse} Weapons that emit short, sometimes repeated pulses of energy, mostly to save on heat, but also
+            to be able to use special capacitors to deliver powerful bursts of energy.
+            \item {Beam} Weapons that emit long, sometimes even sustained streams of energy, making them easier to aim
+            and inflicting more damage, usually at the price of higher sustained energy and heat costs.
+        \end{enumerate}
+        \paragraph{Projectile} Weapons or sometimes just "Guns" \newline are a group of weapons which discharge Projectiles
+        towards a target. Ammunition has to be employed, but there are several different types available.
+        \begin{enumerate}[label= -]
+            \item{Direct} Projectile Weapons are many and varied but share the characteristic of being pointed roughly at
+            the target they are shooting. They require line of sight.
+            \item{Indirect} Projectile Weapons are just as varied as Direct Projectile Weapons but have the key difference
+            of not pointing at the target. Usually Up in an angle. They require information about the targets position,
+            but are free from line of sight restrictions the Projectile still has to have a valid way to travel to be used.
+        \end{enumerate}
+        \paragraph{Biotech} is the Fusion of Biology and Technology \newline The ancient texts define Biotechnology as
+        "any technological application that uses biological systems, living organisms, or derivatives thereof, to make
+        or modify products or processes for specific use".
+        \begin{enumerate}[label= -]
+            \item{Red} Biotechnology Encompasses genetics, genomics, pharmacology, but also medical advances like
+            genetherapy and automedics and deconamination of living things.
+            \item{Green} Biotechnology is used every time the passive environment is exploited, from high yield,
+            low footprint farming to harnessing the great and small Anomalies, including detoxification of materials and
+            Beings.
+            \item{Blue} Biotechnology has developed from being used for aquatic Biotech, to include Megafauna, since the
+            first Megafauna is told to having been spottet in the ocean. It allows scanning, categorization and
+            assessment of Megafauna, including in some cases, harvesting Megafauna specialities.
+            \item{White} or Industrial. It is used in Industrial processes and in handling some of the results of such
+            processes. Creating and/or applying contamination-sealant is one of such processes.
+            \item{Black} deals with with integration of Biology and Technology from enhancements or replacements like
+            Cyberware or more conventional Prosthetics to synthesizing life, ressurection and strong AI. Seldomly useful
+            and the most dangerous brand of Biotechnology, it is not taught often.
+        \end{enumerate}
     \pagebreak
-
+    \subsubsection{Skilltree - Techside}
     Further Priorities might include Abilities, single Skills or Entire Skilltrees. A number in brackets indicates how many
     Skillpoints can be assigned, lacking a number implies being either a category (nodes) or an ability (leaves).
     \dirtree{%
     .1 Skills.
-    .2 Tech.
+    .2 Tech Abilities.
     .3 Usage.
     .3 Analysis.
     .3 Integration.
-    .2 Mech.
-    .3 Weapons Expertise [1].
-    .4 Laser[2].
-    .5 Pulse[2].
-    .5 Beam[2].
-    .4 Projectile[1].
-    .5 Direct[3].
-    .5 Indirect[3].
-    .4 Missiles[1].
-    .5 Seeking[3].
-    .5 Dumbfire[3].
-    .4 Melee[2]
-    .5 Sharp[2].
-    .5 Blunt[2].
-    .5 Unarmed[2].
-    .3 Piloting Practice[1].
-    .4 Exo[4].
-    .4 Tiny[4].
-    .4 Very Light[4].
-    .4 Light[4].
-    .4 Medium[4].
-    .4 Heavy[4].
-    .4 Very Heavy[4].
-    .4 Ultra[4].
-    .3 Auxilliary Training[1].
-    .4 Defense[2].
-    .5 Decoys[2].
-    .5 Shields[2].
-    .5 Deflectors[2].
-    .4 Offense[1].
-    .5 Explosives[3].
-    .5 Sniping[3].
-    .5 Speciality Gadgets[3].
-    .4 Recon[2].
-    .5 Scanners[2].
-    .5 Suppressors[2].
-    .5 Sabotage[2].
-    .4 Utility[2].
-    .5 Detox[2].
-    .5 Decon[2].
-    .5 Reprocessing[2].
-    .5 Utility Movement[2].
+    .2 Mech Skills.
+    .3 Weapons Expertise.
+    .4 Laser.
+    .5 Pulse.
+    .5 Beam.
+    .4 Projectile.
+    .5 Direct.
+    .5 Indirect.
+    .4 Missiles.
+    .5 Seeking.
+    .5 Dumbfire.
+    .4 Melee.
+    .5 Sharp.
+    .5 Blunt.
+    .5 Unarmed.
+    .3 Piloting Practice.
+    .4 Exo.
+    .4 Tiny.
+    .4 Very Light.
+    .4 Light.
+    .4 Medium.
+    .4 Heavy.
+    .4 Very Heavy.
+    .4 Ultra.
+    .3 Auxilliary Training.
+    .4 Defense.
+    .5 Decoys.
+    .5 Shields.
+    .5 Deflectors.
+    .4 Offense.
+    .5 Explosives.
+    .5 Sniping.
+    .5 Speciality Gadgets.
+    .4 Recon.
+    .5 Scanners.
+    .5 Suppressors.
+    .5 Sabotage.
+    .4 Utility.
+    .5 Communications.
+    .5 Reprocessing.
+    .5 Utility Movement.
     .4 Biotech.
     .5 Red.
     .5 Green.
@@ -181,34 +225,45 @@
     .5 White.
     .5 Black.
     }
-
     \pagebreak
-    \subhline{Trade}
+    \subsection{Trade}
 
     These entries in the table below are usually equivalent, local supply and demand may vary them greatly.
     Rolling for price variance might be done if there is no in-world reason why certain things might be more or
     less expensive. If that is the case the prices vary by \(((-1)^{1d10}\cdot1d10\cdot5) \%\).
     Additionally everyone a character trades with has self interest and will keep \(5\cdot(11-\)[Negotiation-Check]\()\%\) of
     the tradevalue.\newline \newline
-    Goods, at 100\% value each line is equivalent to one another and equivalent to 1 character creation point \par
-    \begin{tabular}{r|l}
+    Goods, at 100\% value each line is equivalent to one another and equivalent to 4 character creation points \par
+    \subsubsection{Tradegoods}
+    \begin{tabular}{|r|l|}
+        \hline
         Storage & Article\\\hline
+         10g & Elixir of Life (EOL)\\\hline
         100g & Alacast\\\hline
         500g & Experimental Tech Scrap (ETS)\\\hline
         1kg & High Tech Scrap (HTS)\\\hline
+        1.5kg & Advanced Gene Therapy Medicine (AGT)\\\hline
         5kg & Medium Tech Scrap (MTS)\\\hline
+        10kg & Potent Medicine\\\hline
         50kg & Low Tech Scrap (LTS)\\\hline
+        50kg & Seeking Rockets\\\hline
+        100kg & Processed Medicine\\\hline
+        100kg & Basic Rockets\\\hline
+        100kg & Artillery\\\hline
+        200kg & Basic Medicine\\\hline
+        500kg & Improvised/Herbal Medicine\\hline
         500kg & Base Tech Scrap (BTS)\\\hline
-        1000L/1t & drinking Water (500days of drinking)\\\hline
+        500kg & Basic Ammunition\\\hline
+        1000L & drinking Water (500days of drinking)\\\hline
         500L/35kg & Liquid Hydrogen\\\hline
         1t & Coal\\\hline
-        150L & LiquidCombustionFuel\\\hline
-        200kg & High Energy Rations (0.4kg/(day\(\cdot\)person))\\\hline
-        1t & Normal Food (1.5 kg / (day\(\cdot\)person))\\\hline
+        350L & LiquidCombustionFuel\\\hline
+        100kg & High Energy Rations (0.4kg/(day\(\cdot\)person))\\\hline
+        1t & Normal Food (2.5 kg / (day\(\cdot\)person))\\\hline
         1 & Medium Quality Blueprint\\\hline
 
     \end{tabular}\par
-    If a player has a good idea maybe that.\newline
+    Open for more Suggestions\newline
     \newline
     Example:\par
     Character A wants to get rid of 5 tonnes of Base Tech Scrap in favor of more easily transportable Alacast in a local
@@ -221,129 +276,179 @@
     negotiate terms in which the merchant retains (Roll: 4, 9 \(\Rightarrow\) 9) \(5\cdot(11-9)\% = 10\%\) of the Traded
     value. He decides to trade and gets 938 grams of Alacast.\newline\newline
     \pagebreak[1]
-    \subhline{Combat}
+    \subsection{Combat}
 
-    Life:\par
+    \subsubsection{Life}
     Every entity has a pool of Hitpoints, which describes how far away that entity is from its failure point.
     In the case of a Mech, Mount or Human, that would mean being unable to fight or act in an effective manner. Living
-    entities start dying when their Life reaches 0. How fast something dies is decided by the Gamemaster who may consult a
-    Willpower-Check.\par
+    entities start dying when they have twice as many wounds as hitpoints. How fast something dies is decided by the
+    Gamemaster.\par
     If an entity gets damaged, the result of the damage roll (or the number set by the Gamemaster) is compared the results
     of rolls made by the outermost layer of defense. If the result of the damage is higher, it, depending on the
-    layer of defense, passes through or overwhelms the layer. If damage passes all layers of defense, usually one Hitpoint
-    is temporarily lost, representing the inflicted damage. \par
-    Biological Entities also receive a wound with a difficulty rating of the remaining damage result.\newline\newline
+    layer of defense, gets blocked, passes through or overwhelms the layer. If damage passes all layers of defense,
+    it causes damage of a severity of the remaining result.
+    Biological Entities for a Biological Entity this is called a wound.
 
-    Rounds:\par
-    Combat is done in rounds. Each round is usually about 3-5 seconds long. Every character present acts in turn (determined
+    \subsubsection{Rounds}
+    Combat is done in rounds. Each round is 5 seconds long. Every character present acts in turn (determined
     by circumstances or a Stealth, Perception, Willpower or other situational check) and can usually move and do an action
-    (an attack or action that can be done in the remaining time).\newline\newline
+    (an attack or action that can be done in the remaining time).
 
-    Combat against grunt groups/hordes:\par
-    The mob rolls its performance depending on their Advantage/Disadvantage\par
-    The fighting character decides (if he can, as appropriate by his gear/the situation) to fight offensively, defensively
+    \subsubsection{Combat against Groups}
+    The Group is treated as a single Enemy with its pool of Hitpoints being its members.
+    It gets offensive/defensive Levels and modifiers assigned by the Gamemaster.\\
+
+    The fighting character decides (if possible, depending on gear and situation) to fight offensively, defensively
     or passively and rolls the respective combat stat, then the differences between each of the rolled dice of the combat
     roll and the groups performance value is calculated.\par
     \begin{enumerate}[label= - ]
 
-        \item  Offensive style: For each positive difference (character roll \(>\) group performance) the character makes as
-        many group members unable to continue fighting as the difference is. The biggest negative difference (character roll
-        \(<\) group roll) is doubled and applied to the character as damage.\\
+        \item Offensive style: For every step of severity in the damage dealt (with an appropriate weapon),
+        a Group member is rendered unable to
+        fight. On Offensive rolls, the group gets a sizebonus correlating to their size and an advantage.\\
 
-        \item Defensive style: For each positive difference (character roll \(>\) group performance) the character makes one
-        group member unable to continue fighting. The difference between the best die and the group performance if negative
-        is applied to the character as damage.\\
-
-        \item Passive style: Grants one reroll and one disadvantage for the attacker. Same as defensive, but no damage is
-        inflicted.
+        \item Defensive style: Dealing damage results in a group member being rendered unable to fight.\\
     \end{enumerate}
 
-    Detailed combat:\par
-    The attacking character makes their to hit check (meele or ranged in most cases). The defending character Checks for the
-    corresponding defense (agility/dexterity for example) If the attacker wins, they hit, on a draw the
-    attack grazes. On a hit check for damage by (after calculating sizeclasses) rolling the damage level of the weapon.
-    If all levels of Defense are breached, a point of damage is inflicted.
-    \newline
-    \pagebreak[1]
-    \subhline{Health and Contamination}
+    \subsubsection{Detailed combat}
+    The attacking character makes their to hit check (dexterity for example). The defending character Checks for the
+    corresponding defense (agility for example). If the attacker wins, they hit, on a draw the
+    attack grazes. On a hit, check for damage by rolling the damage level of the weapon, subtract the result of the
+    armor roll and add difference in sizeclasses between weapon and target.
+    If all levels of Defense are breached, the remaining result of the roll is the severity of the inflicted damage.\newline
+    When sniping, The damage is not inflicted in general, but on a part of the target with a maximum depth equal to
+    the severity of the damage. For the rest see sniping.
 
-    Healing:\\
-    For Living entities Damage points are wounds with the difficulty being the remainder of the result of the damage roll
-    after all defenses were subtracted +1 for each other wound.
-    Humans roll an endurance Check per day and compare it against the difficulty of each wound, while self healing is
-    possible, success lowers the difficulty of the wound by one step, failure keeps the wounds where they are and
-    depending on the wound a score of 5 lower than the difficulty infects the wound.
-    An Infected wound requires a success to remove the infection, Infecting an already Infected wound leads to another wound
-    with half the difficulty (rounded up) of the original being created. Infected Wounds move up one difficulty each day,
-    without an upper limit.
+    \subsection{Health and Contamination}
+
+    \subsubsection{Healing}
+    For Living entities Damage points are wounds with the severity being the remainder of the result of the damage roll
+    after all defenses were subtracted +1 for each other wound.\\
+    Humans roll a fitness Check per day and compare it against the severity of each wound, while self healing is
+    possible, success lowers the severity of the wound by one step, failure keeps the wounds where they are and
+    depending on the wound and environment, a score much (usually 5) lower than the severity infects the wound.\\
+    An Infected wound requires a success while selfhealing or treatment to remove the infection, Infecting an already
+    infected wound leads to another wound with half the severity (rounded up) of the original being created. Infected
+    Wounds gain an additional level of  severity each day, starting the day they get infected without an upper limit.
     Treated Wounds not only heal one Level better, they remove the treatment instead of getting infected. Permanently
     treated wounds, can not infect. \\
     While a Human has equal to or more wounds than their Lifepool allows for, they are unconscious. At Twice that amount
     they die.
-
-    Treating of Wounds with a Profession[Medical] Check:\\\\
+    \subsubsection{Treatment}
+    Treating of Wounds with a Profession[Medical] Check, where medecine and equipment can get modifiers or Advantages.
+    Many Wounds require Medicine to be treated. Treating them without will not be possible or generate disadvantage\\\\
     \begin{tabular}{cl}
-        -1, 0 & inflict a point of damage and infect the wound\\
-        1, 2 & inflict one point of damage\\
-        3, 4 & nothing\\
-        5, 6 & treat the wound for a day\\
-        7, 8 & treat the wound  \\
-        9 & treat the wound and heal wound by 1 \\
-        0 & treat the wound permanently and heal wound by 2 \\
-        11 & treat the wound and heal all wounds by 2\\
-        12 & treat all wounds and heal all wounds by 3\\
+        0-x & inflict a point of infected damage of severity 1+x and infect the treated wound\\
+        1, 2, 3 & another wound of severity 1\\
+        4, 5, 6 & nothing\\
+        7, 8, 9 & treat the wound for a day\\
+        10 & treat the wound until infection \\
+        11 & treat the wound until infection and heal wound by 1 \\
+        12 & treat the wound permanently and heal wound by 2 \\
+        13 & treat the wound permanently and heal all wounds by 2\\
+        13+x & treat all wounds, the treated wound permanently and heal all wounds by 2+x\\
+    \end{tabular}\\\\
+    Treating Contamination is not as easy and requires 10g of Alacast. Medicine provides no Advantages or Disadvantages
+    but equipment and circumstances do. In all cases Alacast is used to precipitate Contamination from the body, the
+    crudest way is to introduce Alacast to the bloodstream to precipitate it inside the body and hope the body expels
+    it on its own, more refined ways are basically a dialysis or a very specific targetting of crystallization seeds
+    and retrieval of precipitation clusters via for example highly precise syringes. It always lowers Contamination by 1.
+    Roll might be Medicine or Red Biotech, depending on circumstances.
+        \begin{tabular}{cl}
+        0-x & inflict a point of infected damage of severity 5+x \\
+        1, 2, 3 & inflict an infected wound of severity 4 \\
+        4, 5, 6 & inflict a wound of severity 3\\
+        7, 8, 9 & inflict a wound of severity 2\\
+        10 & inflict a wound of severity 1\\
+        11 & lower Contamination by extra 1 \\
+        12 & lower Contamination by extra 2 \\
+    \end{tabular}\\\\
 
+    \subsubsection{Medicine}
+    Medicine is used while making a Treatment Check. Each Treatment of a wound using Medicine consumes
+    severity\(\cdot\)100g of the medicine and provides the specific bonus. Improvised or unprocessed Herbal medicine
+    requires a check of the related skill first (Herbal/Red Biotech/Blue Biotech and so on) and only works if the check
+    has been successfull. Herbal Medicine provides a bonus based on the degree of success of the first roll, but if the
+    roll fails the Treatment roll is made as if no medicine was present. Improvised Medicine always gives the Advantage
+    of medicine being present but migt or might not help\\
+    Reliable Medicine processed in a modern way does not exhibit variation, though AGT Medicine requires a Red Biotech
+    Roll and uses the lower value and the Elixir of Life requires a Black Biotech Roll and contaminates user and patient
+    with 10-Result extra Levels of Contamination (even being able to lower Contamination). There is no strong
+    requirement to make the rolls, not rolling however will result in a result of 0.
+    Alacast used as a Medicine does nothing for the Treatment but does provide +1 on the next daily contamination Check
+    per full Internal Contamination Level*10g used. (if contamination changes, new value counts).
+    \begin{tabular}{cl}
+        Medicine & Bonus\\
+        Herbal & X\\
+        Improvised & 0/1\\
+        Basic & 1\\
+        Processed & 2\\
+        Potent Medicine & 3\\
+        AGT Medicine & 5 or X\\
+        Elixir of Life & 10 or X\\
     \end{tabular}\\\\*
 
-
-    Categories:\\
+    \subsubsection{Categories}
     Every Character has a Category ranging from A to C. So called CatA Humans are usually Supervivo, CatBs are outlaws or
     for some reason living outside and CatCs are usually Tribals.
     Every Entity that can be affected by Contamination from buildings over technology to living things have Category ratings.
-    The Contaminationresitances of Categories A, B and C are 0, +2 and +4 respectively.\\\newline
+    The Contaminationresitances of Categories A, B and C are -1, 0 and 1 respectively.\\\newline
     \begin{tabular}{c|ccc}
-        Entity & Contamination Resistance Level & (internal) Resistance Bonus & Minimum Character Contamination\\
-        Cat A & 3 & 0 & -1\\
-        Cat B & 4 & 2 & 0\\
-        Cat C & 5 & 4 & 1\\
-        Experimental Tech & 1 & -2 \\
-        High Tech & 2 & -1 \\
-        Mid Tech & 3 & 0\\
-        Low Tech & 4 & 1 \\
-        Base Tech & 5 & 2 \\
+        Entity & Contamination Resistance Level & (internal) Resistance Bonus & Intrinsic Contamination\\
+        Cat A & 3 & -1 & 0\\
+        Cat B & 4 & 0 & 2\\
+        Cat C & 5 & 1 & 8\\
+        Experimental Tech & 1 & -1 \\
+        High Tech & 2 & 0 \\
+        Mid Tech & 3 & 1\\
+        Low Tech & 4 & 2 \\
+        Base Tech & 5 & 3 \\
     \end{tabular}\newline\newline
-    If the optional rule of compounding is used, disregard it for contamination checks (workaround)\\\newline
 
-    Contamination: \\
+    \subsubsection{Contamination}
     Contamination is a term used to describe the amalgamation of technology destroying nanoweapons, radiation, pollution
     and general environmental hazard. Contamination is airborne, waterborne, bloodborne and permeates pretty much
     everything in the environment. It is usually assigned a level describing its intensity. Only within the Domes
-    of the Supervivo, inside a Mech or in a similarily purified environment the Contaminationlevel is 0. Levels 1-4 are
-    rare areas of low Contamination, like Mines, Airlocks, outdoor markets, outdoor settlements and so on. Levels 5-8
-    are the most common and usually uninhabited by anyone but tribals and hardy Domes. Levels 9 and higher are found in
-    Oceans, Deserts, and somewhat secluded areas. There is no upper limit for Contaminationlevels. \\\\*
+    of the Supervivo, inside a Mech or in a similarily purified environment the Contaminationlevel is 0. \\
+    Levels below 0 are necessary for taking apart Experimental Tech Technology, but getting an area so pure is hard.\\
+    Levels 1-3
+    are rare areas of low Contamination, like Mines, Airlocks, outdoor markets, outdoor settlements and so on. \\
+    Levels 4-6
+    are the most common and usually inhabited by Cat-B\\
+    Levels 7-11
+    are usually inhabited by tribals but sometimes a few Cat-B have to make Camp here \\
+    Levels 12-15
+    are sparsely populated by Hardy Tribals, but usually deserted.\\
+    Levels 16 and Higher
+    are Oceans, Deserts, and other hostile areas. Weird Things happen here, but some say there is great treasure...\\
+    There is no upper limit for Contaminationlevels. \\*
 
     If an entity is in an area with Contamination, every hour it receives the local Contamination
     as Contaminationdamage.\par
 
-    Contaminationdamage: Anytime the an Entity receives Contamination damage, the character checks ther Contamination
+    \subsubsection{Contaminationdamage}
+    Anytime the an Entity receives Contamination damage, the character checks ther Contamination
     Resistance plus all applicable modifiers (external only for external Contamination/internal for both) against the
     level of damage. If the Check fails, the entity takes one point of Contamination damage (causing a wound with
     difficulty of the difference between check and Damage and raising Charactercontamination by 1, if applicable).
-    If the check fails with a difference of 10 or more, an additional point of damage is taken. \\
+    If the check fails with a difference of 10 or more, 10 are split off as additional damage. \\
     Charactercontamination is applied as an internal bonus on the Contaminationresistance Check. \\
 
     Every day before healing a Characters Contamination is applied as damage. No Charactercontamination is caused,
     but wounds are taken as normal. If the result was a draw or worse, no selfhealing is possible that day.
-    Every started hour a character directly interacts with an entity, the Charactercontamination of that character is
-    applied as Contamination damage, resisted by a Contaminationresistance of the Entity.\\\\*
+    Once per hour (about 5 minutes into it) a character directly interacts with an entity, the Charactercontamination*2
+    (+Intrinsic Contamination if handling directly) of that character is applied as Contamination damage,
+    resisted by a Contaminationresistance of the Entity. While directly contacting an entity only the internal
+    resistance applies, direct contact might be piloting a mech, using a gun or shaking someones hand, but not being in
+    a sealed cargo hold, handling a sealed gun, breathing near someone who wears a face mask, or being processed
+    by a decon machine. \\
 
-
+    \subsubsection{Seals}
     A seal of a level of X lowers the level of the Contamination behind it by X (they are usually from 6 upwards)
     Contamination still penetrates weak seals. Air has to be purified separately or enriched with oxygen.
     (One human consumes about 500-600 litres of oxygen per day.) The Domes of the Supervivo for
     example usually have a level 25 hermetical seal with purified and oxygenenriched air.\\\\*
-    Examples of human sized external contamination modifiers\\\\
+    Examples of human sized external contamination modifiers or in-place options\\\\
     \begin{tabular}{cl}
         1& An alacast infused rag or a shut wooden door (although oxygen may run out)\\
         2& a breathermask or a simple wooden door airlock (again, oxygen)\\
@@ -355,97 +460,56 @@
         8& as above + hightech air scrubber or midtech air filtering facility\\
         9& as above + full mask with air from a compressed air tank\\
        10+& specially sealed suit with airtank or hightech filtering facility\\
+    \end{tabular}\\\pagebreak\\
 
-        8+& more sophisticated methods\\
-    \end{tabular}\\\\\\*
+    \subsubsection{Average Death}
     Average death durations, mortality rate and average ending character contamination
     (with Fitness 3, 0,2,3 starting characon respectively and staying in same Contaminaion Level for one month):\\\\
-    \begin{tabular}{c|c|c}
-        Category A & Category B & Category C\\
-        \begin{tabular}{c|rlll}
-            contamination & death & mortality & wounds& characon\\
-            1              &none   	&0.0        &0.153    &0.993    \\
-            2              &416.57 	&0.014      &0.58     &2.0      \\
-            3              &347.25 	&0.256      &1.774    &3.0      \\
-            4              &271.69 	&0.783      &3.36     &3.997    \\
-            5              &144.19 	&0.993      &4.567    &4.985    \\
-            6              & 77.18 	&1.0        &5.168    &5.969    \\
-            7              & 39.85 	&1.0        &4.946    &6.96     \\
-            8              & 25.20 	&1.0        &4.701    &7.644    \\
-            9              & 18.04 	&1.0        &4.488    &7.925    \\
-            10             & 14.29 	&1.0        &4.317    &7.99     \\
-            11             & 11.72 	&1.0        &4.164    &7.892    \\
-            12             &  9.78 	&1.0        &4.03     &7.699    \\
-            13             &  8.48 	&1.0        &3.922    &7.401    \\
-            14             &  7.36 	&1.0        &3.795    &6.978    \\
-            15             &  6.64 	&1.0        &3.684    &6.53     \\
-            16             &  6.01 	&1.0        &3.581    &5.998    \\
-            17             &  5.62 	&1.0        &3.521    &5.62     \\
-            18             &  5.20 	&1.0        &3.474    &5.204    \\
-            19             &  4.90 	&1.0        &3.404    &4.897    \\
-            20             &  4.55 	&1.0        &3.329    &4.554    \\
-            21             &  4.30 	&1.0        &3.211    &4.299    \\
-            22             &  4.11 	&1.0        &3.088    &4.111    \\
-            \end{tabulr}
-            \begin{tabular}{c|rlll}
-            contamination & death & mortality & wounds& characon\\
-            5              &none   	&0.0        &0.042    &2.773    \\
-            6              &none   	&0.0        &0.172    &3.811    \\
-            7              &370.29 	&0.007      &0.459    &4.794    \\
-            8              &321.54 	&0.166      &1.319    &5.763    \\
-            9              &282.17 	&0.597      &2.986    &6.69     \\
-            10             &183.97 	&0.917      &4.642    &7.528    \\
-            11             &106.14 	&0.994      &5.59     &8.395    \\
-            12             & 67.34 	&1.0        &6.089    &9.283    \\
-            13             & 47.37 	&1.0        &6.378    &10.311   \\
-            14             & 34.73 	&1.0        &6.315    &10.943   \\
-            15             & 25.40 	&1.0        &6.197    &11.281   \\
-            16             & 20.07 	&1.0        &6.057    &11.607   \\
-            17             & 15.76 	&1.0        &5.768    &11.693   \\
-            18             & 12.35 	&1.0        &5.349    &11.518   \\
-            19             & 10.29 	&1.0        &5.064    &11.161   \\
-            20             &  9.03 	&1.0        &4.868    &10.737   \\
-            21             &  8.07 	&1.0        &4.803    &10.052   \\
-            22             &  7.36 	&1.0        &4.78     &9.355    \\
-            23             &  6.56 	&1.0        &4.723    &8.562    \\
-            24             &  5.99 	&1.0        &4.593    &7.985    \\
-            25             &  5.56 	&1.0        &4.403    &7.557    \\
-            26             &  5.20 	&1.0        &4.161    &7.196    \\
-            27             &  5.01 	&1.0        &4.007    &7.009    \\
-            \end{tabular}
-            \begin{tabular}{c|rlll}
-            contamination & death & mortality & wounds& characon\\
-            8              &none   	&0.0        &0.011    &3.531    \\
-            9              &none   	&0.0        &0.051    &4.452    \\
-            10             &none   	&0.0        &0.139    &5.466    \\
-            11             &306.67 	&0.009      &0.344    &6.422    \\
-            12             &280.00 	&0.126      &1.074    &7.34     \\
-            13             &234.72 	&0.486      &2.902    &8.251    \\
-            14             &181.68 	&0.856      &4.967    &9.101    \\
-            15             &112.55 	&0.982      &6.288    &9.943    \\
-            16             & 69.65 	&1.0        &6.927    &10.855   \\
-            17             & 52.66 	&1.0        &7.358    &11.817   \\
-            18             & 46.94 	&1.0        &7.995    &12.778   \\
-            19             & 38.37 	&1.0        &8.08     &13.55    \\
-            20             & 27.63 	&1.0        &7.744    &13.972   \\
-            21             & 21.01 	&1.0        &7.415    &14.22    \\
-            22             & 16.30 	&1.0        &6.933    &14.227   \\
-            23             & 12.33 	&1.0        &6.333    &13.801   \\
-            24             & 10.33 	&1.0        &6.069    &13.099   \\
-            25             &  9.19 	&1.0        &6.088    &12.179   \\
-            26             &  8.22 	&1.0        &6.027    &11.223   \\
-            27             &  7.40 	&1.0        &5.846    &10.401   \\
-            28             &  6.80 	&1.0        &5.585    &9.801    \\
-            29             &  6.34 	&1.0        &5.283    &9.337    \\
-            30             &  6.04 	&1.0        &5.034    &9.04     \\
-            31             &  6.00 	&1.0        &5.0      &9.001    \\
 
-        \end{tabular}\\&&
-    \end{tabular}\\
+    \begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}}lcrc}
+        &Category A & Category B & Category C&\\
+    \end{tabular*}\\
+     \begin{tabular}{c|rlll|rlll|rlll}
+C & death & mortality & wounds & con & death & mortality & wounds & con &death & mortality & wounds & con\\
+0  &none   	&0    \% &     0 &     0 &none   	&0    \% &     0 &     2 &none   	&0    \% &     0 &     3\\
+1  &none   	&0    \% &     0 &  0.93 &none   	&0    \% &     0 &     2 &none   	&0    \% &     0 &     3\\
+2  &398.40 	&0.5  \% &     0 &     2 &none   	&0    \% &     0 &     2 &none   	&0    \% &     0 &     3\\
+3  &360.86 	&25.2 \% &     1 &     3 &none   	&0    \% &     0 &     2 &none   	&0    \% &     0 &     3\\
+4  &262.98 	&82.2 \% &     3 &     4 &none   	&0    \% &     0 &     2 &none   	&0    \% &     0 &     3\\
+5  &145.98 	&99.2 \% &     4 &     5 &none   	&0    \% &     0 &   2.5 &none   	&0    \% &     0 &     3\\
+6  & 74.76 	&100  \% &     5 &     6 &none   	&0    \% &     0 &   3.6 &none   	&0    \% &     0 &     3\\
+7  & 40.91 	&100  \% &     4 &     7 &302.00 	&1.2  \% &     0 &   4.7 &none   	&0    \% &     0 &     3\\
+8  & 24.86 	&100  \% &     4 &   7.6 &314.20 	&14.2 \% &     1 &   5.8 &none   	&0    \% &     0 &   3.3\\
+9  & 17.93 	&100  \% &     4 &   7.9 &283.16 	&61   \% &     3 &   6.7 &none   	&0    \% &     0 &   4.2\\
+10 & 14.29 	&100  \% &     4 &     8 &195.13 	&92.9 \% &     4 &   7.5 &none   	&0    \% &     0 &   5.3\\
+11 & 11.63 	&100  \% &     4 &   7.9 &107.89 	&99.1 \% &     5 &   8.4 &358.00 	&1.2  \% &     0 &   6.4\\
+12 &  9.80 	&100  \% &     4 &   7.7 & 65.74 	&100  \% &     6 &   9.3 &265.29 	&13   \% &     1 &   7.4\\
+13 &  8.52 	&100  \% &     3 &   7.4 & 47.70 	&100  \% &     6 &    10 &229.25 	&45.1 \% &     2 &   8.2\\
+14 &  7.42 	&100  \% &     3 &     7 & 34.66 	&100  \% &     6 &    11 &183.48 	&85.1 \% &     4 &   9.1\\
+15 &  6.59 	&100  \% &     3 &   6.5 & 25.85 	&100  \% &     6 &    11 &117.52 	&98.7 \% &     6 &   9.9\\
+16 &  6.00 	&100  \% &     3 &     6 & 19.90 	&100  \% &     6 &    12 & 70.58 	&100  \% &     6 &    11\\
+17 &  5.54 	&100  \% &     3 &   5.5 & 15.58 	&100  \% &     5 &    12 & 53.38 	&100  \% &     7 &    12\\
+18 &  5.21 	&100  \% &     3 &   5.2 & 12.50 	&100  \% &     5 &    12 & 46.93 	&100  \% &     7 &    13\\
+19 &  4.84 	&100  \% &     3 &   4.8 & 10.28 	&100  \% &     5 &    11 & 37.97 	&100  \% &     8 &    14\\
+20 &  4.56 	&100  \% &     3 &   4.6 &  8.95 	&100  \% &     4 &    11 & 27.45 	&100  \% &     7 &    14\\
+21 &  4.28 	&100  \% &     3 &   4.3 &  8.11 	&100  \% &     4 &    10 & 21.14 	&100  \% &     7 &    14\\
+22 &  4.09 	&100  \% &     3 &   4.1 &  7.32 	&100  \% &     4 &   9.3 & 16.15 	&100  \% &     6 &    14\\
+23 &  4.00 	&100  \% &     3 &     4 &  6.59 	&100  \% &     4 &   8.6 & 12.41 	&100  \% &     6 &    14\\
+24 &  4.00 	&100  \% &     3 &     4 &  5.97 	&100  \% &     4 &     8 & 10.36 	&100  \% &     6 &    13\\
+25 &  4.00 	&100  \% &     3 &     4 &  5.54 	&100  \% &     4 &   7.5 &  9.18 	&100  \% &     6 &    12\\
+26 &  4.00 	&100  \% &     3 &     4 &  5.20 	&100  \% &     4 &   7.2 &  8.24 	&100  \% &     6 &    11\\
+27 &  4.00 	&100  \% &     3 &     4 &  5.01 	&100  \% &     4 &     7 &  7.42 	&100  \% &     5 &    10\\
+28 &  4.00 	&100  \% &     3 &     4 &  5.00 	&100  \% &     4 &     7 &  6.79 	&100  \% &     5 &   9.8\\
+29 &  4.00 	&100  \% &     3 &     4 &  5.00 	&100  \% &     4 &     7 &  6.32 	&100  \% &     5 &   9.3\\
+30 &  4.00 	&100  \% &     3 &     4 &  5.00 	&100  \% &     4 &     7 &  6.04 	&100  \% &     5 &     9\\
+31 &  4.00 	&100  \% &     3 &     4 &  5.00 	&100  \% &     4 &     7 &  6.00 	&100  \% &     5 &     9\\
+        \end{tabular}\\
 
-    \subhline{Tech}
+
+    \subsection{Tech}
     Electrolysis splits 1 L H2O into 622.22 L Oxygen und 1244.4 using 3.7037 kwh\\
-    Blueprints:\\
+    \subsubsection{Blueprints}
+(rework on its way)
     Blueprints are required for building(engineering) tasks. To create a blueprint a character needs the appropriate materials
     (usually a computer of some sort) the time required is based on the complexity of the project. To find out if the
     blueprint is within the capabilities of the character check their specific Knowledge against the difficulty of the
@@ -455,19 +519,20 @@
     Even a blueprint with a negative bonus is useful, since it enables the ability to build the item in question at all.\\
     A blueprint states the name of the Item, its category and the required materials.\\\\
 
-    Engineering:\\
+    \subsubsection{Engineering}
+(rework on its way)
     Building something requires a blueprint, the required materials, a workshop or something similar. Check Engineering
     modified by the blueprint bonus and the conditions (having nothing but a makeshift wrench in the desert might be -5, having state of the art
-    tools in an antigravpowered workshop might be +3). The finished product is [check result * 10\%] Efficient.
+    tools in an antigravpowered workshop might be +3). The finished product is [check result \(\cdot\) 10\%] Efficient.
     (for example damage per round, Coverage, poweroutput and so on)\\\\
 
 
-    \headline{Character Creation}
+    \section{Character Creation}
     [rework mostly done]
     First, get a general idea who your character is and what they do. Note your Character name, your name, the name of the
     Campaign and your concept for the character on the Sheet. This will help you choose in the following steps.
 
-    \subhline{Step 1 - Categories}
+    \subsection{Step 1 - Categories}
 
     Choose Category:\\\\
     If you have grown up without being in contact with Contamination you are probably a Dome dwelling Category A Supervivo. \\
@@ -495,7 +560,7 @@
     Note your Category and Lifepoint maximum on your Sheet. You may choose your starting Contamination from 0-5 at no cost and note
     it as well. (although you will start dying if it is too much, read up on Charactercontamination in the chapter Contamination)\\
 
-    \subhline{Step 2 - Abilities}
+    \subsection{Step 2 - Abilities}
     Prioritize Social, Physical, Mental, Experience and Training in the order that you think they are most
     usefull to your character concept in. \newline
     In your primary priority you get 25 points, in your secondary priority you get 20 points and in your tertiary
@@ -504,10 +569,15 @@
     in Everything. Raising Fitness From one to 4 would cost 2+3+4 = 9 points.\newline
     With Experience You can Pick a Profession, for example Engineer, Medic, Scientist, or a Knowledge for Example
     Geology, Local History Italy, Quantum Mechanics, High Tech Shields, and Note them on Your Character Sheet. They start at
-    0. Professions cost the same as Abilities, Knowledges Cost one point per Level. (Knowledges need to be narrow enough,
+    0. Professions are Abilities, Knowledges are Skills and cost one point per Level. (Knowledges need to be narrow enough,
     Knowledge about Technology needs to be specified to Category of Technology and Techlevel. Related Knowledges might give
-    a lesser advantage.)
-    With Training you can apply your point to the Skilltrees above.
+    a lesser advantage.)\\
+
+    In the Training Category you can apply your points to the Tech Abilities or the skills from the Skilltree.
+    Every Skill is capped at the level of the node above it. If a Characters Weapon Level is 3, the Characters Projectile
+    Level can not exceed 3. The Skill Direct(Projectile Weapons) itself, in turn can not exceed the Projectile Level.\\
+
+
     Unspent Points remain. Every point requires some sort of mention in the Backstory of the Character, more than 3 points
     in something require a good reason which intertwines with the story of the Character.
 
@@ -516,20 +586,21 @@
     years of study, a new Training either needs a Teacher or a long time\\
 
 
-    \subhline{Step 3 - Endworldpoints}
+    \subsection{Step 3 - Finishing touches}
     You get 80 Credits, you can spend these on:
     Your Mech (see below)\\
-    Goods (see table in chapter Trade)\\
-    XP (1 XP for 5 credits)\\
+    Goods 1:4 (see table in chapter Trade)\\
+    XP (1 XP for 10 credits)\\
 
-    ---Mech\newline
+    \section{Mechs}
 
-    [human is roughly 1]\par
-    Sizes:\newline
+    \subsection{Sizes}
+    [human is roughly 0.75]\par
     \begin{tabular}{r|l}
         Sizeclass &Mechclass \\
-        1-3 &Exo\\
-        4-5 &Tiny\\
+          0 &Human\\
+        1-4 &Exo\\
+        5-9 &Tiny\\
         6-7 &Very Light\\
         8-9 &Light\\
         10-11 &Medium\\
@@ -537,47 +608,41 @@
         16-20 &Very Heavy\\
         21+ &Beyond\\
     \end{tabular}\newline
-    Mechs have (SizeClass+(SizeClass+1))/2 Modules. Modules are listed below. \par
+    Mechs have up to (SizeClass+(SizeClass+1))/2 Modules. Each modules weighs about 1 ton, Modules are listed below. \par
     A Mech has an effective Tech Level of the Tech at the 80\% point (of modules ordered by Tech Level).\newline
     Contamination Damage applies to the highest Tech modules first. Each Module can be damaged individually.\newline
     [rework in progress]\newline
     \newline
 
+    \subsection{Systems}
+    A Mech needs a movement system, a seal and energy and heat systems and should probably have weapons and Supportsystems\newline
+    Armor, Shields and Movement Systems cant function together, You can switch between Movement Systems and designate the
+    Order of Layers of Defense (damage taken by one armor, damages all armors though.)
+    threshholds: percentage of movement system on mech for movement speeds. Cargo holds count as 8\% lighter per
+    free space\newline
 
     Most Values given in the format A/B denote the passive value A / second and the active Value B/ second, \\
     for Fuel Consumption is given in Cargo per day / Cargo per minute.
     For Speeds are in km/h.
+
+    \subsubsection{Costs}
     Systems(not all of these are in the game right now)\newline
     \begin{tabular}{c|c|l}
-        Tech    & Endworld Point Cost    & Examples\\
-        B    &    2        &    \makecell*[{{p{12cm}}}]{Water Destillery, Rail based movement system, simple wheels,
+        Tech    & Credits Cost    & Examples\\
+        B    &    4        &    \makecell*[{{p{12cm}}}]{Water Destillery, Rail based movement system, simple wheels,
         Manned gun, Ramshield, Floatation,   Metal Armorplating , Extra Cargo (10), steam engine, passive cooling}\\&&\\
-        L    &    3        &    \makecell*[{{p{12cm}}}]{Lowtech Detox-Decon Equip(LDDE; +1), suspended wheels, tracks,
+        L    &    5        &    \makecell*[{{p{12cm}}}]{Lowtech Detox-Decon Equip(LDDE; +1), suspended wheels, tracks,
         bipedal, Dynamo , Autoturret, Jumpjets, Mech sized Sword, water cooling circle, basicHeatsink }\\&&\\
-        M    &    4        &    \makecell*[{{p{12cm}}}]{Shields, flexible/balanced bipedal, Boostjets,
+        M    &    6        &    \makecell*[{{p{12cm}}}]{Shields, flexible/balanced bipedal, Boostjets,
         Deployable Solar Panel, Sensorarray,  MDDE (+2), Base AI system, Mech sized Weaponry (Advanced
         (Vibro/electro/Monofilament) Sword), Rocketlauncher, Water venting system, midtech Heatsink}\\&&\\
-        H    &    5        &    \makecell*[{{p{12cm}}}]{BCI, Advanced AI, WeaponLaser, Sustained Flight,  Advanced
+        H    &    7        &    \makecell*[{{p{12cm}}}]{BCI, Advanced AI, WeaponLaser, Sustained Flight,  Advanced
         Shields, Nano Repair Cloud, Automedic, OVERDRIVE mode, Hightech Heatsink}\\&&\\
-        E    &    6        &    \makecell*[{{p{12cm}}}]{Quantum Lookahead Sensors, Blink Teleporter, Timerift Shields
+        E    &    8        &    \makecell*[{{p{12cm}}}]{Quantum Lookahead Sensors, Blink Teleporter, Timerift Shields
         (Delays Damage 1d10 rounds), EnergySword}
     \end{tabular}\\\\[12mm]
 
-    Systems:\\
-    A Mech needs a movement system, a seal and energy and heat systems and should probably have weapons and Supportsystems\newline
-    threshholds: percentage of movement system on mech for movement speeds. Cargo holds count as 8\% lighter per
-    free space\newline
-    \begin{tabular}{c|c|c|c}
-        speed       &Level  &needed\%& speed\% \\\hline
-        lumbering   &1      &5\%     &33\%\\
-        slow        &2      &15\%    &75\%\\
-        normal      &3      &25\%    &100\%\\
-        fast        &4      &35\%    &150\%\\
-        rapid       &5      &45\%    &200\%\\
-    \end{tabular}\\
-    Accelleration is the modified maximum speed divided by 5 per round unless otherwise stated
-
-    Chassis+Movement Systems:\\
+    \subsection{Movement Systems}
     \begin{tabular}{l|lcccl}
         Type    &Modes &Energy &Heat &Speed &Extra\\
         \hline
@@ -596,7 +661,7 @@
         & Harsh Terrain&1/2&1/2& 10/50 &\\
         bipedal                   & Ground &0.1/0.8&0.1/0.5& 3/30 & Full Dodge\\
         &&&&&Min Tracking: Speed\\
-        &&&&&2 Arms with rough Grippers\\
+        &&&&&2 Arms with rough Gripper\\
         jumpjets                  & Air &0/10&0/10&0/50& Counts triple for speed percentage\\
         \hline
         Midtech\\
@@ -610,22 +675,32 @@
         Spiderwalker              & Surfaces &0.8/2 &1/3& 5/50 &moves on any surface\\
         &&&&& ...many legs
     \end{tabular}\\
-    Seals:\\
+    \subsubsection{Requirements}
+    \begin{tabular}{c|c|c|c}
+        speed       &Level  &needed\%& speed\% \\\hline
+        lumbering   &1      &5\%     &33\%\\
+        slow        &2      &15\%    &75\%\\
+        normal      &3      &25\%    &100\%\\
+        fast        &4      &35\%    &150\%\\
+        rapid       &5      &45\%    &200\%\\
+    \end{tabular}\\\newline\\
+    Accelleration is the modified maximum speed divided by 5 per round unless otherwise stated
+    \subsection{Seals}
     \begin{tabular}{l|r|r}
         Tech & Seal Level & Cost(round up)\\\hline
-        Base &  6 &  0.05*Module\\
-        Low &   13&  0.15*Module\\
-        Mid &   21&  0.25*Module\\
-        High &  30&  0.35*Module\\
-        Experimental & 50&0.5*Module\\
+        Base &  6 &  3+0.1*Module\\
+        Low &   13&  7+0.2*Module\\
+        Mid &   21&  12+0.3*Module\\
+        High &  30&  18+0.4*Module\\
+        Experimental & 50&30+0.8*Module\\
     \end{tabular}\\
-    Heatsystems:\\
+    \subsection{Heatsystems}
     \begin{tabular}{r|lllll}
         Type & Storage & Dissipation & Signature &Costs &Extra\\
         \hline Basetech\\
         Small Heatsink & 15 & 0.2 &Storage\\
         \hline Lowtech\\
-        Radiator Vent & 6 & 1/6& Vented\(\cdot\)2&0.2/0.8\\
+        Radiator Vent & 3 & 1/6& Vented\(\cdot\)2&0.2/0.8\\
         Large Heatsink & 20 & 0.2[15]0.5 &Storage\\
         \hline Midtech\\
         Optimized heatsink & 25 & 0.4[15]0.8[25]1 &Storage\\
@@ -645,7 +720,7 @@
         &&&&&(requires Level 4 Specialty Gadgets)\\
     \end{tabular}\\
 
-    Energy:\newline
+    \subsection{Energysystems}
     \begin{tabular}{l|cccll}
         Type & Energy & Heat & Storage & Consumption & Special\\
         \hline Basetech \\
@@ -655,7 +730,7 @@
         &&&&&Heat 2:1 while retreiving\\
         Crank & 0/0.001&0/0&&Manual Labor&Size 0.01\\
         \hline Lowtech \\
-        Combustion Motor& 0.5/3 & 0.5/3& & 0.2/0.1 & Fuel:CombustionFuel\\
+        Combustion Motor& 0.5/3 & 0.5/3& & 0.01/0.005 & Fuel:CombustionFuel\\
         \hline Midtech \\
         PEM & 0.5/3.5 & 0.1/0.5 & & 0.05/0.02 & Fuel: HFC\\
         Solar Panel & 0/0.03 & 0/0 & 50 E & Sunlight & Contamination might lower yield\\
@@ -671,9 +746,8 @@
 
     a 10L-HydrogenFuelCell(HFC-10) Cylinder 20cm diameter, 38 cm height =11.94L(Midtech),
     used to power up basic systems (like hydrogen gas pumps for the PEM Stacks)
-    \vspace{0.5cm}\\
-    Shields\newline
 
+    \subsection{Shieldsystems}
     ShieldModules can be dedicated to specific Tasks, usually
     Coverage (C) and Reboot(R), the total amount of Modules is referred to as M, while
     X relates to Special, see below the Table\newline
@@ -684,12 +758,11 @@
         &&&block&&& Check[Engineer](5) \\
         \hline Lowtech\\
         Deflector & X & 1E/5E+3H & - & radius 2\(\cdot\)C m & 10s & instant \\
+        Basic Shield & 1 & 0.5E/0.2E & \makecell{5H, dampen, \\disable}&12+C\(\cdot\)8 & C-R + 5E & 5r \\
         \hline Midtech\\
-        Shield & 2 & 1/0.5 (2H) & 7H, dampen & 10+coverage\(\cdot\)13 & 15/R (round up) & 10 E \\
-        & & & disable\\
+        Shield & 2 & 1/0.5(2H) & \makecell{7H, dampen,\\disable} & 10+C\(\cdot\)13 & 12/R (round up) & 10 E \\
         \hline Hightech\\
-        Advanced Shield & 4 & 1/2(3H) & 15H, block,& 15+coverage\(\cdot\)10 & 8-R+ 10E & 5 \\
-        &&& disable\\
+        Advanced Shield & 4 & 1/2(3H) & \makecell{15H, block,\\disable}& 15+C\(\cdot\)10 & 8-R + 10E & 5r \\
     \end{tabular}\newline\newline\newline
     Level: see 3d10 Table in the beginning of the Book\\
     Cost: for Charging/Active states, per round\\
@@ -702,7 +775,7 @@
     \newline
     Strain: Heat Costs in Parenthesis are generated everytime the shield successfully blocks damage. D is the Incoming damage.
     \pagebreak[2]
-    Armor\newline
+    \subsection{Armor}
     \begin{tabular}{c|cccll}
         Type & Level & HP & Coverage & Damage & Special\\
         \hline BaseTech&&&&&\\
@@ -716,49 +789,52 @@
         Speed & 2 & 3 & 20+7M & brick 50\% & \makecell[{{p{6cm}}}]{1E/50km/h; \\Vent 1H/ 50 km/h \\
         (increase signature by vented Amount) \\30m 0.1MTS Check[Engineer]\\(>=9 to fix; <=5 to destroy)}\\
         \hline Hightech &&&&&\\
-        Advanced & 4 & X & 15+6\(\cdot\)M & \makecell[l]{shorts out \\ 1 Energy System}&\makecell[{{p{6cm}}}]{
-        1h Check[Electronics] \\(>=8 to fix; <=2 to destroy)}\\&\\
-    \end{tabular}
-    Weapons\newline
+        Advanced & 5 & X & 10+15\(\cdot\)M & \makecell[l]{shorts out \\ 1 Energy System}&\makecell[{{p{6cm}}}]{
+        1h Check[Electronics] \\(>=8 to fix; <=2 to destroy)}\\
+    \end{tabular}\\\newline\newline
+    \subsection{Weapons}
     Weapon modules can also be dedicated\newline
     Melee weapons rely on the movement System, so their costs are in meters that are used to attack rather than move\newline
     \begin{tabular}{c|cccclll}
-        Type & Level & Size &\makecell{Size\\Class} & \makecell{Damage\\Type} & Costs & Range &Check\\
+        Type & Level & Size &\makecell{Size\\Class} & \makecell{Damage\\Type} & Costs & Falloff &Check\\
         \hline BaseTech&&&&&\\
-        Metal Sword & 2 & M & 1*S & P&  30 m & 2m*S & Piloting \\
-        Manned Turret & X & 1 & < 2 & X & \makecell[l]{manual \\labor +X} &  X & \makecell[{c}{p{3cm}}]{X}\\
+        Metal Sword & 2 & M & 2*S & P S &  30 m & 2m*S & Piloting \\
+        Manned Turret & X & 1 & X & X & \makecell[l]{manual \\labor +X} &  X & \makecell[{c}{p{3cm}}]{X}\\
         \hline Lowtech &&&&&\\
-        Heavy Machinegun & 3 & 1 & 2 & P R& 0.5H 0.005A & 50/100/200/500/1000 & Projectile.Direct\\
+        Heavy Machinegun & 4 & 1 & 3 & P R & 0.5H 0.005A & 50/100/200/500/1000 & Projectile.Direct\\
         Light Artillery & 3 & 4 & 15 & P A & 5E 10H 0.2A & 1k/3k/5k/7k/10k & Projectile.Indirect \\
+        120mm Smoothbore & 5 & 4 & 8 & P S & 5H 0.05A & 500/1k/2k/3k/4k & Projectile.Direct\\
         \hline Midtech &&&&&\\
-        Autocannon & \makecell[c]{~2/\\4} & 3 & 5 & \makecell[c]{P/\\P R} &\makecell[l]{0E 2H 0.01A /\\1E 5H 0.15A }& per 400m & Projectile.Direct\\
-        Basic Pulse Laser & 1 & 2 & 5 & E S & 5E 8 H & per 1k & Energy.Pulse\\
-        Precision Cannon & 2 &3& 8 & P S & 5E 10H 0.1A & per 1k & Projectile.Direct\\
-        Rocket Launcher & 4 & 2 & 5 & P S & 5H 0.12A &per 300m & Rocket.Dumbfire\\
+        Autocannon & \makecell[c]{~2/\\4} & 3 & 7 & \makecell[c]{P/\\P R} &\makecell[l]{0E 2H 0.01A /\\1E 5H 0.15A }& per 400m & Projectile.Direct\\
+        Basic Pulse Laser & 2 & 2 & 9 & E S & 5E 8 H & per 200 & Energy.Pulse\\
+        Precision Cannon & 2 & 3 & 13 & P S & 5E 10H 0.1A & per 1k & Projectile.Direct\\
+        Rocket Launcher & 4 & 2 & 15 & P S & 5H 0.12A &per 300m & Rocket.Dumbfire\\
         \hline Hightech &&&&&\\
-        Rocket Platform & 3 & 3 & 7 & P S A & 5H 0.2A & - & Rocket.Guided \\
-        Railgun & 2 &5& 10 & P S & 15E 5H 0.01 A& 100/1k/3k/8K/20k & Projectile.Direct\\
-        Advanced Pulse Laser    & 1 & 3 & 7 & E S/R & 7E 8H  &per  2k & Energy.Pulse \\
-        Ramping Beam Laser              & X & M & 3 & E R        & XE 2XH & per 1k & Energy.Beam \\
-    \end{tabular}\newline
+        Rocket Platform & 3 & 3 & 16 & P S A & 5H 0.2A & - & Rocket.Guided \\
+        Railgun & 2 &5& 14 & P S & 15E 5H 0.01 A& 100/1k/3k/8K/20k & Projectile.Direct\\
+        Advanced Pulse Laser & 0 & 3 & 11 & E S/R & 7E 8H  &per 400 & Energy.Pulse \\
+        Ramping Beam Laser & X & 2X & 3 & E R        & XE 2XH & per 5k & Energy.Beam \\
+    \end{tabular}\newline\newline\newline
     Specials:
     Swords: Pierce Shields that are not modulated to their damage type\\
     Manned Turret: X Depends on the mounted gun and the skill of the gunner\\
     Light Artillery: Attacks take 1s per 300m distance, rounded up, minimum range 100m\\
+    120mm Smoothbore: Can only fire every second round, requires Indirect for targets further away than 2k\\
     Autocannon: for Burst (alternative values) mode Mech has to stand\\
-    Basic Pulse Laser: damage falls off by 1 every 200 m \\
+    Basic Pulse Laser: only sizeclass falls off\\
     Precision Cannon: Allows Sniping \\
     Rocket Launcher: Ignores Shields \\
     Rocket Platform: Ignores Shields, Will hit if Lock is sustained (Roll strengthens Lock)\\
     Railgun: requires Indirect for targets further away than 2k, allows sniping\\
-    Advanced Pulse Laser: damage falls off by 1 every 1k \\
-    Ramping Beam Laser: X goes up when shooting, goes down when not shooting, X is capped at M, allows sniping\\
+    Advanced Pulse Laser: only sizeclass falls off\\
+    Ramping Beam Laser: X goes up when shooting, goes down when not shooting, X is capped at M, allows sniping,
+            only sizeclass falls off\\
 
 
-    Misc Modules\newline
+    \subsection{Misc Modules}
     If a Module is smaller than a Module slot its size is less than 1
     \newline
-    Basetech \newline
+    \subsection{Basetech}
     Water Distillery \\
     Energy Cost: 2\\
     Heat: 10\\
@@ -769,7 +845,7 @@
     Cargo compartment\\
     Cargo Space: 10 \\
     \newline
-    Lowtech \newline
+    \subsection{Lowtech}
     Basic Food Processor\\
     Energy Cost per operation: 1800 (3e/s)\\
     Heat: 5/s \\
@@ -799,7 +875,7 @@
     Provides Targetting Lock is obtained\\
     Visual Lock: Distance/Rating <= Target Size (+Camouflage and visual impairments)\\
     \newline
-    Thermal Sensors
+    Thermal Sensors\\
     Energy: 1\\
     Size 0.25\\
     Rating 100\\
@@ -810,7 +886,7 @@
     Energy: 0.1\\
     Module: Processor or Memory\\
     \newline
-    Midtech \newline
+    \subsection{Midtech}
     ComputerSystem:
     Size: 0.1
     Energy: 0.1
@@ -822,8 +898,8 @@
     Module: Processor\\
     Requires Black Biotech 3\\
     \newline
-    Extended Decon Equipment
-    Energy Cost per Operation: 36k (10/s)
+    Extended Decon Equipment\\
+    Energy Cost per Operation: 36k (10/s)\\
     Alacast Cost per Operation: 5g\\
     Size: 0.75
     Allows to turn Contaminated Objects into uncontaminated Objects at the rate of 100kg/h if suitable\\
@@ -842,12 +918,15 @@
     Automedic:
     Energy Cost: 6k(variable - 10/s for 10 min)\\
     Size: 0.75\\
-    Allows Medic Rolls/ Assissts Medic Rolls/ Applies uses less Medicine\\
-    Rolls Red Biotech -1 as Medic roll. Instead if a Medic is present that medic gets +1. uses Half the normal amount of Medecine.\\
-    Software may use the Automedic to give Further bonuses, or use it autonomously.\\
-    Requires Red Biotech 3\\
-    \newline
-    Hightech\newline
+    Supplies tools of Medic/ supplies good operating conditions for Medic / reduces the use of Medicine by half / allows stasis\\
+    Roll Red Biotech, if the roll surpasses the wound, supplies an operating character with a temporary Medic skill and
+    double Advantage or autonomously attempts the procedure at Level 3 mod -1.\\
+    If not, Instead supplies one Advantage.\\
+    Software may supply the Red Biotech roll even autonomously.\\
+    Stasis is automatic and slows down the daily/hourly tickrate (including Healing and Contamination) by a factor of 10
+    (additive) for every energy point per second. This is a medical coma, not timedilation.
+
+    \subsection{Hightech}
     Advanced Detox-Decon Equipment \\
     Size: 1\\
     Energy Cost per Operation 72k (variable 20/s for 1 h)\\
@@ -860,13 +939,18 @@
     Advanced AutoMedic\\
     Energy Cost: 3k (variable - 5/s for 10 min)\\
     size: 1\\
-    Rolls Red Biotech as Medic roll. Instead if a Medic is present that medic gets +2. uses 10\% the normal amount of Medecine.\\
-    Software may use the Automedic to give Further bonuses, or use it autonomously.\\
-    Ressurrection is Possible, Costs for Resurrection are 100k Energy, as much of the Corpse as possible, as Fresh as Possible.
-    Every 15\% missing or order of magnitude in days that has passed lowers the final score by 1. \\
-    If the Final Score of a Red Biotech (with 1 Reroll for every Advanced Medecine) is 0 or below, the Corpse is destroyed.\\
-    If it is 3 or above, the Corpse is resurrected (and looses Abilities/Skills/Professions/Knowledges as the gamemaster sees fit)\\
-    Software can also utilize the Advanced AutoMedic\\
+    Allows Medic Rolls/ supplies very good operating conditions for Medic Rolls/ reduces the use of Medicine by 90\%/allows Ressurection\\
+    To Treat a wound:\\
+    Roll Red Biotech, if the roll surpasses the wound, supplies an operating character with a temporary Medic skill and
+    triple Advantage or autonomously attempts the procedure at Level 4 mod -1.\\
+    If not, Instead supplies one Advantage or autonomously attempts the procedure at Level 2.\\
+    Software may supply the Red Biotech roll even autonomously.\\
+    To Ressurect:\\
+    requires 1g of EOL per total spent points on a character (or 20* the average level of an NPC)
+    Roll Black Biotech, every 15\% missing from the corpse or order of magnitude in days that has passed since the time of death
+    lowers the final score by 1. If the roll succeeds, place 5 wounds of severity 15-result on that character, they lose
+    one level from the highest Ability and one from the highest Skill and are alive again. If the roll does not succeed,
+    5\% of the total corpse and the dosage of EOL is lost.
     \newline
 
 
