@@ -25,20 +25,22 @@ def d10(amt, diff, ones=True):  # faster than the WoDDice
     else:
         return succ
 
+
 def d10h(amt, diff=0):
-    x = [random.randint(1,10) for i in range(abs(amt))]
-    if amt >0:
-        for i in range(1,12):
+    x = [random.randint(1, 10) for i in range(abs(amt))]
+    if amt > 0:
+        for i in range(1, 12):
             if x.count(i) > 1:
-                x.append(i+(x.count(i)-1))
-        return max(x)-diff
-    elif amt <0:
+                x.append(i + (x.count(i) - 1))
+        return max(x) - diff
+    elif amt < 0:
         for i in reversed(range(11)):
             if x.count(i) > 1:
-                x.append(i-(x.count(i)-1))
-        return min(x)-diff
+                x.append(i - (x.count(i) - 1))
+        return min(x) - diff
     else:
         return max(x)
+
 
 def plot(data):
     success = sum([v for k, v in data.items() if k > 0])
@@ -47,7 +49,7 @@ def plot(data):
     total = sum([v for k, v in data.items()])
     pt = total / 100
     print("Of the %d rolls, %d where successes, %d where failures and %d where botches, averaging %.2f" % (
-        total, success, zeros, botches, (sum([k * v for k, v in data.items()])/total)))
+        total, success, zeros, botches, (sum([k * v for k, v in data.items()]) / total)))
     print("The percentages are:\n+ : %.3f%%\n0 : %.3f%%\n- : %.3f%%" % (success / pt, zeros / pt, botches / pt))
     width = 1
     barsuc = int((success / pt) / width)
@@ -56,18 +58,17 @@ def plot(data):
     print("+" * barsuc + "0" * barzer + "-" * barbot)
     lowest = min(data.keys())
     highest = max(data.keys())
-    for i in range(lowest, highest+1):
+    for i in range(lowest, highest + 1):
         if i == 0:
             print()
-        print("%2d : %7.3f%% " % (i, data.get(i,0) / pt), end="")
-        print("#" * int((data.get(i,0) / pt) / width))
+        print("%2d : %7.3f%% " % (i, data.get(i, 0) / pt), end="")
+        print("#" * int((data.get(i, 0) / pt) / width))
         if i == 0:
             print()
 
 
 def run():
-
-    roller = d10    
+    roller = d10
     if len(sys.argv) > 2:
         roller = d10h
         duration = float(sys.argv[1])
@@ -76,7 +77,7 @@ def run():
         print("usage: <duration> <dice> <difficulty> [c/h] [compare roll]")
         exit()
     if len(sys.argv) == 4:
-        roller=d10
+        roller = d10
         difficulty = int(sys.argv[3])
     if len(sys.argv) == 5:
         if sys.argv[4] == "h":
@@ -84,15 +85,22 @@ def run():
     successes = DefaultDict(lambda: 0)
     i = 0
     time1 = time.time()
+    compare = len(sys.argv) > 4 and sys.argv[4] == "c"
     while True:
         i += 1
-        if len(sys.argv) > 4 and sys.argv[4] == "c":
+        if compare:
             difficulty = roller(int(sys.argv[5]))
         successes[roller(amount, difficulty)] += 1
         if i % 10000 == 0:
             if time.time() - time1 >= duration:
                 break
-    print("rolling %d dice against %d for %.1f seconds" % (amount, difficulty, duration))
+
+    print("rolling %+d %s against %+d %sfor %.1f seconds" % (
+    amount,
+    "dice" if not compare else "advantage",
+    difficulty if not compare else int(sys.argv[5]),
+    "" if not compare else "advantage ",
+    duration))
     plot(dict(successes))
 
 
