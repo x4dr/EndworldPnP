@@ -58,7 +58,6 @@
 
     This System uses 3 ten sided dice. A Check is a roll of one to three D10, interpreted
     in a certain way, with the result describing how successfull on a scale of 1-10 the attempted action was.
-    1-4 are usually bad, 5 is usually neutral and above that are usually degrees of success.
     This may change depending on situation. \par
     The number of dice rolled and the way they are interpeted varies with Advantage.
     Circumstances that are favourable for the action may give Advantage, while circumstances
@@ -177,6 +176,12 @@
     .3 Usage.
     .3 Analysis.
     .3 Integration.
+    .2 Biotech Abilities.
+    .3 Red.
+    .3 Green.
+    .3 Blue.
+    .3 White.
+    .3 Black.
     .2 Mech Skills.
     .3 Weapons Expertise.
     .4 Laser.
@@ -218,12 +223,6 @@
     .5 Communications.
     .5 Reprocessing.
     .5 Utility Movement.
-    .4 Biotech.
-    .5 Red.
-    .5 Green.
-    .5 Blue.
-    .5 White.
-    .5 Black.
     }
     \pagebreak
     \subsection{Trade}
@@ -235,49 +234,54 @@
     the tradevalue.\newline \newline
     Goods, at 100\% value each line is equivalent to one another and equivalent to 4 character creation points \par
     \subsubsection{Tradegoods}
-    \begin{tabular}{|r|l|}
+    \begin{tabular}{|r|r|l}
         \hline
-        Storage & Article\\\hline
-         10g & Elixir of Life (EOL)\\\hline
-        100g & Alacast\\\hline
-        500g & Experimental Tech Scrap (ETS)\\\hline
-        1kg & High Tech Scrap (HTS)\\\hline
-        1.5kg & Advanced Gene Therapy Medicine (AGT)\\\hline
-        5kg & Medium Tech Scrap (MTS)\\\hline
-        10kg & Potent Medicine\\\hline
-        50kg & Low Tech Scrap (LTS)\\\hline
-        50kg & Seeking Rockets\\\hline
-        100kg & Processed Medicine\\\hline
-        100kg & Basic Rockets\\\hline
-        100kg & Artillery\\\hline
-        200kg & Basic Medicine\\\hline
-        500kg & Improvised/Herbal Medicine\\hline
-        500kg & Base Tech Scrap (BTS)\\\hline
-        500kg & Basic Ammunition\\\hline
-        1000L & drinking Water (500days of drinking)\\\hline
-        500L/35kg & Liquid Hydrogen\\\hline
-        1t & Coal\\\hline
-        350L & LiquidCombustionFuel\\\hline
-        100kg & High Energy Rations (0.4kg/(day\(\cdot\)person))\\\hline
-        1t & Normal Food (2.5 kg / (day\(\cdot\)person))\\\hline
+        Cargo & C/kg& Tags\\\hline
+        \hline
+        Experimental Tech Parts (ETP) & 20,000 & Engineering Material, Experimental\\\hline
+        High Tech Parts (HTP)&2,000 & Engineering Material, Hightech\\\hline
+        Mid Tech Parts (MTP) & 200 & Engineering Material, Midtech\\\hline
+        Low Tech Parts (LTP) & 20 & Engineering Material, Lowtech\\\hline
+        Base Tech Parts (BTP) & 2 & Engineering Material, Basetech\\\hline
+        Elixir of Life & 100,000 & Medicine, Black Biotech, Luxury, Experimental\\\hline
+        \hline
+        Advanced Gene Therapy Medicine & 800 & Medecine, Red Biotech, Science, Hightech\\\hline
+        Potent Medicine & 100 & Medecine, Red Biotech, Pharma, Midtech\\\hline
+        Processed Medicine & 10 & Medecine, Pharma, Biochem, Lowtech\\\hline
+        Basic Medicine & 5 & Medecine, Biochem, Raw, Basetech\\\hline
+        Improvised/Herbal Medicine & 2 Medecine, Raw, Herbal, Basetech\\\hline
+        \hline
+        Basic Ammunition & 2 & Ammunition, Weapons.Projectile.Direct, Lowtech\\\hline
+        Artillery & 10 & Ammunition, Weapons.Projectile.Indirect, Lowtech\\\hline
+        Basic Rockets & 10 & Ammunition, Weapons.Missiles.DumbFire, Midtech\\\hline
+        Seeking Rockets & 20 & Ammunition, Weapons.Missiles.Seeking, Hightech\\\hline
+        \hline
+        drinking Water & 1 & Drinkable (2kg/day), Decontaminated, Raw, Bland \\\hline
+        Grain & 1 & Agricultural, Contaminated, Raw \\\hline
+        Meals & 3 & Edible (2.5kg/day), Decontaminated, Appetizing\\\hline
+        Rations & 10 & Edible (0.4kg/day), ContaProof, Plain\\\hline
+        \hline
+        Alacast & 10,000 & Decontamination, Mineral, Experimental\\\hline
+        Fuel Rods & 1,000 & Radioactive, Highly Processed, Hightech \\\hline
+        Liquid Hydrogen & 30 & bulky (x8), Fuel(PEM), Highly Processed, Flammable \\\hline
+        LiquidCombustionFuel & 3\\\hline
+        Coal & 1 & Contaminating(5), Fuel(Solid), Flammable\\\hline
 
     \end{tabular}\par
     Open for more Suggestions\newline
-    \begin{tabular}{|r|l|}
-            1 & Medium Quality Blueprint\\\hline
-    \end{tabular}
     \newline
     Example:\par
-    Character A wants to get rid of 5 tonnes of Base Tech Scrap in favor of more easily transportable Alacast in a local
+    Character A wants to get rid of 5 tonnes of Base Tech Parts in favor of more easily transportable Alacast in a local
     Dome.\par
     Since the Gamemaster is lazy there are no storyelements influencing the prices, so they are rolled. First, the value of
-    the BTS is determined to be (Roll: 6, 4) \(((-1)^{6}\cdot4\cdot5) \% = +20\%\). Then the value of Alacast is determined
-    to be (Roll: 10, 3)\(((-1)^{10}\cdot3\cdot5) \% = +15\%\). The result is that the rate between BTS and Alacast is
-    \( 500\cdot1.15/100\cdot1.2 = 4.79\) \\ Which means character As scrap is worth
+    the BTP is determined to be (Roll: 6, 4) \(((-1)^{6}\cdot4\cdot5) \% = +20\%\). Then the value of Alacast is determined
+    to be (Roll: 10, 3)\(((-1)^{10}\cdot3\cdot5) \% = +15\%\). The result is that the rate between BTP and Alacast is
+    \( 500\cdot1.15/100\cdot1.2 = 4.79\) \\ Which means character As Parts are worth
     \(5000 kg\cdot / 4.79 = 1043 g \) of Alacast. He barters (in which he has Proficiency) with a local merchant and manages to
     negotiate terms in which the merchant retains (Roll: 4, 9 \(\Rightarrow\) 9) \(5\cdot(11-9)\% = 10\%\) of the Traded
     value. He decides to trade and gets 938 grams of Alacast.\newline\newline
     \pagebreak[1]
+    \subsubsection{TODO: Ressource Drains/Demand and Income/Supply, Equilibrium, Prices, general economy stuff}
     \subsection{Combat}
 
     \subsubsection{Life}
@@ -321,8 +325,9 @@
     When sniping, The damage is not inflicted in general, but on a part of the target with a maximum depth equal to
     the severity of the damage. For the rest see sniping.
 
-    \subsection{Health and Contamination}
-
+    \subsection{Life}
+    \subsubsection{TODO: Food and water}
+    \subsubsection{TODO: Normal lifes necessities}
     \subsubsection{Healing}
     For Living entities Damage points are wounds with the severity being the remainder of the result of the damage roll
     after all defenses were subtracted +1 for each other wound.\\

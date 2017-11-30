@@ -150,7 +150,7 @@ Armor = [Module(1, 1, "L", details={
     "Type": "Armor"
 })]
 
-mech = Mech(SBiped * 9 + PEM * 4 + Vent * 1 + Sink + BShield * 6 + Cargo * 12 + Autocannon)
+mech = Mech(SBiped * 9 + PEM * 4 + Vent * 1 + Sink + BShield_C * 6 + Cargo * 12 + Autocannon)
 
 print("""modules: {0}
 sizeclass: {1} @ {techlevel}
