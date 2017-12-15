@@ -243,8 +243,8 @@
         Mid Tech Parts (MTP) & 200 & Engineering Material, Midtech\\\hline
         Low Tech Parts (LTP) & 20 & Engineering Material, Lowtech\\\hline
         Base Tech Parts (BTP) & 2 & Engineering Material, Basetech\\\hline
-        Elixir of Life & 100,000 & Medicine, Black Biotech, Luxury, Experimental\\\hline
         \hline
+        Elixir of Life & 100,000 & Medicine, Black Biotech, Luxury, Experimental\\\hline
         Advanced Gene Therapy Medicine & 800 & Medecine, Red Biotech, Science, Hightech\\\hline
         Potent Medicine & 100 & Medecine, Red Biotech, Pharma, Midtech\\\hline
         Processed Medicine & 10 & Medecine, Pharma, Biochem, Lowtech\\\hline
@@ -256,16 +256,29 @@
         Basic Rockets & 10 & Ammunition, Weapons.Missiles.DumbFire, Midtech\\\hline
         Seeking Rockets & 20 & Ammunition, Weapons.Missiles.Seeking, Hightech\\\hline
         \hline
-        drinking Water & 1 & Drinkable (2kg/day), Decontaminated, Raw, Bland \\\hline
+        drinking Water & 1 & Drinkable (2kg/day), Liquid, Decontaminated, Raw, Bland \\\hline
         Grain & 1 & Agricultural, Contaminated, Raw \\\hline
+        CleanGrain & 2 & Agricultural, Decontaminated, Raw \\\hline
         Meals & 3 & Edible (2.5kg/day), Decontaminated, Appetizing\\\hline
         Rations & 10 & Edible (0.4kg/day), ContaProof, Plain\\\hline
+        Softdrinks & 3 & Drinkable (2kg/day), Liquid, Decontaminated, Plain \\\hline
+        Beer & 6 & Drinkable (slightly alcoholic), Liquid, Decontaminated, Appetizing \\\hline
+        Wine & 8 & Drinkable (medium alcoholic), Liquid, Decontaminated, Tasty \\\hline
+        Luxury Drinks & 15 & Drinkable(varying), Liquid, Decontaminated, Delicious \\\hline
         \hline
         Alacast & 10,000 & Decontamination, Mineral, Experimental\\\hline
-        Fuel Rods & 1,000 & Radioactive, Highly Processed, Hightech \\\hline
+        Fuel Rods & 1,000 & Fuel(Radioactive), Highly Processed, Dense \\\hline
         Liquid Hydrogen & 30 & bulky (x8), Fuel(PEM), Highly Processed, Flammable \\\hline
-        LiquidCombustionFuel & 3\\\hline
-        Coal & 1 & Contaminating(5), Fuel(Solid), Flammable\\\hline
+        LiquidCombustionFuel & 3 & Fuel(Combustion), Processed, Flammable\\\hline
+        Coal & 1 & Contaminating(5), Fuel(Solid), Flammable, Processed\\\hline
+        \hline
+        Highest End Chemicals & 100 & Industry, Liquid, Luxury\\\hline
+        High End Chemicals & 50 & Industry, Liquid, Hightech \\\hline
+        Industrial Chemicals & 20 & Industry, Liquid, Midtech \\\hline
+        Low End Chemicals & 10 & Industry, Liquid, Lowtech \\\hline
+        Basic Chemicals & 5 & Industry, Liquid, Basetech \\\hline
+        Chemical Components & 2 & Industry Liquid, Raw \\\hline
+
 
     \end{tabular}\par
     Open for more Suggestions\newline
@@ -594,10 +607,10 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
 
 
     \subsection{Step 3 - Finishing touches}
-    You get 80 Credits, you can spend these on:
+    You get 300 Credits, you can spend these on:\\
     Your Mech (see below)\\
-    Goods 1:4 (see table in chapter Trade)\\
-    XP (1 XP for 10 credits)\\
+    Goods (1Credit:500) (see table in chapter Trade)\\
+    XP (1 XP for 15 credits)\\
 
     \section{Mechs}
 
@@ -625,7 +638,7 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     A Mech needs a movement system, a seal and energy and heat systems and should probably have weapons and Supportsystems\newline
     Armor, Shields and Movement Systems cant function together, You can switch between Movement Systems and designate the
     Order of Layers of Defense (damage taken by one armor, damages all armors though.)
-    threshholds: percentage of movement system on mech for movement speeds. Cargo holds count as 8\% lighter per
+    threshholds: percentage of movement system on mech for movement speeds. Cargo holds count as 20\% lighter per
     free space\newline
 
     Most Values given in the format A/B denote the passive value A / second and the active Value B/ second, \\
@@ -637,7 +650,7 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     \begin{tabular}{c|c|l}
         Tech    & Credits Cost    & Examples\\
         B    &    4        &    \makecell*[{{p{12cm}}}]{Water Destillery, Rail based movement system, simple wheels,
-        Manned gun, Ramshield, Floatation,   Metal Armorplating , Extra Cargo (10), steam engine, passive cooling}\\&&\\
+        Manned gun, Ramshield, Floatation,   Metal Armorplating , Extra Cargo (5), steam engine, passive cooling}\\&&\\
         L    &    5        &    \makecell*[{{p{12cm}}}]{Lowtech Detox-Decon Equip(LDDE; +1), suspended wheels, tracks,
         bipedal, Dynamo , Autoturret, Jumpjets, Mech sized Sword, water cooling circle, basicHeatsink }\\&&\\
         M    &    6        &    \makecell*[{{p{12cm}}}]{Shields, flexible/balanced bipedal, Boostjets,
@@ -769,7 +782,7 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
         \hline Midtech\\
         Shield & 2 & 1/0.5(2H) & \makecell{7H, dampen,\\disable} & 10+C\(\cdot\)13 & 12/R (round up) & 10 E \\
         \hline Hightech\\
-        Advanced Shield & 4 & 1/2(3H) & \makecell{15H, block,\\disable}& 15+C\(\cdot\)10 & 8-R + 10E & 5r \\
+        Advanced Shield & 4 & 1/2(3H) & \makecell{15H, block,\\disable}& 16+C\(\cdot\)10 & 8-R + 10E & 5r \\
     \end{tabular}\newline\newline\newline
     Level: see 3d10 Table in the beginning of the Book\\
     Cost: for Charging/Active states, per round\\
@@ -786,7 +799,7 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     \begin{tabular}{c|cccll}
         Type & Level & HP & Coverage & Damage & Special\\
         \hline BaseTech&&&&&\\
-        Extended Cargo & 1 & \makecell{\(\sqrt{M}\)\\ rounded down}& 14\(\cdot\)M & destroy 1 & \makecell[{{p{6cm}}}]{7 Cargo Spaces (Cargo is destroyed with the modules)}\\
+        Extended Cargo & 1 & \makecell{\(\sqrt{M}\)\\ rounded down}& 14\(\cdot\)M & destroy 1 & \makecell[{{p{6cm}}}]{3 Cargo Spaces (Cargo is destroyed with the modules)}\\
         Metal Plating & 4 & 5 & 5+10M & destroy F & \makecell[{{p{6cm}}}]{counts twice towards movement system percentage} \\
         \hline Lowtech &&&&&\\
         Composite & 4 & \makecell[c]{\(2\cdot\sqrt{M}\)\\ rounded}& \(12\cdot M\) & destroy 1&\\
@@ -796,7 +809,8 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
         Speed & 2 & 3 & 20+7M & brick 50\% & \makecell[{{p{6cm}}}]{1E/50km/h; \\Vent 1H/ 50 km/h \\
         (increase signature by vented Amount) \\30m 0.1MTS Check[Engineer]\\(>=9 to fix; <=5 to destroy)}\\
         \hline Hightech &&&&&\\
-        Advanced & 5 & X & 10+15\(\cdot\)M & \makecell[l]{shorts out \\ 1 Energy System}&\makecell[{{p{6cm}}}]{
+        Advanced Light & 2 & 3 & 33+M*6 & \makecell[l]{Disables Systems \\ Decided on before} &\makecell[l]{Repairable with Lowtech Materials}\\
+        Charged & 5 & X & 10+15\(\cdot\)M & \makecell[l]{shorts out \\ 1 Energy System}&\makecell[{{p{6cm}}}]{
         1h Check[Electronics] \\(>=8 to fix; <=2 to destroy)}\\
     \end{tabular}\\\newline\newline
     \subsection{Weapons}
@@ -808,11 +822,11 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
         Metal Sword & 2 & M & 2*S & P S &  30 m & 2m*S & Piloting \\
         Manned Turret & X & 1 & X & X & \makecell[l]{manual \\labor +X} &  X & \makecell[{c}{p{3cm}}]{X}\\
         \hline Lowtech &&&&&\\
-        Heavy Machinegun & 4 & 1 & 3 & P R & 0.5H 0.005A & 50/100/200/500/1000 & Projectile.Direct\\
+        Heavy Machinegun & 4 & 1 & 3 & P R & 0.5H 0.002A & 50/100/200/500/1000 & Projectile.Direct\\
         Light Artillery & 3 & 4 & 15 & P A & 5E 10H 0.2A & 1k/3k/5k/7k/10k & Projectile.Indirect \\
         120mm Smoothbore & 5 & 4 & 8 & P S & 5H 0.05A & 500/1k/2k/3k/4k & Projectile.Direct\\
         \hline Midtech &&&&&\\
-        Autocannon & \makecell[c]{~2/\\4} & 3 & 7 & \makecell[c]{P/\\P R} &\makecell[l]{0E 2H 0.01A /\\1E 5H 0.15A }& per 400m & Projectile.Direct\\
+        Autocannon & \makecell[c]{~2/\\4} & 3 & 7 & \makecell[c]{P/\\P R} &\makecell[l]{0E 2H 0.01A /\\1E 5H 0.1A }& per 400m & Projectile.Direct\\
         Basic Pulse Laser & 2 & 2 & 9 & E S & 5E 8 H & per 200 & Energy.Pulse\\
         Precision Cannon & 2 & 3 & 13 & P S & 5E 10H 0.1A & per 1k & Projectile.Direct\\
         Rocket Launcher & 4 & 2 & 15 & P S & 5H 0.12A &per 300m & Rocket.Dumbfire\\
@@ -847,10 +861,10 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     Heat: 10\\
     Size: 0.5\\
     Turns 10L of Dirty Water into 10L of Contaminated Water per hour\\
-    Requires Detox Rating of 1\\
+    Requires Reprocessing Rating of 1\\
     \newline
     Cargo compartment\\
-    Cargo Space: 10 \\
+    Cargo Space: 5 \\
     \newline
     \subsection{Lowtech}
     Basic Food Processor\\
@@ -858,14 +872,14 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     Heat: 5/s \\
     Size:0.5\\
     Detoxes 1kg of Food in 10 minutes \\
-    Requires Detox Rating of 2\\
+    Requires Reprocessing Rating of 2\\
     \newline
     Basic Air Filter\\
     Energy Cost per operation: 2400 (4/s)\\
     Heat: 2\\
     Size:0.5\\
     Decontaminates and pressurizes 5000 L of air in  10 minutes or double without pressurizing. \\
-    Requires Decon 1\\
+    Requires Reprocessing 1\\
     \newline
     Basic Decon Equipment \\
     Energy Cost per operation: 18k (5/s)\\
@@ -873,20 +887,20 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     Heat: 10 \\
     Size: 0.5\\
     Allows to turn Contaminated Objects into uncontaminated objects at the rate of 10kg/h, if suitable\\
-    Required Decon 2\\
+    Required Reprocessing 2\\
     \newline
     Optical Sensors\\
     Energy: 1\\
     Size: 0.25 \\
     Rating: 100\\
-    Provides Targetting Lock is obtained\\
-    Visual Lock: Distance/Rating <= Target Size (+Camouflage and visual impairments)\\
+    Provides Targetting Lock \\
+    Visual Lock: Hitting Bonus of square root (Target Visual Signature -(Distance/Rating)) \\
     \newline
     Thermal Sensors\\
     Energy: 1\\
     Size 0.25\\
-    Rating 100\\
-    Thermal Lock: Distance/Rating <= Target Thermal Signature\\
+    Rating 20\\
+    Thermal Lock: Hitting Bonus of square root (Target Thermal Signature -(Distance/Rating))Distance/Rating <= Target Thermal Signature\\
     \newline
     Basic Computer System\\
     Size: 0.5\\
@@ -894,25 +908,25 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     Module: Processor or Memory\\
     \newline
     \subsection{Midtech}
-    ComputerSystem:
-    Size: 0.1
-    Energy: 0.1
+    ComputerSystem:\\
+    Size: 0.1\\
+    Energy: 0.1\\
     Module: Processor or Memory\\
     \newline
     Nondeterministic Computation Core:\\
     Size 0.5\\
     Energy: 0.5\\
     Module: Processor\\
-    Requires Black Biotech 3\\
+    Programming also requires Black Biotech 3\\
     \newline
     Extended Decon Equipment\\
     Energy Cost per Operation: 36k (10/s)\\
     Alacast Cost per Operation: 5g\\
-    Size: 0.75
+    Size: 0.75\\
     Allows to turn Contaminated Objects into uncontaminated Objects at the rate of 100kg/h if suitable\\
-    If used on Humans, Roll Red Biotech, on 9 or more, removes one Charactertaint.\\
+    If used on Humans, Roll Red Biotech, remove one Charactercontamination on 6 or less, consumes additional 10g Alacast or fails.\\
     Always Inflicts Wound of Level 11-RollResult\\
-    Requires Decon 3\\
+    Requires Reprocessing 3\\
     \newline
     Extended Detox Equipment:\\
     Energy Cost per Operation: 36k (10/s)\\
@@ -920,7 +934,7 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     Allows Detoxing and Preparing of up to 1t/h\\
     If used on Humans, Roll Red Biotech, on 6 or more, remove all Infections and appropriate Toxins.\\
     Always Inflicts Wound of Level 8-RollResult\\
-    Requires Detox 3\\
+    Requires Reprocessing 3\\
     \newline
     Automedic:
     Energy Cost: 6k(variable - 10/s for 10 min)\\
@@ -937,11 +951,11 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     Advanced Detox-Decon Equipment \\
     Size: 1\\
     Energy Cost per Operation 72k (variable 20/s for 1 h)\\
-    Alacast Usage per Operation if Detainting: 1g/t of raw material, 10g/human\\
-    Detoxes and Detaints up to 5t of material, including air and water.\\
-    Living Entities suffer no harm, and on a 4 or more on a Red Biotech Roll lose one Taint level.
+    Alacast Usage per Operation if Decontaminating: 1g/t of raw material, 10g/human\\
+    Detoxes and Decontaminates up to 5t of material, including air and water.\\
+    Living Entities suffer no harm, and on a 4 or more on a Red Biotech Roll lose one Contamination level.
     Furthermore all Infections and Appropriate Toxins are removed.\\
-    Requires Detox 4 and Decon 4\\
+    Requires Reprocessing 4\\
     \newline
     Advanced AutoMedic\\
     Energy Cost: 3k (variable - 5/s for 10 min)\\
@@ -953,12 +967,28 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     If not, Instead supplies one Advantage or autonomously attempts the procedure at Level 2.\\
     Software may supply the Red Biotech roll even autonomously.\\
     To Ressurect:\\
-    requires 1g of EOL per total spent points on a character (or 20* the average level of an NPC)
+    requires 1g of EOL per total spent point on a character (or 20* the average level of an NPC)
     Roll Black Biotech, every 15\% missing from the corpse or order of magnitude in days that has passed since the time of death
     lowers the final score by 1. If the roll succeeds, place 5 wounds of severity 15-result on that character, they lose
     one level from the highest Ability and one from the highest Skill and are alive again. If the roll does not succeed,
-    5\% of the total corpse and the dosage of EOL is lost.
+    5\% of the total corpse and the dosage of EOL is lost.\\
     \newline
+    Direct Neural Interface Controls\\
+    Energy Cost: 10E per Activation\\
+    size: 0.5\\
+    When Activating the DNI, the user takes over their mech as an extension of their body, having
+    extremely fine control over it. It comes at a price though.\\
+    At Activation Resonance is Rolled. The Result is stored and can be spend on raising the result of
+    any rolls made by the mech that could be improved by better control over it. For every time any number of
+    points are allocated that way, 1 Neural Strain is generated.\\
+    Can be reactivated any time as a free action, the stored result is overwritten, not added onto. Reactivation causes
+    1 Neural Strain.\\
+    Deactivation Causes 1 Neural Strain. Then the accumulated Neural Strain is applied to the character as damage
+    affecting the neural system (causing headaches, jitters and so on, every 3 points lowering Mind, Perception and
+    Dexterity Results by 1) reduced by a Resonance roll. Neural strain persists, and is reduced by 1 every day.
+    Staying inside the Direct Neural Interface Controls, applies the current Neural strain every hour.\\
+    \newline
+
 
 
 

@@ -69,31 +69,36 @@ def plot(data):
 
 def run():
     roller = d10
-    if len(sys.argv) > 2:
+
+    if len(sys.argv) > 3:
         roller = d10h
         duration = float(sys.argv[1])
         amount = int(sys.argv[2])
-    else:
-        print("usage: <duration> <dice> <difficulty> [c/h] [compare roll]")
-        exit()
-    if len(sys.argv) == 4:
-        roller = d10
         difficulty = int(sys.argv[3])
-    if len(sys.argv) == 5:
-        if sys.argv[4] == "h":
-            difficulty = int(sys.argv[3])
+    else:
+        print("usage: <duration> <dice amount> <bonus> [d/c/h] [if c compare roll] [nofail]")
+        exit()
+    if sys.argv[4] == "d":
+        roller = d10
+    else:
+        roller=d10h
     successes = DefaultDict(lambda: 0)
     i = 0
     time1 = time.time()
     compare = len(sys.argv) > 4 and sys.argv[4] == "c"
+    bonus = difficulty if compare else 0
     while True:
         i += 1
         if compare:
-            difficulty = roller(int(sys.argv[5]))
+            difficulty = roller(int(sys.argv[5]))+bonus
         successes[roller(amount, difficulty)] += 1
         if i % 10000 == 0:
             if time.time() - time1 >= duration:
                 break
+    if "nofail" in sys.argv:
+        for key in range(min(successes.keys()),0):
+            del(successes[key])
+    
 
     print("rolling %+d %s against %+d %sfor %.1f seconds" % (
     amount,
