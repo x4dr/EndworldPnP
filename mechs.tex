@@ -1,0 +1,359 @@
+\subsection{Sizes}
+[human is roughly 0.75]\par
+\begin{tabular}{r|l}
+    Sizeclass &Mechclass \\
+      0 &Human\\
+    1-3 &Exo\\
+    4-5 &Tiny\\
+    6-7 &Very Light\\
+    8-9 &Light\\
+    10-11 &Medium\\
+    12-15 &Heavy\\
+    16-20 &Very Heavy\\
+    21+ &Beyond\\
+\end{tabular}\newline
+Mechs have up to (SizeClass+(SizeClass+1))/2 Modules.
+Each modules weighs about 1 ton, Modules are listed below. \par
+A Mech has an effective Tech Level of the Tech at the 80\% point (of modules ordered by Tech Level).\newline
+Contamination Damage applies to the highest Tech modules first.
+Each Module can be damaged individually.\newline
+[rework in progress]\newline
+\newline
+\subsection{Systems}
+A Mech needs a movement system, a seal and energy and heat systems and should probably have weapons and Supportsystems\newline
+Armor, Shields and Movement Systems cant function together, You can switch between Movement Systems and designate the
+Order of Layers of Defense (damage taken by one armor, damages all armors though.)
+threshholds: percentage of movement system on mech for movement speeds.
+Cargo holds count as 8\% lighter per
+free space\newline
+Most Values given in the format A/B denote the passive value A / second and the active Value B/ second, \\
+for Fuel Consumption is given in Cargo per day / Cargo per minute.
+For Speeds are in km/h.
+\subsubsection{Costs}
+Systems(not all of these are in the game right now)\newline
+\begin{tabular}{c|c|l}
+    Tech    & Credits Cost    & Examples\\
+    B    &    4        &    \makecell*[{{p{12cm}}}]{Water Destillery, Rail based movement system, simple wheels,
+    Manned gun, Ramshield, Floatation,   Metal Armorplating , Extra Cargo (10), steam engine, passive cooling}\\&&\\
+    L    &    5        &    \makecell*[{{p{12cm}}}]{Lowtech Detox-Decon Equip(LDDE; +1), suspended wheels, tracks,
+    bipedal, Dynamo , Autoturret, Jumpjets, Mech sized Sword, water cooling circle, basicHeatsink }\\&&\\
+    M    &    6        &    \makecell*[{{p{12cm}}}]{Shields, flexible/balanced bipedal, Boostjets,
+    Deployable Solar Panel, Sensorarray,  MDDE (+2), Base AI system, Mech sized Weaponry (Advanced
+    (Vibro/electro/Monofilament) Sword), Rocketlauncher, Water venting system, midtech Heatsink}\\&&\\
+    H    &    7        &    \makecell*[{{p{12cm}}}]{BCI, Advanced AI, WeaponLaser, Sustained Flight,  Advanced
+    Shields, Nano Repair Cloud, Automedic, OVERDRIVE mode, Hightech Heatsink}\\&&\\
+    E    &    8        &    \makecell*[{{p{12cm}}}]{Quantum Lookahead Sensors, Blink Teleporter, Timerift Shields
+    (Delays Damage 1d10 rounds), EnergySword}
+\end{tabular}\\\\[12mm]
+\subsection{Movement Systems}
+\begin{tabular}{l|lcccl}
+    Type    &Modes &Energy &Heat &Speed &Extra\\
+    \hline
+    Basetech\\
+    railbased movement system & Rails &0.01/0.02&0/0&50/100& confined to rails\\
+    &&&&&Accelleration in 15 rounds\\
+    simple wheels           & Roads &0.1/0.3 &0.1/0.2& 10/40 & requires sufficiently flat terrain \\
+    & Offroad&0.5/1&0.3/0.5& 5/10 & might topple\\
+    floatation system         & Water & 0/5  &  0/0  & 0/1   & allows movement on water\\
+    &       &     &       &       & Counts double For speed percentage\\
+    \hline
+    Lowtech\\
+    suspended wheels          & Roads &0.05/0.5 &0.15/0.2& 30/70 & requires sufficiently flat terrain \\
+    & Offroad&0.2/.8&0.5/0.8& 10/30 & might topple\\
+    tracks                    & Offroad&0.5/1&0.5/1.2& 30/120 &Counts double For speed percentage\\
+    & Harsh Terrain&1/2&1/2& 10/50 &\\
+    bipedal                   & Ground &0.1/0.8&0.1/0.5& 3/30 & Full Dodge\\
+    &&&&&Min Tracking: Speed\\
+    &&&&&2 Arms with rough Gripper\\
+    jumpjets                  & Air &0/10&0/10&0/50& Counts triple for speed percentage\\
+    \hline
+    Midtech\\
+    flexible bipedal          & Ground &0.3/1.2&0.1/0.5 & 5/35 & Maneuverable like a large Human\\
+    &&&&&Full Dodge\\
+    &&&&&MinTracking: Speed\\
+    &&&&&2 Arms with Robothands\\
+    boostjets                 & Air &0/15 &0/20&0/150& acceleration in any direction\\
+    &&&&&Counts Triple for speed percentage\\
+    \hline Hightech\\
+    Spiderwalker              & Surfaces &0.8/2 &1/3& 5/50 &moves on any surface\\
+    &&&&& \ldots many legs
+\end{tabular}\\
+\subsubsection{Requirements}
+\begin{tabular}{c|c|c|c}
+    speed       &Level  &needed\%& speed\% \\\hline
+    lumbering   &1      &5\%     &33\%\\
+    slow        &2      &15\%    &75\%\\
+    normal      &3      &25\%    &100\%\\
+    fast        &4      &35\%    &150\%\\
+    rapid       &5      &45\%    &200\%\\
+\end{tabular}\\\newline\\
+Accelleration is the modified maximum speed divided by 5 per round unless otherwise stated
+\subsection{Seals}\label{subsec:seals}
+\begin{tabular}{l|r|r}
+    Tech & Seal Level & Cost(round up)\\\hline
+    Base &  6 &  3+0.1*Module\\
+    Low &   13&  7+0.2*Module\\
+    Mid &   21&  12+0.3*Module\\
+    High &  30&  18+0.4*Module\\
+    Experimental & 50&30+0.8*Module\\
+\end{tabular}\\
+\subsection{Heatsystems}
+\begin{tabular}{r|lllll}
+    Type & Storage & Dissipation & Signature &Costs &Extra\\
+    \hline Basetech\\
+    Small Heatsink & 15 & 0.2 &Storage\\
+    \hline Lowtech\\
+    Radiator Vent & 3 & 1/6& Vented\(\cdot\)2&0.2/0.8\\
+    Large Heatsink & 20 & 0.2[15]0.5 &Storage\\
+    \hline Midtech\\
+    Optimized heatsink & 25 & 0.4[15]0.8[25]1 &Storage\\
+    Coolant Dump & 30 & 1/15 & Storage/30 & 0.3/1
+    & Requires Decoy Rating of 3\\
+    &&&&&uses 0.1 Water from Cargo and deploys \\
+    &&&&&5m Thermal Wall of Strength 30 while active\\
+    \hline Hightech\\
+    fractal heatsink & 30& 0.5[15]1[30]1.5& Storage\\
+    OVERDRIVE & 80 & 0.5 & Storage & Filling up &
+    when at heatcap, enter Overdrive Mode\\
+    &&&&&able to act (including movement) at double \\
+    &&&&&speed while spending Heat instead of gaining it\\
+    &&&&&When All heat is spent.
+    Mech shuts down for \\
+    &&&&&2d10(added) rounds and OVERDRIVE is \\
+    &&&&&damaged (requires 10 min, Check[8] to repair)\\
+    &&&&&(requires Level 4 Specialty Gadgets)\\
+\end{tabular}\\
+\subsection{Energysystems}
+\begin{tabular}{l|cccll}
+    Type & Energy & Heat & Storage & Consumption & Special\\
+    \hline Basetech \\
+    Burner & -0.01/-0.5 & 0.1/5 & 20 H & 0.1/0.01 & Fuel:Coal\\
+    Steam Engine & 2/5 & -1/-2.5 & 5 Energy & Heat & 10\% Efficient with Heat under 50\%\\
+    FlyWheel & 0/1 & 0/X & 10 E & 0.01 of stored & retrieves half, generates \\
+    &&&&&Heat 2:1 while retreiving\\
+    Crank & 0/0.001&0/0&&Manual Labor&Size 0.01\\
+    \hline Lowtech \\
+    Combustion Motor& 0.5/3 & 0.5/3& & 0.01/0.005 & Fuel:CombustionFuel\\
+    \hline Midtech \\
+    PEM & 0.5/3.5 & 0.1/0.5 & & 0.05/0.02 & Fuel: HFC\\
+    Solar Panel & 0/0.03 & 0/0 & 50 E & Sunlight & Contamination might lower yield\\
+    &&&&&Deployment takes 1 Energy or\\
+    &&&&&5 Minutes outside Labor\\
+    &&&&&1 Heat per Energy Retrieved\\
+    \hline Hightech \\
+    Reactor & 1.2/2 & 0.8/1.5 & 100 E & 0.001/0.001 & Fuel:Fuelrods\\
+    &&&&&0.5 Heat per Energy Retrieved\\
+    Capacitor & & X & 500 E & & 0.1 Heat per Energy Retrieved \\
+\end{tabular}
+\vspace{1cm}
+a 10L-HydrogenFuelCell(HFC-10) Cylinder 20cm diameter, 38 cm height =11.94L(Midtech),
+used to power up basic systems (like hydrogen gas pumps for the PEM Stacks)
+\subsection{Shieldsystems}
+ShieldModules can be dedicated to specific Tasks, usually
+Coverage (C) and Reboot(R), the total amount of Modules is referred to as M, while
+X relates to Special, see below the Table\newline
+\begin{tabular}{c|cccccl}
+    Type & Level & Cost & Overwhelm & Coverage & Reboot & Coldboot \\
+    \hline Basetech\\
+    Applique-Armor & 3 & 0/0 & destroy F& 5+15\(\cdot\)C & -  & 5 min + \\
+    &&&block&&& Check[Engineer](5) \\
+    \hline Lowtech\\
+    Deflector & X & 1E/5E+3H & - & radius 2\(\cdot\)C m & 10s & instant \\
+    Basic Shield & 1 & 0.5E/0.2E & \makecell{5H, dampen, \\ disable}&12+C\(\cdot\)8 & C-R + 5E & 5r \\
+    \hline Midtech\\
+    Shield & 2 & 1/0.5(2H) & \makecell{7H, dampen,\\ disable} & 10+C\(\cdot\)13 & 12/R (round up) & 10 E \\
+    \hline Hightech\\
+    Advanced Shield & 4 & 1/2(3H) & \makecell{15H, block,\\ disable}& 15+C\(\cdot\)10 & 8-R + 10E & 5r \\
+\end{tabular}\newline\newline\newline
+Level: see 3d10 Table in the beginning of the Book\\
+Cost: for Charging/Active states, per round\\
+Overwhelm: Heat that might be released plus \\
+\tab destroy X destroys X modules\\
+\tab F means the difference by which the Layer of Defense Failed\\
+\tab block means pass through no damage to the next Layer of Defense\\
+\tab dampen means pass through F damage\\
+\tab disable means that the system is disabled until it is booted again\\
+\newline
+Strain: Heat Costs in Parenthesis are generated everytime the shield successfully blocks damage.
+D is the Incoming damage.
+\pagebreak[2]
+\subsection{Armor}\label{subsec:armor}
+\begin{tabular}{c|cccll}
+    Type & Level & HP & Coverage & Damage & Special\\
+    \hline BaseTech&&&&&\\
+    Extended Cargo & 1 & \makecell{\(\sqrt{M}\)\\ rounded down}& 14\(\cdot\)M & destroy 1 & \makecell[{{p{6cm}}}]{7 Cargo Spaces (Cargo is destroyed with the modules)}\\
+    Metal Plating & 4 & 5 & 5+10M & destroy F & \makecell[{{p{6cm}}}]{counts twice towards movement system percentage} \\
+    \hline Lowtech &&&&&\\
+    Composite & 4 & \makecell[c]{\(2\cdot\sqrt{M}\)\\ rounded}& \(12\cdot M\) & destroy 1&\\
+    \hline Midtech &&&&&\\
+    Active & 1/4 & 5 & 12+10\(\cdot\)M & short out 1 & \makecell[{{p{6cm}}}]{ draws 10 Energy when hit \\
+    1h Check[Electronics] \\(>=8 to fix;
+    <=2 to destroy)}\\&\\
+    Speed & 2 & 3 & 20+7M & brick 50\% & \makecell[{{p{6cm}}}]{1E/50km/h; \\Vent 1H/ 50 km/h \\
+    (increase signature by vented Amount) \\30m 0.1MTS Check[Engineer]\\(>=9 to fix;
+    <=5 to destroy)}\\
+    \hline Hightech &&&&&\\
+    Advanced & 5 & X & 10+15\(\cdot\)M & \makecell[l]{shorts out \\ 1 Energy System}&\makecell[{{p{6cm}}}]{
+    1h Check[Electronics] \\(>=8 to fix;
+    <=2 to destroy)}\\
+\end{tabular}\\\newline\newline
+\subsection{Weapons}\label{subsec:weapons}
+Weapon modules can also be dedicated\newline
+Melee weapons rely on the movement System, so their costs are in meters that are used to attack rather than move\newline
+\begin{tabular}{c|cccclll}
+    Type & Level & Size &\makecell{Size\\Class} & \makecell{Damage\\Type} & Costs & Falloff &Check\\
+    \hline BaseTech&&&&&\\
+    Metal Sword & 2 & M & 2*S & P S &  30 m & 2m*S & Piloting \\
+    Manned Turret & X & 1 & X & X & \makecell[l]{manual \\labor +X} &  X & \makecell[{c}{p{3cm}}]{X}\\
+    \hline Lowtech &&&&&\\
+    Heavy Machinegun & 4 & 1 & 3 & P R & 0.5H 0.005A & 50/100/200/500/1000 & Projectile.Direct\\
+    Light Artillery & 3 & 4 & 15 & P A & 5E 10H 0.2A & 1k/3k/5k/7k/10k & Projectile.Indirect \\
+    120mm Smoothbore & 5 & 4 & 8 & P S & 5H 0.05A & 500/1k/2k/3k/4k & Projectile.Direct\\
+    \hline Midtech &&&&&\\
+    Autocannon & \makecell[c]{~2/\\4} & 3 & 7 & \makecell[c]{P/\\P R} &\makecell[l]{0E 2H 0.01A /\\1E 5H 0.15A }& per 400m & Projectile.Direct\\
+    Basic Pulse Laser & 2 & 2 & 9 & E S & 5E 8 H & per 200 & Energy.Pulse\\
+    Precision Cannon & 2 & 3 & 13 & P S & 5E 10H 0.1A & per 1k & Projectile.Direct\\
+    Rocket Launcher & 4 & 2 & 15 & P S & 5H 0.12A &per 300m & Rocket.Dumbfire\\
+    \hline Hightech &&&&&\\
+    Rocket Platform & 3 & 3 & 16 & P S A & 5H 0.2A & - & Rocket.Guided \\
+    Railgun & 2 &5& 14 & P S & 15E 5H 0.01 A& 100/1k/3k/8K/20k & Projectile.Direct\\
+    Advanced Pulse Laser & 0 & 3 & 11 & E S/R & 7E 8H  &per 400 & Energy.Pulse \\
+    Ramping Beam Laser & X & 2X & 3 & E R        & XE 2XH & per 5k & Energy.Beam \\
+\end{tabular}\newline\newline\newline
+Specials:
+Swords: Pierce Shields that are not modulated to their damage type\\
+Manned Turret: X Depends on the mounted gun and the skill of the gunner\\
+Light Artillery: Attacks take 1s per 300m distance, rounded up, minimum range 100m\\
+120mm Smoothbore: Can only fire every second round, requires Indirect for targets further away than 2k\\
+Autocannon: for Burst (alternative values) mode Mech has to stand\\
+Basic Pulse Laser: only sizeclass falls off\\
+Precision Cannon: Allows Sniping \\
+Rocket Launcher: Ignores Shields \\
+Rocket Platform: Ignores Shields, Will hit if Lock is sustained (Roll strengthens Lock)\\
+Railgun: requires Indirect for targets further away than 2k, allows sniping\\
+Advanced Pulse Laser: only sizeclass falls off\\
+Ramping Beam Laser: X goes up when shooting, goes down when not shooting, X is capped at M, allows sniping,
+        only sizeclass falls off\\
+\subsection{Misc Modules}\label{subsec:miscModules}
+If a Module is smaller than a Module slot its size is less than 1
+\newline
+\subsection{Basetech}\label{subsec:basetech}
+Water Distillery \\
+Energy Cost: 2\\
+Heat: 10\\
+Size: 0.5\\
+Turns 10L of Dirty Water into 10L of Contaminated Water per hour\\
+Requires Detox Rating of 1\\
+\newline
+Cargo compartment\\
+Cargo Space: 10 \\
+\newline
+\subsection{Lowtech}\label{subsec:lowtech}
+Basic Food Processor\\
+Energy Cost per operation: 1800 (3e/s)\\
+Heat: 5/s \\
+Size:0.5\\
+Detoxes 1kg of Food in 10 minutes \\
+Requires Detox Rating of 2\\
+\newline
+Basic Air Filter\\
+Energy Cost per operation: 2400 (4/s)\\
+Heat: 2\\
+Size:0.5\\
+Decontaminates and pressurizes 5000 L of air in  10 minutes or double without pressurizing. \\
+Requires Decon 1\\
+\newline
+Basic Decon Equipment \\
+Energy Cost per operation: 18k (5/s)\\
+Alacast Cost per operation: 10g\\
+Heat: 10 \\
+Size: 0.5\\
+Allows to turn Contaminated Objects into uncontaminated objects at the rate of 10kg/h, if suitable\\
+Required Decon 2\\
+\newline
+Optical Sensors\\
+Energy: 1\\
+Size: 0.25 \\
+Rating: 100\\
+Provides Targetting Lock is obtained\\
+Visual Lock: Distance/Rating <= Target Size (+Camouflage and visual impairments)\\
+\newline
+Thermal Sensors\\
+Energy: 1\\
+Size 0.25\\
+Rating 100\\
+Thermal Lock: Distance/Rating <= Target Thermal Signature\\
+\newline
+Basic Computer System\\
+Size: 0.5\\
+Energy: 0.1\\
+Module: Processor or Memory\\
+\newline
+\subsection{Midtech}
+ComputerSystem:
+Size: 0.1
+Energy: 0.1
+Module: Processor or Memory\\
+\newline
+Nondeterministic Computation Core:\\
+Size 0.5\\
+Energy: 0.5\\
+Module: Processor\\
+Requires Black Biotech 3\\
+\newline
+Extended Decon Equipment\\
+Energy Cost per Operation: 36k (10/s)\\
+Alacast Cost per Operation: 5g\\
+Size: 0.75
+Allows to turn Contaminated Objects into uncontaminated Objects at the rate of 100kg/h if suitable\\
+If used on Humans, Roll Red Biotech, on 9 or more, removes one Charactertaint.\\
+Always Inflicts Wound of Level 11-RollResult\\
+Requires Decon 3\\
+\newline
+Extended Detox Equipment:\\
+Energy Cost per Operation: 36k (10/s)\\
+Size 0.75\\
+Allows Detoxing and Preparing of up to 1t/h\\
+If used on Humans, Roll Red Biotech, on 6 or more, remove all Infections and appropriate Toxins.\\
+Always Inflicts Wound of Level 8-RollResult\\
+Requires Detox 3\\
+\newline
+Automedic:
+Energy Cost: 6k(variable - 10/s for 10 min)\\
+Size: 0.75\\
+Supplies tools of Medic/ supplies good operating conditions for Medic / reduces the use of Medicine by half / allows stasis\\
+Roll Red Biotech, if the roll surpasses the wound, supplies an operating character with a temporary Medic skill and
+double Advantage or autonomously attempts the procedure at Level 3 mod -1.\\
+If not, Instead supplies one Advantage.\\
+Software may supply the Red Biotech roll even autonomously.\\
+Stasis is automatic and slows down the daily/hourly tickrate (including Healing and Contamination) by a factor of 10
+(additive) for every energy point per second.
+This is a medical coma, not timedilation.
+\subsection{Hightech}
+Advanced Detox-Decon Equipment \\
+Size: 1\\
+Energy Cost per Operation 72k (variable 20/s for 1 h)\\
+Alacast Usage per Operation if Detainting: 1g/t of raw material, 10g/human\\
+Detoxes and Detaints up to 5t of material, including air and water.\\
+Living Entities suffer no harm, and on a 4 or more on a Red Biotech Roll lose one Taint level.
+Furthermore all Infections and Appropriate Toxins are removed.\\
+Requires Detox 4 and Decon 4\\
+\newline
+Advanced AutoMedic\\
+Energy Cost: 3k (variable - 5/s for 10 min)\\
+size: 1\\
+Allows Medic Rolls/ supplies very good operating conditions for Medic Rolls/ reduces the use of Medicine by 90\%/allows Ressurection\\
+To Treat a wound:\\
+Roll Red Biotech, if the roll surpasses the wound, supplies an operating character with a temporary Medic skill and
+triple Advantage or autonomously attempts the procedure at Level 4 mod -1.\\
+If not, Instead supplies one Advantage or autonomously attempts the procedure at Level 2.\\
+Software may supply the Red Biotech roll even autonomously.\\
+To Ressurect:\\
+requires 1g of EOL per total spent points on a character (or 20* the average level of an NPC)
+Roll Black Biotech, every 15\% missing from the corpse or order of magnitude in days that has passed since the time of death
+lowers the final score by 1.
+If the roll succeeds, place 5 wounds of severity 15-result on that character, they lose
+one level from the highest Ability and one from the highest Skill and are alive again.
+If the roll does not succeed,
+5\% of the total corpse and the dosage of EOL is lost.
+\newline

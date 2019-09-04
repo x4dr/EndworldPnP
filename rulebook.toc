@@ -1,0 +1,65 @@
+\contentsline {section}{\numberline {0.1}The EndWorld}{4}{section.0.1}
+\contentsline {section}{\numberline {0.2}Rules}{5}{section.0.2}
+\contentsline {subsection}{\numberline {0.2.1}Rolling and Checks}{5}{subsection.0.2.1}
+\contentsline {subsubsection}{\numberline {0.2.1.1}Dice}{5}{subsubsection.0.2.1.1}
+\contentsline {subsection}{\numberline {0.2.2}Skills and Abilities}{5}{subsection.0.2.2}
+\contentsline {subsubsection}{\numberline {0.2.2.1}Social Abilities}{5}{subsubsection.0.2.2.1}
+\contentsline {subsubsection}{\numberline {0.2.2.2}Mental Abilities}{6}{subsubsection.0.2.2.2}
+\contentsline {subsubsection}{\numberline {0.2.2.3}Physical Abilities}{6}{subsubsection.0.2.2.3}
+\contentsline {subsubsection}{\numberline {0.2.2.4}Tech Abilities}{6}{subsubsection.0.2.2.4}
+\contentsline {subsubsection}{\numberline {0.2.2.5}Weapons Expertise}{6}{subsubsection.0.2.2.5}
+\contentsline {paragraph}{\numberline {0.2.2.5.1}Laser}{6}{paragraph.0.2.2.5.1}
+\contentsline {paragraph}{\numberline {0.2.2.5.2}Projectile}{6}{paragraph.0.2.2.5.2}
+\contentsline {paragraph}{\numberline {0.2.2.5.3}Missile}{6}{paragraph.0.2.2.5.3}
+\contentsline {paragraph}{\numberline {0.2.2.5.4}Melee}{7}{paragraph.0.2.2.5.4}
+\contentsline {subsubsection}{\numberline {0.2.2.6}Piloting Practice}{7}{subsubsection.0.2.2.6}
+\contentsline {paragraph}{\numberline {0.2.2.6.1}Exo}{7}{paragraph.0.2.2.6.1}
+\contentsline {paragraph}{\numberline {0.2.2.6.2}Tiny}{7}{paragraph.0.2.2.6.2}
+\contentsline {paragraph}{\numberline {0.2.2.6.3}Very Light}{7}{paragraph.0.2.2.6.3}
+\contentsline {paragraph}{\numberline {0.2.2.6.4}Light}{7}{paragraph.0.2.2.6.4}
+\contentsline {paragraph}{\numberline {0.2.2.6.5}Medium}{7}{paragraph.0.2.2.6.5}
+\contentsline {paragraph}{\numberline {0.2.2.6.6}Heavy}{7}{paragraph.0.2.2.6.6}
+\contentsline {paragraph}{\numberline {0.2.2.6.7}Very Heavy}{7}{paragraph.0.2.2.6.7}
+\contentsline {subsubsection}{\numberline {0.2.2.7}Aux}{7}{subsubsection.0.2.2.7}
+\contentsline {paragraph}{\numberline {0.2.2.7.1}Biotech}{7}{paragraph.0.2.2.7.1}
+\contentsline {subsubsection}{\numberline {0.2.2.8}Skilltree - Techside}{8}{subsubsection.0.2.2.8}
+\contentsline {subsection}{\numberline {0.2.3}Trade}{9}{subsection.0.2.3}
+\contentsline {subsubsection}{\numberline {0.2.3.1}Tradegoods}{9}{subsubsection.0.2.3.1}
+\contentsline {subsection}{\numberline {0.2.4}Combat}{10}{subsection.0.2.4}
+\contentsline {subsubsection}{\numberline {0.2.4.1}Life}{10}{subsubsection.0.2.4.1}
+\contentsline {subsubsection}{\numberline {0.2.4.2}Rounds}{10}{subsubsection.0.2.4.2}
+\contentsline {subsubsection}{\numberline {0.2.4.3}Combat against Groups}{10}{subsubsection.0.2.4.3}
+\contentsline {subsubsection}{\numberline {0.2.4.4}Detailed combat}{10}{subsubsection.0.2.4.4}
+\contentsline {subsection}{\numberline {0.2.5}Health and Contamination}{10}{subsection.0.2.5}
+\contentsline {subsubsection}{\numberline {0.2.5.1}Healing}{10}{subsubsection.0.2.5.1}
+\contentsline {subsubsection}{\numberline {0.2.5.2}Treatment}{11}{subsubsection.0.2.5.2}
+\contentsline {subsubsection}{\numberline {0.2.5.3}Medicine}{11}{subsubsection.0.2.5.3}
+\contentsline {subsubsection}{\numberline {0.2.5.4}Categories}{12}{subsubsection.0.2.5.4}
+\contentsline {subsubsection}{\numberline {0.2.5.5}Contamination}{12}{subsubsection.0.2.5.5}
+\contentsline {subsubsection}{\numberline {0.2.5.6}Contaminationdamage}{12}{subsubsection.0.2.5.6}
+\contentsline {subsubsection}{\numberline {0.2.5.7}Seals}{13}{subsubsection.0.2.5.7}
+\contentsline {subsubsection}{\numberline {0.2.5.8}Average Death}{14}{subsubsection.0.2.5.8}
+\contentsline {subsection}{\numberline {0.2.6}Tech}{14}{subsection.0.2.6}
+\contentsline {subsubsection}{\numberline {0.2.6.1}Blueprints}{14}{subsubsection.0.2.6.1}
+\contentsline {subsubsection}{\numberline {0.2.6.2}Engineering}{15}{subsubsection.0.2.6.2}
+\contentsline {section}{\numberline {0.3}Character Creation}{15}{section.0.3}
+\contentsline {subsection}{\numberline {0.3.1}Step 1 - Categories}{15}{subsection.0.3.1}
+\contentsline {subsection}{\numberline {0.3.2}Step 2 - Abilities}{15}{subsection.0.3.2}
+\contentsline {subsection}{\numberline {0.3.3}Step 3 - Finishing touches}{16}{subsection.0.3.3}
+\contentsline {section}{\numberline {0.4}Mechs}{16}{section.0.4}
+\contentsline {subsection}{\numberline {0.4.1}Sizes}{16}{subsection.0.4.1}
+\contentsline {subsection}{\numberline {0.4.2}Systems}{16}{subsection.0.4.2}
+\contentsline {subsubsection}{\numberline {0.4.2.1}Costs}{17}{subsubsection.0.4.2.1}
+\contentsline {subsection}{\numberline {0.4.3}Movement Systems}{17}{subsection.0.4.3}
+\contentsline {subsubsection}{\numberline {0.4.3.1}Requirements}{18}{subsubsection.0.4.3.1}
+\contentsline {subsection}{\numberline {0.4.4}Seals}{18}{subsection.0.4.4}
+\contentsline {subsection}{\numberline {0.4.5}Heatsystems}{18}{subsection.0.4.5}
+\contentsline {subsection}{\numberline {0.4.6}Energysystems}{19}{subsection.0.4.6}
+\contentsline {subsection}{\numberline {0.4.7}Shieldsystems}{19}{subsection.0.4.7}
+\contentsline {subsection}{\numberline {0.4.8}Armor}{20}{subsection.0.4.8}
+\contentsline {subsection}{\numberline {0.4.9}Weapons}{20}{subsection.0.4.9}
+\contentsline {subsection}{\numberline {0.4.10}Misc Modules}{21}{subsection.0.4.10}
+\contentsline {subsection}{\numberline {0.4.11}Basetech}{21}{subsection.0.4.11}
+\contentsline {subsection}{\numberline {0.4.12}Lowtech}{21}{subsection.0.4.12}
+\contentsline {subsection}{\numberline {0.4.13}Midtech}{22}{subsection.0.4.13}
+\contentsline {subsection}{\numberline {0.4.14}Hightech}{22}{subsection.0.4.14}
