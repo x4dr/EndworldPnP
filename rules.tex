@@ -25,56 +25,65 @@
 
     \subsection{Resonance}\label{subsec:resonance}
     Resonance is when in a Roll, more than one die, show the same Number.\par
-    The Resonance \emph{amplitude} is the number of dice \emph{that exceed 1}, meaning it is lower by 1 than the total
+    The Resonance \emph{amplitude} is the number of dice \emph{that exceed 1}, meaning it is lower by 1 than the
     number of dice.\par
     The Resonance \emph{frequency} is the number those dice show.
     If no Effect states anything about a Resonance, they have no effect.
 
-    \subsection{Skills and Abilities}\label{subsec:skillsAndAbilities}
-    Abilities represent in what aspects of the gameworld a character excels and in which he doesnt.
-    With the Exception of Knowledges and Professions every Ability starts at Level 1. \par
-    Depending on the Priorities picked during character creation it may be easier or harder to raise them, but Every
-    Ability can be Applied to a multitude of general Actions.
-    For example Negotiation can be used while bartering or trying
-    to convince someone not to harm a hostage.
-    The Priorities and Abilities in the following Table are a not all that exist
-    but they are the most common Abilities shared by all humans.\vspace{1cm}
+    \subsection{Skills and Attributes}\label{subsec:skillsAndAttributes}
+    Attributes represent in what aspects of the gameworld a character excels and in which he doesnt.\par
+    Depending on the Priorities picked during character creation it may be easier or harder to raise them, but every
+    Attribute can be Applied to a multitude of general Actions, see the examples in the table below.\par
+    The Priorities and Attributes in the following Table are a not all that exist
+    but they are the most common Attributes shared by all humans.\vspace{1cm}
     \begin{tabular}{l||cccccc}
         Priorities      &Charisma      &Wisdom         &Body        &Ability    \\\hline\\
                         &Resolve       &Perception     &Fitness     &Competence   \\
-        Abilities       &Impression    &Mind           &Dexterity   &Insight   \\
+        Attributes      &Impression    &Mind           &Dexterity   &Insight   \\
                         &Sympathy      &Knowledge      &Agility     &Theory   \\
 
 
-        ////////////TODO:REWORK
+
     \end{tabular}\vspace{1cm}
-    \subsubsection{Social Abilities} 
+    \subsubsection{Charisma Attributes}
         \begin{enumerate}[label= -]
-            \item {Negotiation}: employing discussion, bartering, negotiating and similar interactions.
-            \item {Expression}: Leadership, telling a story, reporting, and building rapport.
-            \item {Slyness}: lying, skullduggery, twisting the truth and intimidation.
+            \item {Resolve}: reasoning, convincing, bartering, negotiating and similar interactions
+            \item {Impression}: leadership, bluffing, acting, boasting, lieing
+            \item {Sympathy}: chatting, pleading, resolving conflicts, being likeable
         \end{enumerate}
-    \subsubsection{Mental Abilities} 
+    \subsubsection{Mental Attributes} 
         \begin{enumerate}[label=-]
-            \item {Perception}: How well information is gathered from the world.
-            \item {Mind}: Memory, assessing situations, processing information.
-            \item {Insight}: the marginal edge that goes beyond the normal and expected, this barely understood trait
-            describes the brains ability to \ldots connect.
+            \item {Perception}: gathering information, noticing details, being alert
+            \item {Mind}: memory, assessing situations, processing information, menial mental tasks
+            \item {Knowledge}: knowing, learning, posessing and storing information
         \end{enumerate}
-    \subsubsection{Physical Abilities} 
+    ////////////TODO:REWORK
+    \subsubsection{Physical Attributes} 
         \begin{enumerate}[label= -]
-            \item {Fitness}: General physical shape, Strength, Stamina, Healing.
-            \item {Dexterity}: Precise physical manipulations of all sorts.
-            \item {Agility}: Speed, Acrobatics, maneuverability.
+            \item {Fitness}: general physical actions, applying strength, persisting, healing
+            \item {Dexterity}: precise and/or speedy manipulation of objects using hands
+            \item {Agility}: running, jumping, dodging, climbing
         \end{enumerate}
-    \subsubsection{Tech Abilities}
+    \subsubsection{Ability Attributes}
+        \begin{enumerate}[label= -]
+            \item {Competence}: repetetive or physically complicated actions
+            \item {Insight}: creative or explorative actions
+            \item {Theory}: applying knowledge or mentally complicated actions
+        \end{enumerate}
+    \subsubsection{Tech Attributes}
         \begin{enumerate}[label= -]
             \item {Usage}: How to handle and operate complicated (or unknown) technology.
             \item {Analysis}: Gathering information about the workings and purposes of complicated or unknown technology
             \item {Integration}: Wiring/interfacing technology together that might or might not have been build for
             that purpose.
         \end{enumerate}
-        \subsubsection{Weapons Expertise}
+    \subsubsection{Spiritual Attributes}
+        \begin{enumerate}[label= -]
+            \item {Harmony}: bringing spirits and self into harmony
+            \item {Eminence}: the power to reach higher status among spirits
+            \item {Unity}: the ability to entwine wills of spirit and self
+        \end{enumerate}
+    \subsubsection{Weapons Expertise}
         \paragraph{Laser}s or technically "Directed Energy Weapons" \par are a group of weapons which typically
     do not use Ammunition, but raw Energy to inflict their damage.
     Their comparably low damage is made up for by being
@@ -156,12 +165,12 @@
         \end{enumerate}
     \pagebreak
     \subsubsection{Skilltree - Techside}
-    Further Priorities might include Abilities, single Skills or Entire Skilltrees.
+    Further Priorities might include Attributes, single Skills or Entire Skilltrees.
     A number in brackets indicates how many
-    Skillpoints can be assigned, lacking a number implies being either a category (nodes) or an ability (leaves).
+    Skillpoints can be assigned, lacking a number implies being either a category (nodes) or an Attribute (leaves).
     \dirtree{%
     .1 Skills.
-    .2 Tech Abilities.
+    .2 Tech Attributes.
     .3 Usage.
     .3 Analysis.
     .3 Integration.
@@ -520,12 +529,12 @@ C & death & mortality & wounds & con & death & mortality & wounds & con &death &
     To create a blueprint a character needs the appropriate materials
     (usually a computer of some sort) the time required is based on the complexity of the project.
     To find out if the
-    blueprint is within the capabilities of the character check their specific Knowledge against the difficulty of the
+    blueprint is within the capAttributes of the character check their specific Knowledge against the difficulty of the
     project.
     If the Character does not have the Appropriate Knowledge he can check sufficiently similar knowledge with
     an appropriate disadvantage (1 per techlevel, 3 for different module classes on the same techlevel)
     The modifier the blueprint provides is the result of the Check\(/2\)(rounded up)\(-3\).
-    Even a blueprint with a negative bonus is useful, since it enables the ability to build the item in question at all.\\
+    Even a blueprint with a negative bonus is useful, since it enables the Attribute to build the item in question at all.\\
     A blueprint states the name of the Item, its category and the required materials.\vspace{1.5cm}
     \subsubsection{Engineering}
 (rework on its way)
