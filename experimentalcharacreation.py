@@ -23,6 +23,15 @@ def couldraise(remainingpoints, skills, start=0):
     return False
 
 
+def sums(length, total_sum):
+    if length == 1:
+        yield (total_sum,)
+    else:
+        for value in range(total_sum + 1):
+            for permutation in sums(length - 1, total_sum - value):
+                yield (value,) + permutation
+
+
 def searchdist(length, amt, dist=None):
     if dist is None:
         dist = []
@@ -69,11 +78,6 @@ print("selftest: \nattr lvl 1: {lvl1}\n"
               lvl4=costcalc(4, 1),
               lvl5=costcalc(5, 1)))
 
-time1 = time.time()
-dists = searchdist(10, 20)
-print("time:", time.time() - time1)
-print(len(dists))
-
 found = searchall(0, [], 1)
 if found:
     print(len(found))
@@ -88,3 +92,5 @@ if found:
 
     for dk in distri.keys():
         print(dk, "\t\t", distri[dk])
+
+

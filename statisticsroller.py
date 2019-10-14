@@ -2,14 +2,16 @@ import random
 import sys
 
 import time
-from typing import DefaultDict
+from collections import defaultdict
 
 
 def d10(amt, diff, ones=True):  # faster than the WoDDice
     succ = 0
     anti = 0
-    for i in range(amt):
+    r=[]
+    for _ in range(amt):
         x = random.randint(1, 10)
+        r.append(x)
         if x >= diff:
             succ += 1
         if ones and x == 1:
@@ -21,6 +23,7 @@ def d10(amt, diff, ones=True):  # faster than the WoDDice
             if succ > 0:
                 return 0
             else:
+                print(r)
                 return 0 - anti
     else:
         return succ
@@ -81,8 +84,8 @@ def run():
     if sys.argv[4] == "d":
         roller = d10
     else:
-        roller=d10h
-    successes = DefaultDict(lambda: 0)
+        roller = d10h
+    successes = defaultdict(lambda: 0)
     i = 0
     time1 = time.time()
     compare = len(sys.argv) > 4 and sys.argv[4] == "c"
@@ -90,23 +93,21 @@ def run():
     while True:
         i += 1
         if compare:
-            difficulty = roller(int(sys.argv[5]))+bonus
+            difficulty = roller(int(sys.argv[5])) + bonus
         successes[roller(amount, difficulty)] += 1
         if i % 10000 == 0:
             if time.time() - time1 >= duration:
                 break
     if "nofail" in sys.argv:
-        for key in range(min(successes.keys()),0):
-            del(successes[key])
-    
+        for key in range(min(successes.keys()), 0):
+            del (successes[key])
 
     print("rolling %+d %s against %+d %sfor %.1f seconds" % (
-    amount,
-    "dice" if not compare else "advantage",
-    difficulty if not compare else int(sys.argv[5]),
-    "" if not compare else "advantage ",
-    duration))
+        amount,
+        "dice" if not compare else "advantage",
+        difficulty if not compare else int(sys.argv[5]),
+        "" if not compare else "advantage ",
+        duration))
     plot(dict(successes))
 
-
-run()
+# run()

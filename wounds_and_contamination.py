@@ -1,139 +1,144 @@
 import random
+from collections import defaultdict
 
 
-def d10(lvl):
-    amt = abs(lvl - 3) + 1
-    desc = lvl - 3 < 0
-    x = sorted([random.randint(1, 10) for i in range(amt)], reverse=desc)
-    for i in range(len(x)):
-        if x[i:].count(x[i]) > 1:
-            x.append((x.count(x[i]) - 1) * (-1 if desc else 1) + x[i])
-
-    return min(x) if desc else max(x)
+def roll(stats, mod=0):
+    r = sorted(random.randint(1, 10) for _ in range(5 + abs(mod)))
+    return (sum(r[s - 1 + (mod if mod > 0 else 0)] for s in stats if s > 0),
+            {n: r.count(n) - 1 for n in range(1, 11) if r.count(n) > 1})
 
 
-def posi(a):
-    return [-x if x <0 else x for x in a]
+def add_healing_rate(healing_rate: dict, name: str, fitness_skill: int, healing_bonus_skill: int):
+    newheal, resonance = roll((fitness_skill, healing_bonus_skill))
+    healing_rate[name] = (max(
+        min(newheal, healing_rate.get(" " + name, 999))
+        + resonance.get(10, 0), 0) // (resonance.get(1, 0) + 1))
+
+    return resonance.get(1, -1)
 
 
-def testrun(runs, env, res, fit, health, resmod, extres=0, startingcharacon=0, duration=720):
+def timeformat(hours):
+    if hours > 24:
+        days = hours / 24
+        if days > 30:
+            months = days / 30
+            if months > 12:
+                return str(round(days / 365, 2)) + "y"
+            else:
+                return str(round(months, 2)) + "m"
+        else:
+            return str(round(hours / 24, 2)) + "d"
+    else:
+        return str(hours) + "h"
+
+
+def testrun(runs, environmental_contamination, resistance_skill, fitness_skill, healing_bonus_skill, health,
+            startingcharacon=0, tolerance=0, duration=720):
     mortality = 0
-    tod = []
-    avgwoundstotal = 0
+    deathafter = []
+    woundstotal = 0
     contatotal = []
-    i = 0
+    toltotal = []
+
     for i in range(runs):
-
-        wounds = []
-        conta = startingcharacon
+        # healing rule (test):
+        # one roll is made (after being wounded and while conditions hold)
+        # rerolls on receiving damage can only worsen the result
+        # threshholds: 3, 5, 7, 9, 11, 13, 15, 17, 19, 20
+        # healing level +1 for every threshhold hit
+        # all wounds in parallel get compared to healing level.
+        log = ""
+        healing_thresh = [3, 5, 7, 9, 11, 13, 15, 17, 19, 20]
+        exposure = 0
+        wounds = defaultdict(int)
+        healing_rate = defaultdict(int)
+        healing_progress = defaultdict(int)
+        character_contamination = startingcharacon
         hours = 0
-        avgwounds = 0
-        while sum(posi(wounds)) < health and hours < duration:
+        while sum(wounds.values()) < health and hours < duration:
             hours += 1
-
-            if avgwounds == 0 and hours > 25:  # if nothing occured in the first day
-                hours = duration  # probably nothing will
-                continue  # skips instances where damage was healed the hour it was suffered... but yeah
-            if not (hours < 48 or hours % 24 == 0):
-                continue
-
-            # print("hour:", hours, "\t charcon:", conta, "wounds:", wounds)
-            wound = d10(res)
-            # if env - conta > res - 2:
-            # print("receiving", (env - conta - resmod), "environmental damage, reducing by", wound)
-            wound = (env - conta - resmod - extres) - wound
+            # log += f"hour:{hours}\t charcon:{character_contamination} wounds:{dict(wounds)}\n"
+            resistance, resonance = roll((resistance_skill, fitness_skill))
+            resistance = max(resistance - resonance.get(1, 0) + resonance.get(10, 0), 0)
+            # environmental wound:
+            wound = environmental_contamination - character_contamination - resistance
             if wound > 0:
-                if fit:
-                    conta += 1
-                # print("hurt from", env, "with difficulty", wound)
-                if wound > 10:
-                    wounds.append(10)
-                    wound -= 10
-                wounds.append(wound)
-            if hours % 24 == 0 and fit:
-                healing = True
-                heal = d10(res)
-                wound = conta - resmod - heal
-                #    print("resisting internal contamination of", conta, " with mod", resmod, "with roll", heal)
-                if wound > 0:
-                    #        print("wasting away from being Contaminated:", wound)
-                    wounds.append(wound)
-                    healing = False
+                log += f"{wounds['Ingress']} Wounded {wound}!\n"
+                character_contamination += 1
+                wounds["Ingress"] += wound
+                # Also (re)roll the healingrate for this wound, take lower
+                add_healing_rate(healing_rate, "Ingress", fitness_skill, healing_bonus_skill)
+                log += f"Healing rate: {healing_rate['Ingress']}\n"
+            if hours % 24 == 0:
+                for k in wounds.keys():
+                    healing_progress[k] += sum(1 for x in healing_thresh if x <= healing_rate[k])
+                    healing_progress[k] -= max(0, character_contamination - tolerance)
+                    log += f"healing [k] with progress of {sum(1 for x in healing_thresh if x <= healing_rate[k])} " \
+                           f"and regress of {max(0, character_contamination - tolerance)}\n"
+                    log += f"Progress: {healing_progress} Wounds: {wounds}\n"
+                    if healing_progress[k] >= wounds[k]:
+                        wounds[k] = max(wounds[k] - 1, 0)
+                        # print("HEALING", k)
+                        healing_progress[k] = 0
+                    elif healing_progress[k] < 0:
+                        healing_progress[k] = wounds[k]
+                        wounds[k] += 1
+                exposure += character_contamination - tolerance
+                if exposure > 300:
+                    exposure = 0
+                    tolerance += 1
 
-                for w in range(len(wounds)):
-                    difficulty = abs(wounds[w]) + len(wounds) - 1
-                    heal = d10(fit)
-                    # if healing:
-                    #    print("trying to heal", difficulty, "with", heal, "!")
-                    # else:
-                    #    print("trying not to be 5 under", difficulty, "with", heal, "!")
-                    reco = heal - difficulty
-                    if reco > 0 and healing:
-                        if wounds[w] > 0:
-                            wounds[w] -= 1
-                        else:
-                            wounds[w] = abs(wounds[w])
-                            # print("success!")
-                    elif reco <= -5:
-                        if wounds[w] < 0:
-                            # print("infection!")
-                            wounds.append(int(abs(wounds[w]) / 2))
-                        else:
-                            wounds[w] *= -1
-                wounds = [w if w > 0 else w - 1 for w in wounds if w != 0]
-            avgwounds += sum(posi(wounds))
         if hours < duration:
             mortality += 1
-            tod.append(hours)
-        avgwoundstotal += avgwounds / hours
-        contatotal.append(conta)
-        #print("run", i, "ended with", wounds, "wounds after", hours, "hours, having", avgwounds / hours,
-        #      "wounds on average")
-    # if abs((avgwoundstotal - (((health / 2) - 1) * (i + 1)))) < 0.0001:
-    #    return True
-    if avgwoundstotal or 1:
-        print(("{0:<3}&{1:{form}} \t&{2:<5g}% &{3:>6.2g} " + ("&{4:>6.2g} " if fit else "") + "\\\\").format(
-            env,
-            "none" if len(tod) == 0 else (sum(tod) / len(tod)),
-            100 * mortality / (i + 1),
-            int(avgwoundstotal / (i + 1)),
-            sum(contatotal) / len(contatotal), form=6 if len(tod) == 0 else "6.2f"))
+            deathafter.append(hours)
+            # print(log)
+        woundstotal += sum(wounds.values())
+        contatotal.append(character_contamination)
+        toltotal.append(tolerance)
+
+        # print("run", i, "ended with", dict(wounds), "wounds after", timeformat(hours), "with",
+        #      character_contamination, "con")
+
+    print("{env:<3}&{death} \t&{mortality:<5g}% &{wounds} &{con:3.2g}-{tol:.2g} \\\\".format(
+        env=environmental_contamination,
+        death="none" if len(deathafter) == 0 else timeformat(sum(deathafter) / len(deathafter)),
+        mortality=100 * mortality / runs,
+        wounds=woundstotal / runs,
+        con=sum(contatotal) / len(contatotal),
+        tol=sum(toltotal) / len(toltotal)))
     return False
 
 
-CatA = {"Cat": "A", "HP": 20, "Resistance Category": 3, "Fitness": 3, "Internal Resistance": -1,
-        "Starting Contamination": 0, "External Resistance": 0}
-CatB = {"Cat": "B", "HP": 25, "Resistance Category": 4, "Fitness": 3, "Internal Resistance": 0,
-        "Starting Contamination": 2, "External Resistance": 0}
-CatC = {"Cat": "C", "HP": 30, "Resistance Category": 5, "Fitness": 3, "Internal Resistance": 1,
-        "Starting Contamination": 3, "External Resistance": 0}
 
-ET = {"Cat": "ET", "HP": 10, "Resistance Category": 1, "Fitness": 0, "Internal Resistance": -1,
-      "Starting Contamination": 0, "External Resistance": 0}
-HT = {"Cat": "HT", "HP": 10, "Resistance Category": 2, "Fitness": 0, "Internal Resistance": 0,
-      "Starting Contamination": 0, "External Resistance": 0}
-MT = {"Cat": "MT", "HP": 10, "Resistance Category": 3, "Fitness": 0, "Internal Resistance": 1,
-      "Starting Contamination": 0, "External Resistance": 0}
-LT = {"Cat": "LT", "HP": 10, "Resistance Category": 4, "Fitness": 0, "Internal Resistance": 2,
-      "Starting Contamination": 0, "External Resistance": 0}
-BT = {"Cat": "BT", "HP": 10, "Resistance Category": 5, "Fitness": 0, "Internal Resistance": 3,
-      "Starting Contamination": 0, "External Resistance": 0}
+def woundtest(wound, healinglevel, superhealing=False):
+    progress = 0
+    i = 0
+    while wound > 0:
+        i += 1
+        progress += healinglevel
+        if progress >= wound:
+            if superhealing:
+                s_heal = progress // wound
+                progress = progress % wound
+                # print(s_heal, progress, wound)
+                wound -= s_heal
+            else:
+                progress = 0
+                wound -= 1
+        if i > 1000:
+            return 999999999
+    return i
 
-for chara in [
-    CatA, CatB, CatC
-    # ET, HT, MT, LT, BT
-]:
-    if chara["Fitness"] == 0:
-        print("TechLevel:", chara["Cat"], " \\\\\nC & failure & failurerate & damage\\\\")
-    else:
-        print("Category:", chara["Cat"], " \\\\\nC & death & mortality & wounds & con\\\\")
-    for env in range(0, 50, 1):
-        if testrun(1000, env,
-                   chara["Resistance Category"],
-                   chara["Fitness"],
-                   chara["HP"],
-                   chara["Internal Resistance"],
-                   chara["External Resistance"],
-                   chara["Starting Contamination"],
-                   24):
-            break
+
+print("C & death & mortality & wounds & con\\\\")
+
+for c in range(50):
+    testrun(runs=100,  # runs
+            environmental_contamination=c,
+            resistance_skill=1,
+            fitness_skill=2,
+            healing_bonus_skill=0,
+            health=50,
+            startingcharacon=0,
+            tolerance=0,
+            duration=int(4 * 365 * 24))  # hours
