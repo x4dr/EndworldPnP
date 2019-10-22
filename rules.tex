@@ -84,6 +84,8 @@ but they are the most common Attributes shared by all humans.\vspace{1cm}
 
 \input{skills}
 
+
+\chapter{Everything from here on is highly legacy and will be reworked}\label{ch:everything-from-here-on-is-highly-legacy-and-will-be-reworked}
 \chapter{Trade}\label{ch:trade}
 These entries in the table below are usually equivalent, local supply and demand may vary them greatly.
 Rolling for price variance might be done if there is no in-world reason why certain things might be more or
@@ -93,97 +95,8 @@ Additionally everyone a character trades with has self interest and will keep \(
 the tradevalue.\vspace{1.5cm}
 Goods, at 100\% value each line is equivalent to one another and equivalent to 4 character creation points \par
 \section{Tradegoods}\label{sec:tradegoods}
-\begin{tabular}{|r|l|}
-    \hline
-    Storage & Article\\\hline
-    10g & Elixir of Life (EOL)\\\hline
-    100g & Alacast\\\hline
-    500g & Experimental Tech Scrap (ETS)\\\hline
-    1kg & High Tech Scrap (HTS)\\\hline
-    1.5kg & Advanced Gene Therapy Medicine (AGT)\\\hline
-    5kg & Medium Tech Scrap (MTS)\\\hline
-    10kg & Potent Medicine\\\hline
-    50kg & Low Tech Scrap (LTS)\\\hline
-    50kg & Seeking Rockets\\\hline
-    100kg & Processed Medicine\\\hline
-    100kg & Basic Rockets\\\hline
-    100kg & Artillery\\\hline
-    200kg & Basic Medicine\\\hline
-    500kg & Improvised/Herbal Medicine\\hline
-    500kg & Base Tech Scrap (BTS)\\\hline
-    500kg & Basic Ammunition\\\hline
-    1000L & drinking Water (500days of drinking)\\\hline
-    500L/35kg & Liquid Hydrogen\\\hline
-    1t & Coal\\\hline
-    350L & LiquidCombustionFuel\\\hline
-    100kg & High Energy Rations (0.4kg/(day\(\cdot\)person))\\\hline
-    1t & Normal Food (2.5 kg / (day\(\cdot\)person))\\\hline
-    1 & Medium Quality Blueprint\\\hline
-\end{tabular}\par
-Open for more Suggestions\vspace{1.5cm}
-Example:\par
-Character A wants to get rid of 5 tonnes of Base Tech Scrap in favor of more easily transportable Alacast in a local
-Dome.\par
-Since the Gamemaster is lazy there are no storyelements influencing the prices, so they are rolled.
-First, the value of
-the BTS is determined to be (Roll: 6, 4) \(((-1)^{6}\cdot4\cdot5) \% = +20\%\).
-Then the value of Alacast is determined
-to be (Roll: 10, 3)\(((-1)^{10}\cdot3\cdot5) \% = +15\%\).
-The result is that the rate between BTS and Alacast is
-\( 500\cdot1.15/100\cdot1.2 = 4.79\) \\ Which means character As scrap is worth
-\(5000 kg\cdot / 4.79 = 1043 g \) of Alacast.
-He barters (in which he has Proficiency) with a local merchant and manages to
-negotiate terms in which the merchant retains (Roll: 4, 9 \(\Rightarrow\) 9) \(5\cdot(11-9)\% = 10\%\) of the Traded
-value.
-He decides to trade and gets 938 grams of Alacast.\vspace{1.5cm}
-\pagebreak
+\input{tradegoods}
 
-\chapter{Combat}\label{ch:combat}
-\subsection{Life}\label{subsec:life}
-Every entity has a pool of Hitpoints, which describes how far away that entity is from its failure point.
-In the case of a Mech, Mount or Human, that would mean being unable to fight or act in an effective manner.
-Living
-entities start dying when they have twice as many wounds as hitpoints.
-How fast something dies is decided by the
-Gamemaster.\par
-If an entity gets damaged, the result of the damage roll (or the number set by the Gamemaster) is compared the results
-of rolls made by the outermost layer of defense.
-If the result of the damage is higher, it, depending on the
-layer of defense, gets blocked, passes through or overwhelms the layer.
-If damage passes all layers of defense,
-it causes damage of a severity of the remaining result.
-Biological Entities for a Biological Entity this is called a wound.
-\subsection{Rounds}
-Combat is done in rounds.
-Each round is 5 seconds long.
-Every character present acts in turn (determined
-by circumstances or a Stealth, Perception, Willpower or other situational check) and can usually move and do an action
-(an attack or action that can be done in the remaining time).
-\subsection{Combat against Groups}
-The Group is treated as a single Enemy with its pool of Hitpoints being its members.
-It gets offensive/defensive Levels and modifiers assigned by the Gamemaster.\\
-The fighting character decides (if possible, depending on gear and situation) to fight offensively, defensively
-or passively and rolls the respective combat stat, then the differences between each of the rolled dice of the combat
-roll and the groups performance value is calculated.\par
-\begin{enumerate}[label= - ]
-    \item Offensive style: For every step of severity in the damage dealt (with an appropriate weapon),
-    a Group member is rendered unable to
-    fight.
-    On Offensive rolls, the group gets a sizebonus correlating to their size and an advantage.
-    \item Defensive style: Dealing damage results in a group member being rendered unable to fight.
-\end{enumerate}
-\subsection{Detailed combat}
-The attacking character makes their to hit check (dexterity for example).
-The defending character Checks for the
-corresponding defense (agility for example).
-If the attacker wins, they hit, on a draw the
-attack grazes.
-On a hit, check for damage by rolling the damage level of the weapon, subtract the result of the
-armor roll and add difference in sizeclasses between weapon and target.
-If all levels of Defense are breached, the remaining result of the roll is the severity of the inflicted damage.\par
-When sniping, The damage is not inflicted in general, but on a part of the target with a maximum depth equal to
-the severity of the damage.
-For the rest see sniping.
 \section{Health and Contamination}\label{subsec:healthAndContamination}
 \subsection{Healing}
 For Living entities Damage points are wounds with the severity being the remainder of the result of the damage roll
@@ -399,7 +312,7 @@ The modifier the blueprint provides is the result of the Check\(/2\)(rounded up)
 Even a blueprint with a negative bonus is useful, since it enables the Attribute to build the item in question at all.\\
 A blueprint states the name of the Item, its category and the required materials.\vspace{1.5cm}
 \subsection{Engineering}
-(rework on its way)
+
 Building something requires a blueprint, the required materials, a workshop or something similar.
 Check Engineering
 modified by the blueprint bonus and the conditions (having nothing but a makeshift wrench in the desert might be -5, having state of the art
