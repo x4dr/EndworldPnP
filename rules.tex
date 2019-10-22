@@ -23,14 +23,14 @@ remove the lowest dice from the Roll until the number of dice is as it was befor
 For Penaltydice, the highest are removed instead.
 Neither Bonus nor Penaltydice ever change the number of dice being interpreted, just the relative Chances.
 
-\section{Resonance}\label{subsec:resonance}
+\section{Resonance}\label{sec:resonance}
 Resonance is when in a Roll, more than one die, show the same Number.\par
 The Resonance \emph{amplitude} is the number of dice \emph{that exceed 1}, meaning it is lower by 1 than the
 number of dice.\par
 The Resonance \emph{frequency} is the number those dice show.
 If no Effect states anything about a Resonance, they have no effect.
 
-\section{Skills and Attributes}\label{subsec:skillsAndAttributes}
+\chapter{Skills and Attributes}\label{ch:skillsandattributes}
 Attributes represent in what aspects of the gameworld a character excels and in which he doesnt.\par
 Depending on the Priorities picked during character creation it may be easier or harder to raise them, but every
 Attribute can be Applied to a multitude of general Actions, see the examples in the table below.\par
@@ -45,47 +45,46 @@ but they are the most common Attributes shared by all humans.\vspace{1cm}
 
 
 \end{tabular}\vspace{1cm}
-\subsection{Charisma Attributes}
+\subsection{Social Attributes}\label{subsec:charisma-attributes}
 \begin{enumerate}[label= -]
     \item {Resolve}: reasoning, convincing, bartering, negotiating and similar interactions
     \item {Impression}: leadership, bluffing, acting, boasting, lieing
     \item {Sympathy}: chatting, pleading, resolving conflicts, being likeable
 \end{enumerate}
-\subsection{Mental Attributes}
+\subsection{Mental Attributes}\label{subsec:mental-attributes}
 \begin{enumerate}[label=-]
     \item {Perception}: gathering information, noticing details, being alert
     \item {Mind}: memory, assessing situations, processing information, menial mental tasks
     \item {Knowledge}: knowing, learning, posessing and storing information
 \end{enumerate}
-\subsection{Physical Attributes}
+\subsection{Physical Attributes}\label{subsec:physical-attributes}
 \begin{enumerate}[label= -]
     \item {Fitness}: general physical actions, applying strength, persisting, healing
     \item {Dexterity}: precise and/or speedy manipulation of objects using hands
     \item {Agility}: running, jumping, dodging, climbing
 \end{enumerate}
-\subsection{Ability Attributes}
+\subsection{Ability Attributes}\label{subsec:ability-attributes}
 \begin{enumerate}[label= -]
     \item {Competence}: repetetive or physically complicated actions
     \item {Insight}: creative or explorative actions
     \item {Theory}: applying knowledge or mentally complicated actions
 \end{enumerate}
-\subsection{Spiritual Attributes}
+\subsection{Spiritual Attributes}\label{subsec:spiritual-attributes}
 \begin{enumerate}[label= -]
     \item {Intuition}: knowing without thought
     \item {Focus} \label{itm:focus}: the power of concentrated effort
     \item {Discipline}: to do things many times done before
 \end{enumerate}
-\subsection{Character Attributes}
+\subsection{Character Attributes}\label{subsec:character-attributes}
 \begin{enumerate}[label= -]
     \item {Contamination Resistance}: Supervivo - Outlander - Tribal
     \item {TBA}: ??
     \item {TBA}: ?
 \end{enumerate}
 
-\section{Skills}\label{sec:skills}
 \input{skills}
 
-\section{Trade}\label{subsec:trade}
+\chapter{Trade}\label{ch:trade}
 These entries in the table below are usually equivalent, local supply and demand may vary them greatly.
 Rolling for price variance might be done if there is no in-world reason why certain things might be more or
 less expensive.
@@ -93,7 +92,7 @@ If that is the case the prices vary by \(((-1)^{1d10}\cdot1d10\cdot5) \%\).
 Additionally everyone a character trades with has self interest and will keep \(5\cdot(11-\)[Negotiation-Check]\()\%\) of
 the tradevalue.\vspace{1.5cm}
 Goods, at 100\% value each line is equivalent to one another and equivalent to 4 character creation points \par
-\subsection{Tradegoods}
+\section{Tradegoods}\label{sec:tradegoods}
 \begin{tabular}{|r|l|}
     \hline
     Storage & Article\\\hline
@@ -137,9 +136,10 @@ He barters (in which he has Proficiency) with a local merchant and manages to
 negotiate terms in which the merchant retains (Roll: 4, 9 \(\Rightarrow\) 9) \(5\cdot(11-9)\% = 10\%\) of the Traded
 value.
 He decides to trade and gets 938 grams of Alacast.\vspace{1.5cm}
-\pagebreak[1]
-\section{Combat}\label{subsec:combat}
-\subsection{Life}
+\pagebreak
+
+\chapter{Combat}\label{ch:combat}
+\subsection{Life}\label{subsec:life}
 Every entity has a pool of Hitpoints, which describes how far away that entity is from its failure point.
 In the case of a Mech, Mount or Human, that would mean being unable to fight or act in an effective manner.
 Living
