@@ -1,34 +1,33 @@
 \section{The Selector System}\label{sec:selectorsystem}
-This System uses  ten sided dice.
-A Check is a roll of usually 5 dice interpreted in a certain way,
+This system uses ten sided dice.
+A \emph{Check} is a roll of usually 5 dice interpreted in a certain way,
 with the result describing how successfull the attempted action was.\par
 Whenever there is advantage or disadvantage of any kind,
 \hyperref[sec:bonus--and-penaltydice]{Bonus- or Penaltydice} may be applicable.
-The Roll itself is interpreted by your \emph{Selectors} which usually are defined
-by the applicable Attribute and Skill, but may be static, or Equipment based.
-The Dice in the Roll are ordered and given an order-number in ascending order by value.
-To get the Result of the Roll (or to \emph{interpret} the roll), every selector \emph{selects} a die with the
+The roll itself is interpreted by your \emph{Selectors} which usually are defined
+by the applicable attribute and skill, but may be static or equipment based.
+The dice in the roll are ordered and given an order-number in ascending order by value.
+To get the result of the roll (or to \emph{interpret} the roll), every selector \emph{selects} a die with the
 appropriate order-number and adds them to the result.
-Selectors greater than the biggest order-number simply select the highest die.
-A Selector of 0 selects no die.
-The usual number of Selectors is 2.\par
+Selectors greater than the biggest order-number simply selects the highest die.
+A selector of 0 selects no die.
+The usual number of selectors is 2.\par
 The effects and result of the Check may then be further modified by \hyperref[sec:resonance]{Resonance}.
-\vspace{1cm}
 
 \section{Bonus- and Penaltydice}\label{sec:bonus--and-penaltydice}
-Bonus and Penaltydice cancel each other out, so 3 Bonusdice and 2 Penaltydice results in 1 Bonusdie.\par
-They describe how many extra dice are rolled on a given Roll.
+Bonus- and Penaltydice cancel each other out.\par
+The larger amount less the smaller amount describes how many extra dice are rolled on a given roll.
 If Bonusdice were rolled,
 remove the lowest dice from the Roll until the number of dice is as it was before the extra dice.
 For Penaltydice, the highest are removed instead.
 Neither Bonus nor Penaltydice ever change the number of dice being interpreted, just the relative Chances.
 
 \section{Resonance}\label{sec:resonance}
-Resonance is when in a Roll, more than one die, show the same Number.\par
-The Resonance \emph{amplitude} is the number of dice \emph{that exceed 1}, meaning it is lower by 1 than the
+Resonance is when in a Roll, more than one die shows the same Number.\par
+The Resonance \emph{amplitude} is the number of dice \emph{that exceed 1}, meaning it is lower by 1 than the total
 number of dice.\par
 The Resonance \emph{frequency} is the number those dice show.
-If no Effect states anything about a Resonance, they have no effect.
+If no effect states anything about a Resonance, they have no effect.
 
 \chapter{Skills and Attributes}\label{ch:skillsandattributes}
 \input{skills}

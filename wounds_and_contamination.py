@@ -144,14 +144,13 @@ def woundtest(wound, healinglevel, superhealing=False):
     return i
 
 
-print("Severity & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\\\")
 for severity in range(91, 26):
     print(f"{severity} & ", end="")
     for regen in range(1, 11):
         print(f" {woundtest(severity, regen)} d ", end="&" if regen < 10 else "\n")
 
-print("con & deathtime & mortality & avg wounds & conta\\\\")
-for rs in range(1, 6):
+print("resistances & con & deathtime & mortality & avg wounds & conta\\\\")
+for rs in range(5):
     rundata = [
         [client.submit(singletest,
                        dict(run=repeat, environmental_contamination=con, resistance_skill=rs, fitness_skill=2,
@@ -161,12 +160,11 @@ for rs in range(1, 6):
         for con in range(1, 26)]
 
     rundata = [client.submit(glomp, r) for r in rundata]
-    print("everything submitted!")
 
     try:
         for d in rundata:
-                d = d.result()
-                print(f"{rs + 1} {d['env']:<3}&{d['death']} \t&{d['mortality']:<5g}% \\\\")
+            d = d.result()
+            print(f"{rs + 1} & {d['env']:<3}&{d['death']} \t&{d['mortality']:<3g}% \\\\")
     except Exception as e:
         for x in e.args:
             print(x)

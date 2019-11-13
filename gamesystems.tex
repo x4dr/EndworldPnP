@@ -1,18 +1,23 @@
 \section{Health and Contamination}\label{sec:healthandcontamination}
-\subsection{Healing}\label{subsec:healing2}
+\subsection{Healing}\label{subsec:healing}
 For living entities damage is represented by wounds with the severity being the remainder of the damage after all
 defenses were subtracted.
 Humans roll a Fitness-Check once a wound starts healing.
 For every met threshhold of the wound one level of regeneration rate for that particular wound is noted down.
-Regeneration can be aided or slowed by circumstances, such as treatment or environmental conditions.
-A resonance of frequency 1 also lowers the healing rate by that much, even going negative.
+If a wound is worsened/increased the Fitness-Check is repeated, selecting the worse of the two results.
+If a wound is successfully and substantially improved, the Fitness Check is repeated, selecting the better of the two
+results.
+Regeneration can be aided or slowed by circumstances, such as therapy or environmental conditions.
+Resonance of frequency 1 lowers the healing rate by its amplitude, even going negative, while resonance of frequency 10
+improves healing rate by its amplitude.
 Wounds do not necessarily lead to death or permanent impairments, but if they remain untreated for a long time, or there
-is a runaway effect on one of them, the Storyteller may decree either.
+is a runaway effect on one of them, the Storyteller may decree permanent repercussions, as appropriate, including Death.
 Regeneration accumulates over successive days, and once the current severity is reached, the wound is lowered by 1
 severity and regeneration is reset to 0.
 If regeneration rate is negative, and the regeneration rate falls below 0, regeneration progress is set to the wound
 severity and then the severity is increased by 1.
-Standard threshholds are 2, 4, 6, 8, 10, 12, 14.
+Standard threshholds are 2, 4, 6, 8, 10, 12, 14. \par
+The following table lists healing time in days for severity and hit threshholds.\par
 \begin{tabular}{c|rrrrrrrrrr}
     Severity & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
     1 &  1 d & 1 d & 1 d & 1 d & 1 d & 1 d & 1 d & 1 d & 1 d & 1 d\\
@@ -42,15 +47,16 @@ Standard threshholds are 2, 4, 6, 8, 10, 12, 14.
     25 &  325 d & 169 d & 117 d & 91 d & 75 d & 65 d & 58 d & 52 d & 48 d & 45 d\\
 \end{tabular}
 \subsection{Treatment}\label{subsec:treatment}
-Treating of wounds is usually done with a Competence or Theory + Healing Check, where medicine and equipment can get modifiers or advantages.
+Treating of wounds is usually done with a Competence or Theory + Healing Check, where medicine and equipment
+can provide modifiers or advantages.
 Many wounds require medicine to be treated at all.
 Treating them without will either not be possible or generate disadvantage.
 Standard threshholds are 8, 11, 14, 17, 20, with results below 5 having negative consequences.
 
-Treating Contamination Sickness requires at least 10g of Alacast, with the treatment of
-Contamination Sickness inflicting the sum of all dice including and below a threshhold determined by the
-Technology used (i.e.\ 5 for Saline-Alacast-Solution Injection).
-The level of Contamination Sickness and internal Contamination is directly lowered by the number of hit threshholds.
+Treating ingress wounds requires at least 10g of Alacast, with the treatment of
+contamination inflicting the sum of all dice including and below or equal to a threshhold determined by the
+Technology used (i.e.\ 8 for Saline-Alacast-Solution Injection) as damage.
+The level of ingress wounds and contamination is directly lowered by the number of hit threshholds.
 
 In all cases Alacast is used to precipitate Contamination from the body, the
 crudest way is to introduce Alacast to the bloodstream to precipitate it inside the body and hope the body expels
@@ -78,20 +84,21 @@ severity\(\cdot\)100g of the medicine and provides the specific bonus.
 
 \subsection{Categories}\label{subsec:categories}
 Every Character has a Contamination Resistance rating ranging from 1 to 5,
-but in-world they are categorized from A to C\@.
+but in-world they are categorized (by supervivo) from A to C\@.
 \begin{enumerate}[label = - ]
-\item \textbf{CatA} Humans are usually Supervivo and usually have Contamination Resistances from 1 or 2,
-\item \textbf{CatB}s are outlaws or for some other reason living outside the Domes and Tribes. They can have any,
- but usually have Contamination Resistances of 2--4
-\item \textbf{CatCs} are usually Tribals with Contaminatin Resistances of 4--5.
+\item \textbf{CatA} Humans are usually Supervivo and usually have low Contamination Resistance
+                    and high Affinity.
+\item \textbf{CatB}s are outlaws, traders, hermits or for some other reason living outside the Domes and Tribes.
+                    They can have any, but usually have medium Contamination Resistance and medium Affinity
+\item \textbf{CatCs} are usually Tribals with high Contaminatin Resistance and low Affinity.
 \end{enumerate}
 \begin{tabular}{c|c}
-    Entity & Contamination  Resistance \\
-    Experimental & 1 \\
-    High Tech & 2 \\
-    Mid Tech & 3 \\
-    Low Tech & 4  \\
-    Base Tech & 5 \\
+    Entity & Contamination Resistance  & Affinity requirements\\
+    Experimental & 1 & 5 \\
+    High Tech & 2 & 4\\
+    Mid Tech & 3 &  3 \\
+    Low Tech & 4 &  2\\
+    Base Tech & 5 & 1\\
 \end{tabular}
 
 
@@ -103,56 +110,64 @@ It is usually assigned a level describing its intensity.
 Only within the Domes
 of the Supervivo, inside a Mech or in a similarily purified environment can the Contaminationlevel ever reach 0. \\
 Levels below 0 are necessary for taking apart Experimental Tech Technology, but getting an area so pure is hard.\\
-Levels 1--3
-are rare areas of low Contamination, like Mines, Airlocks, outdoor markets, outdoor settlements and so on. \\
-Levels 4--6
-are the most common and usually inhabited by Cat-B\\
-Levels 7--11
-are usually inhabited by tribals but sometimes a few Cat-B have to make Camp here \\
-Levels 12--15
-are sparsely populated by Hardy Tribals, but usually deserted.\\
-Levels 16 and Higher
-are Oceans, Deserts, and other hostile areas.
-Weird Things happen here, but some say there is great treasure\ldots\\
-There is no upper limit for Contaminationlevels. \\*
-If an entity is in an area with Contamination, every hour it receives the local Contamination
-as Contaminationdamage.\par
-\subsection{Contaminationdamage}
-Anytime the an Entity receives Contamination damage, the character checks ther Contamination
-Resistance plus all applicable modifiers (external only for external Contamination/internal for both) against the
-level of damage.
-If the Check fails, the entity takes one point of Contamination damage (causing a wound with
-difficulty of the difference between check and Damage and raising Charactercontamination by 1, if applicable).
-If the check fails with a difference of 10 or more, 10 are split off as additional damage. \par
-Charactercontamination is applied as an internal bonus on the Contaminationresistance Check. \par
-Every day before healing a Characters Contamination is applied as damage.
-No Charactercontamination is caused,
-but wounds are taken as normal.
-If the result was a draw or worse, no selfhealing is possible that day.
-Once per hour (about 5 minutes into it) a character directly interacts with an entity, the Charactercontamination*2
-(+Intrinsic Contamination if handling directly) of that character is applied as Contamination damage,
-resisted by a Contaminationresistance of the Entity.
-While directly contacting an entity only the internal
-resistance applies, direct contact might be piloting a mech, using a gun or shaking someones hand, but not being in
-a sealed cargo hold, handling a sealed gun, breathing near someone who wears a face mask, or being processed
-by a decon machine.
-\subsection{Seals}
+\begin{enumerate}[label = - ]
+\item Levels 1--3
+are rare areas of low Contamination, like mines, airlocks, outdoor markets, outdoor settlements and so on.
+Even subjected to this level of Contamination for months, it will not cause death.
+However, for the more fragile Members of Society, the general quality of life can be greatly diminished.
+\item Levels 4--6
+are the most common and usually inhabited by Cat-B\@.
+People without a form of permanent resistance can die here, but life expectancies should be a few months at least.
+\item Levels 7--11
+are usually inhabited by tribals but sometimes a few Cat-B have to make Camp here.
+Anyone without contamination protection will die here within a few weeks.
+\item Levels 12--15
+are sparsely populated by hardy Tribals, but usually deserted.
+\item Levels 16+
+are the most hostile areas.
+Weird Things happen here, but some say that there is great treasure\ldots
+\end{enumerate}
+There is no upper limit for contamination levels.
+If an entity is in an area with contamination, every hour it receives the local contamination
+as contamination damage.\par
+\subsection{Contamination damage}\label{subsec:contamination-damage}
+Anytime the an entity receives contamination damage, the character lowers that damage with a roll on their contamination
+resistance and fitness plus all applicable modifiers (external only for contamination ingress).
+Remaining Damage above 0 is applied to the ingress wound (extending the existing ingress wound if possible,
+otherwise creating a new one) and raises contamination of that character by 1.
+The contamination of the character is applied as an internal bonus on the contamination resistance result, but reduces
+their healing rate, including going negative.
+
+When a character directly interacts with an entity, the Charactercontamination*2
+of that character is applied as Contamination damage, resisted by a Contaminationresistance of the Entity.
+This is repeated every hour if the interaction continues.
+While directly contacting an entity only the internal resistance applies, direct contact might be piloting a mech,
+using a gun or shaking someones hand, except when proper seals are in place.
+\subsection{Seals}\label{subsec:seals}
 A seal of a level of X lowers the level of the Contamination behind it by X (they are usually from 6 upwards)
-Contamination still penetrates weak seals.
+Contamination penetrates (and then slowly equalizes the Contamination) weak or damaged seals, broken seals offer a delay
+at most.
+
 Air has to be purified separately or enriched with oxygen.
 (One human consumes about 500--600 litres of oxygen per day.) The Domes of the Supervivo for
-example usually have a level 25 hermetical seal with purified and oxygenenriched air.\vspace{1.5cm}
-Examples of human sized external contamination modifiers or in-place options\vspace{1.5cm}
+example usually have a level 25 hermetical seal with purified and oxygenenriched air.
+
+
+Examples of human sized external contamination modifiers or in-place options:
+
+
 \begin{tabular}{cl}
     1& An alacast infused rag or a shut wooden door (although oxygen may run out)\\
     2& a breathermask or a simple wooden door airlock (again, oxygen)\\
-    3& a partial gasmask  or an airtight airlock\\
+    3& a partial gasmask or an airtight airlock\\
     4& a heavy partial gasmask with Goggles or a basetech air filtering facility\\
     5& a full gasmask\\
     6& as above + sealed clothing or lowtech air filtering facility\\
     7& as above + midtech scrubber (a little backpack)\\
     8& as above + hightech air scrubber or midtech air filtering facility\\
     9& as above + full mask with air from a compressed air tank\\
-    10+& specially sealed suit with airtank or hightech filtering facility\\
-\end{tabular}\pagebreak
+    10+& \hyperref[subsec:seal-systems]{specially sealed} suit with airtank or hightech filtering facility\\
+\end{tabular}
+
+
 
