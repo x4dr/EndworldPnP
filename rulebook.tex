@@ -1,5 +1,6 @@
-\documentclass{book}
+\documentclass[a4paper]{book}
 \usepackage{listings}
+\usepackage[margin=50pt]{geometry}
 \usepackage{layout}
 \usepackage{enumitem}
 \usepackage{makecell}
@@ -18,7 +19,7 @@
     urlcolor=cyan,
 }
 \urlstyle{same}
-
+\raggedbottom
 \begin{document}
     \maketitle
     \tableofcontents
@@ -97,33 +98,43 @@
     Choose Category, Fate and Affinity\par
     \begin{enumerate}
         \item \textbf{Resistance} describes how able the Character is to survive the hardships of the outside world
-        \item \textbf{Fate} is ``Beginners Luck'' and the room to grow of the character, separating NPC from PC.
+        \item \textbf{Fate} is ``Beginners Luck'' and the room to grow of the character, separating NPC from PC\@.
         \item \textbf{Affinity} for technology allows usage of complex and futuristic gadgets
     \end{enumerate}
-    all start at 1, 7 points are divided between them.
-    Fate
+    all start at 1, then 7 points are divided between them, maximum is 5.
 
-    \section{Step 2 - Abilities}\label{sec:step2-abilities}
+    \section{Step 2 - Scores}\label{sec:step2-scores}
+    \subsection{Abilities}\label{subsec:abilities}
     Order Social, Physical, Mental, Spiritual and Ability in the order that you think they are most
-    usefull to your character concept. \newline
-    In your primary priority you get 250 points, in your secondary priority you get 200 points and in your tertiary
-    priority you get 150 points.
-    The remaining Two Priorities get 100 points.\newline
-    Skills Levels, which range from 1--3, have sublevels that also range from 1--5.
-    Every point can buy a sublevel, so to raise a skill from level 0 to 2 would take 5+5 = 10 points.
-    Attributes, which range from 1--5 can be unlocked by allocating spent skill sublevels.
-    Every Attribute Level requires 10 points per level, so the levels have requirments of 10+20+30+40+50 = 150 Sublevels
-    for an Attribute on Level 5, which translates to 30 total levels in Skills (which could be 15 skills at level 2)
-    To Reach Attributes of 5/5/5 90 total levels of skills (or 450 points) would be required.
+    usefull to your character concept. \par
+    In your primary priority you get 16 points, in your secondary priority you get 12 points and in your tertiary
+    priority you get 8 points.
+    The remaining two Priorities get 4 points.\par
+    Skills range from 1--3:
+    \begin{enumerate}
+        \item proficiency
+        \item mastery
+        \item special expertise
+    \end{enumerate}
+    Some skills are grouped, the group can only receive a point for a subskill that has 2 points.
+
+    \subsection{Attributes}\label{subsec:attributes}
+    Attributes, which range from 1--5 can be unlocked by allocating spent skill levels.\par
+    To raise an attribute a level, 1 point per current level is required, so the levels have requirements of 1;2;3;4;5.
+    With total costs of the levels being:\par
+    \begin{enumerate}
+        \item 1
+        \item 3
+        \item 6
+        \item 10
+        \item 15
+    \end{enumerate}
+    To have an Attribute at Level 5, 15 total levels in Skills (8 $\cdot$ 2 or 15 $\cdot$ 1 or anything between) are
+    required.
+    To Reach Attributes of 5/5/5 120 total levels of skills would be required.
     Attributes can be 0, making the character unable to attempt rolls that would use that attribute.
 
-
-
-    Specific skills can be at levels 0--3.
-    Usually a Level of 1 denotes Proficiency and 2 denotes Mastery,
-    3 is mostly only achieved through special circumstances.
-
-
+    \subsection{Finalizing}\label{subsec:finalizing}
     All points need to be spent, although reskilling/attributing a new character can be done if player and Storyteller
     agree.
     Every level 1 skill requires some sort of mention in the backstory of the character, level 2 skills should be given
@@ -139,7 +150,7 @@
         \item Your \hyperref[ch:mechs]{Mech}
         \item \hyperref[sec:tradegoods]{Goods} (3 per credit)
         \item Gear, Spells, etc
-        \item \hyperref[sec:step2-abilities]{Bonus Character creation points} (1:1)
+        \item \hyperref[sec:step2-scores]{Bonus Character creation points} (5:1)
     \end{enumerate}
 
     \chapter{Mechs}\label{ch:mechs}

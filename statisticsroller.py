@@ -1,3 +1,4 @@
+import math
 import random
 import sys
 
@@ -8,7 +9,7 @@ from collections import defaultdict
 def d10(amt, diff, ones=True):  # faster than the WoDDice
     succ = 0
     anti = 0
-    r=[]
+    r = []
     for _ in range(amt):
         x = random.randint(1, 10)
         r.append(x)
@@ -110,4 +111,54 @@ def run():
         duration))
     plot(dict(successes))
 
+
 # run()
+def power(startspeed, endspeed, t, m):  # v, t, m => p
+    a = (endspeed - startspeed) / t
+    f = m * a
+    d = (startspeed / t) + (0.5 * a * t * t)
+    w = f * d
+    p = w / t
+    return p
+
+
+def speed(e, m):
+    return math.sqrt(2 * e / m)
+
+
+def speedat(m, t, p):  # m, t, p => v
+    e = p * t  # joule
+    print("energy in MJ", e / 10 ** 6)
+    v = speed(e, m)
+    return v
+
+
+def maxspeed(m, p, D):
+    e = 0
+    f = 0
+    e_o = 1000
+    s = 0
+    while abs(e_o - e) >= 1:
+        s += 1
+        e_o = e
+        e += p - f  # joule via one second tick
+        v = speed(e, m)
+
+        f = 0.5 * 1.5 * (v ** 3) * 1 * D * (m ** (1 / 3) )  # frictionloss m**1/3 /4 roughly correlates to size
+        # print(e,v,f, m**0.3)
+        if (s % 5 == 0) or (s < 5):
+            print(f"energy {round(e / 10 ** 3)}kJ speed {v}m/s, time {s}s")
+
+    return round(speed(e, m), 2)
+
+
+mass = 62.3e3
+movpower = 30e3*20
+print(f"{movpower/1000}kw movement")
+msfinal = 14
+seconds = 5
+
+p = power(0, msfinal, seconds, mass)
+print()
+print(speedat(mass, seconds, p))
+print(maxspeed(mass, movpower, 1))

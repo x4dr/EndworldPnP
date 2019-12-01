@@ -3,12 +3,12 @@ from collections import defaultdict
 
 from dask.distributed import Client
 import numpy as np
-from numba import njit
+#from numba import njit
 
 client = Client(address="tcp://127.0.0.1:8786")
 
 
-@njit
+#@njit
 def roll(stats):
     r = np.sort(np.random.randint(1, 11, 5))
     f = []
@@ -150,13 +150,13 @@ for severity in range(91, 26):
         print(f" {woundtest(severity, regen)} d ", end="&" if regen < 10 else "\n")
 
 print("resistances & con & deathtime & mortality & avg wounds & conta\\\\")
-for rs in range(5):
+for rs in range(1):
     rundata = [
         [client.submit(singletest,
-                       dict(run=repeat, environmental_contamination=con, resistance_skill=rs, fitness_skill=2,
-                            healing_bonus_skill=0, health=50, startingcharacon=0, tolerance=0,
+                       dict(run=repeat, environmental_contamination=con, resistance_skill=5, fitness_skill=3,
+                            healing_bonus_skill=0, health=50, startingcharacon=0, tolerance=8,
                             duration=365 * 24))
-         for repeat in range(10)]
+         for repeat in range(100)]
         for con in range(1, 26)]
 
     rundata = [client.submit(glomp, r) for r in rundata]
