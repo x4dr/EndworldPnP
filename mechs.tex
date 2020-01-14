@@ -169,12 +169,12 @@ Threshhold of 10 to repair.
 \paragraph{Skills}
 
 Melee weapons rely on the movement System, so their costs are in meters that are used to attack rather than move\par
-\begin{tabular}{c|clcll}
+\begin{tabular}{c|clll}
     Type & Damage & Threshholds & Costs & Weight\\
-    \hline BaseTech&&&&&\\
+    \hline BaseTech&&&&\\
     Metal Sword & 10 & 10m[5,7,9,11,13,15,17,19,20]0 & 30m & 5t \\
     Manned Turret & X & X & \makecell[l]{manual \\labor +X} &  X +50\% \\
-    \hline Lowtech &&&&&\\
+    \hline Lowtech &&&&\\
     Heavy Machinegun & 3 & \makecell[l]{100m[3,6,10,14,18]20\\
                                         500m[5, 8, 12,15]10\\
                                         1000m[7,10,14]5\\
@@ -190,7 +190,7 @@ Melee weapons rely on the movement System, so their costs are in meters that are
                                         4km[11,13,15,20]10 indirect\\
                                         8km[13,17]5 indirect}
                                             & 20kg 5H & 20t \\
-    \hline Midtech &&&&&\\
+    \hline Midtech &&&&\\
     Autocannon & 8 & \makecell[l]{10m[10]3\\
                                   200m[5,8,11,14,17,20]15\\
                                   1km[8,12,16,20]20\\
@@ -206,7 +206,7 @@ Melee weapons rely on the movement System, so their costs are in meters that are
                                          LOS[8,10,12,14,16,18,20]25}
                                         & 15 kg 10H & 10t\\
     Rocket Launcher x 8 & X & X & X & 500kg \\
-    \hline Hightech &&&&&\\
+    \hline Hightech &&&&\\
     Rocket Platform & X & X & X & 1500 kg \\
     Railgun & 16 & \makecell[l]{200m[7,9,11,13,15]5\\
                                 1km[5,7,9,11,13]10\\
@@ -219,7 +219,7 @@ Melee weapons rely on the movement System, so their costs are in meters that are
                                         & 9MJ 15H & 3t\\
     Ramping Beam Laser & X & \makecell[l]{1km[5,10,15]10\\
                                           LOS[10,15]100}
-                        & X\times(50kw 1H) & 10t\\
+                        & X\(\times\)(50kw 1H) & 10t\\
 
 \end{tabular}\par
 
@@ -294,16 +294,16 @@ Dampeners and Deflectors dont fail from damage.
 \section{Armor}\label{sec:armor}
 \begin{tabular}{c|ccc}
     Type & Strength & Weight & Failure\\
-    \hline BaseTech&&&&&\\
+    \hline BaseTech&&&\\
     Outside Cargo & 0 & 1.1t & destroyed, passthrough\\
     Metal Plating & 2 & 2t & damaged, passthrough\\
     Ultra High Density Composite & 4 & 5t & out of order, block\\
-    \hline Lowtech &&&&&\\
+    \hline Lowtech &&&\\
     Composite & 3 & 2.5t & damaged, passthrough \\
-    \hline Midtech &&&&&\\
-    Active & 1/4 & 2t & out of order, passthrough 1
-    SpeedShell & 1t & 0.5t & destroyed &
-    \hline Hightech &&&&&\\
+    \hline Midtech &&&\\
+    Active & 1/4 & 2t & out of order, passthrough 1\\
+    SpeedShell & 1t & 0.5t & destroyed \\
+    \hline Hightech &&&\\
     Ion & 5 & 1t & destroyed, energy system damage, block \\
 \end{tabular}
 
