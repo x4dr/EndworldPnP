@@ -133,7 +133,7 @@ def speedat(m, t, p):  # m, t, p => v
     return v
 
 
-def maxspeed(m, p, D):
+def maxspeed_old(m, p, D):
     e = 0
     f = 0
     e_o = 1000
@@ -144,7 +144,7 @@ def maxspeed(m, p, D):
         e += p - f  # joule via one second tick
         v = speed(e, m)
 
-        f = 0.5 * 1.5 * (v ** 3) * 1 * D * (m ** (1 / 3) )  # frictionloss m**1/3 /4 roughly correlates to size
+        f = 0.5 * 1.5 * (v ** 3) * 1 * D * (m ** (1 / 3))  # frictionloss m**1/3 /4 roughly correlates to size
         # print(e,v,f, m**0.3)
         if (s % 5 == 0) or (s < 5):
             print(f"energy {round(e / 10 ** 3)}kJ speed {v}m/s, time {s}s")
@@ -152,13 +152,22 @@ def maxspeed(m, p, D):
     return round(speed(e, m), 2)
 
 
-mass = 62.3e3
-movpower = 30e3*20
-print(f"{movpower/1000}kw movement")
+def maxspeed(m, p, D):
+    D = m * D
+    print(f"maxspeed for {p / 1000}w and {D} coeff = {(p / D) ** (1 / 3)}")
+    return (p / D) ** (1 / 3)
+
+    return round(speed(e, m), 2)
+
+
+mass = 150e3
+movpower = 200e3
+print(f"{movpower / 1000}kw movement")
 msfinal = 14
 seconds = 5
 
 p = power(0, msfinal, seconds, mass)
-print()
-print(speedat(mass, seconds, p))
-print(maxspeed(mass, movpower, 1))
+print("power:", p / 1000, "kw")
+print("speed at 5:", speedat(mass, seconds, movpower))
+print(maxspeed(mass, movpower, 0.004))
+print(maxspeed_old(mass, movpower, 15))

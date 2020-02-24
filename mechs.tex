@@ -57,24 +57,24 @@ The Input is stored with other Cargo.
 \paragraph{Output} are "Modes".
 They each provide an energy budget for the mech, different Situations might warrant different modes,
 generally there are 2:
-low power mode where the range is maximized and
+low power mode where the range is maximized (running at 5%) and
 high power mode, where the output is maximized.
 \paragraph{Efficiency} is the rate at which Input is consumed per mode.
 
 \begin{tabular}{l|cccll}
-    Type & w per kg & heat per w & modes & input & efficiency\\
+    Type & kw per t & heat/r per t & modes & input & efficiency\\
     \hline Basetech \\
-    Steampower & 3.5 & 5 & 100\%/25\% & Coal & 5\%/10\%\\
+    Steampower & 3.5 & 8 & 100\%/25\% & Coal & 5\%/10\%\\
     FlyWheel & 100 & 0 & scalable & stored & loses 10\% per turn \\
     Crank & 10--500/human & 0 &scalable&Labor&-\\
     \hline Lowtech \\
-    Combustion Motor& 700 & 0.5 & 10\%  & Combustible & 40\% \\
+    Combustion Motor& 700 & 2 & 10\%  & Combustible & 40\% \\
     \hline Midtech \\
-    PEM & 500 & 0.1 & 0.05/0.02 & HFC & 90\% or HFC\\
-    Solar Panel & 5000 & 1 & On/Off & Sunlight & Contamination dependent\\
+    PEM & 500 & 0.1 & 1 & HFC & 90\% or HFC\\
+    Solar Panel & 50 & 2 & On/Off & Sunlight & Contamination dependent\\
     \hline Hightech \\
     Reactor & 1500 & 0.5 & 100\%--10\% & Fuelrods & 80\%\\
-    Capacitor & 40kJ & 0.1 & in/out & electricity & loses 10\% per hour \\
+    Capacitor & 400kJ & 0.1 & in/out & electricity & loses 10\% per hour \\
 \end{tabular}
 
 \paragraph {HFC-10} 10 liter - hydrogen fuel cell: Cylinder 20cm diameter,
@@ -97,20 +97,20 @@ will also damage the Solar panel, production halved every 5 contamination levels
     \hline
     Basetech\\
     railbased            & 95\%& 0.8 & 500 & 1--50\%--4 & rails \\
-    simple wheels        & 75\% & 1 & 1000 & 25\% & flat terrain \\
-    floatation system    & 90\% & 20 &  100& 10\% & water\\
+    simple wheels        & 75\% & 1 & 750 & 25\% & flat terrain \\
+    floatation system    & 90\% & 20 &  90 & 10\% & water\\
     \hline
     Lowtech\\
-    complex wheels       & 80\% & 0.4 & 2000 & 25\% &  somewhatflat terrain \\
-    tracks               & 30\% & 15 & 500 & 33\% & rough terrain\\
-    bipedal              & 50\% & 2& 200 & 25\% & all terrain\\
+    complex wheels       & 80\% & 0.4 & 1500 & 25\% &  somewhatflat terrain \\
+    tracks               & 30\% & 15 & 300 & 33\% & rough terrain\\
+    bipedal              & 50\% & 2& 100 & 25\% & all terrain\\
     jumpjets             & 10\% & 1 &1000 & 1 & upwards\\
     \hline
     Midtech\\
-    flexible bipedal     & 60\% & 1.8 & 300 & 25\% &  like a large human\\
+    flexible bipedal     & 60\% & 1.8 & 150 & 25\% &  like a large human\\
     boostjets            & 20\% & 1 & 1500 & 2 &  any direction\\
     \hline Hightech\\
-    Spiderwalker         & 40\% & 2 & 600 & 50\% & any surface\\
+    Spiderwalker         & 40\% & 2 & 400 & 50\% & any surface\\
 \end{tabular}\par
 
 Accelleration is noted down as 5 steps in 5 second intervals each (calculated from mech weight and power)
@@ -301,7 +301,7 @@ Dampeners and Deflectors dont fail from damage.
     \hline Lowtech &&&\\
     Composite & 3 & 2.5t & damaged, passthrough \\
     \hline Midtech &&&\\
-    Active & 1/4 & 2t & out of order, passthrough 1\\
+    Active & 1/4 & 2t & out of order, passthrough full/1\\
     SpeedShell & 1t & 0.5t & destroyed \\
     \hline Hightech &&&\\
     Ion & 5 & 1t & destroyed, energy system damage, block \\
@@ -335,7 +335,7 @@ stores up to 1 t of Cargo\par
 Weight: 0.5t for Size Calculation, Empty weight 0.1t, Full 1.1t for speed calculation
 \par
 \section{Lowtech}\label{sec:lowtech}
-Basic Food Processor\par
+\subsubsection{Basic Food Processor}\par
 Energy Cost per operation: 1800 (3e/s)\par
 Heat: 5/s \par
 Size:0.5\par
@@ -390,7 +390,7 @@ Requires Black Biotech 3\par
 Extended Decon Equipment\par
 Energy Cost per Operation: 36k (10/s)\par
 Alacast Cost per Operation: 5g\par
-Size: 0.75
+Size: 1
 Allows to turn Contaminated Objects into uncontaminated Objects at the rate of 100kg/h if suitable\par
 If used on Humans, Roll Red Biotech, on 9 or more, removes one Charactertaint.\par
 Always Inflicts Wound of Level 11-RollResult\par
