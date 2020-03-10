@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Speed Calculation Parameters",
+    "description": "Parameters that are used to calculate maximum theoretical speed",
+    "required": [
+        "weight",
+        "power",
+        "crossection",
+        "ground_loss",
+        "efficiency"
+    ],
+    "properties": {
+        "weight": {
+            "$id": "#/properties/weight",
+            "type": "integer",
+            "title": "Weight",
+            "description": "Total weight",
+            "default": 0,
+            "examples": [
+                62.3e3
+            ]
+        },
+        "power": {
+            "$id": "#/properties/power",
+            "type": "integer",
+            "title": "Power",
+            "description": "total power used to accelerate",
+            "default": 0,
+            "examples": [
+                1103e3
+            ]
+        },
+        "crossection": {
+            "$id": "#/properties/crossection",
+            "type": "number",
+            "title": "Crossection",
+            "description": "effective area in direction of travel",
+            "default": 0,
+            "examples": [
+                10.5
+            ]
+        },
+        "ground_loss": {
+            "$id": "#/properties/ground_loss",
+            "type": "number",
+            "title": "Ground Loss",
+            "description": "scale factor of weight and gravity",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "efficiency": {
+            "$id": "#/properties/efficiency",
+            "type": "number",
+            "title": "Efficiency",
+            "description": "The efficiency of power being converted to movement",
+            "default": 100,
+            "minimum": 0,
+            "maximum": 100
+        }
+    }
+}

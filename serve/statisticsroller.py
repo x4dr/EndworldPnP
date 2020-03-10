@@ -157,17 +157,16 @@ def maxspeed(m, p, D):
     print(f"maxspeed for {p / 1000}w and {D} coeff = {(p / D) ** (1 / 3)}")
     return (p / D) ** (1 / 3)
 
-    return round(speed(e, m), 2)
 
 
-mass = 150e3
-movpower = 200e3
+mass = 400e3
+movpower = 800e3
 print(f"{movpower / 1000}kw movement")
 msfinal = 14
-seconds = 5
+seconds = 25
 
 p = power(0, msfinal, seconds, mass)
 print("power:", p / 1000, "kw")
-print("speed at 5:", speedat(mass, seconds, movpower))
-print(maxspeed(mass, movpower, 0.004))
-print(maxspeed_old(mass, movpower, 15))
+print("speed at 5:", speedat(mass, 25, movpower))
+print(maxspeed(mass, movpower, 0.008))
+#print(maxspeed_old(mass, movpower, 15))

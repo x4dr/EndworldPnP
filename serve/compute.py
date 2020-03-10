@@ -1,7 +1,6 @@
 from collections import defaultdict
-import os
+
 import pandas
-import numpy
 
 
 def check(x, f, a):

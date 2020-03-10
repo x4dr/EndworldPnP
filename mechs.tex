@@ -72,11 +72,15 @@ high power mode, where the output is maximized.
     \hline Midtech \\
     PEM & 500 & 0.1 & 1 & HFC & 90\% or HFC\\
     Solar Panel & 50 & 2 & On/Off & Sunlight & Contamination dependent\\
+    Batteries & 900MJ@50kw & 2 & in/out & electricity & loses 10\% per month \\
     \hline Hightech \\
-    Reactor & 1500 & 0.5 & 100\%--10\% & Fuelrods & 80\%\\
-    Capacitor & 400kJ & 0.1 & in/out & electricity & loses 10\% per hour \\
+    Reactor & 1500 & 5 & 10,25,50 & Fuelrods & 80\%\\
+    CFReactor & 200 & 0.1 & 10,25,50 & Deuterium & 80\%\\
+    Capacitor & 5MJ & 1/MJ & in/out & electricity & loses 10\% per hour \\
 \end{tabular}
 
+\paragraph {CFReactor} Cold Fusion requires start up energy, equaling the Output for 1 Round.
+\paragraph {Deuterium} 1 kg - 4.5 TJ
 \paragraph {HFC-10} 10 liter - hydrogen fuel cell: Cylinder 20cm diameter,
 35 cm height or 23cm cube=10L, containing 9 MJ
 \paragraph {HFC-50} 50 liter - hydrogen fuel cell: Cylinder 40cm diameter,
@@ -128,12 +132,12 @@ Cumulative for the mech.
     \hline Basetech\\
     Small Heatsink & 0 & 0.5t & 0.2 & 15 & Storage\\
     \hline Lowtech\\
-    Radiator Vent & 10kw/t &scalable & 1/t / 5/t & 1 Hardpoint\\
+    Radiator Vent & 10kw/t &scalable &(1/2) + (1/t / 5/t) & 0 & 1 Hardpoint\\
     Large Heatsink & 0 & 1t & 0.5 & 50 &Storage\\
     \hline Midtech\\
     Optimized heatsink  & 0 & 1t & 1 & 80 &Storage\\
-    Coolant Dump  & 1MJ & 4t & 0/100 & 100 &Decoy\\
-    Radiator Wings & 1kw & 2t & 10\% & 100 & Deploy\\
+    Coolant Dump  & 1MJ & 4t & 0/100 & 100 &Decoy; 1 Hardpoint \\
+    Radiator Wings & 1kw & 2t & 10\% & 100 & Deploy; 1 Hardpoint\\
     \hline Hightech\\
     Fractal heatsink & 0/1kw & 2t & 3/0 & 200 & Storage\\
     OVERDRIVE & 5MJ & 1t & 0 & Gadget\\
@@ -246,17 +250,17 @@ shields and coffee machines blurgh
 \section{example}\label{sec:example}
 100t, 8 sectors
 
-5 t Power: 20--500kw/t => 2.5MW, Input HFC50 (4KG),
-2.5 MW: 10 seconds at maximum load, efficiency 55\%
-100 kw, 7 minutes at minimum load, efficiency 93\%
-20t Movement: Efficiency 40\%, Drag: 1, 30 kw/t
-(100t => full power 9,13,16,30, 2000MW)
-25\%--
-8sectors*3layers*2t armor = 48t
-73\%--
-5t 120mm smooth
-5t 50 mm auto
-83\%--
+5 t Power: 20--500kw/t => 2.5MW, Input HFC50 (4KG), \par
+2.5 MW: 10 seconds at maximum load, efficiency 55\%\par
+100 kw, 7 minutes at minimum load, efficiency 93\%\par
+20t Movement: Efficiency 40\%, Drag: 1, 30 kw/t\par
+(100t => full power 9,13,16,30, 2000MW)\par
+25\%-- \par
+8sectors*3layers*2t armor = 48t\par
+73\%--\par
+5t 120mm smooth\par
+5t 50 mm auto\par
+83\%--\par
 cargo
 heat
 supportsystems
@@ -324,11 +328,11 @@ Dampeners and Deflectors dont fail from damage.
 \par
 \subsection{Basetech}\label{subsec:basetech}
 \subsubsection{Water Distillery}\label{subsubsec:water-distillery}
-Energy Cost: 200kw\par
+Energy Cost: 50kw\par
 Heat: 10\par
 Weight: 0.5t\par
-Turns 4L of Dirty Water into 4L of Contaminated Water per minute\par
-Requires Reprocessing 1 to use\par
+Turns 1L of Dirty Water into 1L of Contaminated Water per minute\par
+\par
 
 \subsubsection{Cargo compartment}\label{subsubsec:cargo-compartment}
 stores up to 1 t of Cargo\par
@@ -341,7 +345,7 @@ Heat: 5/s \par
 Size:0.5\par
 Detoxes 1kg of Food in 10 minutes \par
 Requires Detox Rating of 2\par
-\par
+
 Basic Air Filter\par
 Energy Cost per operation: 2400 (4/s)\par
 Heat: 2\par
