@@ -1,3 +1,7 @@
+import importlib.resources
+import json
+import pathlib
+
 import flask
 from flask import request
 
@@ -33,22 +37,34 @@ def maxspeed(m, p, air_coeff, ground_coeff, base_loss, significant_digits=3):
     while abs(old - vel) > 1 / 10 ** significant_digits:
         old = vel
         airdrag = (airdrag + (0.5 * air_coeff * 1.225) * vel ** 2) / 2
-        vel = (p / (airdrag + d))
+        vel = p / (airdrag + d)
     return vel
 
 
-@app.route('/')
+def get(res):
+    with importlib.resources.open_text("serve", pathlib.Path(res)) as data:
+        return data.read()
+
+
+@app.route("/")
 def root():
-    return {"routes":
-                {"/": "",
-                 "speed": ["{weight,power,crossection,ground:loss,efficiency}",
-                           "/<int:weight>/<int:power>/<float:crossection>/<float:ground_loss>/<float:efficiency>"]}}
+    return {
+        "routes": {
+            "/": "",
+            "speed": [
+                json.loads(get("speedparams.jsonschema")),
+                "/<float:weight>/<float:power>/<float:crossection>/<float:ground_loss>/<float:efficiency>",
+            ],
+        }
+    }
 
 
-@app.route("/speed")
-@app.route("/speed/<int:weight>/<int:power>/<float:crossection>/<float:ground_loss>/<float:efficiency>")
+@app.route("/speed", methods=["GET", "POST"])
+@app.route("/speed/<weight>/<power>/<crossection>/<ground_loss>/<efficiency>")
 def speed(weight=None, power=None, crossection=None, ground_loss=None, efficiency=None):
     if weight is None:
+        if request.method == "GET":
+            return json.loads(get("speedparams.jsonschema"))
         j = request.get_json()
         if j is None:
             return {"error": "no data found"}
@@ -57,8 +73,21 @@ def speed(weight=None, power=None, crossection=None, ground_loss=None, efficienc
         crossection = j["crossection"]
         ground_loss = j["ground_loss"]
         efficiency = j["efficiency"]
-    ground_loss /= 100
-    efficiency /= 100
+    weight = float(weight)
+    power = float(power)
+    crossection = float(crossection)
+    ground_loss = float(ground_loss) / 100
+    efficiency = float(efficiency) / 100
     tot_base_loss = weight  # 1watt per kilo is lost
-    maxs = maxspeed(weight, power, crossection, ground_loss, (1 - efficiency) * power + tot_base_loss)
+    maxs = maxspeed(
+        weight,
+        power,
+        crossection,
+        ground_loss,
+        (1 - efficiency) * power + tot_base_loss,
+    )
     return {"m/s": maxs, "km/h": maxs * 3.6, "mph": maxs * 2.23694}
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

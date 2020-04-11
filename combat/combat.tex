@@ -26,7 +26,7 @@ situational check) and can usually move and do an action (an attack or action th
 \end{enumerate}
 
 \subsection{Defense}\label{subsec:defense}
-Defense is usually checked with Agility and
+Defense is usually (in the case of dodging) checked with Agility and
 \begin{enumerate}[label = - ]
     \item \hyperref[subsec:tactics]{\textbf{tactics}} on ordered advance/retreat
     \item \hyperref[subsec:instinct]{\textbf{instinct}} in general mayhem
@@ -34,17 +34,20 @@ Defense is usually checked with Agility and
     \item \hyperref[subsec:running]{\textbf{running}} when zig zagging
 \end{enumerate}
 Evasion levels are determined with the result of the defensive interpretation of the combat roll
-and the character specific evasive threshhold set.
+and the character specific evasive threshhold set. (standard unarmored is [5,7,9,11,13])
 
 \subsection{Offense}\label{subsec:offense}
 Offense level are determined with the result of the offensive \-interpretation of the combat roll \-and the range and
 weapon \-specific threshhold set.\par
-Aiming Penaltydice
+\subsubsection{Aiming}\label{subsubsec:aiming}
+Aiming for a specific bodypart gives control over the location of the inflicted wound, but it also carries a penalty
+that is added to the evasion levels of the target
+
 \begin{tabular}{cc}
     target & penalty\\\hline
     head & 3 \\
     hand & 2 \\
-    legs & 1 \\
+    legs & 1
 \end{tabular}
 
 \subsection{Hit Calculation}\label{subsec:hit}
@@ -68,3 +71,5 @@ The hit quality will be a number from 1 to 10. \par
 
 On a full hit, the attacker inflicts the wound were planned
 The specific damage to apply will be listed with the weapon.
+
+\input{combat/weapons}

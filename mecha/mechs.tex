@@ -1,0 +1,155 @@
+\section{Sizes}\label{sec:sizes}
+
+\begin{tabular}{r|ll}
+    Sectors &Mechclass & Weight\\
+    0.5 &Human & 0.1t\\
+    1--2 &Exo& <1t\\
+    3--4 &Tiny & 1--5t\\
+    5--6 &Very Light& 5--15t\\
+    6--7 &Light& 15--50t\\
+    8--9 &Medium& 50--150t\\
+    10--11 &Heavy& 150--500t\\
+    12--15 &Very Heavy& 500--1500t\\
+    16+ &Ultra& >1500t\\
+\end{tabular}\par
+Modules are assigned to sectors.
+Each sector has a size of 1, a module takes up some of that size.
+Modules can be spread over multiple Sectors, as long as they are adjacent, although this will increase the likelyhood
+of it sustaining damage.
+Some Modules require a Hardpoint, there is generally only one Hardpoint per Sector.\par
+A Mech has an effective Tech Level of the Tech at the 90\% point of the sizes modules ordered by Tech Level.\par
+Contamination Damage applies to the highest Tech modules first.
+Each Module can be damaged individually.\par
+
+\input{mecha/systems}
+
+\section{Misc Modules}\label{sec:miscmodules}
+\par
+\subsection{Basetech}\label{subsec:basetech}
+\subsubsection{Water Distillery}\label{subsubsec:water-distillery}
+Energy Cost: 50kw\par
+Heat: 10\par
+Weight: 0.5t\par
+Turns 1L of Dirty Water into 1L of Contaminated Water per minute\par
+Requires Reprocessing\par
+\par
+
+\subsubsection{Cargo compartment}\label{subsubsec:cargo-compartment}
+stores up to 1 t of Cargo\par
+Weight: 0.5t for Size Calculation, Empty weight 0.1t, Full 1.1t for speed calculation (if relevantt)
+\par
+\section{Lowtech}\label{sec:lowtech}
+\subsubsection{Basic Food Processor}
+Energy Cost per operation: 10kw \par
+Heat: 5 \par
+Size:0.5t\par
+Detoxes and prepares up to 5kg of Food in 30 minutes \par
+Requires Reprocessing\par
+
+\subsubsection{Basic Air Filter}
+Energy Cost per operation: 15kw \par
+Heat: 2\par
+Size:0.5\par
+Decontaminates and pressurizes 3000 L of air in  10 minutes or double without pressurizing. \par
+Requires Decon 1\par
+Airtank 10 Liter @ 300 bar contains 3000L of air.
+Air is used at 10 Liters/Minute so a 10 Liter air tank lasts about 5 hours of calm
+walking or half (or even less) when doing strenuous activity.
+1.225 kg/m3: 3.675 Kg of air
++ 15kg for Tank, Valve und Hose
+\par
+\subsubsection{Basic Decon Equipment}
+Energy Cost per operation: 20 kw \par
+Clean Water Cost 10:1\par
+Heat: 10 \par
+Size: 0.5\par
+Allows to lower Objects contamination by washing them, if applicable.
+Rate requires 1 hour per Kilogram, Contamination is 1/10 of starting value.
+Used water is Contaminated\par
+
+Optical Sensors\par
+Energy: 1\par
+Size: 0.25 \par
+Rating: 100\par
+Provides Targetting Lock is obtained\par
+Visual Lock: Distance/Rating <= Target Size (+Camouflage and visual impairments)\par
+
+Thermal Sensors\par
+Energy: 1\par
+Size 0.25\par
+Rating 100\par
+Thermal Lock: Distance/Rating <= Target Thermal Signature\par
+
+\subsubsection{Basic Computer System}\par
+Size: 0.5\par
+Energy: 0.1\par
+Module: Processor or Memory\par
+\par
+\section{Midtech}\label{sec:midtech}
+ComputerSystem:
+Size: 0.1
+Energy: 0.1
+Module: Processor or Memory\par
+
+Nondeterministic Computation Core:\par
+Size 0.5\par
+Energy: 0.5\par
+Module: Processor\par
+Requires Black Biotech 3\par
+
+Extended Decon Equipment\par
+Energy Cost per Operation: 36k (10/s)\par
+Alacast Cost per Operation: 5g\par
+Size: 1
+Allows to turn Contaminated Objects into uncontaminated Objects at the rate of 100kg/h if suitable\par
+If used on Humans, Roll Red Biotech, on 9 or more, removes one Charactertaint.\par
+Always Inflicts Wound of Level 11-RollResult\par
+Requires Decon 3\par
+
+Extended Detox Equipment:\par
+Energy Cost per Operation: 36k (10/s)\par
+Size 0.75\par
+Allows Detoxing and Preparing of up to 1t/h\par
+If used on Humans, Roll Red Biotech, on 6 or more, remove all Infections and appropriate Toxins.\par
+Always Inflicts Wound of Level 8-RollResult\par
+Requires Detox 3\par
+Automedic:
+Energy Cost: 6k(variable - 10/s for 10 min)\par
+Size: 0.75\par
+Supplies tools of Medic/ supplies good operating conditions for Medic / reduces the use of Medicine by half / allows stasis\par
+Roll Red Biotech, if the roll surpasses the wound, supplies an operating character with a temporary Medic skill and
+double Advantage or autonomously attempts the procedure at Level 3 mod -1.\par
+If not, Instead supplies one Advantage.\par
+Software may supply the Red Biotech roll even autonomously.\par
+Stasis is automatic and slows down the daily/hourly tickrate (including Healing and Contamination) by a factor of 10
+(additive) for every energy point per second.
+This is a medical coma, not timedilation.
+\section{Hightech}\label{sec:hightech}
+Advanced Detox-Decon Equipment \par
+Size: 1\par
+Energy Cost per Operation 72k (variable 20/s for 1 h)\par
+Alacast Usage per Operation if Detainting: 1g/t of raw material, 10g/human\par
+Detoxes and Detaints up to 5t of material, including air and water.\par
+Living Entities suffer no harm, and on a 4 or more on a Red Biotech Roll lose one Taint level.
+Furthermore all Infections and Appropriate Toxins are removed.\par
+Requires Detox 4 and Decon 4
+
+Advanced AutoMedic\par
+Energy Cost: 3k (variable - 5/s for 10 min)\par
+size: 1
+
+Allows Medic Rolls/ supplies very good operating conditions for Medic Rolls/ reduces the use of Medicine by 90\%/allows Ressurection\par
+To Treat a wound:\par
+Roll Red Biotech, if the roll surpasses the wound, supplies an operating character with a temporary Medic skill and
+triple Advantage or autonomously attempts the procedure at Level 4 mod -1.\par
+If not, Instead supplies one Advantage or autonomously attempts the procedure at Level 2.\par
+Software may supply the Red Biotech roll even autonomously.\par
+To Ressurect:\par
+requires 1g of EOL per total spent points on a character (or 20* the average level of an NPC)
+Roll Black Biotech, every 15\% missing from the corpse or order of magnitude in days that has passed since the time of death
+lowers the final score by 1.
+If the roll succeeds, place 5 wounds of severity 15-result on that character, they lose
+one level from the highest Ability and one from the highest Skill and are alive again.
+If the roll does not succeed,
+5\% of the total corpse and the dosage of EOL is lost.
+
