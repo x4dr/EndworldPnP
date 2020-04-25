@@ -1,0 +1,316 @@
+\section{Systems}\label{sec:systems}
+A Mech needs a movement system, energy and heat systems and should probably have a seal, weapons and support systems.
+\subsection{Costs}\label{subsec:costs}
+Systems Examples\par
+\begin{tabular}{c|c|l}
+    Tech    & Credits Cost    & Examples\\
+    B    &    4        &    \makecell*[{{p{12cm}}}]{Water Destillery, Rail based movement system, simple wheels,
+    Manned gun, Ramshield, Floatation,   Metal Armorplating , Extra Cargo (10), steam engine, passive cooling}\\&&\\
+    L    &    5        &    \makecell*[{{p{12cm}}}]{Lowtech Detox-Decon Equip(LDDE; +1), suspended wheels, tracks,
+    bipedal, Dynamo , Autoturret, Jumpjets, Mech sized Sword, water cooling circle, basicHeatsink }\\&&\\
+    M    &    6        &    \makecell*[{{p{12cm}}}]{Shields, flexible/balanced bipedal, Boostjets,
+    Deployable Solar Panel, Sensorarray,  MDDE (+2), Base AI system, Mech sized Weaponry (Advanced
+    (Vibro/electro/Monofilament) Sword), Rocketlauncher, Water venting system, midtech Heatsink}\\&&\\
+    H    &    7        &    \makecell*[{{p{12cm}}}]{BCI, Advanced AI, WeaponLaser, Sustained Flight,  Advanced
+    Shields, Nano Repair Cloud, Automedic, OVERDRIVE mode, Hightech Heatsink}\\&&\\
+    E    &    8        &    \makecell*[{{p{12cm}}}]{Quantum Lookahead Sensors, Blink Teleporter, Timerift Shields
+    (Delays Damage 1d10 rounds), EnergySword}
+\end{tabular}\par
+Designtarget (TODO: write words good) for normal fighting mech
+
+\begin{enumerate}[label = - ]
+\item 20\% movement
+\item 20\% weaponry
+\item 5\% energy
+\item 5\% Cargo
+\item 50\% + armor
+\end{enumerate}
+
+
+\subsection{Energy Systems}\label{subsec:energy-systems}
+Energy Systems usually do not use a hardpoint.
+
+\textbf{Power to Weight} is how much maximum output power per weight the system provides.
+
+\textbf{Input} of an Energy System is generally considered its "fuel", but can also just be batteries or similar.
+The Input is stored with other Cargo.
+
+\textbf{Efficiency} is the function with input x being ratio of poweroutput vs maximum power output and result of
+efficiency.
+In parenthesis at the end is the efficiency at 100\%
+
+\textbf{Output} is set during addition/modification of the system
+(Engineering:Repair+ system specific skill, Competence vs 8, 4h).
+By Default there are only 2 Modes: Power saving and Full Throttle.
+Mode usage is marked for full hours spent in them, with the higher usage overriding the lower usage, except when the
+remaining Energy is less than an hour, where minute/round calculations might be needed.
+Energy E is in Rates of kilojoules/round, since Rounds are 5 seconds long, 1 Energy is equivalent to 5kw over 1 Round.
+1 MJ is 1000 kj so 1 MJ = 200E\(\times\)r
+
+\begin{tabular}{l|cccll}
+    Type & E per t & heat/r per t & input & efficiency\\
+    \hline Basetech \\
+    Steampower & 0.7 & 8 & Coal & x/10 (10\%)\\
+    FlyWheel & 20 & 0 & stored & loses 10\% per turn \\
+    Crank & 2--100/human & 0 &Labor&-\\
+    \hline Lowtech \\
+    Combustion Motor& 140 & 2  & Combustible & \(0.5(x-0.37)^2+0.6\) (40\%) \\
+    \hline Midtech \\
+    PEM & 100 & 0.1 & HFC & 90\% or HFC\\
+    Solar Panel & 10 & 2 & Sunlight & Contamination dependent\\
+    Batteries & 900MJ@10E & 2 & electricity & loses 10\% per month \\
+    \hline Hightech \\
+    Reactor & 300 & 5  & Fuelrods & 0.08 (8\%)\\
+    CFReactor & 40 & 0.1  & Deuterium & 0.8 (80\%)\\
+    Capacitor & 5MJ & 0.2/1E  & electricity & loses 10\% per hour
+\end{tabular}
+
+
+\textbf {Solar Panel} Deploying takes 5 turns times 100w or 5 minutes labor, any damage received while deployed
+will also damage the Solar panel, production halved every 5 contamination levels, only works during day
+
+\textbf {CFReactor} Cold Fusion requires start up energy, equaling the Output for 1 Round.
+
+\textbf {Deuterium} 1 kg - 4.5 TJ or 900,000,000Er (effective at 80\%= 720MEr)
+
+\textbf {Fuel Rod} 1 kg - 75 TJ or 15,000,000,000Er (effective at 8\%= 120MEr)
+
+\textbf {Hydrogen} 70kg (1000L) = 10,082MJ or 2,016,400Er (effective at 90\% = 1,814,760Er)
+
+\textbf {HFC-10} 10 liter - hydrogen fuel cell: Cylinder 20cm diameter,
+35 cm height or 23cm cube=10L. \par
+containing 9 MJ or 1800Er
+
+\textbf {HFC-50} 50 liter - hydrogen fuel cell: Cylinder 40cm diameter,
+40 cm height or 37cm cube = 50L,
+\par containing 45 MJ or 9000Er\par
+contains low power sub system used to power up basic systems (like hydrogen gas pumps for the PEM Stacks)
+
+\textbf{CombustionFuel} 800kg (1000L) = 40,000MJ or 8,000,000Er (3,2MEr)
+
+\subsection{Movement Systems}\label{subsec:movementsystems}
+
+\textbf{Efficiency} is the ratio of power consumed to power used to move the mech
+
+\textbf{Drag} is the general amount of power wasted the faster the mech is going
+
+\textbf{Power to Weight} is how much maximum movement power the system can employ per weight
+
+\begin{tabular}{l|cccccl}
+    Type    & Efficiency & GroundCoefficient & Power to Weight & hardpoints &Extra\\
+    \hline
+    Basetech\\
+    railbased            & 95\%& 0.8 & 500 & 1--50\%--4 & rails \\
+    simple wheels        & 75\% & 15 & 750 & 25\% & flat terrain \\
+    floatation system    & 90\% & 20 &  90 & 10\% & water\\
+    \hline
+    Lowtech\\
+    complex wheels       & 80\% & 10 & 1500 & 25\% &  somewhatflat terrain \\
+    tracks               & 30\% & 2 & 300 & 33\% & rough terrain\\
+    legs                 & 50\% & 15 & 100 & 25\% & all terrain\\
+    jumpjets             & 10\% & 100 & 1000 & 1 & upwards\\
+    \hline
+    Midtech\\
+    flexible legs        & 60\% & 12 & 150 & 30\% &  like a large human\\
+    boostjets            & 20\% & 1 & 1500 & 2 &  any direction\\
+    \hline Hightech\\
+    Spiderwalker         & 40\% & 2 & 400 & 50\% & any surface
+\end{tabular}
+
+Accelleration is assumed to be able to change to 50\%/80\%/100\% of max speed  in the first/second/third round\par
+Pneumatic variants of the legs weigh half as much but are constrained to weightclasses light and below\par
+
+\subsection{Heat Systems}\label{subsec:heat-systems}
+Warning: ALL Dissipated heat contributes to IR signature
+\textbf{Input} is the amount of power the Heat System requires to function actively
+\textbf{Weight} direct weight of the system
+\textbf{Cooling} how much heat is dissipated, passively/actively.
+\textbf{Capacity} how much heat can be stored in this system.
+Cumulative for the mech.
+
+\begin{tabular}{r|lllll}
+    Type & Input & Weight & Cooling & Capacity &Extra\\
+    \hline Basetech\\
+    Small Heatsink & 0 & 0.5t & 0.2 & 15 & Storage\\
+    \hline Lowtech\\
+    Radiator Vent & 10kw/t &scalable &(1/2) + (1/t / 5/t) & 0 & 1 Hardpoint\\
+    Large Heatsink & 0 & 1t & 0.5 & 50 &Storage\\
+    \hline Midtech\\
+    Optimized heatsink  & 0 & 1t & 1 & 80 &Storage\\
+    Coolant Dump  & 1MJ & 4t & 0/100 & 100 &Decoy; 1 Hardpoint \\
+    Radiator Wings & 1kw & 2t & 10\% & 100 & Deploy; 1 Hardpoint\\
+    \hline Hightech\\
+    Fractal heatsink & 0/100kw & 2t & 3/0 & 200 & Storage\\
+    OVERDRIVE & 5MJ & 1t & 0 & & Gadget
+\end{tabular}\par
+
+\textbf{Coolant Dump}: When triggered, releases 100 stored heat together with 100L water, as a thermal barrier
+\textbf{Radiator Wings}: Deploying takes 5 turns times 1kw or 5 minutes labor, any damage received while deployed
+will also damage the Radiator Wings: radiates 10\% of total system heat, as long as 1kw  energy (for coolant pumping)
+is applied.
+\textbf{Overdrive}: When triggered, enter overdrive mode: able to act at double speed,
+stored heat is spent insteadof gained.
+When heat drops to 0 or below, Mech shuts down for 2d10 rounds and Overdrive requires a Competence, Gadgets-Repair;
+10m;
+Threshhold of 10 to repair.
+
+\subsection{Sealsystems}\label{subsec:sealsystems}
+\textbf{Level} how much the seal reduces Contamination behind it.
+\textbf{Resistance} how much damage it takes to damage the Seal.
+
+\begin{tabular}{l|r|r|r}
+    Tech & Seal Level & Resistance & Cost/Sector\\\hline
+    Base &  6 & 2 & 1\\
+    Low &   13& 3 & 2\\
+    Mid &   21& 4 & 3\\
+    High &  30& 5 & 4\\
+    Experimental& 50 & 2 &8
+\end{tabular}\par
+
+\subsection{Weapons}\label{subsec:weapons}
+\textbf{Damage}
+\textbf{Threshholds}
+\textbf{Costs}
+\textbf{Skills}
+
+Melee weapons rely on the movement System, so their costs are in meters that are used to attack rather than move\par
+\begin{tabular}{c|clll}
+    Type & Damage & Threshholds & Costs & Weight\\
+    \hline \hline BaseTech&&&&\\
+    \hline Metal Sword & 10 & 10m[5,7,9,11,13,15,17,19,20]0 & 30m & 5t \\
+    \hline Manned Turret & X & X & \makecell[l]{manual \\labor +X} &  X +50\% \\
+    \hline \hline Lowtech &&&&\\
+    \hline Heavy Machinegun & 30 & \makecell[l]{100m[3,6,10,14,18]20\\
+                                        500m[5, 8, 12,15]10\\
+                                        1000m[7,10,14]5\\
+                                        2km[11,16]5\\
+                                        8km[15]1 indirect}
+                                            & 5kg, 5H & 100kg \\
+    \hline Light Artillery & 120 & \makecell[l]{7km[8,12,16,20]1 \\
+                                        15km[10,14]}& 50kg, 10H & 8t  \\
+    \hline 120mm Smoothbore & 120 & \makecell[l]{50m[10,20]3\\
+                                        100m[6,10,14]8\\
+                                        500m[5,7,9,11]15\\
+                                        2km[8,10,12,14,16]20\\
+                                        4km[11,13,15,20]10 indirect\\
+                                        8km[13,17]5 indirect}
+                                            & 20kg 5H & 20t \\
+    \hline\hline Midtech &&&&\\
+    \hline Autocannon & 80 & \makecell[l]{10m[10]3\\
+                                  200m[5,8,11,14,17,20]15\\
+                                  1km[8,12,16,20]20\\
+                                  2km[10,14,18]10 \\
+                                  4km[13,17,20]5 indirect }
+                                        & 7kg 5H & 5t \\
+    \hline Pulse Laser & 60 & \makecell[l]{1km[5,-15]50\\
+                                   5km[7,9,11,13,15]100\\
+                                   LOS[10,12,14,16,18]100}
+                                        & 5MJ 10H & 7t\\
+    \hline Precision Cannon & 140 & \makecell[l]{500m[7,10,13]2\\
+                                         2km[7-11,13,15,17,19]30\\
+                                         LOS[8,10,12,14,16,18,20]25}
+                                        & 15 kg 10H & 10t\\
+    \hline Rocket Launcher x 8 & X & X & X & 500kg \\
+    \hline\hline Hightech &&&&\\
+    \hline Rocket Platform & X & X & X & 1500 kg \\
+    \hline Railgun & 160 & \makecell[l]{200m[7,9,11,13,15]5\\
+                                1km[5,7,9,11,13]10\\
+                                4km[7,9,11,13,15]5\\
+                                12km[9,11,13,15,17]1}
+                                & 50 kg, 25H, 20MJ & 15t\\
+    \hline Advanced Pulse Laser & 90 & \makecell[l]{3km[5-20]50\\
+                                   9km[7,9,11,13,15,17]100\\
+                                   LOS[10,12,14,16,18]100}
+                                        & 9MJ 15H & 3t\\
+    \hline Ramping Beam Laser & 10\(\times\)X & \makecell[l]{1km[5,10,15]10\\
+                                          LOS[10,15]100}
+                        & X\(\times\)(50kw 1H) & 10t\\
+
+\end{tabular}\par
+
+\textbf{Notes}:
+\begin{enumerate}[label = - ]
+\item Melee Weapons: Ignore Shields
+\item Manned Turret: X Depends on the mounted gun and the skill of the gunner
+\item Light Artillery: Attacks take 1s per 300m distance, rounded up, minimum range 100m
+\item 120mm Smoothbore: Can only fire every second round, requires Indirect for targets further away than 2k
+\item Autocannon: may make another attack instantly for double the cost
+\item Basic Pulse Laser: -0.1*contamination level dmg per km, rounded mathematically
+\item Precision Cannon: Needs to be stationary to aim and fire, 1 turn of aiming between shots
+\item Rocket Launcher: Ignores Shields
+\item Rocket Platform: Ignores Shields, Beam rules
+\item Railgun: Needs to be stationary to fire.
+Loading takes 2 turns.
+\item Advanced Pulse Laser: -0.1*contamination level dmg per km, rounded mathematically
+\item Ramping Beam Laser: Every round, X increases by 1 while shooting, decreases by 1 down to 0 otherwise.
+\end{enumerate}
+
+
+\subsection{Defensesystems}\label{subsec:defensesystems}
+Defensesystems are configured using the relevant \hyperref[subsubsec:defense]{Technical Skill},
+the relevant usage Method, usually \hyperref[subsec:computer]{Computer Usage}
+With (if not explicitly defined) the threshholds [5,8,13,16,19] or automatically by a Program of the corresponding level.
+Configuration, Strength are the equivalent statistics of the Armor a Shield provides.
+Configuration is required to start a Shield and takes 1 Action, but does not need to hit the lowest threshhold.
+Coldboot can only be done after all Systems have been shut off for at least one turn.
+Shields turn off when overwhelmed and have to meet the Reboot requirements (including another Configuration) to turn
+back on.
+Config X means that the specific Configuration Threshhold of X has to be reached.
+Each Sector requires a Defensesystem on its own.
+Defensesystems provide coverage for the Sector that they are in first, but if multiple levels (representing a larger
+Generator) are present they can (during configuration) be spread to adjacent Sectors.
+Deflectors and Dampeners provide their effects, if they do not cover all sectors, by rounding the portion of sectors
+that are uncovered up to the nearest tenth and rolling a single die (Fate point adds Fate Bonusdice).
+If the result is larger than the uncovered portion, the Field generator applies.
+(1/8 missing requires 3+, 7/8 missing requires 10)
+
+\begin{tabular}{c|cccccc}
+    Type & Protection &Weight& Cost & Failure  & Reboot & Coldboot \\
+    \hline Basetech\\
+    Applique-Armor & Strength 1 & 1t & - & destroy, block & - & permanent \\
+    \hline Lowtech\\
+    Basic Deflector & 1 Evasion & 0.2t & 10kW/50kW, 1H/attack & - & - & 1r, Config 5\\
+    Basic Dampener & 1 Reduction & 0.5t & 50kw/100kw, 3H/attack & - & - & 3r \\
+    \hline Midtech\\
+    Shield & Strength 3 & 1t & 200kw/50kw, 1H/attack & passthrough & 5r & 10MJ \\
+    Complex Deflector & 3 Evasion & 0.8t & 100kw/200kw, 2H/attack & - & - & 8r\\
+    Heavy Dampener & 5 Reduction & 1t & 50kw/300kw, 5H/attack & - & - & 10r\\
+    Flash Shield & Strength 1 & 1t & 500kw/100kw, 2H/attack & block & 0.5MJ & 2r\\
+    \hline Hightech\\
+    Advanced Shield & Strength 4 & 1t & 1MW/ 100kw & block & 1r & 5r 
+\end{tabular}
+
+Strength like armor
+Cost:  per sector of armor for Charging/Active states, per round\par
+Failure: Normal behaviour on Failure is for the shield to turn off until rebooted.
+Dampeners and Deflectors dont fail from damage.
+
+\subsection{Armor}\label{subsec:armor}
+\begin{tabular}{c|ccc}
+    Type & Strength & Weight & Failure\\
+    \hline BaseTech&&&\\
+    Outside Cargo & 0 & 1.1t & destroyed, passthrough\\
+    Metal Plating & 2 & 2t & damaged, passthrough\\
+    Ultra High Density Composite & 4 & 5t & out of order, block\\
+    \hline Lowtech &&&\\
+    Composite & 3 & 2.5t & damaged, passthrough \\
+    \hline Midtech &&&\\
+    Active & 1/4 & 2t & out of order, passthrough full/1\\
+    SpeedShell & 1 & 0.5t & destroyed, passthrough \\
+    \hline Hightech &&&\\
+    Ion & 5 & 1t & destroyed, energy system damage, block 
+\end{tabular}
+
+\begin{enumerate}[label = - ]
+    \item Outside Cargo: Provides flat reduction depending on cargo.
+    Cargo gets destroyed.
+    \item Metal Plating: Repairs need 12 or more to not lower Quality
+    \item Ultra High Density Composite: Repairs need 8 to succeed and Freq1 Resonance lowers Strength by Amp
+    \item Composite: needs to be replaced, spare parts 200kg, success with 6+, scrap at 2
+    \item Active: needs 10kW per round per incoming hit or Strength is 1.
+    Repairs Success with 15+/Spare 5+, 1--4 Scraps the Layer, Freq1 subtracts
+    \item Speedshell: Vent 1H per 5m/s;
+    Repair 12+, 1--11 Scraps the Layer
+    \item Ion: 20kW per Segment, on destruction energy Output is reduced by 10\% until scrapped armor is removed.
+\end{enumerate}
+
