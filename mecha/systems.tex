@@ -97,28 +97,46 @@ contains low power sub system used to power up basic systems (like hydrogen gas 
 \textbf{Power to Weight} is how much maximum movement power the system can employ per weight
 
 \begin{tabular}{l|cccccl}
-    Type    & Efficiency & GroundCoefficient & Power to Weight & hardpoints &Extra\\
+    Type    & Energy/r per ton & GroundCoefficient & Power per ton & hardpoints &Extra\\
     \hline
     Basetech\\
-    railbased            & 95\%& 0.8 & 500 & 1--50\%--4 & rails \\
-    simple wheels        & 75\% & 15 & 750 & 25\% & flat terrain \\
-    floatation system    & 90\% & 20 &  90 & 10\% & water\\
+    railbased            & 105 & 0.8 & 500 & 1--50\%--4 & rails \\
+    simple wheels        & 200 & 15 & 750 & 25\% & flat terrain \\
+    floatation system    & 20 & 20 &  90 & 10\% & water\\
     \hline
     Lowtech\\
-    complex wheels       & 80\% & 10 & 1500 & 25\% &  somewhatflat terrain \\
-    tracks               & 30\% & 2 & 300 & 33\% & rough terrain\\
-    legs                 & 50\% & 15 & 100 & 25\% & all terrain\\
-    jumpjets             & 10\% & 100 & 1000 & 1 & upwards\\
+    complex wheels       & 375 & 10 & 1500 & 25\% &  somewhatflat terrain \\
+    tracks               & 200 & 2 & 300 & 33\% & rough terrain\\
+    legs                 & 80 & 15 & 100 & 25\% & all terrain\\
+    jumpjets             & 2000 & 100 & 1000 & 1 & upwards\\
     \hline
     Midtech\\
-    flexible legs        & 60\% & 12 & 150 & 30\% &  like a large human\\
-    boostjets            & 20\% & 1 & 1500 & 2 &  any direction\\
+    flexible legs        & 50 & 12 & 150 & 30\% &  like a large human\\
+    boostjets            & 1500 & 1 & 1500 & 2 &  any direction\\
     \hline Hightech\\
-    Spiderwalker         & 40\% & 2 & 400 & 50\% & any surface
+    Spiderwalker         & 200 & 2 & 400 & 50\% & any surface
 \end{tabular}
 
 Accelleration is assumed to be able to change to 50\%/80\%/100\% of max speed  in the first/second/third round\par
 Pneumatic variants of the legs weigh half as much but are constrained to weightclasses light and below\par
+
+\subsubsection{Maximum Speed}
+Since Power is in Watt, aka
+\(\frac{kg*m*m}{s*s*s}\)
+``all'' that is needed to get the max speed in
+\(\frac{m}{s}\) is to get
+the friction forces at the point of highest velocity in \(\frac{kg*m}{s*s}\), aka Newton.
+The GroundCoefficient is the one given in the Table, Power has to be calculated
+\(Friction = Mass in kg * Ground Coefficient/100 * 9.81 m/s^2 \)\par
+Repeat updating Airdrag\par
+\(Airdrag = \frac{Airdrag + 0.5*Area*1.225 * Speed^2}{2}\)
+and Speed\par
+\(Speed = \frac{Power}{Airdrag + Friction}\)\par
+Until the maximum value is found.\par
+Bonus Forumlae:\par
+\(Airdrag = (49*Speed^2*Area)/80 \) \par
+\(Speed = \frac{Power}{(49*Speed^2*Area)/80 + Friction}\)
+
 
 \subsection{Heat Systems}\label{subsec:heat-systems}
 Warning: ALL Dissipated heat contributes to IR signature
