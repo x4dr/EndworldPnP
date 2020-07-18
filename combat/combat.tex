@@ -13,16 +13,40 @@ If there is a lot of damage, machines may become inoperable, people might pass o
 Death and Destruction only occur when the Gamemaster decrees so.
 \section{Rounds}\label{sec:rounds}
 Combat is done in rounds.
-Each round is 5 seconds long.
+In Detailed Combat, each round is 5 seconds long, in Tactical Combat, rounds are of variable length and could
+last an hour.
 Every character present acts in turn (determined by circumstances or a Stealth, Perception, Willpower or other
 situational check) and can usually move and do an action (an attack or action that can be done in the remaining time).
-\section{Detailed combat}\label{sec:detailed-combat}
+Any action beyond the first carries with it a penalty of die and might be flat impossible depending on circumstance.
+Weapons that do not explicitly state how many times a turn they can be fired, can only be fired once per turn, switching
+weapons is an action that - without specific perks - uses the whole hand(s) for the remainder of the turn, and so on.
+
+\section{Detailed Combat}\label{sec:detailed-combat}
 \begin{enumerate}
     \item Every participant (technically in secret) decides on what they are going to do.
-    \item TODO: make words good: Every participant rolls the worst applicable roll of any actions they plan to undertake in that round at once.
     \item Each defense is determined, depending on the current action of the participant.
     \item Each offense is determined, depending on the currect action and target of the participant.
     \item Non-offensive Actions are resolved first, then offensive actions in descending Order of rolled result.
+\end{enumerate}
+
+\section{Tactical Combat}\label{sec:tactical-combat}
+In many respects much like detailed combat, Tactical Combat zooms out over encounters that could take a while,
+it is not unusual to switch back and forth.
+In Tactical Combat, there are usually no single actions, Tactical Actions (which encompass states and processes).
+Anytime something changes, everyone with intel on that change gets to reevaluate and change what they are doing.
+If these reactions cascade, detailed combat is the natural consequence and actions will procede in 5 second intervals.
+If an actor does more or less the same thing 3 times in a row, it might be appropriate to enter Tactical Combat.\par
+A state and/or process will interprete the last 3 rolls and take the average of that number.
+When entering Tactical Combat some form of time commitment is agreed upon and after each interval one roll is made.
+The moment of this roll is also the only time for unprovoked re-evaluation and change of plans.
+The interval should be changed by the Storyteller depending on the density of action.
+Tactical Actions might include \par
+\begin{enumerate}
+    \item firing on an enemy or a position
+    \item guarding a position
+    \item breaking down a door
+    \item traversing to a point
+    \item looking out
 \end{enumerate}
 
 \subsection{Defense}\label{subsec:defense}
@@ -32,6 +56,7 @@ Defense is usually (in the case of dodging) checked with Agility and
     \item \hyperref[subsec:instinct]{\textbf{instinct}} in general mayhem
     \item \hyperref[subsec:footwork]{\textbf{footwork}} in close range
     \item \hyperref[subsec:running]{\textbf{running}} when zig zagging
+    \item anything else pertaining to the situation
 \end{enumerate}
 Evasion levels are determined with the result of the defensive interpretation of the combat roll
 and the character specific evasive threshhold set. (standard unarmored is [5,7,9,11,13])
@@ -47,7 +72,8 @@ that is added to the evasion levels of the target
     target & penalty\\\hline
     head & 3 \\
     hand & 2 \\
-    legs & 1
+    legs & 1 \\
+    center mass & 0
 \end{tabular}
 
 \subsection{Hit Calculation}\label{subsec:hit}
@@ -55,6 +81,9 @@ If the offense level of an attack is at least 1, the hit roll is made.
 It consists of a singular die, with the offense levels as bonus dice, and the defense levels as penalty dice,
 see \hyperref[sec:bonus--and-penaltydice]{Bonus- and Penaltydice}.
 The hit quality will be a number from 1 to 10. \par
+For most direct projectile weapons the below table is a guideline.
+The encoded form would be [0,1,10,20,50,100,100]
+
 \begin{tabular}{c|cr}
     hit quality & result & damage modifier \\\hline
     1 & far miss & 0\%\\
