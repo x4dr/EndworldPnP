@@ -45,7 +45,7 @@ By Default there are only 2 Modes: Power saving and Full Throttle.
 Mode usage is marked for full hours spent in them, with the higher usage overriding the lower usage, except when the
 remaining Energy is less than an hour, where minute/round calculations might be needed.
 Energy E is in Rates of kilojoules/round, since Rounds are 5 seconds long, 1 Energy is equivalent to 5kw over 1 Round.
-1 MJ is 1000 kj so 1 MJ = 200E\(\times\)r
+1 MJ is 1000 kJ so 1 MJ = 200E
 
 \begin{tabular}{l|cccll}
     Type & E per t & heat/r per t & input & efficiency\\
@@ -58,11 +58,11 @@ Energy E is in Rates of kilojoules/round, since Rounds are 5 seconds long, 1 Ene
     \hline Midtech \\
     PEM & 100 & 0.1 & HFC & 90\% or HFC\\
     Solar Panel & 10 & 2 & Sunlight & Contamination dependent\\
-    Batteries & 900MJ@10E & 2 & electricity & loses 10\% per month \\
+    Batteries & 180kE @10E/r & 2 & electricity & loses 10\% per month \\
     \hline Hightech \\
     Reactor & 300 & 5  & Fuelrods & 0.08 (8\%)\\
     CFReactor & 40 & 0.1  & Deuterium & 0.8 (80\%)\\
-    Capacitor & 5MJ & 0.2/1E  & electricity & loses 10\% per hour
+    Capacitor & 1000E & 0.2/1E/r  & electricity & loses 10\% per hour
 \end{tabular}
 
 
@@ -71,22 +71,22 @@ will also damage the Solar panel, production halved every 5 contamination levels
 
 \textbf {CFReactor} Cold Fusion requires start up energy, equaling the Output for 1 Round.
 
-\textbf {Deuterium} 1 kg - 4.5 TJ or 900,000,000Er (effective at 80\%= 720MEr)
+\textbf {Deuterium} 1 kg - 4.5 TJ or 900,000,000E (effective at 80\%= 720ME)
 
-\textbf {Fuel Rod} 1 kg - 75 TJ or 15,000,000,000Er (effective at 8\%= 120MEr)
+\textbf {Fuel Rod} 1 kg - 75 TJ or 15,000,000,000E (effective at 8\%= 120ME)
 
-\textbf {Hydrogen} 70kg (1000L) = 10,082MJ or 2,016,400Er (effective at 90\% = 1,814,760Er)
+\textbf {Hydrogen} 70kg (1000L) = 10,082MJ or 2,016,400E (effective at 90\% = 1,814,760E)
 
 \textbf {HFC-10} 10 liter - hydrogen fuel cell: Cylinder 20cm diameter,
 35 cm height or 23cm cube=10L. \par
-containing 9 MJ or 1800Er
+containing 9 MJ or 1800E
 
 \textbf {HFC-50} 50 liter - hydrogen fuel cell: Cylinder 40cm diameter,
 40 cm height or 37cm cube = 50L,
-\par containing 45 MJ or 9000Er\par
+\par containing 45 MJ or 9000E\par
 contains low power sub system used to power up basic systems (like hydrogen gas pumps for the PEM Stacks)
 
-\textbf{CombustionFuel} 800kg (1000L) = 40,000MJ or 8,000,000Er (3,2MEr)
+\textbf{CombustionFuel} 800kg (1000L) = 40,000MJ or 8,000,000E (3,2ME)
 
 \subsection{Movement Systems}\label{subsec:movementsystems}
 
@@ -151,21 +151,23 @@ Cumulative for the mech.
     \hline Basetech\\
     Small Heatsink & 0 & 0.5t & 0.2 & 15 & Storage\\
     \hline Lowtech\\
-    Radiator Vent & 10kw/t &scalable &(1/2) + (1/t / 5/t) & 0 & 1 Hardpoint\\
+    Radiator Vent & 2 E/r &scalable &(1/2) + (1/t / 5/t) & 0 & 1 Hardpoint\\
     Large Heatsink & 0 & 1t & 0.5 & 50 &Storage\\
     \hline Midtech\\
     Optimized heatsink  & 0 & 1t & 1 & 80 &Storage\\
-    Coolant Dump  & 1MJ & 4t & 0/100 & 100 &Decoy; 1 Hardpoint \\
-    Radiator Wings & 1kw & 2t & 10\% & 100 & Deploy; 1 Hardpoint\\
+    Coolant Dump  & 200 E & 4t & 0/100 & 100 & Decoy; 1 Hardpoint \\
+    Radiator Wings & 0.2 E/r & 2t & 10\% & 100 & Deploy; 1 Hardpoint\\
     \hline Hightech\\
-    Fractal heatsink & 0/100kw & 2t & 3/0 & 200 & Storage\\
-    OVERDRIVE & 5MJ & 1t & 0 & & Gadget
+    Fractal heatsink & 20 E/r & 2t & 3/0 & 200 & Storage\\
+    OVERDRIVE & 1000E & 1t & 0 & & Gadget
 \end{tabular}\par
 
 \textbf{Coolant Dump}: When triggered, releases 100 stored heat together with 100L water, as a thermal barrier
-\textbf{Radiator Wings}: Deploying takes 5 turns times 1kw or 5 minutes labor, any damage received while deployed
-will also damage the Radiator Wings: radiates 10\% of total system heat, as long as 1kw  energy (for coolant pumping)
+
+\textbf{Radiator Wings}: Deploying takes 5 turns and 1E or 5 minutes labor, any damage received while deployed
+will also damage the Radiator Wings: radiates 10\% of total system heat, as long as 0.2E/r (for coolant pumping)
 is applied.
+
 \textbf{Overdrive}: When triggered, enter overdrive mode: able to act at double speed,
 stored heat is spent insteadof gained.
 When heat drops to 0 or below, Mech shuts down for 2d10 rounds and Overdrive requires a Competence, Gadgets-Repair;
@@ -175,6 +177,7 @@ Threshhold of 10 to repair.
 \subsection{Sealsystems}\label{subsec:sealsystems}
 \textbf{Level} how much the seal reduces Contamination behind it.
 \textbf{Resistance} how much damage it takes to damage the Seal.
+For each Instance of Damage at or above the Resistance, it's Resistance is lowered by 1.
 
 \begin{tabular}{l|r|r|r}
     Tech & Seal Level & Resistance & Cost/Sector\\\hline
@@ -223,7 +226,7 @@ Melee weapons rely on the movement System, so their costs are in meters that are
     \hline Pulse Laser & 60 & \makecell[l]{1km[5,-15]50\\
                                    5km[7,9,11,13,15]100\\
                                    LOS[10,12,14,16,18]100}
-                                        & 5MJ 10H & 7t\\
+                                        & 1000E 10H & 7t\\
     \hline Precision Cannon & 140 & \makecell[l]{500m[7,10,13]2\\
                                          2km[7-11,13,15,17,19]30\\
                                          LOS[8,10,12,14,16,18,20]25}
@@ -235,14 +238,14 @@ Melee weapons rely on the movement System, so their costs are in meters that are
                                 1km[5,7,9,11,13]10\\
                                 4km[7,9,11,13,15]5\\
                                 12km[9,11,13,15,17]1}
-                                & 50 kg, 25H, 20MJ & 15t\\
+                                & 50 kg, 25H, 4000E & 15t\\
     \hline Advanced Pulse Laser & 90 & \makecell[l]{3km[5-20]50\\
                                    9km[7,9,11,13,15,17]100\\
                                    LOS[10,12,14,16,18]100}
-                                        & 9MJ 15H & 3t\\
+                                        & 1800E 15H & 3t\\
     \hline Ramping Beam Laser & 10\(\times\)X & \makecell[l]{1km[5,10,15]10\\
                                           LOS[10,15]100}
-                        & X\(\times\)(50kw 1H) & 10t\\
+                        & X\(\times\)(10E 1H) & 10t\\
 
 \end{tabular}\par
 
@@ -267,10 +270,15 @@ Loading takes 2 turns.
 \subsection{Defensesystems}\label{subsec:defensesystems}
 Defensesystems are configured using the relevant \hyperref[subsubsec:defense]{Technical Skill},
 the relevant usage Method, usually \hyperref[subsec:computer]{Computer Usage}
-With (if not explicitly defined) the threshholds [5,8,13,16,19] or automatically by a Program of the corresponding level.
-Configuration, Strength are the equivalent statistics of the Armor a Shield provides.
-Configuration is required to start a Shield and takes 1 Action, but does not need to hit the lowest threshhold.
+with (if not explicitly defined) the threshholds [5,8,13,16,19] or automatically by a Program of the corresponding level.
+
+
+Configuration, Strength are the  armor-equivalent statistics a shield provides.
+Configuration is required to start a Shield and takes 1 Action, if the lowest threshhold is not hit, the Configuration
+is 0, but the Shield still starts.
+
 Coldboot can only be done after all Systems have been shut off for at least one turn.
+
 Shields turn off when overwhelmed and have to meet the Reboot requirements (including another Configuration) to turn
 back on.
 Config X means that the specific Configuration Threshhold of X has to be reached.
@@ -287,20 +295,34 @@ If the result is larger than the uncovered portion, the Field generator applies.
     \hline Basetech\\
     Applique-Armor & Strength 1 & 1t & - & destroy, block & - & permanent \\
     \hline Lowtech\\
-    Basic Deflector & 1 Evasion & 0.2t & 10kW/50kW, 1H/attack & - & - & 1r, Config 5\\
-    Basic Dampener & 1 Reduction & 0.5t & 50kw/100kw, 3H/attack & - & - & 3r \\
+    Basic Deflector & 1 Evasion & 0.2t & 10E/r, 1H/attack & - & - & 5E, 1r, Config 5\\
+    Basic Dampener & 5 + Config Reduction & 0.5t & 20E/r, 3H/attack & - & - & 30E, 3r \\
     \hline Midtech\\
-    Shield & Strength 3 & 1t & 200kw/50kw, 1H/attack & passthrough & 5r & 10MJ \\
-    Complex Deflector & 3 Evasion & 0.8t & 100kw/200kw, 2H/attack & - & - & 8r\\
-    Heavy Dampener & 5 Reduction & 1t & 50kw/300kw, 5H/attack & - & - & 10r\\
-    Flash Shield & Strength 1 & 1t & 500kw/100kw, 2H/attack & block & 0.5MJ & 2r\\
+    Shield & Strength 3 & 1t & 40E/r or 10E/r, 1H/attack & passthrough & 5r & 2000E \\
+    Complex Deflector & 3 Evasion & 0.8t & 40E/r, 2H/attack & - & - & 160E, 8r, Config 10\\
+    Heavy Dampener & 30 + Config\(\times 3\) Reduction & 1t & 60E/r, 5H/attack & - & - & 100E, 10r\\
+    Flash Shield & Strength 1 & 1t & 20E/r), 2H/attack & block & X\(\times\)50E & 200E, 2r\\
     \hline Hightech\\
-    Advanced Shield & Strength 4 & 1t & 1MW/ 100kw & block & 1r & 5r 
+    Advanced Shield & Strength 4 & 1t & 200E/r or 20E/r & block & 1r & 5r
 \end{tabular}
 
-Strength like armor
-Cost:  per sector of armor for Charging/Active states, per round\par
+\vspace{1cm}
+
+\textbf{Deflectors} need to be Configured with the Deflector skill and require a minimum degree of success to
+work and provide flat evasion-level bonuses.
+
+\textbf{Dampeners} need to be Configured with the Shield skill and provide a flat damage reduction to all
+attacks that are influenced by shields, they usually scale with the Quality of the Configuration.
+
+\textbf{Flash Shield} As soon as the Reboot Energy is paid and the configuration is done, they turn back on.
+X is set to 0 at Coldboot and increased by 1, everytime the Shield is broken.
+A 10-Resonance on the Configuration reduces X by that much, even going negative.
+While X is negative, the Energycost is 0.
+
+Cost: per sector for being active.
+
 Failure: Normal behaviour on Failure is for the shield to turn off until rebooted.
+
 Dampeners and Deflectors dont fail from damage.
 
 \subsection{Armor}\label{subsec:armor}
@@ -325,10 +347,10 @@ Dampeners and Deflectors dont fail from damage.
     \item Metal Plating: Repairs need 12 or more to not lower Quality
     \item Ultra High Density Composite: Repairs need 8 to succeed and Freq1 Resonance lowers Strength by Amp
     \item Composite: needs to be replaced, spare parts 200kg, success with 6+, scrap at 2
-    \item Active: needs 10kW per round per incoming hit or Strength is 1.
+    \item Active: needs 2E per round and per incoming hit or Strength is 1.
     Repairs Success with 15+/Spare 5+, 1--4 Scraps the Layer, Freq1 subtracts
     \item Speedshell: Vent 1H per 5m/s;
     Repair 12+, 1--11 Scraps the Layer
-    \item Ion: 20kW per Segment, on destruction energy Output is reduced by 10\% until scrapped armor is removed.
+    \item Ion: 4E/r per Segment, on destruction energy Output is reduced by 10\% until scrapped armor is removed.
 \end{enumerate}
 
