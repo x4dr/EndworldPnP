@@ -2,12 +2,14 @@ import random
 
 
 def roll(stats, mod=0):
-    r = sorted(random.randint(1, 10) for _ in range(5+abs(mod)))
+    r = sorted(random.randint(1, 10) for _ in range(5 + abs(mod)))
     return sum(r[s - 1 + mod if mod > 0 else 0] for s in stats if s > 0)
 
 
 def deflect(mod):
-    return sorted([random.randint(1, 10) for _ in range(abs(mod) + 1)], reverse=mod > 0)[0]
+    return sorted(
+        [random.randint(1, 10) for _ in range(abs(mod) + 1)], reverse=mod > 0
+    )[0]
 
 
 class ArmorStack(object):
@@ -57,7 +59,7 @@ class Mech(object):
         if defthresh is None:
             defthresh = [5, 8, 11, 14, 17]
         if plt is None:
-            plt = Pilot((), ())
+            plt = Pilot((1, 0), (1, 0))
         if wpn is None:
             wpn = Weapon(10, 1)
         self.defenseThreshhold = defthresh
@@ -80,20 +82,25 @@ class Mech(object):
         if not adv > 0:
             print("not even a good shot!")
             return False
-        defenceroll = roll(self.pilot.attackStats)
-        defense = sum(1 if t <= defenceroll else 0 for t in self.defenseThreshhold)
+        defenseroll = roll(self.pilot.attackStats)
+        defense = sum(1 if t <= defenseroll else 0 for t in self.defenseThreshhold)
         deviance = 10 - deflect(adv - defense)
         locations = [target + deviance, target - deviance]
-        locations = [l if 0 <= l < len(self.armorStacks) else None for l in locations]
+        locations = [
+            loc if 0 <= loc < len(self.armorStacks) else None for loc in locations
+        ]
         print(
-            f"defending with {defense} from {defenceroll} and a deviance of {deviance}, possible targets are {locations}")
+            f"defending with {defense} from  roll {defenseroll} and a deviance of {deviance}, possible targets are {locations}"
+        )
         if None in locations:  # possibility to miss
             print("so a miss it is")
             return False  # miss
-        location = max(locations, key=lambda x: self.armorStacks[x].sturdyness)  # defender selects sturdier armor
+        location = max(
+            locations, key=lambda x: self.armorStacks[x].sturdyness
+        )  # defender selects sturdier armor
         return not self.armorStacks[location].damage(damage)
 
-    def attack(self, target: 'Mech'):
+    def attack(self, target: "Mech"):
         if self.weapon.state > 0:
             self.weapon.state -= 1
             print("cd...")
@@ -102,13 +109,17 @@ class Mech(object):
         levels = roll(self.pilot.attackStats)
         advantage = sum(1 if t <= levels else 0 for t in self.weapon.threshholds)
         print(
-            f"attacking with {advantage} advantage from {levels} and {self.weapon.attack} damage at {len(target.armorStacks) // 2 + 1}")
-        return target.damage(self.weapon.attack, advantage, len(target.armorStacks) // 2 + 1)
+            f"attacking with {advantage} advantage from rolled {levels} and "
+            f"{self.weapon.attack} damage at {len(target.armorStacks) // 2 + 1}"
+        )
+        return target.damage(
+            self.weapon.attack, advantage, len(target.armorStacks) // 2 + 1
+        )
 
 
-if __name__=="__main__":
-    mech1 = Mech(5, [3], [((2, 3),)], Weapon(10, 1), Pilot((2, 3), (2, 3)))
-    mech2 = Mech(5, [3], [((2, 3),)], Weapon(10, 1), Pilot((2, 3), (2, 3)))
+if __name__ == "__main__":
+    mech1 = Mech(8, [3], [((2, 3),)], Weapon(10, 1), Pilot((2, 3), (2, 3)))
+    mech2 = Mech(5, [4], [((2, 3),)], Weapon(10, 1), Pilot((2, 3), (2, 3)))
 
     for combatRound in range(2000):
         print(combatRound)

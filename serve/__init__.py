@@ -5,6 +5,13 @@ import pathlib
 import flask
 from flask import request
 
+from serve.mechacostcalc import (
+    movementsystempercentages,
+    movementenergysystempercentages,
+    movementspeed,
+)
+from serve.mechdata import get, movementsystems
+
 app = flask.Flask("KodalBroadcast")
 
 
@@ -30,22 +37,6 @@ def rolling_resistance(mass, rolling_coefficient, gravitational_force=9.81):
     return mass * rolling_coefficient * gravitational_force
 
 
-def maxspeed(m, p, air_coeff, ground_coeff, base_loss, significant_digits=3):
-    d = m * ground_coeff * 9.81  # kg * 1 * m/s2  ; weight based friction
-    old, vel, airdrag = 0, 10, p / 100  # approximation seeds
-    p -= base_loss
-    while abs(old - vel) > 1 / 10 ** significant_digits:
-        old = vel
-        airdrag = (airdrag + (0.5 * air_coeff * 1.225) * vel ** 2) / 2
-        vel = p / (airdrag + d)
-    return vel
-
-
-def get(res):
-    with importlib.resources.open_text("serve", pathlib.Path(res)) as data:
-        return data.read()
-
-
 @app.route("/")
 def root():
     return {
@@ -57,6 +48,48 @@ def root():
             ],
         }
     }
+
+
+@app.route("/move/<movement>/<size>/<speed>")
+def move(movement, size, speed):
+    try:
+        r = movementsystempercentages(float(speed), int(size))[movement][0]
+        return {"tonnage": r[0], "percentage": r[1], "total": r[0] * r[1] / 100}
+    except KeyError:
+        return (
+            "movement "
+            + movement
+            + " not found, available are: "
+            + ", ".join(movementsystems().keys())
+        )
+
+
+@app.route("/energy/<movement>/<size>/<speed>")
+def energy(movement, size, speed):
+    try:
+        mov = movementsystempercentages(float(speed), int(size))[movement]
+        return movementenergysystempercentages({movement: mov})
+    except KeyError:
+        return (
+            "movement "
+            + movement
+            + " not found, available are: "
+            + ", ".join(movementsystems().keys())
+        )
+
+
+@app.route("/speed/<movement>/<size>/<energy>")
+def mechspeed(movement, size, energy):
+    try:
+        maxs = movementspeed(movement, size, energy)
+        return {"m/s": maxs, "km/h": maxs * 3.6, "mph": maxs * 2.23694}
+    except KeyError:
+        return (
+            "movement "
+            + movement
+            + " not found, available are: "
+            + ", ".join(movementsystems().keys())
+        )
 
 
 @app.route("/speed", methods=["GET", "POST"])
@@ -76,16 +109,10 @@ def speed(weight=None, power=None, crossection=None, ground_loss=None, efficienc
     weight = float(weight)
     power = float(power)
     crossection = float(crossection)
-    ground_loss = float(ground_loss) / 100
+    ground_loss = float(ground_loss)
     efficiency = float(efficiency) / 100
-    tot_base_loss = weight  # 1watt per kilo is lost
-    maxs = maxspeed(
-        weight,
-        power,
-        crossection,
-        ground_loss,
-        (1 - efficiency) * power + tot_base_loss,
-    )
+
+    maxs = maxspeed(weight, power, crossection, ground_loss, (1 - efficiency) * power,)
     return {"m/s": maxs, "km/h": maxs * 3.6, "mph": maxs * 2.23694}
 
 

@@ -2,6 +2,8 @@ import random
 
 import numpy
 
+from serve import maxspeed
+
 
 def d10(lvl):
     amt = abs(lvl - 3) + 1
@@ -38,17 +40,6 @@ def newround(actors, actorlevels):
 
 def manyrolls(amt, lvl):
     return [d10(lvl) for x in range(amt)]
-
-
-def maxspeed(m, p, air_coeff, ground_coeff, base_loss, significant_digits=3):
-    d = m * ground_coeff * 9.81  # kg * 1 * m/s2  ; weight based friction
-    old, vel, airdrag = 0, 10, p / 100  # approximation seeds
-    p -= base_loss
-    while abs(old - vel) > 1 / 10 ** significant_digits:
-        old = vel
-        airdrag = (airdrag + (0.5 * air_coeff * 1.225) * vel ** 2) / 2
-        vel = p / (airdrag + d)
-    return vel
 
 
 res = []

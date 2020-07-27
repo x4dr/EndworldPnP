@@ -50,19 +50,19 @@ Energy E is in Rates of kilojoules/round, since Rounds are 5 seconds long, 1 Ene
 \begin{tabular}{l|cccll}
     Type & E per t & heat/r per t & input & efficiency\\
     \hline Basetech \\
-    Steampower & 0.7 & 8 & Coal & x/10 (10\%)\\
+    Steampower & 0.7 & 8 & Coal & 10\%\\
     FlyWheel & 20 & 0 & stored & loses 10\% per turn \\
-    Crank & 2--100/human & 0 &Labor&-\\
+    Crew & 0.01 & 0 & Labor & 10\%\\
     \hline Lowtech \\
-    Combustion Motor& 140 & 2  & Combustible & \(0.5(x-0.37)^2+0.6\) (40\%) \\
+    Combustion Motor& 140 & 2  & Combustible & 40\% \\
     \hline Midtech \\
-    PEM & 100 & 0.1 & HFC & 90\% or HFC\\
+    PEM & 100 & 0.1 & Hydrogen & 90\%\\
     Solar Panel & 10 & 2 & Sunlight & Contamination dependent\\
-    Batteries & 180kE @10E/r & 2 & electricity & loses 10\% per month \\
+    Batteries & 10 & 2 & battery charge & loses 10\% per month \\
     \hline Hightech \\
-    Reactor & 300 & 5  & Fuelrods & 0.08 (8\%)\\
-    CFReactor & 40 & 0.1  & Deuterium & 0.8 (80\%)\\
-    Capacitor & 1000E & 0.2/1E/r  & electricity & loses 10\% per hour
+    Reactor & 300 & 5  & Fuelrods & 8\%\\
+    CFReactor & 40 & 0.1  & Deuterium & 80\%\\
+    Capacitor & 1000 & X & electricity & loses 10\% per hour
 \end{tabular}
 
 
@@ -88,6 +88,10 @@ contains low power sub system used to power up basic systems (like hydrogen gas 
 
 \textbf{CombustionFuel} 800kg (1000L) = 40,000MJ or 8,000,000E (3,2ME)
 
+\textbf{Battery} has 180kE/ t
+
+\textbf{Capacitor} generates 1 Heat per 10 Energy moved, for all other purposes instant
+
 \subsection{Movement Systems}\label{subsec:movementsystems}
 
 \textbf{Efficiency} is the ratio of power consumed to power used to move the mech
@@ -96,25 +100,26 @@ contains low power sub system used to power up basic systems (like hydrogen gas 
 
 \textbf{Power to Weight} is how much maximum movement power the system can employ per weight
 
-\begin{tabular}{l|cccccl}
-    Type    & Energy/r per ton & GroundCoefficient & Power per ton & hardpoints &Extra\\
-    \hline
-    Basetech\\
-    railbased            & 105 & 0.8 & 500 & 1--50\%--4 & rails \\
-    simple wheels        & 200 & 15 & 750 & 25\% & flat terrain \\
-    floatation system    & 20 & 20 &  90 & 10\% & water\\
-    \hline
-    Lowtech\\
-    complex wheels       & 375 & 10 & 1500 & 25\% &  somewhatflat terrain \\
-    tracks               & 200 & 2 & 300 & 33\% & rough terrain\\
-    legs                 & 80 & 15 & 100 & 25\% & all terrain\\
-    jumpjets             & 2000 & 100 & 1000 & 1 & upwards\\
-    \hline
-    Midtech\\
-    flexible legs        & 50 & 12 & 150 & 30\% &  like a large human\\
-    boostjets            & 1500 & 1 & 1500 & 2 &  any direction\\
+\begin{tabular}{l|ccccccl}
+    Type    & Energy/r & GroundCoefficient per ton & Area per sector & Power per ton & hardpoints &Extra\\
+    \hline Basetech\\
+    railbased            & 55 & 0.001 & 20 & 500 & 50\% & rails \\
+    simple wheels        & 100 & 8 & 1 & 750 & 25\% & flat terrain \\
+    floatation system    & 15 & 2 & 1000 & 90 & 10\% & water\\
+    \hline Lowtech\\
+    complex wheels       & 175 & 6 & 3 & 1500 & 25\% &  somewhatflat terrain \\
+    tracks               & 100 & 0.02 & 40 & 600 & 33\% & rough terrain\\
+    2legs                & 30 & 0.5 & 100 & 450 & 25\% & all terrain\\
+    4legs                & 30 & 0.2 & 200 & 450 & 25\% & all terrain\\
+    6legs                & 30 & 0.13 & 300 & 450 & 25\% & all terrain\\
+    jumpjets             & 1000 & 50 & 1 & 1000 & 1 & upwards\\
+    \hline Midtech\\
+    2 flexible legs        & 100 & 10 & 10 & 1000 & 30\% &  like a large human\\
+    4 flexible legs        & 100 & 1 & 100 & 1000 & 30\% &  like a large human\\
+    6 flexible legs        & 100 & 0.3 & 1000 & 1000 & 30\% &  like a large human\\
+    boostjets            & 2000 & 5 & 0.1 & 1000 & 2 &  any direction\\
     \hline Hightech\\
-    Spiderwalker         & 200 & 2 & 400 & 50\% & any surface
+    Spiderwalker         & 150 & 0.1 & 500 & 400 & 50\% & any surface
 \end{tabular}
 
 Accelleration is assumed to be able to change to 50\%/80\%/100\% of max speed  in the first/second/third round\par
@@ -133,8 +138,8 @@ Repeat updating Airdrag\par
 and Speed\par
 \(Speed = \frac{Power}{Airdrag + Friction}\)\par
 Until the maximum value is found.\par
-Bonus Forumlae:\par
-\(Airdrag = (49*Speed^2*Area)/80 \) \par
+Bonus Formulae:\par
+\(Airdrag = \frac(49*Speed^2*Area)/80 \) \par
 \(Speed = \frac{Power}{(49*Speed^2*Area)/80 + Friction}\)
 
 
