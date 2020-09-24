@@ -1,0 +1,141 @@
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="../static/gen.css?r={{ time.time() }}">
+<script>
+    function mininimizeRestore(type) {
+        const children = document.getElementById(type).children;
+        for (let c in children) {
+            if (children.hasOwnProperty(c)) {
+                let x = children[c];
+                let cl = x.classList;
+                console.log(cl, x);
+
+                if (cl !== undefined) {
+                    if (x.nodeName === "H3") {
+                        cl.toggle("rotated");
+                        x.parentElement.classList.toggle("smallflex");
+                    } else {
+                        cl.toggle("hidden");
+                    }
+
+                }
+
+            }
+        }
+    }
+    function sendData(){
+        let data = {};
+        const elements= document.getElementsByClassName("system-edit");
+        for (let e in elements){
+            if (elements.hasOwnProperty(e)){
+                console.log(elements[e]);
+                data[elements[e].id]=elements[e].value;
+            }
+        }
+        fetch("{{ url_for("calculate_mech") }}", {
+            method: "POST",
+            headers: new Headers({'content-type': 'application/json'}),
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (200 !== response.status) {
+                alert("Server could not be reached:" + response.status);
+                return false
+            }
+            response.json().then(function (data) {
+                //TODO: do something with the data
+                document.getElementById("mech_calculated").innerText=JSON.stringify(data);
+            });
+        });
+    }
+
+    function createOption(value, text){
+        const opt = document.createElement("option");
+        opt.appendChild( document.createTextNode(text) );
+        opt.value = value;
+        return opt;
+    }
+    function createNumericallyScalingSystem(type, value){
+        const div = document.createElement("div");
+        const sys = document.createElement("input");
+        const label = document.createElement("label");
+        sys.classList.add("system-edit");
+        sys.onchange = sendData;
+        let t = -1;
+        while (999 > t) {
+            t += 1;
+            if (document.getElementById("value_" + t) === null) {
+                break;
+            }
+            console.log("found value_" + t );
+        }
+        sys.id = type+"_"+value+"_"+t;
+        sys.setAttribute("type","number");
+        sys.setAttribute("min","0");
+        sys.setAttribute("max","999");
+        label.setAttribute("for", sys.id);
+        label.appendChild(document.createTextNode(value));
+        div.appendChild(label);
+        div.appendChild(sys);
+        div.classList.add("inner-grid-item");
+        return div;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        fetch("{{url_for("mechrulesdata")}}").then(response => {
+            if (200 !== response.status){
+                alert("Server could not be reached:"+response.status);
+                return false
+            }
+            response.json().then(function (data){
+                console.log(data);
+                const handleSystemClass = type => {
+                    let sys = data[type];
+                    const select = document.getElementById(type + "-add-select");
+                    select.removeChild(select.lastChild);
+                    for (let s in sys) {
+                        if (sys.hasOwnProperty(s)) {
+                            select.appendChild(createOption(s, s))
+                        }
+                    }
+                    document.getElementById("add-" + type).onclick = function () {
+                        const sel = document.getElementById(type + "-add-select");
+                        const o = sel.options[sel.selectedIndex].value;
+                        const sys = createNumericallyScalingSystem(type,o);
+                        document.getElementById(type + "-systems").appendChild(sys);
+                        return false;
+                    }
+                };
+                for (let system in data) {
+                    if (data.hasOwnProperty(system)) {
+                        handleSystemClass(system);
+                    }
+                }
+
+            });
+            return true;
+        });
+    });
+</script>
+<body>
+<div class="outer split left">
+    <div class="grid-item outer" id="sector-count">
+        <h3 onclick="mininimizeRestore('sector-count')">General</h3>
+        <div class="inner-grid-item">
+            <label for="mechsize">Sector Count</label>
+            <input id="mechsize" class="system-edit" type="number" min="0" step="1" max="999" onchange="sendData()">
+        </div>
+    </div>
+    {% for type in ["energy","movement","heat","seal","weapons","defense","armor"] %}
+        <div class="grid-item outer" id="{{ type }}-systems">
+            <h3 onclick="mininimizeRestore('{{ type }}-systems')">{{ type.title() }}</h3>
+            <form id="add-{{ type }}-form" class="inner-grid-item">
+                <label for="{{ type }}-add-select">Add</label>
+                <select id="{{ type }}-add-select" class="system-options"><option>Loading...</option></select>
+                <input type="button" class="addbutton" id="add-{{ type }}" value="+">
+            </form>
+        </div>
+    {% endfor %}
+</div>
+<div class="outer split right" id="mech_calculated"></div>
+
+</body>
+</html>

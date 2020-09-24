@@ -1,16 +1,21 @@
-import importlib.resources
 import json
-import pathlib
+import time
 
 import flask
-from flask import request
+from flask import request, render_template
 
+from mech import Mech
 from serve.mechacostcalc import (
     movementsystempercentages,
     movementenergysystempercentages,
     movementspeed,
+    maxspeed,
 )
-from serve.mechdata import get, movementsystems
+from serve.mechdata import (
+    get,
+    movementsystems,
+    mech_json_data,
+)
 
 app = flask.Flask("KodalBroadcast")
 
@@ -43,11 +48,28 @@ def root():
         "routes": {
             "/": "",
             "speed": [
-                json.loads(get("speedparams.jsonschema")),
+                json.loads(get("serve/speedparams.jsonschema")),
                 "/<float:weight>/<float:power>/<float:crossection>/<float:ground_loss>/<float:efficiency>",
             ],
         }
     }
+
+
+@app.route("/mechrulesdata")
+def mechrulesdata():
+    return mech_json_data()
+
+
+@app.route("/gen")
+def char_gen():
+    return render_template("gen.html", time=time)
+
+
+@app.route("/calculatemech", methods=["POST"])
+def calculate_mech(x=None):
+    x = x or request.get_json()
+    print(x)
+    return {"mech": Mech(x).as_json()}
 
 
 @app.route("/move/<movement>/<size>/<speed>")
@@ -97,7 +119,7 @@ def mechspeed(movement, size, energy):
 def speed(weight=None, power=None, crossection=None, ground_loss=None, efficiency=None):
     if weight is None:
         if request.method == "GET":
-            return json.loads(get("speedparams.jsonschema"))
+            return json.loads(get("serve/speedparams.jsonschema"))
         j = request.get_json()
         if j is None:
             return {"error": "no data found"}

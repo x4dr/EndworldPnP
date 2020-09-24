@@ -47,7 +47,7 @@ remaining Energy is less than an hour, where minute/round calculations might be 
 Energy E is in Rates of kilojoules/round, since Rounds are 5 seconds long, 1 Energy is equivalent to 5kw over 1 Round.
 1 MJ is 1000 kJ so 1 MJ = 200E
 
-\begin{tabular}{l|cccll}
+\begin{tabular}{l|cccl}
     Type & E per t & heat/r per t & input & efficiency\\
     \hline Basetech \\
     Steampower & 0.7 & 8 & Coal & 10\%\\
@@ -58,11 +58,11 @@ Energy E is in Rates of kilojoules/round, since Rounds are 5 seconds long, 1 Ene
     \hline Midtech \\
     PEM & 100 & 0.1 & Hydrogen & 90\%\\
     Solar Panel & 10 & 2 & Sunlight & Contamination dependent\\
-    Batteries & 10 & 2 & battery charge & loses 10\% per month \\
+    Batteries & 10 & 2 & stored & loses 10\% per month \\
     \hline Hightech \\
     Reactor & 300 & 5  & Fuelrods & 8\%\\
     CFReactor & 40 & 0.1  & Deuterium & 80\%\\
-    Capacitor & 1000 & X & electricity & loses 10\% per hour
+    Capacitor & 1000 & X & stored & loses 10\% per hour
 \end{tabular}
 
 
@@ -101,23 +101,23 @@ contains low power sub system used to power up basic systems (like hydrogen gas 
 \textbf{Power to Weight} is how much maximum movement power the system can employ per weight
 
 \begin{tabular}{l|ccccccl}
-    Type    & Energy/r & GroundCoefficient per ton & Area per sector & Power per ton & hardpoints &Extra\\
+    Type    & Energy/r & \makecell[l]{GroundCoefficient\\ per ton} & Area per sector & Power per ton & hardpoints &Extra\\
     \hline Basetech\\
-    railbased            & 55 & 0.001 & 20 & 500 & 50\% & rails \\
-    simple wheels        & 100 & 8 & 1 & 750 & 25\% & flat terrain \\
-    floatation system    & 15 & 2 & 1000 & 90 & 10\% & water\\
+    Rail                 & 55 & 0.001 & 20 & 500 & 50\% & rails \\
+    Simple Wheels        & 100 & 8 & 1 & 750 & 25\% & flat terrain \\
+    Floatation           & 15 & 2 & 1000 & 90 & 10\% & water\\
     \hline Lowtech\\
-    complex wheels       & 175 & 6 & 3 & 1500 & 25\% &  somewhatflat terrain \\
-    tracks               & 100 & 0.02 & 40 & 600 & 33\% & rough terrain\\
-    2legs                & 30 & 0.5 & 100 & 450 & 25\% & all terrain\\
-    4legs                & 30 & 0.2 & 200 & 450 & 25\% & all terrain\\
-    6legs                & 30 & 0.13 & 300 & 450 & 25\% & all terrain\\
-    jumpjets             & 1000 & 50 & 1 & 1000 & 1 & upwards\\
+    Complex Wheels       & 175 & 6 & 3 & 1500 & 25\% &  somewhatflat terrain \\
+    Tracks               & 100 & 0.02 & 40 & 600 & 33\% & rough terrain\\
+    2 Simple Legs        & 30 & 0.5 & 100 & 450 & 25\% & all terrain\\
+    4 Simple Legs        & 30 & 0.2 & 200 & 450 & 25\% & all terrain\\
+    6 Simple Legs        & 30 & 0.13 & 300 & 450 & 25\% & all terrain\\
+    Jumpjets             & 1000 & 50 & 1 & 1000 & 1 & upwards\\
     \hline Midtech\\
-    2 flexible legs        & 100 & 10 & 10 & 1000 & 30\% &  like a large human\\
-    4 flexible legs        & 100 & 1 & 100 & 1000 & 30\% &  like a large human\\
-    6 flexible legs        & 100 & 0.3 & 1000 & 1000 & 30\% &  like a large human\\
-    boostjets            & 2000 & 5 & 0.1 & 1000 & 2 &  any direction\\
+    2 Flexible Legs      & 100 & 10 & 10 & 1000 & 30\% &  like a large human\\
+    4 Flexible Legs      & 100 & 1 & 100 & 1000 & 30\% &  like a large human\\
+    6 Flexible Legs      & 100 & 0.3 & 1000 & 1000 & 30\% &  like a large human\\
+    Boostjets            & 2000 & 5 & 0.1 & 1000 & 2 &  any direction\\
     \hline Hightech\\
     Spiderwalker         & 150 & 0.1 & 500 & 400 & 50\% & any surface
 \end{tabular}
@@ -152,30 +152,39 @@ Warning: ALL Dissipated heat contributes to IR signature
 Cumulative for the mech.
 
 \begin{tabular}{r|lllll}
-    Type & Input & Weight & Cooling & Capacity &Extra\\
+    Type & Input & Cooling & Capacity & Hardpoints\\
     \hline Basetech\\
-    Small Heatsink & 0 & 0.5t & 0.2 & 15 & Storage\\
+    Small Heatsink & 0 & 0.4 & 30 & \\
     \hline Lowtech\\
-    Radiator Vent & 2 E/r &scalable &(1/2) + (1/t / 5/t) & 0 & 1 Hardpoint\\
-    Large Heatsink & 0 & 1t & 0.5 & 50 &Storage\\
+    Radiator Vent & 2 E/r & p+t;2p+5t & 0 & 1+\\
+    Large Heatsink & 0 & 0.5 & 50 & \\
     \hline Midtech\\
-    Optimized heatsink  & 0 & 1t & 1 & 80 &Storage\\
-    Coolant Dump  & 200 E & 4t & 0/100 & 100 & Decoy; 1 Hardpoint \\
-    Radiator Wings & 0.2 E/r & 2t & 10\% & 100 & Deploy; 1 Hardpoint\\
+    Optimized heatsink  & 0 & 1 & 40 & \\
+    Coolant Dump  & 50 E & 0;25 & 25 & 1 \\
+    Radiator Wings & 0.1 E/r & 0;10\% & 50 & 1\\
     \hline Hightech\\
-    Fractal heatsink & 20 E/r & 2t & 3/0 & 200 & Storage\\
-    OVERDRIVE & 1000E & 1t & 0 & & Gadget
-\end{tabular}\par
+    Fractal heatsink & 10 E/r & 1.5/0 & 100 & \\
+    OVERDRIVE & 1000E & 0 &  0 &
+\end{tabular}
 
-\textbf{Coolant Dump}: When triggered, releases 100 stored heat together with 100L water, as a thermal barrier
+\textbf{Heatsinks}: store Heat and slowly release it.
+
+\textbf{Radiator Vent}: Use at least one Hardpoint for the vent.
+Cooling scales with Hardpoints(p) and Tonnage(t)
+
+\textbf{Coolant Dump}: Uses a Hardpoint for any number of CoolantDumps When triggered using 50E total,
+releases 25 stored heat together with 25L water, as a thermal barrier.
+Uses is Decoys and Intuition.
+
 
 \textbf{Radiator Wings}: Deploying takes 5 turns and 1E or 5 minutes labor, any damage received while deployed
 will also damage the Radiator Wings: radiates 10\% of total system heat, as long as 0.2E/r (for coolant pumping)
 is applied.
 
-\textbf{Overdrive}: When triggered, enter overdrive mode: able to act at double speed,
-stored heat is spent insteadof gained.
-When heat drops to 0 or below, Mech shuts down for 2d10 rounds and Overdrive requires a Competence, Gadgets-Repair;
+\textbf{Overdrive}: When triggered, enter Overdrive Mode: Energy and Movement Systems count double (except for weight),
+Heat is spent insteadof gained.
+When heat drops to 0 or below, Mech shuts down for 20 rounds, reduced by a Gadgets+Piloting,Intuition roll and
+Overdrive requires a Competence, Gadgets-Repair;
 10m;
 Threshhold of 10 to repair.
 
@@ -203,18 +212,22 @@ Melee weapons rely on the movement System, so their costs are in meters that are
 \begin{tabular}{c|clll}
     Type & Damage & Threshholds & Costs & Weight\\
     \hline \hline BaseTech&&&&\\
-    \hline Metal Sword & 10 & 10m[5,7,9,11,13,15,17,19,20]0 & 30m & 5t \\
-    \hline Manned Turret & X & X & \makecell[l]{manual \\labor +X} &  X +50\% \\
+    \hline
+    Metal Sword & 10 & 10m[5,7,9,11,13,15,17,19,20]0 & 30m & 5t \\
+    \hline
+    Manned Turret & X & X & \makecell[l]{manual \\labor +X} &  X +50\% \\
     \hline \hline Lowtech &&&&\\
-    \hline Heavy Machinegun & 30 & \makecell[l]{100m[3,6,10,14,18]20\\
+    \hline
+    Heavy Machinegun & 30 & \makecell[l]{100m[3,6,10,14,18]20\\
                                         500m[5, 8, 12,15]10\\
                                         1000m[7,10,14]5\\
                                         2km[11,16]5\\
-                                        8km[15]1 indirect}
-                                            & 5kg, 5H & 100kg \\
-    \hline Light Artillery & 120 & \makecell[l]{7km[8,12,16,20]1 \\
+                                        8km[15]1 indirect}& 5kg, 5H & 100kg \\
+    \hline
+    Light Artillery & 120 & \makecell[l]{7km[8,12,16,20]1 \\
                                         15km[10,14]}& 50kg, 10H & 8t  \\
-    \hline 120mm Smoothbore & 120 & \makecell[l]{50m[10,20]3\\
+    \hline
+    120mm Smoothbore & 120 & \makecell[l]{50m[10,20]3\\
                                         100m[6,10,14]8\\
                                         500m[5,7,9,11]15\\
                                         2km[8,10,12,14,16]20\\
@@ -222,33 +235,41 @@ Melee weapons rely on the movement System, so their costs are in meters that are
                                         8km[13,17]5 indirect}
                                             & 20kg 5H & 20t \\
     \hline\hline Midtech &&&&\\
-    \hline Autocannon & 80 & \makecell[l]{10m[10]3\\
+    \hline
+    Autocannon & 80 & \makecell[l]{10m[10]3\\
                                   200m[5,8,11,14,17,20]15\\
                                   1km[8,12,16,20]20\\
                                   2km[10,14,18]10 \\
                                   4km[13,17,20]5 indirect }
                                         & 7kg 5H & 5t \\
-    \hline Pulse Laser & 60 & \makecell[l]{1km[5,-15]50\\
+    \hline
+    Pulse Laser & 60 & \makecell[l]{1km[5,-15]50\\
                                    5km[7,9,11,13,15]100\\
                                    LOS[10,12,14,16,18]100}
                                         & 1000E 10H & 7t\\
-    \hline Precision Cannon & 140 & \makecell[l]{500m[7,10,13]2\\
+    \hline
+    Precision Cannon & 140 & \makecell[l]{500m[7,10,13]2\\
                                          2km[7-11,13,15,17,19]30\\
                                          LOS[8,10,12,14,16,18,20]25}
                                         & 15 kg 10H & 10t\\
-    \hline Rocket Launcher x 8 & X & X & X & 500kg \\
+    \hline
+    Rocket Launcher x 8 & X & X & X & 500kg \\
     \hline\hline Hightech &&&&\\
-    \hline Rocket Platform & X & X & X & 1500 kg \\
-    \hline Railgun & 160 & \makecell[l]{200m[7,9,11,13,15]5\\
+    \hline
+    Rocket Platform & X & X & X & 1500 kg \\
+    \hline
+    Railgun & 160 & \makecell[l]{200m[7,9,11,13,15]5\\
                                 1km[5,7,9,11,13]10\\
                                 4km[7,9,11,13,15]5\\
                                 12km[9,11,13,15,17]1}
                                 & 50 kg, 25H, 4000E & 15t\\
-    \hline Advanced Pulse Laser & 90 & \makecell[l]{3km[5-20]50\\
+    \hline
+    Advanced Pulse Laser & 90 & \makecell[l]{3km[5-20]50\\
                                    9km[7,9,11,13,15,17]100\\
                                    LOS[10,12,14,16,18]100}
                                         & 1800E 15H & 3t\\
-    \hline Ramping Beam Laser & 10\(\times\)X & \makecell[l]{1km[5,10,15]10\\
+    \hline
+    Ramping Beam Laser & 10\(\times\)X & \makecell[l]{1km[5,10,15]10\\
                                           LOS[10,15]100}
                         & X\(\times\)(10E 1H) & 10t\\
 
@@ -334,16 +355,19 @@ Dampeners and Deflectors dont fail from damage.
 \begin{tabular}{c|ccc}
     Type & Strength & Weight & Failure\\
     \hline BaseTech&&&\\
-    Outside Cargo & 0 & 1.1t & destroyed, passthrough\\
-    Metal Plating & 2 & 2t & damaged, passthrough\\
+    Outside Cargo & 0 & 1.1 & destroyed, passthrough\\
+    Metal Plating & 2 & 2 & damaged, passthrough\\
     Ultra High Density Composite & 4 & 5t & out of order, block\\
     \hline Lowtech &&&\\
-    Composite & 3 & 2.5t & damaged, passthrough \\
+    Sheetmetal & 0 & 0.1 & passthrough \\
+    Composite & 3 & 2.5 & damaged, passthrough \\
     \hline Midtech &&&\\
-    Active & 1/4 & 2t & out of order, passthrough full/1\\
+    Active & 1/4 & 2 & out of order, passthrough full/1\\
     SpeedShell & 1 & 0.5t & destroyed, passthrough \\
     \hline Hightech &&&\\
-    Ion & 5 & 1t & destroyed, energy system damage, block 
+    Ion & 5 & 1 & destroyed, energy system damage, block \\
+    \hline Experimental &&&\\
+    Holomatrix & 1 & 0 & damaged
 \end{tabular}
 
 \begin{enumerate}[label = - ]

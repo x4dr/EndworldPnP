@@ -1,0 +1,155 @@
+html {
+    background: black;
+    color: aqua;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+.outer {
+    transition: 0.5s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    background-color: #090a2d;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(45, 65, 105, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    flex: 1 1 300px;
+    font-size: larger;
+    text-align: center;
+}
+
+.inner-grid-item {
+    background-color: rgba(5, 15, 35, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: larger;
+    display: flex;
+    height: fit-content;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    flex: none;
+}
+
+.system-edit {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font-size: larger;
+    color: aqua;
+    background: #112633;
+    width: 100%;
+    max-width: max-content;
+    text-align: right;
+    height: fit-content;
+}
+
+h3 {
+    padding-right: 10px;
+}
+
+input:invalid, input:focus:invalid {
+    background: #bb1337;
+}
+
+.system-options {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: larger;
+    color: aqua;
+    background: #112633;
+    width: auto;
+    text-align: right;
+    height: fit-content;
+}
+
+.addbutton {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-size: larger;
+    color: aqua;
+    background: #112633;
+    width: auto;
+    text-align: right;
+    height: fit-content;
+
+}
+
+.hidden {
+    animation-duration: 0.2s;
+    animation-name: zoomout;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoomout {
+    from {
+        transform: scale(1);
+    }
+    90%{
+        transform: scale(0);
+        position: relative;
+    }
+    99%{
+        transform: scale(0);
+        visibility: hidden;
+        position: relative;
+    }
+    to {
+        transform: scale(0);
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+.rotated {
+    writing-mode: vertical-rl;
+    animation-duration: 0.2s;
+    animation-name: rotato;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    visibility: visible;
+}
+
+@keyframes rotato {
+    from {
+        transform: rotate(-90deg);
+    }
+    to {
+        transform: rotate(-180deg);
+    }
+}
+
+.smallflex {
+    justify-content: center;
+    width: 20px;
+    flex: 1 0 10px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .quarter, .threequarter, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+
+}
+
