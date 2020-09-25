@@ -44,6 +44,7 @@
                 //TODO: do something with the data
                 document.getElementById("mech_calculated").innerText=JSON.stringify(data);
             });
+            return true;
         });
     }
 
@@ -57,6 +58,7 @@
         const div = document.createElement("div");
         const sys = document.createElement("input");
         const label = document.createElement("label");
+        const del = document.createElement("input");
         sys.classList.add("system-edit");
         sys.onchange = sendData;
         let t = -1;
@@ -73,8 +75,16 @@
         sys.setAttribute("max","999");
         label.setAttribute("for", sys.id);
         label.appendChild(document.createTextNode(value));
+        del.setAttribute("type", "button");
+        del.setAttribute("value", "-");
+        del.classList.add("addbutton");
+        del.onclick = function () {
+            div.parentElement.removeChild(div);
+            sendData();
+        };
         div.appendChild(label);
         div.appendChild(sys);
+        div.appendChild(del);
         div.classList.add("inner-grid-item");
         return div;
     }
@@ -113,6 +123,7 @@
             });
             return true;
         });
+        sendData();
     });
 </script>
 <body>
