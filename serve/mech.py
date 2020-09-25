@@ -155,7 +155,7 @@ class HeatSystem(MechSystem):
         if properties[0].strip().endswith("E/r"):
             self.energy_per_turn = float(properties[0].strip()[:-3])
             self.active = None
-        elif properties[0].strip().endwith("E"):
+        elif properties[0].strip().endswith("E"):
             self.energy_per_turn = 0
             self.active = float(properties[0].strip()[:-1])
         elif properties[0].strip() == "0":
