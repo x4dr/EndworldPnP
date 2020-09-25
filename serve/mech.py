@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Iterable, List
 
-from mechdata import mech_json_data
+from serve.mechdata import mech_json_data
 
 
 class MechSystem(ABC):

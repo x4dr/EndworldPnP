@@ -1,10 +1,12 @@
 import json
+import os
 import time
 
 import flask
 from flask import request, render_template
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from mech import Mech
+from serve.mech import Mech
 from serve.mechacostcalc import (
     movementsystempercentages,
     movementenergysystempercentages,
@@ -17,7 +19,20 @@ from serve.mechdata import (
     mech_json_data,
 )
 
-app = flask.Flask("KodalBroadcast")
+app = flask.Flask(
+    "KodalBroadcast",
+    template_folder=os.path.dirname(__file__) + "/templates",
+    static_folder=os.path.dirname(__file__) + "/static",
+)
+app.config["APPLICATION_ROOT"] = "/ew"
+
+
+def simple(env, resp):
+    resp(b"200 OK", [("Content-Type", "text/plain")])
+    return [b""]
+
+
+app.wsgi_app = DispatcherMiddleware(simple, {"/ew": app.wsgi_app})
 
 
 def air_resistance(velocity, drag_coefficient, frontal_area, air_density=1.225):
