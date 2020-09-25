@@ -30,7 +30,7 @@ def gettable(inp: str):
                 raise Exception("unexpected in table def: " + line)
             table = len(line)
             continue
-        if line.startswith(r"\end{tabular}"):
+        if line.lstrip("\\").startswith(r"end{tabular}"):
             if table:
                 table = 0
                 continue

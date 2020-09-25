@@ -176,7 +176,7 @@ class HeatSystem(MechSystem):
             self.config["additional hardpoints"] = 0
             self.hardpoints = properties[3][:-1]
         else:
-            self.hardpoints = int(properties[3])
+            self.hardpoints = int(properties[3].strip() or 0)
 
     def scale(self, amount):
         pass
