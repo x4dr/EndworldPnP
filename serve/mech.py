@@ -235,6 +235,7 @@ class SealSystem(MechSystem):
                 "level": self.level,
                 "resistance": self.resistance,
                 "modified_cost": self.modified_cost,
+                "amount": self.amount,
             }
         )
         return json
@@ -251,6 +252,7 @@ class DefenseSystem(MechSystem):
                 "failure": self.failure,
                 "reboot": self.reboot,
                 "coldboot": self.coldboot,
+                "amount": self.amount,
             }
         )
         return json
