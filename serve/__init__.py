@@ -28,11 +28,12 @@ app.config["APPLICATION_ROOT"] = "/ew"
 
 
 def simple(env, resp):
+    print(env)
     resp(b"200 OK", [("Content-Type", "text/plain")])
-    return [b""]
+    return [b"go to /ew"]
 
 
-app.wsgi_app = DispatcherMiddleware(simple, {"/ew": app.wsgi_app})
+app.wsgi_app = DispatcherMiddleware(simple, {app.config["APPLICATION_ROOT"] : app.wsgi_app})
 
 
 def air_resistance(velocity, drag_coefficient, frontal_area, air_density=1.225):
@@ -84,13 +85,16 @@ def char_gen():
 def calculate_mech(x=None):
     x = x or request.get_json()
     print(x)
+    m = Mech(x).as_json()
+    t = Mech(m)
+    print(m, t)
     return {"mech": Mech(x).as_json()}
 
 
-@app.route("/move/<movement>/<size>/<speed>")
-def move(movement, size, speed):
+@app.route("/move/<movement>/<size>/<target_speed>")
+def move(movement, size, target_speed):
     try:
-        r = movementsystempercentages(float(speed), int(size))[movement][0]
+        r = movementsystempercentages(float(target_speed), int(size))[movement][0]
         return {"tonnage": r[0], "percentage": r[1], "total": r[0] * r[1] / 100}
     except KeyError:
         return (
@@ -101,10 +105,10 @@ def move(movement, size, speed):
         )
 
 
-@app.route("/energy/<movement>/<size>/<speed>")
-def energy(movement, size, speed):
+@app.route("/energy/<movement>/<size>/<target_speed>")
+def energy(movement, size, target_speed):
     try:
-        mov = movementsystempercentages(float(speed), int(size))[movement]
+        mov = movementsystempercentages(float(target_speed), int(size))[movement]
         return movementenergysystempercentages({movement: mov})
     except KeyError:
         return (
@@ -115,10 +119,10 @@ def energy(movement, size, speed):
         )
 
 
-@app.route("/speed/<movement>/<size>/<energy>")
-def mechspeed(movement, size, energy):
+@app.route("/speed/<movement>/<size>/<target_speed>")
+def mechspeed(movement, size, target_speed):
     try:
-        maxs = movementspeed(movement, size, energy)
+        maxs = movementspeed(movement, size, target_speed)
         return {"m/s": maxs, "km/h": maxs * 3.6, "mph": maxs * 2.23694}
     except KeyError:
         return (

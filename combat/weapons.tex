@@ -1,4 +1,21 @@
 \section{Weapons}\label{sec:weapons}
+
+Weapons have the following stats:
+\begin{enumerate}
+    \item \textbf{Range} - Minimum / Medium / Drop, in meters
+        \begin{enumerate}
+            \item \textbf{Minimum} - below which the weapon is hard to use in combat and penalty dice are issued
+            \item \textbf{Optimal} - below which no penalties for range are in effect
+            \item \textbf{Drop} - every how many meters a -1 penalty on shots is incurred
+        \end{enumerate}
+    \item \textbf{Ammunition} - how many shots per reload/how much weight per reload
+    \item \textbf{Shot Interval} - in seconds,  values below 5 allow multiple shots per round
+    \item \textbf{Handling} - initiative bonus
+    \item \textbf{Mods} - as per mod
+    \item[Crit] - requisites and effects of a critical hit
+    \item \textbf{Skill} - the main skill to use this weapon
+\end{enumerate}
+
 \subsection{Example weapons used in Play}\label{subsec:example-weapons-used-in-play}
 To be categorized and refined later.
 These Weapons are of Personal Size.
@@ -31,6 +48,22 @@ Ammo 50g/shot
 Costs: 0.1TU\par
 Damage: 10\par
 Ammo 20g/shot
+
+\subsubsection{Shotgun Revolver}
+Slugs:\par
+3[3,5,7,9,11,13]10\par
+15[5,7,9,11,13]10\par
+25[7,12,16]5\par
+50[14,17]5\par
+Shot:\par
+3[3,5,7,9,11,13]10\par
+36[5,8,11,14,17]
+\hyperref[subsec:hit]{\textbf{Hit Calculation}} \par
+[10,20,30,40,50,60,70,80,90,100]
+Costs: 0.4TU\par
+Damage: 20\par
+Ammo 20g/shot
+
 
 \subsubsection{Wooden Bow}
 20[5,7,9,11,13,15,17,19,20]3\par

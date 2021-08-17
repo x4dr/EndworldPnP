@@ -358,28 +358,40 @@ class Mech:
         self.weaponsystems = []
         self.notes = ""
 
-        for system in mech.keys():
-            if system == "mechsize":
+        for system, data in mech.items():
+            if system == "size":
                 self.hardpoints = mech[system]
                 continue
-            systemtype, systemname, i = system.split("_")
-            amount = float(mech[system])
-            if systemtype == "energy":
-                self.energysystems.append(EnergySystem(systemname, scale=amount))
-            elif systemtype == "movement":
-                self.movementsystems.append(MovementSystem(systemname, scale=amount))
-            elif systemtype == "heat":
-                self.heatsystems.append(HeatSystem(systemname, scale=amount))
-            elif systemtype == "seal":
-                self.sealsystems.append(SealSystem(systemname, scale=amount))
-            elif systemtype == "defense":
-                self.defensesystems.append(DefenseSystem(systemname, scale=amount))
-            elif systemtype == "armor":
-                self.armorsystems.append(ArmorSystem(systemname, scale=amount))
-            elif systemtype == "weapon":
-                self.weaponsystems.append(WeaponSystem(systemname, scale=amount))
+            if system == "notes":
+                self.notes = mech[system]
+                continue
 
-        pass
+            if isinstance(data, str):  # type_name_id : amount
+                systemtype, systemname, i = system.split("_")
+                amount = float(data)
+                self.append(systemtype, systemname, amount)
+
+            else:  # type : [systems]
+                for subsystem in data:
+                    print("SUBSYSTEM UNHANDLED:", subsystem)
+
+    def append(self, systemtype, systemname, amount):
+        if systemtype == "energy":
+            self.energysystems.append(EnergySystem(systemname, scale=amount))
+        elif systemtype == "movement":
+            self.movementsystems.append(
+                MovementSystem(systemname, scale=amount)
+            )
+        elif systemtype == "heat":
+            self.heatsystems.append(HeatSystem(systemname, scale=amount))
+        elif systemtype == "seal":
+            self.sealsystems.append(SealSystem(systemname, scale=amount))
+        elif systemtype == "defense":
+            self.defensesystems.append(DefenseSystem(systemname, scale=amount))
+        elif systemtype == "armor":
+            self.armorsystems.append(ArmorSystem(systemname, scale=amount))
+        elif systemtype == "weapon":
+            self.weaponsystems.append(WeaponSystem(systemname, scale=amount))
 
     def as_json(self):
         return {
@@ -390,4 +402,10 @@ class Mech:
             "weapons": [e.as_json() for e in self.weaponsystems],
             "defense": [e.as_json() for e in self.defensesystems],
             "armor": [e.as_json() for e in self.armorsystems],
+            "notes": self.notes,
+            "size": self.hardpoints,
         }
+
+    def from_json(self, json):
+        print(json)
+        print(self.hardpoints)

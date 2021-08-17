@@ -73,6 +73,7 @@
         sys.setAttribute("type","number");
         sys.setAttribute("min","0");
         sys.setAttribute("max","999");
+        sys.setAttribute("step","0.01");
         label.setAttribute("for", sys.id);
         label.appendChild(document.createTextNode(value));
         del.setAttribute("type", "button");
@@ -131,8 +132,8 @@
     <div class="grid-item outer" id="sector-count">
         <h3 onclick="mininimizeRestore('sector-count')">General</h3>
         <div class="inner-grid-item">
-            <label for="mechsize">Sector Count</label>
-            <input id="mechsize" class="system-edit" type="number" min="0" step="1" max="999" onchange="sendData()">
+            <label for="size">Sector Count</label>
+            <input id="size" class="system-edit" type="number" min="0" step="1" max="999" onchange="sendData()">
         </div>
     </div>
     {% for type in ["energy","movement","heat","seal","weapons","defense","armor"] %}

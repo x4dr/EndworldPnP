@@ -1,6 +1,5 @@
 from serve import mechdata
 from serve.mechdata import sizes
-from matplotlib import pyplot as plt
 
 MODULECOSTS = [4, 5, 6, 7, 8]
 TECHLEVELS = ["B", "L", "M", "H", "E"]
@@ -250,7 +249,14 @@ Armor = [
 ]
 
 
-def maxspeed(m, p, air_coeff, ground_coeff, base_loss, significant_digits=3) -> int:
+def maxspeed(
+    m: float,
+    p: float,
+    air_coeff: float,
+    ground_coeff: float,
+    base_loss: float,
+    significant_digits=3,
+) -> float:
     d = m * ground_coeff / 100 * 9.81  # kg * 1 * m/s2  ; weight based friction
     old, vel, airdrag = 0, 10, p / 100  # approximation seeds
     p -= base_loss
@@ -263,7 +269,9 @@ def maxspeed(m, p, air_coeff, ground_coeff, base_loss, significant_digits=3) -> 
 
 def movementenergyneed(movementsystem, stats):
     stats = stats[0]
-    return int(mechdata.movementsystems()[movementsystem][0]) * stats[0] * stats[1] / 100
+    return (
+        int(mechdata.movementsystems()[movementsystem][0]) * stats[0] * stats[1] / 100
+    )
 
 
 def movementenergysystempercentages(choices):
@@ -286,7 +294,11 @@ def movementspeed(movement, size, energy):
     scale = float(energy) / float(mov[0])
     power = float(mov[3]) * scale
     return maxspeed(
-        tonnage * 1e3, power * 1e3, float(mov[2]) * int(size), float(mov[1]) * tonnage, 0
+        tonnage * 1e3,
+        power * 1e3,
+        float(mov[2]) * int(size),
+        float(mov[1]) * tonnage,
+        0,
     )
 
 
@@ -318,6 +330,7 @@ def movementsystempercentages(target_speed, mechsize):
 
 
 def graphspeeds(goal):
+    from matplotlib import pyplot as plt
     speeds = {}
     for i in range(16):
         for k, v in movementsystempercentages(goal, i).items():

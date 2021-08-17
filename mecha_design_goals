@@ -1,0 +1,68 @@
+1. Freedom in customizeablity
+2. Fast to play
+3. interesting to play
+
+
+
+Combat:
+Intentions:
+Harm   - direct damage
+Threaten - giving target options, or damage
+Achieve  - gain an advantage, position/whatever
+Prevent - negate an opponents progress
+
+Do not need to be differentiated explicitly
+
+Harming:
+Goal is progressed with Attribute,skill+skill -> Roll (2-20)
+
+weapon has an attack
+target has armor
+
+Everyone make a defensive roll, there is passive defense, that only needs to be done once until something happens
+(cover, hiding) and can be complete (no line of sight, no interaction), full (minimal risk) or partial (cover just counts as its value)
+Active defense that results from the action (running, dodging, rolling, jumping and so on) usually comes with 2 malus dice on other actions
+
+Attacking is an action
+Negative modifiers:
+-range under min or above mid,
+-cover
+Positive modifiers:
++from ammo (armor pen and such)
++from (previous)aim/mods
+
+
+attack := roll()
+attack -= (range modifier - specific range bonuses)
+is attack <0? cover missed
+attack -= defense
+is attack < 0? cover hit, possibly damaged
+attack -= (armor-armorpen)
+is <0? armor hit, scratched
+is attack >0? hit, damage
+attack >armor? DESTROY
+
+
+
+
+Detection -> Tracking -> Lock
+
+what do hits mean?
+a reduction in protection
+effort in restoration
+potential death
+
+
+
+
+prisine hale damaged destroyed
+
+attack power vs defense power, any attack makes pristine to hale, successfull attack moves 1 and double moves two
+
+
+
+
+
+
+
+
