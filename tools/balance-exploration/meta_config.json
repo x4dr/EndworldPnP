@@ -1,0 +1,24 @@
+{
+  "settings": {
+    "target_stress": 35,
+    "max_turns": 100,
+    "mc_iterations": 200,
+    "use_one_plus_roll": true,
+    "min_armor_slice_tons": 1.0
+  },
+  "armor_types": {
+    "Sheetmetal": {"flat": 0.0, "rs": 0.05},
+    "Composite": {"flat": 1.0, "rs": 0.25},
+    "Metal": {"flat": 2.0, "rs": 0.15},
+    "UHDC": {"flat": 3.0, "rs": 0.08},
+    "Ion": {"flat": 2.0, "rs": 0.40}
+  },
+  "weapon_types": {
+    "Light Laser": {"wt": 1.0, "dmg": 16, "e": 50, "heat": 5, "ap": false},
+    "Medium Laser": {"wt": 3.0, "dmg": 20, "e": 150, "heat": 15, "ap": false},
+    "Heavy Laser": {"wt": 6.0, "dmg": 25, "e": 300, "heat": 30, "ap": true},
+    "Light Cannon": {"wt": 1.0, "dmg": 18, "e": 5, "heat": 2, "ap": false},
+    "Medium Cannon": {"wt": 3.0, "dmg": 22, "e": 10, "heat": 6, "ap": false},
+    "Heavy Artillery": {"wt": 6.0, "dmg": 28, "e": 15, "heat": 10, "ap": true}
+  }
+}
