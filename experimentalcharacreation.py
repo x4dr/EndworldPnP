@@ -10,7 +10,12 @@ def skillcalc(skills, start=1):
 
 
 def distcalc(distribution, start=1):
-    return sum([costcalc(di, start) * distribution[di - 1] for di in range(1, len(distribution) + 1)])
+    return sum(
+        [
+            costcalc(di, start) * distribution[di - 1]
+            for di in range(1, len(distribution) + 1)
+        ]
+    )
 
 
 def couldraise(remainingpoints, skills, start=0):
@@ -67,16 +72,19 @@ def searchall(points, skills, start=1, differentskills=9):
             return []
 
 
-print("selftest: \nattr lvl 1: {lvl1}\n"
-      "attr lvl 2: {lvl2}\n"
-      "attr lvl 3: {lvl3}\n"
-      "attr lvl 4: {lvl4}\n"
-      "attr lvl 5: {lvl5}\n"
-      .format(lvl1=costcalc(1, 1),
-              lvl2=costcalc(2, 1),
-              lvl3=costcalc(3, 1),
-              lvl4=costcalc(4, 1),
-              lvl5=costcalc(5, 1)))
+print(
+    "selftest: \nattr lvl 1: {lvl1}\n"
+    "attr lvl 2: {lvl2}\n"
+    "attr lvl 3: {lvl3}\n"
+    "attr lvl 4: {lvl4}\n"
+    "attr lvl 5: {lvl5}\n".format(
+        lvl1=costcalc(1, 1),
+        lvl2=costcalc(2, 1),
+        lvl3=costcalc(3, 1),
+        lvl4=costcalc(4, 1),
+        lvl5=costcalc(5, 1),
+    )
+)
 
 found = searchall(0, [], 1)
 if found:
@@ -92,5 +100,3 @@ if found:
 
     for dk in distri.keys():
         print(dk, "\t\t", distri[dk])
-
-

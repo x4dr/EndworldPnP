@@ -3,12 +3,13 @@ from collections import defaultdict
 
 from dask.distributed import Client
 import numpy as np
-#from numba import njit
+
+# from numba import njit
 
 client = Client(address="tcp://127.0.0.1:8786")
 
 
-#@njit
+# @njit
 def roll(stats):
     r = np.sort(np.random.randint(1, 11, 5))
     f = []
@@ -19,11 +20,13 @@ def roll(stats):
     return s, f
 
 
-def add_healing_rate(healing_rate: dict, name: str, fitness_skill: int, healing_bonus_skill: int):
+def add_healing_rate(
+    healing_rate: dict, name: str, fitness_skill: int, healing_bonus_skill: int
+):
     newheal, resonance = roll(np.array((fitness_skill, healing_bonus_skill)))
-    healing_rate[name] = (max(
-        min(newheal, healing_rate.get(" " + name, 999))
-        + resonance[9], 0) // (resonance[0] + 1))
+    healing_rate[name] = max(
+        min(newheal, healing_rate.get(" " + name, 999)) + resonance[9], 0
+    ) // (resonance[0] + 1)
 
     return resonance[0]
 
@@ -35,23 +38,29 @@ def timeformat(hours):
     hours -= months * 720
     days = hours // 24
     hours -= days * 24
-    return " ".join([x for x in [
-        f"{years:g}y" if years else "",
-        f"{months:g}m" if months else "",
-        f"{days:g}d" if days else "",
-        f"{hours:.2f}h" if hours else ""
-    ] if x])
+    return " ".join(
+        [
+            x
+            for x in [
+                f"{years:g}y" if years else "",
+                f"{months:g}m" if months else "",
+                f"{days:g}d" if days else "",
+                f"{hours:.2f}h" if hours else "",
+            ]
+            if x
+        ]
+    )
 
 
 def singletest(inp):
-    environmental_contamination = inp['environmental_contamination']
-    resistance_skill = inp['resistance_skill']
-    fitness_skill = inp['fitness_skill']
-    healing_bonus_skill = inp['healing_bonus_skill']
-    health = inp['health']
-    startingcharacon = inp['startingcharacon']
-    tolerance = inp['tolerance']
-    duration = inp['duration']
+    environmental_contamination = inp["environmental_contamination"]
+    resistance_skill = inp["resistance_skill"]
+    fitness_skill = inp["fitness_skill"]
+    healing_bonus_skill = inp["healing_bonus_skill"]
+    health = inp["health"]
+    startingcharacon = inp["startingcharacon"]
+    tolerance = inp["tolerance"]
+    duration = inp["duration"]
     log = ""
     healing_thresh = [3, 5, 7, 9, 11, 13, 15, 17, 19, 20]
     wounds = defaultdict(int)
@@ -72,14 +81,20 @@ def singletest(inp):
             character_contamination += 1
             wounds["Ingress"] += wound
             # Also (re)roll the healingrate for this wound, take lower
-            add_healing_rate(healing_rate, "Ingress", fitness_skill, healing_bonus_skill)
+            add_healing_rate(
+                healing_rate, "Ingress", fitness_skill, healing_bonus_skill
+            )
             log += f"Healing rate: {healing_rate['Ingress']}\n"
         if hours % 24 == 0:
             for k in wounds.keys():
-                healing_progress[k] += sum(1 for x in healing_thresh if x <= healing_rate[k])
+                healing_progress[k] += sum(
+                    1 for x in healing_thresh if x <= healing_rate[k]
+                )
                 healing_progress[k] -= max(0, character_contamination - tolerance)
-                log += f"healing [k] with progress of {sum(1 for x in healing_thresh if x <= healing_rate[k])} " \
-                       f"and regress of {max(0, character_contamination - tolerance)}\n"
+                log += (
+                    f"healing [k] with progress of {sum(1 for x in healing_thresh if x <= healing_rate[k])} "
+                    f"and regress of {max(0, character_contamination - tolerance)}\n"
+                )
                 log += f"Progress: {healing_progress} Wounds: {wounds}\n"
                 if healing_progress[k] >= wounds[k]:
                     wounds[k] = max(wounds[k] - 1, 0)
@@ -118,10 +133,13 @@ def glomp(x):
         contatotal.append(contatotalres)
     return dict(
         env=env,
-        death="none" if len(deathafter) == 0 else timeformat(sum(deathafter) / len(deathafter)),
+        death="none"
+        if len(deathafter) == 0
+        else timeformat(sum(deathafter) / len(deathafter)),
         mortality=100 * mortality / len(x),
         wounds=woundstotal / len(x),
-        con=sum(contatotal) / len(contatotal))
+        con=sum(contatotal) / len(contatotal),
+    )
 
 
 def woundtest(wound, healinglevel, superhealing=False):
@@ -152,19 +170,34 @@ for severity in range(91, 26):
 print("resistances & con & deathtime & mortality & avg wounds & conta\\\\")
 for rs in range(1):
     rundata = [
-        [client.submit(singletest,
-                       dict(run=repeat, environmental_contamination=con, resistance_skill=5, fitness_skill=3,
-                            healing_bonus_skill=0, health=50, startingcharacon=0, tolerance=8,
-                            duration=365 * 24))
-         for repeat in range(100)]
-        for con in range(1, 26)]
+        [
+            client.submit(
+                singletest,
+                dict(
+                    run=repeat,
+                    environmental_contamination=con,
+                    resistance_skill=5,
+                    fitness_skill=3,
+                    healing_bonus_skill=0,
+                    health=50,
+                    startingcharacon=0,
+                    tolerance=8,
+                    duration=365 * 24,
+                ),
+            )
+            for repeat in range(100)
+        ]
+        for con in range(1, 26)
+    ]
 
     rundata = [client.submit(glomp, r) for r in rundata]
 
     try:
         for d in rundata:
             d = d.result()
-            print(f"{rs + 1} & {d['env']:<3}&{d['death']} \t&{d['mortality']:<3g}% \\\\")
+            print(
+                f"{rs + 1} & {d['env']:<3}&{d['death']} \t&{d['mortality']:<3g}% \\\\"
+            )
     except Exception as e:
         for x in e.args:
             print(x)

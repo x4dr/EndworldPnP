@@ -55,14 +55,63 @@ potential death
 
 
 
-prisine hale damaged destroyed
+pristine hale damaged destroyed
 
 attack power vs defense power, any attack makes pristine to hale, successfull attack moves 1 and double moves two
 
 
 
 
+newmech notes
 
 
+3 stats: Focus, Flow, Discipline
+
+Focus for active, instant:
+ - attacks, hacking, system use,
+Flow for active, ongoing
+ - scanning, defensive maneuvers, tactics (such as
+Discipline for passive, ongoing, "background"
+ - piloting, strategies (such as stealth)
+
+Mech skills (10-15)
+
+Mech(size)
+Scanners
+DirectFire
+Projectile
+Throwers
+Ballistic
+Missile
+Shield
+Decoy
+Deflectors
+Gadgets/specialEquipment
+Suppressors/StealthEquipment
+Communications
+Reprocessing
+SpecialMovement
+SpinalInterface
+Augment()
+
+
+
+
+
+Mechbuilding
+
+Stats/Systems
+:
+Operating Costs: strategic, tactical, immediate
+strategic: fuel/day, tactical: fuel/fight, immediate fuel/specaction
+movement: strategic, tactical (more options), special (grappling, jets, swimming, ...)
+energy: tradeoff operating costs with
+combat: damages at ranges
+heat: short term ressource management, several stages with different effects (increasing dissipation)
+Sealsystem: base protection against environment, boosted protection/cost
+Defense: passive/active using power/heat
+Armor: using no/little power
+Computer: For automation
+Misc: electrolysis and so on
 
 

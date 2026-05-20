@@ -57,5 +57,5 @@ if __name__ == "__main__":
         plt.plot(x, label=f"{(i+2)*5} t")
         i += 1
         plt.legend()
-    plt.plot(list(10*numpy.log(x) for x in range(500)))
+    plt.plot(list(10 * numpy.log(x) for x in range(500)))
     plt.show()

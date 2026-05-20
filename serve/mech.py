@@ -379,9 +379,7 @@ class Mech:
         if systemtype == "energy":
             self.energysystems.append(EnergySystem(systemname, scale=amount))
         elif systemtype == "movement":
-            self.movementsystems.append(
-                MovementSystem(systemname, scale=amount)
-            )
+            self.movementsystems.append(MovementSystem(systemname, scale=amount))
         elif systemtype == "heat":
             self.heatsystems.append(HeatSystem(systemname, scale=amount))
         elif systemtype == "seal":

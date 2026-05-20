@@ -52,9 +52,20 @@ def plot(data):
     botches = sum([v for k, v in data.items() if k < 0])
     total = sum([v for k, v in data.items()])
     pt = total / 100
-    print("Of the %d rolls, %d where successes, %d where failures and %d where botches, averaging %.2f" % (
-        total, success, zeros, botches, (sum([k * v for k, v in data.items()]) / total)))
-    print("The percentages are:\n+ : %.3f%%\n0 : %.3f%%\n- : %.3f%%" % (success / pt, zeros / pt, botches / pt))
+    print(
+        "Of the %d rolls, %d where successes, %d where failures and %d where botches, averaging %.2f"
+        % (
+            total,
+            success,
+            zeros,
+            botches,
+            (sum([k * v for k, v in data.items()]) / total),
+        )
+    )
+    print(
+        "The percentages are:\n+ : %.3f%%\n0 : %.3f%%\n- : %.3f%%"
+        % (success / pt, zeros / pt, botches / pt)
+    )
     width = 1
     barsuc = int((success / pt) / width)
     barbot = int((botches / pt) / width)
@@ -80,7 +91,9 @@ def run():
         amount = int(sys.argv[2])
         difficulty = int(sys.argv[3])
     else:
-        print("usage: <duration> <dice amount> <bonus> [d/c/h] [if c compare roll] [nofail]")
+        print(
+            "usage: <duration> <dice amount> <bonus> [d/c/h] [if c compare roll] [nofail]"
+        )
         exit()
     if sys.argv[4] == "d":
         roller = d10
@@ -101,14 +114,18 @@ def run():
                 break
     if "nofail" in sys.argv:
         for key in range(min(successes.keys()), 0):
-            del (successes[key])
+            del successes[key]
 
-    print("rolling %+d %s against %+d %sfor %.1f seconds" % (
-        amount,
-        "dice" if not compare else "advantage",
-        difficulty if not compare else int(sys.argv[5]),
-        "" if not compare else "advantage ",
-        duration))
+    print(
+        "rolling %+d %s against %+d %sfor %.1f seconds"
+        % (
+            amount,
+            "dice" if not compare else "advantage",
+            difficulty if not compare else int(sys.argv[5]),
+            "" if not compare else "advantage ",
+            duration,
+        )
+    )
     plot(dict(successes))
 
 
@@ -128,7 +145,7 @@ def speed(e, m):
 
 def speedat(m, t, p):  # m, t, p => v
     e = p * t  # joule
-    print("energy in MJ", e / 10 ** 6)
+    print("energy in MJ", e / 10**6)
     v = speed(e, m)
     return v
 
@@ -144,7 +161,9 @@ def maxspeed_old(m, p, D):
         e += p - f  # joule via one second tick
         v = speed(e, m)
 
-        f = 0.5 * 1.5 * (v ** 3) * 1 * D * (m ** (1 / 3))  # frictionloss m**1/3 /4 roughly correlates to size
+        f = (
+            0.5 * 1.5 * (v**3) * 1 * D * (m ** (1 / 3))
+        )  # frictionloss m**1/3 /4 roughly correlates to size
         # print(e,v,f, m**0.3)
         if (s % 5 == 0) or (s < 5):
             print(f"energy {round(e / 10 ** 3)}kJ speed {v}m/s, time {s}s")
@@ -158,7 +177,6 @@ def maxspeed(m, p, D):
     return (p / D) ** (1 / 3)
 
 
-
 mass = 400e3
 movpower = 800e3
 print(f"{movpower / 1000}kw movement")
@@ -169,4 +187,4 @@ p = power(0, msfinal, seconds, mass)
 print("power:", p / 1000, "kw")
 print("speed at 5:", speedat(mass, 25, movpower))
 print(maxspeed(mass, movpower, 0.008))
-#print(maxspeed_old(mass, movpower, 15))
+# print(maxspeed_old(mass, movpower, 15))

@@ -260,9 +260,9 @@ def maxspeed(
     d = m * ground_coeff / 100 * 9.81  # kg * 1 * m/s2  ; weight based friction
     old, vel, airdrag = 0, 10, p / 100  # approximation seeds
     p -= base_loss
-    while abs(old - vel) > 1 / 10 ** significant_digits:
+    while abs(old - vel) > 1 / 10**significant_digits:
         old = vel
-        airdrag = (airdrag + (0.5 * air_coeff * 1.225) * vel ** 2) / 2
+        airdrag = (airdrag + (0.5 * air_coeff * 1.225) * vel**2) / 2
         vel = p / (airdrag + d)
     return vel
 
@@ -331,6 +331,7 @@ def movementsystempercentages(target_speed, mechsize):
 
 def graphspeeds(goal):
     from matplotlib import pyplot as plt
+
     speeds = {}
     for i in range(16):
         for k, v in movementsystempercentages(goal, i).items():

@@ -33,7 +33,9 @@ def simple(env, resp):
     return [b"go to /ew"]
 
 
-app.wsgi_app = DispatcherMiddleware(simple, {app.config["APPLICATION_ROOT"] : app.wsgi_app})
+app.wsgi_app = DispatcherMiddleware(
+    simple, {app.config["APPLICATION_ROOT"]: app.wsgi_app}
+)
 
 
 def air_resistance(velocity, drag_coefficient, frontal_area, air_density=1.225):
@@ -153,7 +155,13 @@ def speed(weight=None, power=None, crossection=None, ground_loss=None, efficienc
     ground_loss = float(ground_loss)
     efficiency = float(efficiency) / 100
 
-    maxs = maxspeed(weight, power, crossection, ground_loss, (1 - efficiency) * power,)
+    maxs = maxspeed(
+        weight,
+        power,
+        crossection,
+        ground_loss,
+        (1 - efficiency) * power,
+    )
     return {"m/s": maxs, "km/h": maxs * 3.6, "mph": maxs * 2.23694}
 
 

@@ -20,8 +20,11 @@ def main():
             resonance = pandas.read_csv("resonance_" + str(modifier) + ".csv")
         except:
             try:
-                df = pandas.read_csv("relative_occurences_" + str(modifier) + ".csv",
-                                     header=None, names=["1", "2", "3", "4", "5", "sum"])
+                df = pandas.read_csv(
+                    "relative_occurences_" + str(modifier) + ".csv",
+                    header=None,
+                    names=["1", "2", "3", "4", "5", "sum"],
+                )
             except:
                 print(str(modifier) + " unavailable!")
                 continue
@@ -30,8 +33,11 @@ def main():
                 resonance_complete = resonance
                 resonance_complete.columns = ["a", "f", modifier]
             else:
-                resonance_complete.insert(len(resonance_complete.keys()),
-                                          modifier, resonance[resonance.keys()[-1]])
+                resonance_complete.insert(
+                    len(resonance_complete.keys()),
+                    modifier,
+                    resonance[resonance.keys()[-1]],
+                )
             continue
         total = 0
         print("generating: resonance_" + str(modifier) + ".csv")
@@ -51,8 +57,12 @@ def main():
             f.write("a, f, " + str(total) + "\n")
             for amplitude in range(0, 5):
                 for frequency in range(1, 11):
-                    print(f"Amplitude {amplitude} Frequency {frequency: >2}  ={checked[frequency][amplitude]: >11}")
-                    f.write(f"{amplitude}, {frequency}, {checked[frequency][amplitude]}\n")
+                    print(
+                        f"Amplitude {amplitude} Frequency {frequency: >2}  ={checked[frequency][amplitude]: >11}"
+                    )
+                    f.write(
+                        f"{amplitude}, {frequency}, {checked[frequency][amplitude]}\n"
+                    )
     resonance_complete.to_csv("resonance_complete.csv")
 
 
